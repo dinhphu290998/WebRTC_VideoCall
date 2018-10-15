@@ -1,0 +1,6 @@
+framework module Pods_Apprtc {
+  umbrella header "Pods-Apprtc-umbrella.h"
+
+  export *
+  module * { export * }
+}

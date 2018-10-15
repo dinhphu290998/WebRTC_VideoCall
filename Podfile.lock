@@ -1,0 +1,67 @@
+PODS:
+  - Alamofire (4.7.0)
+  - Crashlytics (3.10.1):
+    - Fabric (~> 1.7.5)
+  - DropDown (2.3.1)
+  - Fabric (1.7.5)
+  - GoogleMaps (2.6.0):
+    - GoogleMaps/Maps (= 2.6.0)
+  - GoogleMaps/Base (2.6.0)
+  - GoogleMaps/Maps (2.6.0):
+    - GoogleMaps/Base
+  - Kingfisher (4.6.3)
+  - Material (2.13.6):
+    - Material/Core (= 2.13.6)
+  - Material/Core (2.13.6):
+    - Motion (~> 1.3.0)
+  - Motion (1.3.5):
+    - Motion/Core (= 1.3.5)
+  - Motion/Core (1.3.5)
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.2)
+  - SocketRocket (0.5.1)
+  - SVProgressHUD (2.2.5)
+  - SwiftLint (0.25.0)
+  - SwiftyJSON (4.0.0)
+  - Toast-Swift (3.0.1)
+  - Whisper (6.0.2)
+
+DEPENDENCIES:
+  - Alamofire
+  - Crashlytics
+  - DropDown
+  - Fabric
+  - GoogleMaps
+  - Kingfisher
+  - Material
+  - RxCocoa
+  - RxSwift
+  - SocketRocket
+  - SVProgressHUD
+  - SwiftLint
+  - SwiftyJSON
+  - Toast-Swift
+  - Whisper
+
+SPEC CHECKSUMS:
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
+  DropDown: 20499c7b2731b0d21609af924e47c7677a2be50d
+  Fabric: ae7146a5f505ea370a1e44820b4b1dc8890e2890
+  GoogleMaps: 42f91c68b7fa2f84d5c86597b18ceb99f5414c7f
+  Kingfisher: 98e6d5b5e807645743e8ed5ececd25d688d38452
+  Material: ef704dcc1bced32ab7c91ece2ba734da557e3f36
+  Motion: 9f74d115d7f72bb5380a8e3cde2f8a1fc898ac36
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
+  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftLint: e14651157288e9e01d6e1a71db7014fb5744a8ea
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
+  Whisper: 169760fc4bab0abf24d5529f9276f95c25cf1025
+
+PODFILE CHECKSUM: 74c7d15a3d5af46ad7c8b86921ec897861fad7d1
+
+COCOAPODS: 1.4.0
