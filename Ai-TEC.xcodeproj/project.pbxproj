@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		B3ABEF86217495B30072E9F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF85217495B30072E9F5 /* AppDelegate.swift */; };
-		B3ABEF88217495B30072E9F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF87217495B30072E9F5 /* ViewController.swift */; };
-		B3ABEF8B217495B30072E9F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3ABEF89217495B30072E9F5 /* Main.storyboard */; };
 		B3ABEF8E217495B30072E9F5 /* Ai_Tec.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF8C217495B30072E9F5 /* Ai_Tec.xcdatamodeld */; };
-		B3ABEF90217495B40072E9F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3ABEF8F217495B40072E9F5 /* Assets.xcassets */; };
-		B3ABEF93217495B40072E9F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3ABEF91217495B40072E9F5 /* LaunchScreen.storyboard */; };
 		B3ABEF9E217495B40072E9F5 /* Ai_TecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF9D217495B40072E9F5 /* Ai_TecTests.swift */; };
 		B3ABEFA9217495B40072E9F5 /* Ai_TecUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEFA8217495B40072E9F5 /* Ai_TecUITests.swift */; };
+		B3DF815C21749E3D00AC7934 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3DF815B21749E3D00AC7934 /* Assets.xcassets */; };
+		B3DF815E21749E4300AC7934 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3DF815D21749E4300AC7934 /* Images.xcassets */; };
+		B3DF816021749E4D00AC7934 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3DF815F21749E4C00AC7934 /* Main.storyboard */; };
+		B3DF816221749E5900AC7934 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3DF816121749E5900AC7934 /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,11 +37,7 @@
 /* Begin PBXFileReference section */
 		B3ABEF82217495B30072E9F5 /* Ai-Tec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ai-Tec.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3ABEF85217495B30072E9F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B3ABEF87217495B30072E9F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B3ABEF8A217495B30072E9F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B3ABEF8D217495B30072E9F5 /* Ai_Tec.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ai_Tec.xcdatamodel; sourceTree = "<group>"; };
-		B3ABEF8F217495B40072E9F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B3ABEF92217495B40072E9F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3ABEF94217495B40072E9F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3ABEF99217495B40072E9F5 /* Ai-TecTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ai-TecTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3ABEF9D217495B40072E9F5 /* Ai_TecTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ai_TecTests.swift; sourceTree = "<group>"; };
@@ -49,6 +45,10 @@
 		B3ABEFA4217495B40072E9F5 /* Ai-TecUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ai-TecUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3ABEFA8217495B40072E9F5 /* Ai_TecUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ai_TecUITests.swift; sourceTree = "<group>"; };
 		B3ABEFAA217495B40072E9F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3DF815B21749E3D00AC7934 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../ai_tec_ios-master/Apprtc/Assets.xcassets"; sourceTree = "<group>"; };
+		B3DF815D21749E4300AC7934 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B3DF815F21749E4C00AC7934 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B3DF816121749E5900AC7934 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,10 +100,10 @@
 			isa = PBXGroup;
 			children = (
 				B3ABEF85217495B30072E9F5 /* AppDelegate.swift */,
-				B3ABEF87217495B30072E9F5 /* ViewController.swift */,
-				B3ABEF89217495B30072E9F5 /* Main.storyboard */,
-				B3ABEF8F217495B40072E9F5 /* Assets.xcassets */,
-				B3ABEF91217495B40072E9F5 /* LaunchScreen.storyboard */,
+				B3DF815B21749E3D00AC7934 /* Assets.xcassets */,
+				B3DF815D21749E4300AC7934 /* Images.xcassets */,
+				B3DF815F21749E4C00AC7934 /* Main.storyboard */,
+				B3DF816121749E5900AC7934 /* LaunchScreen.xib */,
 				B3ABEF94217495B40072E9F5 /* Info.plist */,
 				B3ABEF8C217495B30072E9F5 /* Ai_Tec.xcdatamodeld */,
 			);
@@ -207,7 +207,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B3ABEF7D217495B20072E9F5 /* Build configuration list for PBXProject "Ai-Tec" */;
+			buildConfigurationList = B3ABEF7D217495B20072E9F5 /* Build configuration list for PBXProject "Ai-TEC" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -232,9 +232,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3ABEF93217495B40072E9F5 /* LaunchScreen.storyboard in Resources */,
-				B3ABEF90217495B40072E9F5 /* Assets.xcassets in Resources */,
-				B3ABEF8B217495B30072E9F5 /* Main.storyboard in Resources */,
+				B3DF816221749E5900AC7934 /* LaunchScreen.xib in Resources */,
+				B3DF816021749E4D00AC7934 /* Main.storyboard in Resources */,
+				B3DF815C21749E3D00AC7934 /* Assets.xcassets in Resources */,
+				B3DF815E21749E4300AC7934 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +260,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3ABEF88217495B30072E9F5 /* ViewController.swift in Sources */,
 				B3ABEF8E217495B30072E9F5 /* Ai_Tec.xcdatamodeld in Sources */,
 				B3ABEF86217495B30072E9F5 /* AppDelegate.swift in Sources */,
 			);
@@ -295,25 +295,6 @@
 			targetProxy = B3ABEFA5217495B40072E9F5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		B3ABEF89217495B30072E9F5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B3ABEF8A217495B30072E9F5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		B3ABEF91217495B40072E9F5 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B3ABEF92217495B40072E9F5 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		B3ABEFAB217495B40072E9F5 /* Debug */ = {
@@ -547,7 +528,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B3ABEF7D217495B20072E9F5 /* Build configuration list for PBXProject "Ai-Tec" */ = {
+		B3ABEF7D217495B20072E9F5 /* Build configuration list for PBXProject "Ai-TEC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3ABEFAB217495B40072E9F5 /* Debug */,
