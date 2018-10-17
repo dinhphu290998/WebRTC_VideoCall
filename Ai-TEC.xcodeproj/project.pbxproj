@@ -7,12 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048AB70D729283334D8FC8A7 /* Pods_Ai_TecTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 787889CFDFCC3FFB53443B73 /* Pods_Ai_TecTests.framework */; };
+		148795EFBDB78135EDC9C087 /* Pods_Ai_TecUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 406AEE77466067F4B97DBD99 /* Pods_Ai_TecUITests.framework */; };
+		1873FA0821757A9D00ED8988 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873FA0721757A9D00ED8988 /* SplashViewController.swift */; };
+		1873FA11217580CF00ED8988 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873FA10217580CF00ED8988 /* LoginViewController.swift */; };
+		18F0C90321758BA600E0DEBD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0C90221758BA600E0DEBD /* User.swift */; };
+		18F0C90721759D7C00E0DEBD /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0C90621759D7C00E0DEBD /* Config.swift */; };
+		18FA43EA2176E30800A0EB8B /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA43E92176E30800A0EB8B /* ContactViewController.swift */; };
+		18FA43EE2176F75A00A0EB8B /* SocketGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA43ED2176F75A00A0EB8B /* SocketGlobal.swift */; };
+		18FA43F021771A7000A0EB8B /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA43EF21771A7000A0EB8B /* ContactTableViewCell.swift */; };
+		8D10FCF84A798504B9EF769C /* Pods_Ai_Tec.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381B2CD5D2E6702DEC42770 /* Pods_Ai_Tec.framework */; };
 		B3ABEF86217495B30072E9F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF85217495B30072E9F5 /* AppDelegate.swift */; };
 		B3ABEF8E217495B30072E9F5 /* Ai_Tec.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF8C217495B30072E9F5 /* Ai_Tec.xcdatamodeld */; };
 		B3ABEF9E217495B40072E9F5 /* Ai_TecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF9D217495B40072E9F5 /* Ai_TecTests.swift */; };
 		B3ABEFA9217495B40072E9F5 /* Ai_TecUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEFA8217495B40072E9F5 /* Ai_TecUITests.swift */; };
 		B3DF815C21749E3D00AC7934 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3DF815B21749E3D00AC7934 /* Assets.xcassets */; };
-		B3DF815E21749E4300AC7934 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3DF815D21749E4300AC7934 /* Images.xcassets */; };
 		B3DF816021749E4D00AC7934 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3DF815F21749E4C00AC7934 /* Main.storyboard */; };
 		B3DF816221749E5900AC7934 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3DF816121749E5900AC7934 /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
@@ -35,6 +44,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0872EDCF48AFD29DB3BF317A /* Pods-Ai-TecUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-TecUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-TecUITests/Pods-Ai-TecUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1381B2CD5D2E6702DEC42770 /* Pods_Ai_Tec.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_Tec.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1873FA0721757A9D00ED8988 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SplashViewController.swift; path = "Ai-Tec/Controller/SplashViewController.swift"; sourceTree = SOURCE_ROOT; };
+		1873FA10217580CF00ED8988 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "Ai-TEC/Controller/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
+		18F0C90221758BA600E0DEBD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		18F0C90621759D7C00E0DEBD /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		18FA43E92176E30800A0EB8B /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactViewController.swift; path = "Ai-TEC/Controller/ContactViewController.swift"; sourceTree = SOURCE_ROOT; };
+		18FA43ED2176F75A00A0EB8B /* SocketGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketGlobal.swift; sourceTree = "<group>"; };
+		18FA43EF21771A7000A0EB8B /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactTableViewCell.swift; path = "Ai-TEC/View/ContactTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		227AB763F649D9D69460EF6E /* Pods-Ai-TecTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-TecTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-TecTests/Pods-Ai-TecTests.debug.xcconfig"; sourceTree = "<group>"; };
+		340B88CA01418C225C224DC9 /* Pods-Ai-Tec.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-Tec.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-Tec/Pods-Ai-Tec.debug.xcconfig"; sourceTree = "<group>"; };
+		406AEE77466067F4B97DBD99 /* Pods_Ai_TecUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_TecUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		54DB82D607AA9494F139E009 /* Pods-Ai-TecUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-TecUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-TecUITests/Pods-Ai-TecUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		787889CFDFCC3FFB53443B73 /* Pods_Ai_TecTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_TecTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3ABEF82217495B30072E9F5 /* Ai-Tec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ai-Tec.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3ABEF85217495B30072E9F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3ABEF8D217495B30072E9F5 /* Ai_Tec.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ai_Tec.xcdatamodel; sourceTree = "<group>"; };
@@ -46,9 +69,10 @@
 		B3ABEFA8217495B40072E9F5 /* Ai_TecUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ai_TecUITests.swift; sourceTree = "<group>"; };
 		B3ABEFAA217495B40072E9F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3DF815B21749E3D00AC7934 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../ai_tec_ios-master/Apprtc/Assets.xcassets"; sourceTree = "<group>"; };
-		B3DF815D21749E4300AC7934 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B3DF815F21749E4C00AC7934 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B3DF816121749E5900AC7934 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		B8FDF5BAC2F50E2D473F055B /* Pods-Ai-TecTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-TecTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-TecTests/Pods-Ai-TecTests.release.xcconfig"; sourceTree = "<group>"; };
+		C6418BE0BF709307489A5917 /* Pods-Ai-Tec.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-Tec.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-Tec/Pods-Ai-Tec.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D10FCF84A798504B9EF769C /* Pods_Ai_Tec.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048AB70D729283334D8FC8A7 /* Pods_Ai_TecTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +96,65 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				148795EFBDB78135EDC9C087 /* Pods_Ai_TecUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		036336103D3A648BE8E0C28D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1381B2CD5D2E6702DEC42770 /* Pods_Ai_Tec.framework */,
+				787889CFDFCC3FFB53443B73 /* Pods_Ai_TecTests.framework */,
+				406AEE77466067F4B97DBD99 /* Pods_Ai_TecUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1873FA0921757F3200ED8988 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1873FA0721757A9D00ED8988 /* SplashViewController.swift */,
+				1873FA10217580CF00ED8988 /* LoginViewController.swift */,
+				18FA43E92176E30800A0EB8B /* ContactViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1873FA0A21757F4500ED8988 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B3DF816121749E5900AC7934 /* LaunchScreen.xib */,
+				18FA43EF21771A7000A0EB8B /* ContactTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1873FA0F21757F8F00ED8988 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18F0C90221758BA600E0DEBD /* User.swift */,
+				18F0C90621759D7C00E0DEBD /* Config.swift */,
+				18FA43ED2176F75A00A0EB8B /* SocketGlobal.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3BFDBBA97902D707C0AE5C99 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				340B88CA01418C225C224DC9 /* Pods-Ai-Tec.debug.xcconfig */,
+				C6418BE0BF709307489A5917 /* Pods-Ai-Tec.release.xcconfig */,
+				227AB763F649D9D69460EF6E /* Pods-Ai-TecTests.debug.xcconfig */,
+				B8FDF5BAC2F50E2D473F055B /* Pods-Ai-TecTests.release.xcconfig */,
+				54DB82D607AA9494F139E009 /* Pods-Ai-TecUITests.debug.xcconfig */,
+				0872EDCF48AFD29DB3BF317A /* Pods-Ai-TecUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B3ABEF79217495B20072E9F5 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +162,8 @@
 				B3ABEF9C217495B40072E9F5 /* Ai-TecTests */,
 				B3ABEFA7217495B40072E9F5 /* Ai-TecUITests */,
 				B3ABEF83217495B30072E9F5 /* Products */,
+				3BFDBBA97902D707C0AE5C99 /* Pods */,
+				036336103D3A648BE8E0C28D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,11 +181,12 @@
 			isa = PBXGroup;
 			children = (
 				B3ABEF85217495B30072E9F5 /* AppDelegate.swift */,
-				B3DF815B21749E3D00AC7934 /* Assets.xcassets */,
-				B3DF815D21749E4300AC7934 /* Images.xcassets */,
+				1873FA0F21757F8F00ED8988 /* Model */,
+				1873FA0A21757F4500ED8988 /* View */,
+				1873FA0921757F3200ED8988 /* Controller */,
 				B3DF815F21749E4C00AC7934 /* Main.storyboard */,
-				B3DF816121749E5900AC7934 /* LaunchScreen.xib */,
 				B3ABEF94217495B40072E9F5 /* Info.plist */,
+				B3DF815B21749E3D00AC7934 /* Assets.xcassets */,
 				B3ABEF8C217495B30072E9F5 /* Ai_Tec.xcdatamodeld */,
 			);
 			path = "Ai-Tec";
@@ -135,9 +217,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3ABEFAD217495B40072E9F5 /* Build configuration list for PBXNativeTarget "Ai-Tec" */;
 			buildPhases = (
+				1EBA7136D825119A0397FE3D /* [CP] Check Pods Manifest.lock */,
 				B3ABEF7E217495B30072E9F5 /* Sources */,
 				B3ABEF7F217495B30072E9F5 /* Frameworks */,
 				B3ABEF80217495B30072E9F5 /* Resources */,
+				3E43919322046682E78D4313 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +236,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3ABEFB0217495B40072E9F5 /* Build configuration list for PBXNativeTarget "Ai-TecTests" */;
 			buildPhases = (
+				4839C12768E8E8FF81B5FF3C /* [CP] Check Pods Manifest.lock */,
 				B3ABEF95217495B40072E9F5 /* Sources */,
 				B3ABEF96217495B40072E9F5 /* Frameworks */,
 				B3ABEF97217495B40072E9F5 /* Resources */,
@@ -170,6 +255,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3ABEFB3217495B40072E9F5 /* Build configuration list for PBXNativeTarget "Ai-TecUITests" */;
 			buildPhases = (
+				66895B5A1869C6FA803EE499 /* [CP] Check Pods Manifest.lock */,
 				B3ABEFA0217495B40072E9F5 /* Sources */,
 				B3ABEFA1217495B40072E9F5 /* Frameworks */,
 				B3ABEFA2217495B40072E9F5 /* Resources */,
@@ -235,7 +321,6 @@
 				B3DF816221749E5900AC7934 /* LaunchScreen.xib in Resources */,
 				B3DF816021749E4D00AC7934 /* Main.storyboard in Resources */,
 				B3DF815C21749E3D00AC7934 /* Assets.xcassets in Resources */,
-				B3DF815E21749E4300AC7934 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,13 +340,115 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1EBA7136D825119A0397FE3D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ai-Tec-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3E43919322046682E78D4313 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Ai-Tec/Pods-Ai-Tec-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketRocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ai-Tec/Pods-Ai-Tec-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4839C12768E8E8FF81B5FF3C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ai-TecTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66895B5A1869C6FA803EE499 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ai-TecUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B3ABEF7E217495B30072E9F5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1873FA11217580CF00ED8988 /* LoginViewController.swift in Sources */,
+				18FA43EA2176E30800A0EB8B /* ContactViewController.swift in Sources */,
+				1873FA0821757A9D00ED8988 /* SplashViewController.swift in Sources */,
 				B3ABEF8E217495B30072E9F5 /* Ai_Tec.xcdatamodeld in Sources */,
+				18F0C90321758BA600E0DEBD /* User.swift in Sources */,
 				B3ABEF86217495B30072E9F5 /* AppDelegate.swift in Sources */,
+				18FA43F021771A7000A0EB8B /* ContactTableViewCell.swift in Sources */,
+				18F0C90721759D7C00E0DEBD /* Config.swift in Sources */,
+				18FA43EE2176F75A00A0EB8B /* SocketGlobal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +602,7 @@
 		};
 		B3ABEFAE217495B40072E9F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 340B88CA01418C225C224DC9 /* Pods-Ai-Tec.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -425,13 +613,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.asanuma.rtc.Ai-Tec";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		B3ABEFAF217495B40072E9F5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6418BE0BF709307489A5917 /* Pods-Ai-Tec.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -442,13 +631,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.asanuma.rtc.Ai-Tec";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		B3ABEFB1217495B40072E9F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 227AB763F649D9D69460EF6E /* Pods-Ai-TecTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -469,6 +659,7 @@
 		};
 		B3ABEFB2217495B40072E9F5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8FDF5BAC2F50E2D473F055B /* Pods-Ai-TecTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -489,6 +680,7 @@
 		};
 		B3ABEFB4217495B40072E9F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54DB82D607AA9494F139E009 /* Pods-Ai-TecUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -508,6 +700,7 @@
 		};
 		B3ABEFB5217495B40072E9F5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0872EDCF48AFD29DB3BF317A /* Pods-Ai-TecUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.23.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mJm-t2-oaa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mJm-t2-oaa">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.16.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -41,16 +41,16 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jxd-MN-yM6">
                                 <rect key="frame" x="53.5" y="89.5" width="9" height="9"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.21568627450980393" green="0.80000000000000004" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="jxd-MN-yM6" secondAttribute="height" multiplier="1:1" id="CYa-Tf-UnH"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PKD-LQ-I6v">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PKD-LQ-I6v">
                                 <rect key="frame" x="16" y="150.5" width="288" height="297.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCellId" rowHeight="76" id="dmV-pN-R2O" customClass="ContactTableViewCell" customModule="Ai_Tec" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" rowHeight="76" id="dmV-pN-R2O" customClass="ContactTableViewCell" customModule="Ai_Tec" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="288" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dmV-pN-R2O" id="rrK-bp-8re">
@@ -90,18 +90,18 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="avatarImageView" destination="Lzr-LR-x1F" id="x03-xR-9oM"/>
-                                            <outlet property="nameLabel" destination="baO-jA-KR7" id="edC-MF-rx4"/>
-                                            <outlet property="statusView" destination="vyf-4J-Iaj" id="4as-lh-6rW"/>
+                                            <outlet property="nameUser" destination="baO-jA-KR7" id="UlK-8X-PPY"/>
+                                            <outlet property="photoUser" destination="Lzr-LR-x1F" id="plV-W3-7Xd"/>
+                                            <outlet property="viewStatus" destination="vyf-4J-Iaj" id="nDR-86-aDC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="DDB-qt-tTP" id="yfH-Vr-cvW"/>
-                                    <outlet property="delegate" destination="DDB-qt-tTP" id="UcH-Jn-saV"/>
+                                    <outlet property="dataSource" destination="DDB-qt-tTP" id="btr-1J-k38"/>
+                                    <outlet property="delegate" destination="DDB-qt-tTP" id="nld-HE-Lva"/>
                                 </connections>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="A2E-zT-60w" customClass="TextField" customModule="Material">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="A2E-zT-60w">
                                 <rect key="frame" x="16" y="106.5" width="288" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Rti-Nh-kun"/>
@@ -110,14 +110,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmW-HF-E0f" customClass="Button" customModule="Material">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmW-HF-E0f">
                                 <rect key="frame" x="16" y="508" width="132" height="44"/>
                                 <color key="backgroundColor" red="0.23717129230499268" green="0.23738053441047668" blue="0.2372036874294281" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="ログアウト">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="logoutButtonTouched:" destination="DDB-qt-tTP" eventType="touchUpInside" id="fSt-9e-az9"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5s-aC-6os" customClass="Button" customModule="Material">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5s-aC-6os">
                                 <rect key="frame" x="172" y="508" width="132" height="44"/>
                                 <color key="backgroundColor" red="0.16945070028305054" green="0.80706733465194702" blue="0.24092051386833191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -214,6 +217,14 @@ Cg
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="callButton" destination="j5s-aC-6os" id="F5p-De-Fy7"/>
+                        <outlet property="contactTableView" destination="PKD-LQ-I6v" id="2e2-y6-uz2"/>
+                        <outlet property="emergencyButton" destination="M21-AC-tws" id="WmM-Pa-VE5"/>
+                        <outlet property="logoutButton" destination="BmW-HF-E0f" id="57D-Cg-BPZ"/>
+                        <outlet property="myAvatarImageView" destination="M8I-V1-828" id="4kN-ix-Mf9"/>
+                        <outlet property="myNameLabel" destination="OSL-1V-8tP" id="nJf-I5-4sL"/>
+                        <outlet property="myStatusView" destination="jxd-MN-yM6" id="QbE-mU-Wli"/>
+                        <outlet property="searchTextField" destination="A2E-zT-60w" id="0i4-Jl-n0k"/>
                         <segue destination="vwu-4r-vb8" kind="show" identifier="showRingingSegueId" id="5oV-vi-RwF"/>
                     </connections>
                 </viewController>
@@ -221,10 +232,10 @@ Cg
             </objects>
             <point key="canvasLocation" x="-613" y="-270"/>
         </scene>
-        <!--Ringing View Controller-->
+        <!--View Controller-->
         <scene sceneID="kyd-MY-bMo">
             <objects>
-                <viewController id="vwu-4r-vb8" customClass="RingingViewController" customModule="Ai_Tec" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vwu-4r-vb8" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3IV-BQ-3h8"/>
                         <viewControllerLayoutGuide type="bottom" id="PrW-yS-b1e"/>
@@ -341,10 +352,10 @@ Cg
             </objects>
             <point key="canvasLocation" x="113" y="-268"/>
         </scene>
-        <!--Video Chat View Controller-->
+        <!--View Controller-->
         <scene sceneID="jgH-vu-nW5">
             <objects>
-                <viewController id="iFm-Yh-cyi" customClass="RTCVideoChatViewController" customModule="Ai_Tec" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iFm-Yh-cyi" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0cH-CD-mhT"/>
                         <viewControllerLayoutGuide type="bottom" id="bwG-RG-LnS"/>
@@ -591,10 +602,10 @@ Cg
             </objects>
             <point key="canvasLocation" x="829" y="-268"/>
         </scene>
-        <!--Edit View Controller-->
+        <!--View Controller-->
         <scene sceneID="Bka-Om-isN">
             <objects>
-                <viewController id="YPm-fD-l92" customClass="EditViewController" customModule="Ai_Tec" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YPm-fD-l92" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="K8S-gy-1sy"/>
                         <viewControllerLayoutGuide type="bottom" id="uim-Z8-INo"/>
@@ -702,10 +713,10 @@ Cg
             </objects>
             <point key="canvasLocation" x="2376" y="-270"/>
         </scene>
-        <!--Album View Controller-->
+        <!--View Controller-->
         <scene sceneID="UPr-P2-0Iq">
             <objects>
-                <viewController storyboardIdentifier="AlbumViewControllerId" id="qHD-jV-k4P" customClass="AlbumViewController" customModule="Ai_Tec" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AlbumViewControllerId" id="qHD-jV-k4P" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d4v-q7-lNR"/>
                         <viewControllerLayoutGuide type="bottom" id="tbP-Jp-vIY"/>
@@ -835,10 +846,10 @@ Cg
             </objects>
             <point key="canvasLocation" x="826.875" y="512.32394366197184"/>
         </scene>
-        <!--View Photo View Controller-->
+        <!--View Controller-->
         <scene sceneID="LRR-jA-fVZ">
             <objects>
-                <viewController storyboardIdentifier="ViewPhotoViewControllerId" id="T2U-M1-S4O" customClass="ViewPhotoViewController" customModule="Ai_Tec" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewPhotoViewControllerId" id="T2U-M1-S4O" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MKz-C7-aph"/>
                         <viewControllerLayoutGuide type="bottom" id="GBg-bO-Z67"/>
@@ -955,7 +966,7 @@ Cg
         <!--Login View Controller-->
         <scene sceneID="ebA-L3-8xA">
             <objects>
-                <viewController id="Bqt-0a-jPi" customClass="LoginViewController" customModule="Ai_Tec" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="Bqt-0a-jPi" customClass="LoginViewController" customModule="Ai_Tec" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6my-GO-Otc"/>
                         <viewControllerLayoutGuide type="bottom" id="5LU-ik-Kte"/>
@@ -1000,7 +1011,7 @@ Cg
                                 <color key="textColor" red="0.29805815219999998" green="0.78497177360000003" blue="0.83477932210000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lDl-BQ-A4k" customClass="TextField" customModule="Material">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lDl-BQ-A4k">
                                 <rect key="frame" x="20" y="186.5" width="280" height="44"/>
                                 <color key="backgroundColor" red="0.36862745098039218" green="0.36862745098039218" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -1016,7 +1027,7 @@ Cg
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3ib-kk-IOQ" customClass="TextField" customModule="Material">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3ib-kk-IOQ">
                                 <rect key="frame" x="20" y="274.5" width="280" height="44"/>
                                 <color key="backgroundColor" red="0.36859679220000002" green="0.36864468459999999" blue="0.36858046049999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1029,13 +1040,16 @@ Cg
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mRv-oq-QdR" customClass="Button" customModule="Material">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mRv-oq-QdR">
                                 <rect key="frame" x="90" y="338.5" width="140" height="53"/>
                                 <color key="backgroundColor" red="0.8482922316" green="0.0" blue="0.084477581080000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="ログイン">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginButtonTouched:" destination="Bqt-0a-jPi" eventType="touchUpInside" id="CpU-hy-FEn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1083,7 +1097,10 @@ Cg
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <segue destination="DDB-qt-tTP" kind="show" identifier="showContactSegueId" id="2Mc-OU-HmL"/>
+                        <outlet property="passwordTextField" destination="3ib-kk-IOQ" id="cHy-DL-pf5"/>
+                        <outlet property="usernameTextField" destination="lDl-BQ-A4k" id="HH8-XK-RIv"/>
+                        <outlet property="versionLabel" destination="K4c-3P-zOA" id="Qij-K7-vQW"/>
+                        <segue destination="DDB-qt-tTP" kind="show" identifier="showContactSegueId" id="h0H-kf-gPu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CIC-1s-2Oj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1175,7 +1192,8 @@ Cg
                     <navigationItem key="navigationItem" id="mIn-d3-h8A"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <segue destination="Bqt-0a-jPi" kind="show" identifier="showLoginSegueId" animates="NO" id="tlC-qB-GtJ"/>
+                        <outlet property="versionLabel" destination="v07-G8-LZH" id="BSh-OA-4PA"/>
+                        <segue destination="Bqt-0a-jPi" kind="show" identifier="showLoginSegueId" id="jKM-9S-U4T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gpl-j5-5OG" userLabel="First Responder" sceneMemberID="firstResponder"/>
