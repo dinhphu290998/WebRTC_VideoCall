@@ -22,7 +22,6 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
     @IBOutlet weak var callButton: UIButton!
     @IBOutlet weak var emergencyButton: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         myAvatarImageView.image = UIImage(named: "bg_search")
@@ -31,13 +30,10 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
         SocketGlobal.shared.socket?.delegate = self
         
         let username = UserDefaults.standard.value(forKey: "yourname") as? String ?? ""
-        let dict = ["type":"discovery","name":"\(username)"]
+        let dict = ["type":DISCOVERY,"name":username]
         
-        //convert dictionary to string
-        let jsonData = try! JSONSerialization.data(withJSONObject: dict, options: JSONSerialization.WritingOptions.prettyPrinted)
-        let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)! as String
-        
-        SocketGlobal.shared.socket?.write(string: jsonString)
+        //login to socket
+        SocketGlobal.shared.socket?.write(string: convertString(from: dict))
     }
 
     @IBAction func logoutButtonTouched(_ sender: Any) {
@@ -58,11 +54,9 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
     func websocketDidConnect(socket: WebSocket) {
         print("websocketDidConnect")
     }
-    
     func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
         print(error ?? "")
     }
-    
     func websocketDidReceiveMessage(socket: WebSocket, text: String) {
         print(text)
         
@@ -88,10 +82,10 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
             print(error)
         }
     }
-    
     func websocketDidReceiveData(socket: WebSocket, data: Data) {
         print(data)
     }
+    
     
     // convert string to dictionary
     func convertToDictionary(from text: String) throws -> [String: Any]? {
@@ -99,7 +93,13 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
         let anyResult: Any = try JSONSerialization.jsonObject(with: data, options: [])
         return anyResult as? [String: Any]
     }
-
+    //convert dictionary to string
+    func convertString(from dict:[String:String]) -> String {
+        let jsonData = try! JSONSerialization.data(withJSONObject: dict, options: JSONSerialization.WritingOptions.prettyPrinted)
+        let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)! as String
+        return jsonString
+    }
+    
     
     //TableVIew DataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -113,5 +113,18 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
     }
     
     //TableView Delegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let yourName = UserDefaults.standard.value(forKey: "yourname") as? String ?? ""
+        let receiName = SocketGlobal.shared.contacts[indexPath.row].name
+        let dict = ["type" : CALL , "host" : yourName , "receive" : receiName]
+        print(dict)
+
+        
+    }
     
+    
+    @IBAction func CallP2P(_ sender: UIButton) {
+        let dic = ["receive": "jtest2","name":"vtest2", "host": "vtest2", "type": "call"]
+        SocketGlobal.shared.socket?.write(string: convertString(from: dic))
+    }
 }

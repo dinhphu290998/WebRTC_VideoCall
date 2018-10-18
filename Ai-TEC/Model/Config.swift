@@ -10,3 +10,7 @@ import UIKit
 
 let serverIP = "ws://157.7.209.73:9090"
 
+let LOGIN = "login"
+let DISCOVERY = "discovery"
+let CALL = "call"
+let ANSWER = "answer"

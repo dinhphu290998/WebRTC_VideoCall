@@ -57,30 +57,24 @@ class LoginViewController: UIViewController , WebSocketDelegate{
         UserDefaults.standard.set(nameUser, forKey: "yourname")
         
         let uuid = UUID().uuidString.lowercased()
-        let username = usernameTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         
-        let dict = ["type":"login","name":"\(username)", "password":"\(password)", "regId":"\(uuid)"]
-        
-        //convert dictionary to string
-        let jsonData = try! JSONSerialization.data(withJSONObject: dict, options: JSONSerialization.WritingOptions.prettyPrinted)
-        let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)! as String
+        let dict = ["type":LOGIN,"name":nameUser, "password":password, "regId":uuid]
         
         //send message in sever
-        SocketGlobal.shared.socket?.write(string: jsonString)
+        SocketGlobal.shared.socket?.write(string: convertString(from: dict))
         
     }
+    
     
     //DELEGATE webSocket
     func websocketDidConnect(socket: WebSocket) {
         print("websocketDidConnect")
     }
-    
     func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
         //error disconected
         print(error ?? "")
     }
-    
     func websocketDidReceiveMessage(socket: WebSocket, text: String) {
         // message connected and return message
         print(text)
@@ -108,20 +102,23 @@ class LoginViewController: UIViewController , WebSocketDelegate{
             print(error)
         }
     }
-    
-
     func websocketDidReceiveData(socket: WebSocket, data: Data) {
         print(data)
     }
 
+    
     // convert string to dictionary
     func convertToDictionary(from text: String) throws -> [String: String]? {
         guard let data = text.data(using: .utf8) else { return [:] }
         let anyResult: Any = try JSONSerialization.jsonObject(with: data, options: [])
         return anyResult as? [String: String]
     }
-    
-
+    //convert dictionary to string
+    func convertString(from dict:[String:String]) -> String {
+        let jsonData = try! JSONSerialization.data(withJSONObject: dict, options: JSONSerialization.WritingOptions.prettyPrinted)
+        let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)! as String
+        return jsonString
+    }
 
 }
 
