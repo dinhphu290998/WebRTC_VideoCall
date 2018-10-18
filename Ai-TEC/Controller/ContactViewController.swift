@@ -22,6 +22,7 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
     @IBOutlet weak var callButton: UIButton!
     @IBOutlet weak var emergencyButton: UIButton!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         myAvatarImageView.image = UIImage(named: "bg_search")
@@ -40,10 +41,13 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
     }
 
     @IBAction func logoutButtonTouched(_ sender: Any) {
-        let alert = UIAlertController(title: nil, message: "Are you sure?", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Logout Account", message: "Are you sure?", preferredStyle: UIAlertControllerStyle.alert)
         
-        alert.addAction(UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "YES", style: UIAlertActionStyle.destructive, handler: { _ in
             SocketGlobal.shared.socket?.disconnect()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                self.performSegue(withIdentifier: "backLoginSegueId", sender: self)
+            }
         }))
         alert.addAction(UIAlertAction(title: "NO", style: UIAlertActionStyle.cancel, handler: nil))
         // show the alert
@@ -66,12 +70,19 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
             if let dictionary = try convertToDictionary(from: text){
                 print(dictionary)
                 guard let data = dictionary["data"] as? [DICT] else {return}
+                var listUser : [User] = []
                 for dataObj in data {
                     if let user = User(dict: dataObj) {
-                        SocketGlobal.shared.contacts.append(user)
-                        contactTableView.reloadData()
+                            listUser.append(user)
+                    }
+                    for i in 0..<listUser.count {
+                        if listUser[i].name == "\(UserDefaults.standard.value(forKey: "yourname")!)" {
+                            listUser.remove(at: i)
+                        }
                     }
                 }
+                SocketGlobal.shared.contacts = listUser
+                contactTableView.reloadData()
             }
         } catch {
             print(error)
@@ -90,7 +101,7 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
     }
 
     
-    //TableVIew DataSource And Delegate
+    //TableVIew DataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return SocketGlobal.shared.contacts.count
     }
@@ -100,4 +111,7 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
         cell.nameUser.text = SocketGlobal.shared.contacts[indexPath.row].name
         return cell
     }
+    
+    //TableView Delegate
+    
 }

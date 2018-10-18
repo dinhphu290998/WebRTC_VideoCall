@@ -226,6 +226,7 @@ Cg
                         <outlet property="myStatusView" destination="jxd-MN-yM6" id="QbE-mU-Wli"/>
                         <outlet property="searchTextField" destination="A2E-zT-60w" id="0i4-Jl-n0k"/>
                         <segue destination="vwu-4r-vb8" kind="show" identifier="showRingingSegueId" id="5oV-vi-RwF"/>
+                        <segue destination="Bqt-0a-jPi" kind="show" identifier="backLoginSegueId" id="MgS-9T-Z1w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fwC-RA-DYN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1239,6 +1240,7 @@ Cg
         <image name="voice_on" width="105" height="105"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="MgS-9T-Z1w"/>
         <segue reference="D5g-Vq-3h1"/>
         <segue reference="Plp-py-FNY"/>
     </inferredMetricsTieBreakers>
