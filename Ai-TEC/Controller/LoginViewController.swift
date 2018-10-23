@@ -77,7 +77,6 @@ class LoginViewController: UIViewController , WebSocketDelegate{
     }
     func websocketDidReceiveMessage(socket: WebSocket, text: String) {
         // message connected and return message
-        print(text)
         do {
             if let dictionary = try convertToDictionary(from: text){
                 print(dictionary)
@@ -88,9 +87,9 @@ class LoginViewController: UIViewController , WebSocketDelegate{
                 
                 if message == "Login success" && status == "success" {
                     SVProgressHUD.setStatus(message)
-                    SVProgressHUD.dismiss()
+                    SVProgressHUD.dismiss(withDelay: 1)
                     
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                         self.performSegue(withIdentifier: "showContactSegueId", sender: self)
                     }
                 }else{

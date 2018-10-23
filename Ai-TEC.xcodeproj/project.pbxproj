@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		048AB70D729283334D8FC8A7 /* Pods_Ai_TecTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 787889CFDFCC3FFB53443B73 /* Pods_Ai_TecTests.framework */; };
 		148795EFBDB78135EDC9C087 /* Pods_Ai_TecUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 406AEE77466067F4B97DBD99 /* Pods_Ai_TecUITests.framework */; };
+		180A09B7217D7022005B6F35 /* Etension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A09B6217D7022005B6F35 /* Etension.swift */; };
+		181B6806217E048300CF733E /* RTCVideoChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B6805217E048300CF733E /* RTCVideoChatViewController.swift */; };
+		18576BB7217A42B300013D43 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18576BB6217A42B300013D43 /* Media.xcassets */; };
+		18576BB9217A4D4E00013D43 /* RingingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18576BB8217A4D4E00013D43 /* RingingViewController.swift */; };
 		1873FA0821757A9D00ED8988 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873FA0721757A9D00ED8988 /* SplashViewController.swift */; };
 		1873FA11217580CF00ED8988 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873FA10217580CF00ED8988 /* LoginViewController.swift */; };
 		18F0C90321758BA600E0DEBD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0C90221758BA600E0DEBD /* User.swift */; };
@@ -21,7 +25,6 @@
 		B3ABEF8E217495B30072E9F5 /* Ai_Tec.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF8C217495B30072E9F5 /* Ai_Tec.xcdatamodeld */; };
 		B3ABEF9E217495B40072E9F5 /* Ai_TecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF9D217495B40072E9F5 /* Ai_TecTests.swift */; };
 		B3ABEFA9217495B40072E9F5 /* Ai_TecUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEFA8217495B40072E9F5 /* Ai_TecUITests.swift */; };
-		B3DF815C21749E3D00AC7934 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3DF815B21749E3D00AC7934 /* Assets.xcassets */; };
 		B3DF816021749E4D00AC7934 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3DF815F21749E4C00AC7934 /* Main.storyboard */; };
 		B3DF816221749E5900AC7934 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3DF816121749E5900AC7934 /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
@@ -46,6 +49,10 @@
 /* Begin PBXFileReference section */
 		0872EDCF48AFD29DB3BF317A /* Pods-Ai-TecUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-TecUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-TecUITests/Pods-Ai-TecUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1381B2CD5D2E6702DEC42770 /* Pods_Ai_Tec.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_Tec.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		180A09B6217D7022005B6F35 /* Etension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Etension.swift; path = "Ai-TEC/Model/Etension.swift"; sourceTree = SOURCE_ROOT; };
+		181B6805217E048300CF733E /* RTCVideoChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RTCVideoChatViewController.swift; path = "Ai-TEC/Controller/RTCVideoChatViewController.swift"; sourceTree = SOURCE_ROOT; };
+		18576BB6217A42B300013D43 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = "Ai-TEC/Media.xcassets"; sourceTree = SOURCE_ROOT; };
+		18576BB8217A4D4E00013D43 /* RingingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RingingViewController.swift; path = "Ai-TEC/Controller/RingingViewController.swift"; sourceTree = SOURCE_ROOT; };
 		1873FA0721757A9D00ED8988 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SplashViewController.swift; path = "Ai-Tec/Controller/SplashViewController.swift"; sourceTree = SOURCE_ROOT; };
 		1873FA10217580CF00ED8988 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "Ai-TEC/Controller/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
 		18F0C90221758BA600E0DEBD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -68,7 +75,6 @@
 		B3ABEFA4217495B40072E9F5 /* Ai-TecUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ai-TecUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3ABEFA8217495B40072E9F5 /* Ai_TecUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ai_TecUITests.swift; sourceTree = "<group>"; };
 		B3ABEFAA217495B40072E9F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3DF815B21749E3D00AC7934 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../ai_tec_ios-master/Apprtc/Assets.xcassets"; sourceTree = "<group>"; };
 		B3DF815F21749E4C00AC7934 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B3DF816121749E5900AC7934 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		B8FDF5BAC2F50E2D473F055B /* Pods-Ai-TecTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-TecTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-TecTests/Pods-Ai-TecTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -119,6 +125,8 @@
 				1873FA0721757A9D00ED8988 /* SplashViewController.swift */,
 				1873FA10217580CF00ED8988 /* LoginViewController.swift */,
 				18FA43E92176E30800A0EB8B /* ContactViewController.swift */,
+				18576BB8217A4D4E00013D43 /* RingingViewController.swift */,
+				181B6805217E048300CF733E /* RTCVideoChatViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -138,6 +146,7 @@
 				18F0C90221758BA600E0DEBD /* User.swift */,
 				18F0C90621759D7C00E0DEBD /* Config.swift */,
 				18FA43ED2176F75A00A0EB8B /* SocketGlobal.swift */,
+				180A09B6217D7022005B6F35 /* Etension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -186,8 +195,8 @@
 				1873FA0921757F3200ED8988 /* Controller */,
 				B3DF815F21749E4C00AC7934 /* Main.storyboard */,
 				B3ABEF94217495B40072E9F5 /* Info.plist */,
-				B3DF815B21749E3D00AC7934 /* Assets.xcassets */,
 				B3ABEF8C217495B30072E9F5 /* Ai_Tec.xcdatamodeld */,
+				18576BB6217A42B300013D43 /* Media.xcassets */,
 			);
 			path = "Ai-Tec";
 			sourceTree = "<group>";
@@ -319,8 +328,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3DF816221749E5900AC7934 /* LaunchScreen.xib in Resources */,
+				18576BB7217A42B300013D43 /* Media.xcassets in Resources */,
 				B3DF816021749E4D00AC7934 /* Main.storyboard in Resources */,
-				B3DF815C21749E3D00AC7934 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +384,7 @@
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${PODS_ROOT}/WebRTC/WebRTC.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -383,6 +393,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketRocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebRTC.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -441,7 +452,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1873FA11217580CF00ED8988 /* LoginViewController.swift in Sources */,
+				180A09B7217D7022005B6F35 /* Etension.swift in Sources */,
+				18576BB9217A4D4E00013D43 /* RingingViewController.swift in Sources */,
 				18FA43EA2176E30800A0EB8B /* ContactViewController.swift in Sources */,
+				181B6806217E048300CF733E /* RTCVideoChatViewController.swift in Sources */,
 				1873FA0821757A9D00ED8988 /* SplashViewController.swift in Sources */,
 				B3ABEF8E217495B30072E9F5 /* Ai_Tec.xcdatamodeld in Sources */,
 				18F0C90321758BA600E0DEBD /* User.swift in Sources */,
@@ -606,7 +620,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J83T4QV6YK;
 				INFOPLIST_FILE = "Ai-Tec/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -624,7 +640,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J83T4QV6YK;
 				INFOPLIST_FILE = "Ai-Tec/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

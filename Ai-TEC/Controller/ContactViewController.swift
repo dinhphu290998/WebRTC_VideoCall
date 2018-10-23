@@ -12,7 +12,7 @@ import Starscream
 
 class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDelegate , UITableViewDataSource{
     
-
+    
     @IBOutlet weak var myAvatarImageView: UIImageView!
     @IBOutlet weak var myStatusView: UIView!
     @IBOutlet weak var myNameLabel: UILabel!
@@ -22,8 +22,13 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
     @IBOutlet weak var callButton: UIButton!
     @IBOutlet weak var emergencyButton: UIButton!
     
+    var dictCall : [String:String] = [:]
+    var nameUserAnswer = ""
+    var checkButton = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         myAvatarImageView.image = UIImage(named: "bg_search")
         myNameLabel.text = UserDefaults.standard.value(forKey: "yourname") as? String
         
@@ -35,48 +40,60 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
         //login to socket
         SocketGlobal.shared.socket?.write(string: convertString(from: dict))
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        contactTableView.reloadData()
+    }
     @IBAction func logoutButtonTouched(_ sender: Any) {
-        let alert = UIAlertController(title: "Logout Account", message: "Are you sure?", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "ログアウトアカウント", message: "本気ですか？?", preferredStyle: UIAlertControllerStyle.alert)
         
-        alert.addAction(UIAlertAction(title: "YES", style: UIAlertActionStyle.destructive, handler: { _ in
+        alert.addAction(UIAlertAction(title: "はい", style: UIAlertActionStyle.destructive, handler: { _ in
             SocketGlobal.shared.socket?.disconnect()
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-                self.performSegue(withIdentifier: "backLoginSegueId", sender: self)
-            }
+            self.performSegue(withIdentifier: "backLoginSegueId", sender: self)
+            
         }))
-        alert.addAction(UIAlertAction(title: "NO", style: UIAlertActionStyle.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "いいえ", style: UIAlertActionStyle.cancel, handler: nil))
         // show the alert
         self.present(alert, animated: true, completion: nil)
     }
-
+    
     //DELEGATE websocket
     func websocketDidConnect(socket: WebSocket) {
-        print("websocketDidConnect")
+        print("")
     }
     func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
         print(error ?? "")
     }
-    func websocketDidReceiveMessage(socket: WebSocket, text: String) {
-        print(text)
-        
+    func websocketDidReceiveMessage(socket: WebSocket, text: String) {        
         do {
             if let dictionary = try convertToDictionary(from: text){
                 print(dictionary)
-                guard let data = dictionary["data"] as? [DICT] else {return}
-                var listUser : [User] = []
-                for dataObj in data {
-                    if let user = User(dict: dataObj) {
+                switch "\(dictionary["type"] ?? "")" {
+                case "discovery":
+                    guard let data = dictionary["data"] as? [DICT] else {return}
+                    var listUser : [User] = []
+                    for dataObj in data {
+                        if let user = User(dict: dataObj) {
                             listUser.append(user)
-                    }
-                    for i in 0..<listUser.count {
-                        if listUser[i].name == "\(UserDefaults.standard.value(forKey: "yourname")!)" {
-                            listUser.remove(at: i)
+                        }
+                        for i in 0..<listUser.count {
+                            if listUser[i].name == "\(UserDefaults.standard.value(forKey: "yourname")!)" {
+                                listUser.remove(at: i)
+                            }
                         }
                     }
+                    SocketGlobal.shared.contacts = listUser
+                    contactTableView.reloadData()
+                case "call":
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                        self.performSegue(withIdentifier: "showRingingSegueId", sender: self)
+                    }
+                    nameUserAnswer = "\(dictionary["name"]!)"
+                    checkButton = true
+                default:
+                    print("Answer")
                 }
-                SocketGlobal.shared.contacts = listUser
-                contactTableView.reloadData()
+                
             }
         } catch {
             print(error)
@@ -84,6 +101,54 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
     }
     func websocketDidReceiveData(socket: WebSocket, data: Data) {
         print(data)
+    }
+    
+    
+    //TableVIew DataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return SocketGlobal.shared.contacts.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = contactTableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as! ContactTableViewCell
+        cell.photoUser.image = UIImage(named: "bg_search")
+        cell.nameUser.text = SocketGlobal.shared.contacts[indexPath.row].name
+        if SocketGlobal.shared.contacts[indexPath.row].status == 1 {
+            cell.viewStatus.backgroundColor = .green
+        }else{
+            cell.viewStatus.backgroundColor = .red
+        }
+        return cell
+    }
+    
+    //TableView Delegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let yourName = UserDefaults.standard.value(forKey: "yourname") as? String ?? ""
+        let receiName = SocketGlobal.shared.contacts[indexPath.row].name
+        let dict = ["type" : CALL ,"name" : yourName, "host" : yourName , "receive" : receiName]
+        dictCall = dict
+        
+        
+    }
+    
+    
+    @IBAction func CallP2P(_ sender: UIButton) {
+        SocketGlobal.shared.socket?.write(string: convertString(from: dictCall))
+        if dictCall["name"] != nil {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                self.performSegue(withIdentifier: "showRingingSegueId", sender: self)
+            }
+        }
+        nameUserAnswer = "\(dictCall["receive"]!)"
+        checkButton = false
+    }
+    
+    // MARK: - SEGUE
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showRingingSegueId" {
+            let callingVc = segue.destination as? RingingViewController
+                callingVc?.nameUserCall = nameUserAnswer
+                callingVc?.check = checkButton
+        }
     }
     
     
@@ -100,31 +165,4 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
         return jsonString
     }
     
-    
-    //TableVIew DataSource
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SocketGlobal.shared.contacts.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = contactTableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as! ContactTableViewCell
-        cell.photoUser.image = UIImage(named: "bg_search")
-        cell.nameUser.text = SocketGlobal.shared.contacts[indexPath.row].name
-        return cell
-    }
-    
-    //TableView Delegate
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let yourName = UserDefaults.standard.value(forKey: "yourname") as? String ?? ""
-        let receiName = SocketGlobal.shared.contacts[indexPath.row].name
-        let dict = ["type" : CALL , "host" : yourName , "receive" : receiName]
-        print(dict)
-
-        
-    }
-    
-    
-    @IBAction func CallP2P(_ sender: UIButton) {
-        let dic = ["receive": "jtest2","name":"vtest2", "host": "vtest2", "type": "call"]
-        SocketGlobal.shared.socket?.write(string: convertString(from: dic))
-    }
 }

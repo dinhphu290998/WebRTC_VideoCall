@@ -21,4 +21,5 @@ target 'Ai-Tec' do
  pod 'SocketRocket'
  pod 'SVProgressHUD'
  pod 'Starscream', '~> 2.1'
+ pod "WebRTC"
 end
