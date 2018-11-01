@@ -64,7 +64,6 @@ class RingingViewController: UIViewController ,WebSocketDelegate{
         timerSoundAlert?.invalidate()
         timerSoundAlert = nil
     }
-    
     @objc func animationSearch() {
         UIView.animate(withDuration: 1, animations: {
             self.searchAnimationImageView.transform = CGAffineTransform(scaleX: 4, y: 4)
@@ -97,7 +96,6 @@ class RingingViewController: UIViewController ,WebSocketDelegate{
     func websocketDidReceiveMessage(socket: WebSocket, text: String) {
         do {
             if let dictionary = try convertToDictionary(from: text){
-                print(dictionary)
                 
                 if "\(dictionary["result"] ?? "")" == "reject" {
                     self.performSegue(withIdentifier: "backContactSegueId", sender: self)
@@ -130,6 +128,14 @@ class RingingViewController: UIViewController ,WebSocketDelegate{
         SocketGlobal.shared.socket?.write(string: convertString(from: dictSuccess))
         self.performSegue(withIdentifier: "showVideoChatSegueId", sender: self)
 
+    }
+    
+    // MARK: - SEGUE
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showVideoChatSegueId" {
+            let ringingVC = segue.destination as? RTCVideoChatViewController
+            ringingVC?.nameRemote = nameUserCall
+        }
     }
     
     // convert string to dictionary

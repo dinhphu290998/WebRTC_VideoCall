@@ -57,6 +57,7 @@ class LoginViewController: UIViewController , WebSocketDelegate{
         UserDefaults.standard.set(nameUser, forKey: "yourname")
         
         let uuid = UUID().uuidString.lowercased()
+//        UserDefaults.standard.set(uuid, forKey: "yourId")
         let password = passwordTextField.text ?? ""
         
         let dict = ["type":LOGIN,"name":nameUser, "password":password, "regId":uuid]
@@ -69,7 +70,7 @@ class LoginViewController: UIViewController , WebSocketDelegate{
     
     //DELEGATE webSocket
     func websocketDidConnect(socket: WebSocket) {
-        print("websocketDidConnect")
+        print("")
     }
     func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
         //error disconected
@@ -79,21 +80,17 @@ class LoginViewController: UIViewController , WebSocketDelegate{
         // message connected and return message
         do {
             if let dictionary = try convertToDictionary(from: text){
-                print(dictionary)
                 let status : String = dictionary["status"] ?? ""
                 let message : String = dictionary["message"] ?? ""
-                print(status)
-                print(message)
-                
                 if message == "Login success" && status == "success" {
                     SVProgressHUD.setStatus(message)
-                    SVProgressHUD.dismiss(withDelay: 1)
+                    SVProgressHUD.dismiss()
                     
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
                         self.performSegue(withIdentifier: "showContactSegueId", sender: self)
                     }
                 }else{
-                    SVProgressHUD.dismiss(withDelay: 3)
+                    SVProgressHUD.dismiss(withDelay: 1)
                     SVProgressHUD.setStatus(message)
                 }
             }

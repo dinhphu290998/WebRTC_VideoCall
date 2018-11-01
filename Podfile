@@ -22,4 +22,12 @@ target 'Ai-Tec' do
  pod 'SVProgressHUD'
  pod 'Starscream', '~> 2.1'
  pod "WebRTC"
+ pod 'DropDown'
+ pod 'Alamofire', '~> 4.7'
+ pod 'GoogleMaps'
+ pod 'Toast-Swift'
+ pod 'Material'
+ pod 'Kingfisher'
+ pod 'GooglePlaces'
+ pod 'SwiftyJSON'
 end

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mJm-t2-oaa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.30.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mJm-t2-oaa">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.19.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -372,7 +373,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fej-TW-Jck" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113" y="-268"/>
+            <point key="canvasLocation" x="88" y="-268"/>
         </scene>
         <!--Video Chat View Controller-->
         <scene sceneID="jgH-vu-nW5">
@@ -403,6 +404,9 @@ Cg
                                             <constraint firstAttribute="width" secondItem="GSb-Co-HVl" secondAttribute="height" multiplier="1:1" id="CSz-Dw-KNs"/>
                                         </constraints>
                                         <state key="normal" image="imv_switch"/>
+                                        <connections>
+                                            <action selector="switchCameraButtonTouched:" destination="iFm-Yh-cyi" eventType="touchUpInside" id="CHR-1d-WJf"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oS3-S8-DVF">
                                         <rect key="frame" x="3" y="3" width="44" height="44"/>
@@ -462,6 +466,9 @@ Cg
                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <state key="selected" image="voice_off"/>
+                                        <connections>
+                                            <action selector="audioButtonPressed:" destination="iFm-Yh-cyi" eventType="touchUpInside" id="aE8-4l-BNf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcx-j9-I7i" userLabel="Video Button">
                                         <rect key="frame" x="60" y="0.0" width="44" height="44"/>
@@ -473,6 +480,9 @@ Cg
                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <state key="selected" image="camera_off"/>
+                                        <connections>
+                                            <action selector="videoButtonPressed:" destination="iFm-Yh-cyi" eventType="touchUpInside" id="waF-pM-vIx"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -498,6 +508,9 @@ Cg
                                             <constraint firstAttribute="width" secondItem="RPB-cV-28y" secondAttribute="height" multiplier="1:1" id="n3D-CT-4yx"/>
                                         </constraints>
                                         <state key="normal" image="cm_arrow_back_white"/>
+                                        <connections>
+                                            <action selector="hangupButtonPressed:" destination="iFm-Yh-cyi" eventType="touchUpInside" id="zaw-as-kXd"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OI7-EM-lxL">
                                         <rect key="frame" x="260" y="0.0" width="60" height="60"/>
@@ -537,6 +550,9 @@ Cg
                                 <state key="normal" title="静止画撮影">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="captureButtonTouched:" destination="iFm-Yh-cyi" eventType="touchUpInside" id="MUW-ef-Xr3"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OQ5-ih-09C">
                                 <rect key="frame" x="8" y="380" width="195" height="128.5"/>
@@ -576,6 +592,10 @@ Cg
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="iFm-Yh-cyi" id="q7n-hd-5uL"/>
+                                    <outlet property="delegate" destination="iFm-Yh-cyi" id="HNp-2m-p1p"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -616,20 +636,19 @@ Cg
                         <outlet property="resolutionCollectionView" destination="OQ5-ih-09C" id="tZy-JR-gJZ"/>
                         <outlet property="statusRemoteView" destination="C4e-lB-TVR" id="MRL-kY-bVe"/>
                         <outlet property="videoButton" destination="kcx-j9-I7i" id="jyd-vz-eA2"/>
-                        <segue destination="nIq-n2-YVg" kind="unwind" identifier="unwindToContactSegueId" unwindAction="unwindToContactWithSegue:" id="PgT-X1-xM0"/>
-                        <segue destination="YPm-fD-l92" kind="presentation" identifier="showEditSegueId" modalPresentationStyle="fullScreen" id="gyt-AA-FVD"/>
+                        <segue destination="DDB-qt-tTP" kind="show" identifier="unwindToContactSegue" id="mxO-FM-z9u"/>
+                        <segue destination="YPm-fD-l92" kind="showDetail" identifier="" id="Weh-WG-Z7U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3jb-SF-qzn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="nIq-n2-YVg" userLabel="Exit" sceneMemberID="exit"/>
                 <pinchGestureRecognizer id="RPk-Hr-1MX"/>
             </objects>
             <point key="canvasLocation" x="829" y="-268"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit View Controller-->
         <scene sceneID="Bka-Om-isN">
             <objects>
-                <viewController id="YPm-fD-l92" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditViewcontroller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YPm-fD-l92" customClass="EditViewController" customModule="Ai_Tec" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="K8S-gy-1sy"/>
                         <viewControllerLayoutGuide type="bottom" id="uim-Z8-INo"/>
@@ -644,6 +663,9 @@ Cg
                                 <state key="normal" title="画像送信">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendImage:" destination="YPm-fD-l92" eventType="touchUpInside" id="RBQ-uZ-Ias"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsb-I8-VuI">
                                 <rect key="frame" x="117.5" y="508" width="85" height="44"/>
@@ -651,6 +673,9 @@ Cg
                                 <state key="normal" title="ひとつ戻る">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="undoButton:" destination="YPm-fD-l92" eventType="touchUpInside" id="4aY-Qk-z9K"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LCI-vQ-q9y">
                                 <rect key="frame" x="218.5" y="508" width="85.5" height="44"/>
@@ -661,6 +686,9 @@ Cg
                                 <state key="normal" title="閉じる">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="backButton:" destination="YPm-fD-l92" eventType="touchUpInside" id="z04-wK-czu"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1CH-6z-wAs">
                                 <rect key="frame" x="0.0" y="36" width="320" height="44"/>
@@ -682,11 +710,17 @@ Cg
                                             <constraint firstAttribute="width" secondItem="hvC-N3-mWQ" secondAttribute="height" multiplier="1:1" id="96z-q0-3wC"/>
                                         </constraints>
                                         <state key="normal" image="eraser"/>
+                                        <connections>
+                                            <action selector="eraserButtonTouched:" destination="YPm-fD-l92" eventType="touchUpInside" id="W6D-j4-Qnt"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ty-jM-h4H">
                                         <rect key="frame" x="266" y="0.0" width="38" height="44"/>
                                         <color key="tintColor" red="0.1178643331" green="0.55681657790000005" blue="0.6024979949" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Clear"/>
+                                        <connections>
+                                            <action selector="resetButtonTouched:" destination="YPm-fD-l92" eventType="touchUpInside" id="Skw-QX-sWQ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -709,6 +743,9 @@ Cg
                                     <constraint firstItem="9Ty-jM-h4H" firstAttribute="top" secondItem="35U-qS-c6j" secondAttribute="top" id="ukZ-5P-84a"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="00P-TE-rZD">
+                                <rect key="frame" x="0.0" y="100" width="320" height="388"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -716,8 +753,10 @@ Cg
                             <constraint firstItem="LCI-vQ-q9y" firstAttribute="leading" secondItem="tsb-I8-VuI" secondAttribute="trailing" constant="16" id="1AB-Nb-Qbf"/>
                             <constraint firstItem="uim-Z8-INo" firstAttribute="top" secondItem="LCI-vQ-q9y" secondAttribute="bottom" constant="16" id="Dol-kg-VxY"/>
                             <constraint firstItem="tsb-I8-VuI" firstAttribute="width" secondItem="9Kg-no-Pna" secondAttribute="width" id="Gtz-7e-IuP"/>
+                            <constraint firstItem="9Kg-no-Pna" firstAttribute="top" secondItem="00P-TE-rZD" secondAttribute="bottom" constant="20" id="JCA-Uu-QWM"/>
                             <constraint firstItem="9Kg-no-Pna" firstAttribute="leading" secondItem="Pgb-iA-A40" secondAttribute="leadingMargin" id="LH2-ML-ahp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LCI-vQ-q9y" secondAttribute="trailing" id="T5A-gu-egP"/>
+                            <constraint firstItem="00P-TE-rZD" firstAttribute="top" secondItem="1CH-6z-wAs" secondAttribute="bottom" constant="20" id="TZ2-A1-Bk8"/>
                             <constraint firstItem="1CH-6z-wAs" firstAttribute="top" secondItem="K8S-gy-1sy" secondAttribute="bottom" constant="16" id="Uh2-wq-Lcs"/>
                             <constraint firstAttribute="trailing" secondItem="1CH-6z-wAs" secondAttribute="trailing" id="UtU-Qv-KS5"/>
                             <constraint firstItem="tsb-I8-VuI" firstAttribute="top" secondItem="9Kg-no-Pna" secondAttribute="top" id="Wg3-4j-NlX"/>
@@ -725,22 +764,31 @@ Cg
                             <constraint firstItem="LCI-vQ-q9y" firstAttribute="top" secondItem="9Kg-no-Pna" secondAttribute="top" id="aAS-tn-hC2"/>
                             <constraint firstItem="1CH-6z-wAs" firstAttribute="leading" secondItem="Pgb-iA-A40" secondAttribute="leading" id="gAE-j8-dYL"/>
                             <constraint firstItem="LCI-vQ-q9y" firstAttribute="bottom" secondItem="9Kg-no-Pna" secondAttribute="bottom" id="gHl-Qf-fW4"/>
+                            <constraint firstItem="00P-TE-rZD" firstAttribute="centerX" secondItem="Pgb-iA-A40" secondAttribute="centerX" id="kD6-Bs-60f"/>
+                            <constraint firstItem="00P-TE-rZD" firstAttribute="leading" secondItem="Pgb-iA-A40" secondAttribute="leading" id="lzD-Eg-kMq"/>
+                            <constraint firstAttribute="trailing" secondItem="00P-TE-rZD" secondAttribute="trailing" id="qqm-aV-9Kc"/>
                             <constraint firstItem="tsb-I8-VuI" firstAttribute="leading" secondItem="9Kg-no-Pna" secondAttribute="trailing" constant="16" id="xfQ-RX-15f"/>
                         </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="colorButton" destination="35U-qS-c6j" id="cV6-Ub-ugq"/>
+                        <outlet property="eraerButton" destination="hvC-N3-mWQ" id="Yh0-AA-Onl"/>
+                        <outlet property="photoImage" destination="00P-TE-rZD" id="C8O-3i-BFb"/>
+                        <outlet property="sendImageButton" destination="9Kg-no-Pna" id="ScW-jC-xkD"/>
+                        <outlet property="toolbarView" destination="1CH-6z-wAs" id="Ny5-jz-8WG"/>
+                        <outlet property="widthButton" destination="qJ3-Xe-g5W" id="GcJ-Zc-gut"/>
                         <segue destination="qHD-jV-k4P" kind="show" identifier="showAlbumFromEditSegueId" id="D5g-Vq-3h1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vmy-zT-n1D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2376" y="-270"/>
+            <point key="canvasLocation" x="2644" y="-257"/>
         </scene>
-        <!--View Controller-->
+        <!--Album View Controller-->
         <scene sceneID="UPr-P2-0Iq">
             <objects>
-                <viewController storyboardIdentifier="AlbumViewControllerId" id="qHD-jV-k4P" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AlbumViewControllerId" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qHD-jV-k4P" customClass="AlbumViewController" customModule="Ai_Tec" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d4v-q7-lNR"/>
                         <viewControllerLayoutGuide type="bottom" id="tbP-Jp-vIY"/>
@@ -758,6 +806,9 @@ Cg
                                             <constraint firstAttribute="width" secondItem="mhw-nr-fOM" secondAttribute="height" multiplier="1:1" id="5LP-sR-Tas"/>
                                         </constraints>
                                         <state key="normal" image="cm_arrow_back_white"/>
+                                        <connections>
+                                            <action selector="backButtonTouched:" destination="qHD-jV-k4P" eventType="touchUpInside" id="Dau-19-Xf4"/>
+                                        </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6jH-LP-8wN">
                                         <rect key="frame" x="260" y="0.0" width="60" height="60"/>
@@ -838,9 +889,9 @@ Cg
                                             <constraint firstAttribute="trailing" secondItem="bN7-UD-Gd7" secondAttribute="trailing" id="wuU-AC-KHj"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="deleteButton" destination="bN7-UD-Gd7" id="s7U-Z5-v0O"/>
-                                            <outlet property="photoImageView" destination="PqQ-rg-0pl" id="pFU-iU-kWp"/>
-                                            <outlet property="timestampLabel" destination="4KX-61-vV0" id="mVl-0V-pb1"/>
+                                            <outlet property="deleteButton" destination="bN7-UD-Gd7" id="xaN-Ei-kXe"/>
+                                            <outlet property="photoImageView" destination="PqQ-rg-0pl" id="Gek-qp-Bd4"/>
+                                            <outlet property="timestampLabel" destination="4KX-61-vV0" id="sE0-dd-7O6"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -863,17 +914,18 @@ Cg
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="albumCollectionView" destination="UIt-sP-F8Z" id="bge-oh-NTW"/>
                         <segue destination="T2U-M1-S4O" kind="presentation" identifier="" modalPresentationStyle="fullScreen" id="erh-UN-a4U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCy-OO-47M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="826.875" y="512.32394366197184"/>
+            <point key="canvasLocation" x="853" y="526"/>
         </scene>
-        <!--View Controller-->
+        <!--View Photo View Controller-->
         <scene sceneID="LRR-jA-fVZ">
             <objects>
-                <viewController storyboardIdentifier="ViewPhotoViewControllerId" id="T2U-M1-S4O" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewPhotoViewControllerId" useStoryboardIdentifierAsRestorationIdentifier="YES" id="T2U-M1-S4O" customClass="ViewPhotoViewController" customModule="Ai_Tec" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MKz-C7-aph"/>
                         <viewControllerLayoutGuide type="bottom" id="GBg-bO-Z67"/>
@@ -949,43 +1001,39 @@ Cg
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hVW-PY-0Vg">
-                                <rect key="frame" x="0.0" y="104" width="320" height="388"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gwy-S2-L3w" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="104" width="320" height="388"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vg5-hb-P6w">
+                                <rect key="frame" x="0.0" y="109" width="320" height="397"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2ic-Rs-MKo" firstAttribute="leading" secondItem="nJi-Ba-gYg" secondAttribute="leading" id="34p-pK-nxS"/>
-                            <constraint firstItem="hVW-PY-0Vg" firstAttribute="top" secondItem="YqY-zo-UFc" secondAttribute="bottom" id="7JK-sg-7Tg"/>
-                            <constraint firstItem="hVW-PY-0Vg" firstAttribute="bottom" secondItem="Gwy-S2-L3w" secondAttribute="bottom" id="AyW-JX-gwC"/>
                             <constraint firstItem="YqY-zo-UFc" firstAttribute="leading" secondItem="nJi-Ba-gYg" secondAttribute="leading" id="Clp-g5-HX9"/>
-                            <constraint firstAttribute="trailing" secondItem="hVW-PY-0Vg" secondAttribute="trailing" id="PYY-Ed-ySs"/>
-                            <constraint firstItem="zut-hV-AjT" firstAttribute="top" secondItem="hVW-PY-0Vg" secondAttribute="bottom" constant="16" id="YNe-gz-YOV"/>
+                            <constraint firstItem="vg5-hb-P6w" firstAttribute="centerX" secondItem="nJi-Ba-gYg" secondAttribute="centerX" id="D1L-AW-csd"/>
+                            <constraint firstItem="zut-hV-AjT" firstAttribute="top" secondItem="vg5-hb-P6w" secondAttribute="bottom" constant="2" id="Mtv-2Y-KOj"/>
                             <constraint firstItem="2ic-Rs-MKo" firstAttribute="top" secondItem="nJi-Ba-gYg" secondAttribute="top" id="b41-hg-q4z"/>
                             <constraint firstItem="YqY-zo-UFc" firstAttribute="top" secondItem="2ic-Rs-MKo" secondAttribute="bottom" id="c0P-e1-YxZ"/>
                             <constraint firstItem="GBg-bO-Z67" firstAttribute="top" secondItem="zut-hV-AjT" secondAttribute="bottom" constant="16" id="gdb-YL-2Pw"/>
-                            <constraint firstItem="hVW-PY-0Vg" firstAttribute="leading" secondItem="nJi-Ba-gYg" secondAttribute="leading" id="hE7-qt-jO8"/>
                             <constraint firstItem="rWK-LA-v0G" firstAttribute="centerY" secondItem="zut-hV-AjT" secondAttribute="centerY" id="hjA-VI-6ek"/>
-                            <constraint firstItem="hVW-PY-0Vg" firstAttribute="leading" secondItem="Gwy-S2-L3w" secondAttribute="leading" id="iUl-lP-f1g"/>
+                            <constraint firstItem="vg5-hb-P6w" firstAttribute="top" secondItem="YqY-zo-UFc" secondAttribute="bottom" constant="5" id="hrC-jI-ncO"/>
+                            <constraint firstAttribute="trailing" secondItem="vg5-hb-P6w" secondAttribute="trailing" id="iFq-5O-H9G"/>
                             <constraint firstAttribute="trailing" secondItem="2ic-Rs-MKo" secondAttribute="trailing" id="j7h-4y-P4d"/>
                             <constraint firstItem="rWK-LA-v0G" firstAttribute="trailing" secondItem="nJi-Ba-gYg" secondAttribute="trailingMargin" id="jHW-fi-hpH"/>
                             <constraint firstItem="zut-hV-AjT" firstAttribute="centerX" secondItem="nJi-Ba-gYg" secondAttribute="centerX" id="o2X-VQ-cJE"/>
+                            <constraint firstItem="vg5-hb-P6w" firstAttribute="leading" secondItem="nJi-Ba-gYg" secondAttribute="leading" id="ogj-KG-F49"/>
                             <constraint firstItem="rWK-LA-v0G" firstAttribute="height" secondItem="zut-hV-AjT" secondAttribute="height" id="qBD-l9-W7s"/>
                             <constraint firstAttribute="trailing" secondItem="YqY-zo-UFc" secondAttribute="trailing" id="qPI-aa-d6n"/>
-                            <constraint firstItem="hVW-PY-0Vg" firstAttribute="trailing" secondItem="Gwy-S2-L3w" secondAttribute="trailing" id="rwF-OU-W0Z"/>
                             <constraint firstItem="rWK-LA-v0G" firstAttribute="leading" secondItem="zut-hV-AjT" secondAttribute="trailing" constant="16" id="sgQ-d5-TFP"/>
-                            <constraint firstItem="hVW-PY-0Vg" firstAttribute="top" secondItem="Gwy-S2-L3w" secondAttribute="top" id="wa2-51-kGh"/>
                         </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="vg5-hb-P6w" id="jyD-N9-vcw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y9p-nG-bHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1552.5" y="512.32394366197184"/>
+            <point key="canvasLocation" x="1851" y="512"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="ebA-L3-8xA">
@@ -1250,12 +1298,12 @@ Cg
         <image name="btn_edit" width="110" height="110"/>
         <image name="camera_off" width="105" height="105"/>
         <image name="camera_on" width="105" height="105"/>
-        <image name="circle_search" width="288" height="288"/>
+        <image name="circle_search" width="800" height="800"/>
         <image name="cm_arrow_back_white" width="24" height="24"/>
         <image name="cm_arrow_downward_black" width="24" height="24"/>
         <image name="cm_arrow_next_white" width="24" height="24"/>
         <image name="cm_close_white" width="24" height="24"/>
-        <image name="eraser" width="40" height="40"/>
+        <image name="eraser" width="100" height="100"/>
         <image name="ic_phone_white" width="24" height="24"/>
         <image name="imv_switch" width="120" height="120"/>
         <image name="logo" width="648" height="112"/>
@@ -1264,8 +1312,8 @@ Cg
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="MgS-9T-Z1w"/>
-        <segue reference="3zj-tc-zFS"/>
-        <segue reference="gyt-AA-FVD"/>
-        <segue reference="NZ9-6g-EPh"/>
+        <segue reference="D5g-Vq-3h1"/>
+        <segue reference="Plp-py-FNY"/>
+        <segue reference="mxO-FM-z9u"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,7 +8,7 @@
 
 import UIKit
 import Starscream
-
+import GoogleMaps
 
 class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDelegate , UITableViewDataSource{
     
@@ -24,21 +24,33 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
     
     var dictCall : [String:String] = [:]
     var nameUserAnswer = ""
+    var userName = ""
     var checkButton = true
+    var index : Int?
+    
+    var currentLocation: CLLocation?
+    var locationManager: CLLocationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         myAvatarImageView.image = UIImage(named: "bg_search")
         myNameLabel.text = UserDefaults.standard.value(forKey: "yourname") as? String
+        myStatusView.layer.cornerRadius = 6
+        myStatusView.layer.masksToBounds = true
         
         SocketGlobal.shared.socket?.delegate = self
         
-        let username = UserDefaults.standard.value(forKey: "yourname") as? String ?? ""
-        let dict = ["type":DISCOVERY,"name":username]
+        userName = UserDefaults.standard.value(forKey: "yourname") as? String ?? ""
+        let dict = ["type":DISCOVERY,"name":userName]
         
         //login to socket
         SocketGlobal.shared.socket?.write(string: convertString(from: dict))
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.stopUpdatingLocation()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -64,10 +76,10 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
     func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
         print(error ?? "")
     }
-    func websocketDidReceiveMessage(socket: WebSocket, text: String) {        
+    func websocketDidReceiveMessage(socket: WebSocket, text: String) {
+
         do {
             if let dictionary = try convertToDictionary(from: text){
-                print(dictionary)
                 switch "\(dictionary["type"] ?? "")" {
                 case "discovery":
                     guard let data = dictionary["data"] as? [DICT] else {return}
@@ -77,7 +89,7 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
                             listUser.append(user)
                         }
                         for i in 0..<listUser.count {
-                            if listUser[i].name == "\(UserDefaults.standard.value(forKey: "yourname")!)" {
+                            if listUser[i].name == "\(userName)" {
                                 listUser.remove(at: i)
                             }
                         }
@@ -114,17 +126,21 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
         cell.nameUser.text = SocketGlobal.shared.contacts[indexPath.row].name
         if SocketGlobal.shared.contacts[indexPath.row].status == 1 {
             cell.viewStatus.backgroundColor = .green
+            cell.isUserInteractionEnabled = true
         }else{
             cell.viewStatus.backgroundColor = .red
+            cell.isUserInteractionEnabled = false
         }
         return cell
     }
     
     //TableView Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let yourName = UserDefaults.standard.value(forKey: "yourname") as? String ?? ""
+        
+        index = indexPath.row
         let receiName = SocketGlobal.shared.contacts[indexPath.row].name
-        let dict = ["type" : CALL ,"name" : yourName, "host" : yourName , "receive" : receiName]
+        UserDefaults.standard.set(receiName, forKey: "nameReceive")
+        let dict = ["type" : CALL ,"name" : userName, "host" : userName , "receive" : receiName]
         dictCall = dict
         
         
@@ -132,13 +148,15 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
     
     
     @IBAction func CallP2P(_ sender: UIButton) {
-        SocketGlobal.shared.socket?.write(string: convertString(from: dictCall))
-        if dictCall["name"] != nil {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-                self.performSegue(withIdentifier: "showRingingSegueId", sender: self)
+        if index != nil {
+            if dictCall["name"] != nil && SocketGlobal.shared.contacts[index!].status == 1{
+                SocketGlobal.shared.socket?.write(string: convertString(from: dictCall))
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                    self.performSegue(withIdentifier: "showRingingSegueId", sender: self)
+                }
+                nameUserAnswer = "\(dictCall["receive"]!)"
             }
         }
-        nameUserAnswer = "\(dictCall["receive"]!)"
         checkButton = false
     }
     
@@ -165,4 +183,10 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
         return jsonString
     }
     
+}
+
+extension ContactViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        currentLocation = manager.location
+    }
 }

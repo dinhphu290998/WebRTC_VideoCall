@@ -10,17 +10,63 @@
 		048AB70D729283334D8FC8A7 /* Pods_Ai_TecTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 787889CFDFCC3FFB53443B73 /* Pods_Ai_TecTests.framework */; };
 		148795EFBDB78135EDC9C087 /* Pods_Ai_TecUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 406AEE77466067F4B97DBD99 /* Pods_Ai_TecUITests.framework */; };
 		180A09B7217D7022005B6F35 /* Etension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A09B6217D7022005B6F35 /* Etension.swift */; };
+		18131E132181FC5500FE9B0E /* ARDTURNClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DD62181FC4C00FE9B0E /* ARDTURNClient.m */; };
+		18131E142181FC5500FE9B0E /* ARDSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DD72181FC4C00FE9B0E /* ARDSettingsModel.m */; };
+		18131E152181FC5500FE9B0E /* ARDBitrateTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DDC2181FC4D00FE9B0E /* ARDBitrateTracker.m */; };
+		18131E162181FC5500FE9B0E /* ARDMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DDF2181FC4D00FE9B0E /* ARDMainViewController.m */; };
+		18131E172181FC5500FE9B0E /* ARDSignalingMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DE02181FC4D00FE9B0E /* ARDSignalingMessage.m */; };
+		18131E182181FC5500FE9B0E /* ARDStatsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DE32181FC4E00FE9B0E /* ARDStatsBuilder.m */; };
+		18131E192181FC5500FE9B0E /* UIImage+ARDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DE42181FC4E00FE9B0E /* UIImage+ARDUtilities.m */; };
+		18131E1A2181FC5500FE9B0E /* ARDMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DE52181FC4E00FE9B0E /* ARDMainView.m */; };
+		18131E1B2181FC5500FE9B0E /* ARDVideoCallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DE62181FC4E00FE9B0E /* ARDVideoCallView.m */; };
+		18131E1C2181FC5500FE9B0E /* ARDSDPUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DE72181FC4E00FE9B0E /* ARDSDPUtils.m */; };
+		18131E1D2181FC5500FE9B0E /* RTCICEServer+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DE82181FC4E00FE9B0E /* RTCICEServer+JSON.m */; };
+		18131E1E2181FC5500FE9B0E /* ARDAppClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DEA2181FC4F00FE9B0E /* ARDAppClient.m */; };
+		18131E1F2181FC5500FE9B0E /* ARDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DEB2181FC4F00FE9B0E /* ARDUtilities.m */; };
+		18131E202181FC5500FE9B0E /* ARDVideoCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DF02181FC4F00FE9B0E /* ARDVideoCallViewController.m */; };
+		18131E212181FC5500FE9B0E /* ARDCaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DF12181FC5000FE9B0E /* ARDCaptureController.m */; };
+		18131E222181FC5500FE9B0E /* RTCMediaConstraints+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DF42181FC5000FE9B0E /* RTCMediaConstraints+JSON.m */; };
+		18131E232181FC5500FE9B0E /* ARDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DF52181FC5000FE9B0E /* ARDAppDelegate.m */; };
+		18131E242181FC5500FE9B0E /* ARDWebSocketChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DF62181FC5000FE9B0E /* ARDWebSocketChannel.m */; };
+		18131E252181FC5500FE9B0E /* ARDJoinResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DF82181FC5100FE9B0E /* ARDJoinResponse.m */; };
+		18131E262181FC5500FE9B0E /* ARDSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DFC2181FC5100FE9B0E /* ARDSettingsViewController.m */; };
+		18131E272181FC5500FE9B0E /* ARDSettingsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131DFE2181FC5200FE9B0E /* ARDSettingsStore.m */; };
+		18131E282181FC5500FE9B0E /* ARDStatsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131E012181FC5200FE9B0E /* ARDStatsView.m */; };
+		18131E292181FC5500FE9B0E /* RTCICECandidate+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131E022181FC5200FE9B0E /* RTCICECandidate+JSON.m */; };
+		18131E2A2181FC5500FE9B0E /* ARDRegisterResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131E042181FC5300FE9B0E /* ARDRegisterResponse.m */; };
+		18131E2B2181FC5500FE9B0E /* ARDAppEngineClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131E082181FC5300FE9B0E /* ARDAppEngineClient.m */; };
+		18131E2C2181FC5500FE9B0E /* RTCSessionDescription+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131E0A2181FC5400FE9B0E /* RTCSessionDescription+JSON.m */; };
+		18131E2D2181FC5500FE9B0E /* ARDMessageResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18131E0D2181FC5400FE9B0E /* ARDMessageResponse.m */; };
 		181B6806217E048300CF733E /* RTCVideoChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B6805217E048300CF733E /* RTCVideoChatViewController.swift */; };
 		18576BB7217A42B300013D43 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18576BB6217A42B300013D43 /* Media.xcassets */; };
 		18576BB9217A4D4E00013D43 /* RingingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18576BB8217A4D4E00013D43 /* RingingViewController.swift */; };
 		1873FA0821757A9D00ED8988 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873FA0721757A9D00ED8988 /* SplashViewController.swift */; };
 		1873FA11217580CF00ED8988 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873FA10217580CF00ED8988 /* LoginViewController.swift */; };
+		18AA0C692181A32C00038963 /* ResolutionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AA0C682181A32C00038963 /* ResolutionCell.swift */; };
+		18AA0C6B2181A5D800038963 /* Ex-CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AA0C6A2181A5D800038963 /* Ex-CollectionView.swift */; };
 		18F0C90321758BA600E0DEBD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0C90221758BA600E0DEBD /* User.swift */; };
 		18F0C90721759D7C00E0DEBD /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0C90621759D7C00E0DEBD /* Config.swift */; };
 		18FA43EA2176E30800A0EB8B /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA43E92176E30800A0EB8B /* ContactViewController.swift */; };
 		18FA43EE2176F75A00A0EB8B /* SocketGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA43ED2176F75A00A0EB8B /* SocketGlobal.swift */; };
 		18FA43F021771A7000A0EB8B /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA43EF21771A7000A0EB8B /* ContactTableViewCell.swift */; };
 		8D10FCF84A798504B9EF769C /* Pods_Ai_Tec.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381B2CD5D2E6702DEC42770 /* Pods_Ai_Tec.framework */; };
+		B33B97F7218999DE00D8AB12 /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B97F6218999DE00D8AB12 /* Drawing.swift */; };
+		B33B97F9218999E900D8AB12 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B97F8218999E700D8AB12 /* Session.swift */; };
+		B33B97FB218999EC00D8AB12 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B97FA218999EC00D8AB12 /* Palette.swift */; };
+		B33B97FD218999F500D8AB12 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B97FC218999F400D8AB12 /* CircleButton.swift */; };
+		B33B97FF218999F900D8AB12 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B97FE218999F800D8AB12 /* Canvas.swift */; };
+		B33B980121899A1B00D8AB12 /* BrushCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B33B980021899A1B00D8AB12 /* BrushCell.xib */; };
+		B33B980321899A2100D8AB12 /* BrushCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B980221899A2000D8AB12 /* BrushCell.swift */; };
+		B33B980521899A4600D8AB12 /* UIImageExtractExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B980421899A4600D8AB12 /* UIImageExtractExtension.swift */; };
+		B33B980721899A4A00D8AB12 /* Brush.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B980621899A4A00D8AB12 /* Brush.swift */; };
+		B33B980921899A5600D8AB12 /* UIViewFrameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B980821899A5600D8AB12 /* UIViewFrameExtension.swift */; };
+		B33B980B21899A5E00D8AB12 /* ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B980A21899A5D00D8AB12 /* ToolBar.swift */; };
+		B33B980D21899DFC00D8AB12 /* ViewPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B980C21899DFC00D8AB12 /* ViewPhotoViewController.swift */; };
+		B33B980F2189AECD00D8AB12 /* MessageSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B980E2189AECD00D8AB12 /* MessageSocket.swift */; };
+		B33B98112189B25100D8AB12 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B98102189B25100D8AB12 /* AlbumViewController.swift */; };
+		B33B98152189B45500D8AB12 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B98142189B45500D8AB12 /* Socket.swift */; };
+		B33B9836218AB84900D8AB12 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B9835218AB84900D8AB12 /* PhotoCell.swift */; };
+		B33C69322189984B0077469C /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C69312189984A0077469C /* EditViewController.swift */; };
 		B3ABEF86217495B30072E9F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF85217495B30072E9F5 /* AppDelegate.swift */; };
 		B3ABEF8E217495B30072E9F5 /* Ai_Tec.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF8C217495B30072E9F5 /* Ai_Tec.xcdatamodeld */; };
 		B3ABEF9E217495B40072E9F5 /* Ai_TecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF9D217495B40072E9F5 /* Ai_TecTests.swift */; };
@@ -50,11 +96,76 @@
 		0872EDCF48AFD29DB3BF317A /* Pods-Ai-TecUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-TecUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-TecUITests/Pods-Ai-TecUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1381B2CD5D2E6702DEC42770 /* Pods_Ai_Tec.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_Tec.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		180A09B6217D7022005B6F35 /* Etension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Etension.swift; path = "Ai-TEC/Model/Etension.swift"; sourceTree = SOURCE_ROOT; };
+		18131DD42181FC4A00FE9B0E /* Ai-Tec-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ai-Tec-Bridging-Header.h"; sourceTree = "<group>"; };
+		18131DD52181FC4B00FE9B0E /* ARDStatsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDStatsView.h; sourceTree = "<group>"; };
+		18131DD62181FC4C00FE9B0E /* ARDTURNClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDTURNClient.m; sourceTree = "<group>"; };
+		18131DD72181FC4C00FE9B0E /* ARDSettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDSettingsModel.m; sourceTree = "<group>"; };
+		18131DD82181FC4C00FE9B0E /* ARDSignalingChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDSignalingChannel.h; sourceTree = "<group>"; };
+		18131DD92181FC4C00FE9B0E /* ARDTURNClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDTURNClient.h; sourceTree = "<group>"; };
+		18131DDA2181FC4C00FE9B0E /* ARDWebSocketChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDWebSocketChannel.h; sourceTree = "<group>"; };
+		18131DDB2181FC4D00FE9B0E /* ARDMessageResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDMessageResponse.h; sourceTree = "<group>"; };
+		18131DDC2181FC4D00FE9B0E /* ARDBitrateTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDBitrateTracker.m; sourceTree = "<group>"; };
+		18131DDD2181FC4D00FE9B0E /* ARDStatsBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDStatsBuilder.h; sourceTree = "<group>"; };
+		18131DDE2181FC4D00FE9B0E /* ARDRoomServerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDRoomServerClient.h; sourceTree = "<group>"; };
+		18131DDF2181FC4D00FE9B0E /* ARDMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDMainViewController.m; sourceTree = "<group>"; };
+		18131DE02181FC4D00FE9B0E /* ARDSignalingMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDSignalingMessage.m; sourceTree = "<group>"; };
+		18131DE12181FC4D00FE9B0E /* ARDVideoCallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDVideoCallViewController.h; sourceTree = "<group>"; };
+		18131DE22181FC4D00FE9B0E /* ARDVideoCallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDVideoCallView.h; sourceTree = "<group>"; };
+		18131DE32181FC4E00FE9B0E /* ARDStatsBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDStatsBuilder.m; sourceTree = "<group>"; };
+		18131DE42181FC4E00FE9B0E /* UIImage+ARDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ARDUtilities.m"; sourceTree = "<group>"; };
+		18131DE52181FC4E00FE9B0E /* ARDMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDMainView.m; sourceTree = "<group>"; };
+		18131DE62181FC4E00FE9B0E /* ARDVideoCallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDVideoCallView.m; sourceTree = "<group>"; };
+		18131DE72181FC4E00FE9B0E /* ARDSDPUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDSDPUtils.m; sourceTree = "<group>"; };
+		18131DE82181FC4E00FE9B0E /* RTCICEServer+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RTCICEServer+JSON.m"; sourceTree = "<group>"; };
+		18131DE92181FC4E00FE9B0E /* ARDMessageResponse+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARDMessageResponse+Internal.h"; sourceTree = "<group>"; };
+		18131DEA2181FC4F00FE9B0E /* ARDAppClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDAppClient.m; sourceTree = "<group>"; };
+		18131DEB2181FC4F00FE9B0E /* ARDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDUtilities.m; sourceTree = "<group>"; };
+		18131DEC2181FC4F00FE9B0E /* ARDBitrateTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDBitrateTracker.h; sourceTree = "<group>"; };
+		18131DED2181FC4F00FE9B0E /* ARDMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDMainView.h; sourceTree = "<group>"; };
+		18131DEE2181FC4F00FE9B0E /* ARDTURNClient+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARDTURNClient+Internal.h"; sourceTree = "<group>"; };
+		18131DEF2181FC4F00FE9B0E /* ARDCaptureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDCaptureController.h; sourceTree = "<group>"; };
+		18131DF02181FC4F00FE9B0E /* ARDVideoCallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDVideoCallViewController.m; sourceTree = "<group>"; };
+		18131DF12181FC5000FE9B0E /* ARDCaptureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDCaptureController.m; sourceTree = "<group>"; };
+		18131DF22181FC5000FE9B0E /* RTCMediaConstraints+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RTCMediaConstraints+JSON.h"; sourceTree = "<group>"; };
+		18131DF32181FC5000FE9B0E /* UIImage+ARDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ARDUtilities.h"; sourceTree = "<group>"; };
+		18131DF42181FC5000FE9B0E /* RTCMediaConstraints+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RTCMediaConstraints+JSON.m"; sourceTree = "<group>"; };
+		18131DF52181FC5000FE9B0E /* ARDAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDAppDelegate.m; sourceTree = "<group>"; };
+		18131DF62181FC5000FE9B0E /* ARDWebSocketChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDWebSocketChannel.m; sourceTree = "<group>"; };
+		18131DF72181FC5100FE9B0E /* ARDSignalingMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDSignalingMessage.h; sourceTree = "<group>"; };
+		18131DF82181FC5100FE9B0E /* ARDJoinResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDJoinResponse.m; sourceTree = "<group>"; };
+		18131DF92181FC5100FE9B0E /* ARDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDUtilities.h; sourceTree = "<group>"; };
+		18131DFA2181FC5100FE9B0E /* ARDSettingsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDSettingsModel.h; sourceTree = "<group>"; };
+		18131DFB2181FC5100FE9B0E /* RTCICEServer+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RTCICEServer+JSON.h"; sourceTree = "<group>"; };
+		18131DFC2181FC5100FE9B0E /* ARDSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDSettingsViewController.m; sourceTree = "<group>"; };
+		18131DFD2181FC5100FE9B0E /* AppRTCMobile-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppRTCMobile-Prefix.pch"; sourceTree = "<group>"; };
+		18131DFE2181FC5200FE9B0E /* ARDSettingsStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDSettingsStore.m; sourceTree = "<group>"; };
+		18131DFF2181FC5200FE9B0E /* ARDJoinResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDJoinResponse.h; sourceTree = "<group>"; };
+		18131E002181FC5200FE9B0E /* ARDSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDSettingsViewController.h; sourceTree = "<group>"; };
+		18131E012181FC5200FE9B0E /* ARDStatsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDStatsView.m; sourceTree = "<group>"; };
+		18131E022181FC5200FE9B0E /* RTCICECandidate+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RTCICECandidate+JSON.m"; sourceTree = "<group>"; };
+		18131E032181FC5300FE9B0E /* ARDAppEngineClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDAppEngineClient.h; sourceTree = "<group>"; };
+		18131E042181FC5300FE9B0E /* ARDRegisterResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDRegisterResponse.m; sourceTree = "<group>"; };
+		18131E052181FC5300FE9B0E /* ARDAppClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDAppClient.h; sourceTree = "<group>"; };
+		18131E062181FC5300FE9B0E /* RTCICECandidate+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RTCICECandidate+JSON.h"; sourceTree = "<group>"; };
+		18131E072181FC5300FE9B0E /* ARDAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDAppDelegate.h; sourceTree = "<group>"; };
+		18131E082181FC5300FE9B0E /* ARDAppEngineClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDAppEngineClient.m; sourceTree = "<group>"; };
+		18131E092181FC5300FE9B0E /* ARDMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDMainViewController.h; sourceTree = "<group>"; };
+		18131E0A2181FC5400FE9B0E /* RTCSessionDescription+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RTCSessionDescription+JSON.m"; sourceTree = "<group>"; };
+		18131E0B2181FC5400FE9B0E /* ARDRegisterResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDRegisterResponse.h; sourceTree = "<group>"; };
+		18131E0C2181FC5400FE9B0E /* ARDSettingsStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDSettingsStore.h; sourceTree = "<group>"; };
+		18131E0D2181FC5400FE9B0E /* ARDMessageResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDMessageResponse.m; sourceTree = "<group>"; };
+		18131E0E2181FC5400FE9B0E /* ARDSettingsModel+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARDSettingsModel+Private.h"; sourceTree = "<group>"; };
+		18131E0F2181FC5400FE9B0E /* RTCSessionDescription+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RTCSessionDescription+JSON.h"; sourceTree = "<group>"; };
+		18131E102181FC5400FE9B0E /* ARDAppClient+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARDAppClient+Internal.h"; sourceTree = "<group>"; };
+		18131E112181FC5500FE9B0E /* ARDJoinResponse+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARDJoinResponse+Internal.h"; sourceTree = "<group>"; };
+		18131E122181FC5500FE9B0E /* ARDSDPUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDSDPUtils.h; sourceTree = "<group>"; };
 		181B6805217E048300CF733E /* RTCVideoChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RTCVideoChatViewController.swift; path = "Ai-TEC/Controller/RTCVideoChatViewController.swift"; sourceTree = SOURCE_ROOT; };
 		18576BB6217A42B300013D43 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = "Ai-TEC/Media.xcassets"; sourceTree = SOURCE_ROOT; };
 		18576BB8217A4D4E00013D43 /* RingingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RingingViewController.swift; path = "Ai-TEC/Controller/RingingViewController.swift"; sourceTree = SOURCE_ROOT; };
 		1873FA0721757A9D00ED8988 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SplashViewController.swift; path = "Ai-Tec/Controller/SplashViewController.swift"; sourceTree = SOURCE_ROOT; };
 		1873FA10217580CF00ED8988 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "Ai-TEC/Controller/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
+		18AA0C682181A32C00038963 /* ResolutionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResolutionCell.swift; path = "Ai-TEC/View/ResolutionCell.swift"; sourceTree = SOURCE_ROOT; };
+		18AA0C6A2181A5D800038963 /* Ex-CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex-CollectionView.swift"; path = "Ai-TEC/Model/Ex-CollectionView.swift"; sourceTree = SOURCE_ROOT; };
 		18F0C90221758BA600E0DEBD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		18F0C90621759D7C00E0DEBD /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		18FA43E92176E30800A0EB8B /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactViewController.swift; path = "Ai-TEC/Controller/ContactViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -65,6 +176,23 @@
 		406AEE77466067F4B97DBD99 /* Pods_Ai_TecUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_TecUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54DB82D607AA9494F139E009 /* Pods-Ai-TecUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-TecUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-TecUITests/Pods-Ai-TecUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		787889CFDFCC3FFB53443B73 /* Pods_Ai_TecTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_TecTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B33B97F6218999DE00D8AB12 /* Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drawing.swift; sourceTree = "<group>"; };
+		B33B97F8218999E700D8AB12 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		B33B97FA218999EC00D8AB12 /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		B33B97FC218999F400D8AB12 /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		B33B97FE218999F800D8AB12 /* Canvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
+		B33B980021899A1B00D8AB12 /* BrushCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrushCell.xib; sourceTree = "<group>"; };
+		B33B980221899A2000D8AB12 /* BrushCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrushCell.swift; sourceTree = "<group>"; };
+		B33B980421899A4600D8AB12 /* UIImageExtractExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtractExtension.swift; sourceTree = "<group>"; };
+		B33B980621899A4A00D8AB12 /* Brush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brush.swift; sourceTree = "<group>"; };
+		B33B980821899A5600D8AB12 /* UIViewFrameExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewFrameExtension.swift; sourceTree = "<group>"; };
+		B33B980A21899A5D00D8AB12 /* ToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBar.swift; sourceTree = "<group>"; };
+		B33B980C21899DFC00D8AB12 /* ViewPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewPhotoViewController.swift; path = "Ai-TEC/Controller/ViewPhotoViewController.swift"; sourceTree = SOURCE_ROOT; };
+		B33B980E2189AECD00D8AB12 /* MessageSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSocket.swift; sourceTree = "<group>"; };
+		B33B98102189B25100D8AB12 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
+		B33B98142189B45500D8AB12 /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
+		B33B9835218AB84900D8AB12 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoCell.swift; path = "Ai-TEC/View/PhotoCell.swift"; sourceTree = SOURCE_ROOT; };
+		B33C69312189984A0077469C /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		B3ABEF82217495B30072E9F5 /* Ai-Tec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ai-Tec.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3ABEF85217495B30072E9F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3ABEF8D217495B30072E9F5 /* Ai_Tec.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ai_Tec.xcdatamodel; sourceTree = "<group>"; };
@@ -127,6 +255,9 @@
 				18FA43E92176E30800A0EB8B /* ContactViewController.swift */,
 				18576BB8217A4D4E00013D43 /* RingingViewController.swift */,
 				181B6805217E048300CF733E /* RTCVideoChatViewController.swift */,
+				B33C69312189984A0077469C /* EditViewController.swift */,
+				B33B98102189B25100D8AB12 /* AlbumViewController.swift */,
+				B33B980C21899DFC00D8AB12 /* ViewPhotoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -135,7 +266,11 @@
 			isa = PBXGroup;
 			children = (
 				B3DF816121749E5900AC7934 /* LaunchScreen.xib */,
+				B33B980221899A2000D8AB12 /* BrushCell.swift */,
+				B33B980021899A1B00D8AB12 /* BrushCell.xib */,
 				18FA43EF21771A7000A0EB8B /* ContactTableViewCell.swift */,
+				18AA0C682181A32C00038963 /* ResolutionCell.swift */,
+				B33B9835218AB84900D8AB12 /* PhotoCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -143,12 +278,94 @@
 		1873FA0F21757F8F00ED8988 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B33B980E2189AECD00D8AB12 /* MessageSocket.swift */,
 				18F0C90221758BA600E0DEBD /* User.swift */,
 				18F0C90621759D7C00E0DEBD /* Config.swift */,
 				18FA43ED2176F75A00A0EB8B /* SocketGlobal.swift */,
 				180A09B6217D7022005B6F35 /* Etension.swift */,
+				18AA0C6A2181A5D800038963 /* Ex-CollectionView.swift */,
+				B33B97F6218999DE00D8AB12 /* Drawing.swift */,
+				B33B97FA218999EC00D8AB12 /* Palette.swift */,
+				B33B97FC218999F400D8AB12 /* CircleButton.swift */,
+				B33B97F8218999E700D8AB12 /* Session.swift */,
+				B33B97FE218999F800D8AB12 /* Canvas.swift */,
+				B33B980421899A4600D8AB12 /* UIImageExtractExtension.swift */,
+				B33B980821899A5600D8AB12 /* UIViewFrameExtension.swift */,
+				B33B980A21899A5D00D8AB12 /* ToolBar.swift */,
+				B33B980621899A4A00D8AB12 /* Brush.swift */,
+				B33B98142189B45500D8AB12 /* Socket.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		18A8F0A52181F933009B3E62 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				18131DFD2181FC5100FE9B0E /* AppRTCMobile-Prefix.pch */,
+				18131E052181FC5300FE9B0E /* ARDAppClient.h */,
+				18131DEA2181FC4F00FE9B0E /* ARDAppClient.m */,
+				18131E102181FC5400FE9B0E /* ARDAppClient+Internal.h */,
+				18131E072181FC5300FE9B0E /* ARDAppDelegate.h */,
+				18131DF52181FC5000FE9B0E /* ARDAppDelegate.m */,
+				18131E032181FC5300FE9B0E /* ARDAppEngineClient.h */,
+				18131E082181FC5300FE9B0E /* ARDAppEngineClient.m */,
+				18131DEC2181FC4F00FE9B0E /* ARDBitrateTracker.h */,
+				18131DDC2181FC4D00FE9B0E /* ARDBitrateTracker.m */,
+				18131DEF2181FC4F00FE9B0E /* ARDCaptureController.h */,
+				18131DF12181FC5000FE9B0E /* ARDCaptureController.m */,
+				18131DFF2181FC5200FE9B0E /* ARDJoinResponse.h */,
+				18131DF82181FC5100FE9B0E /* ARDJoinResponse.m */,
+				18131E112181FC5500FE9B0E /* ARDJoinResponse+Internal.h */,
+				18131DED2181FC4F00FE9B0E /* ARDMainView.h */,
+				18131DE52181FC4E00FE9B0E /* ARDMainView.m */,
+				18131E092181FC5300FE9B0E /* ARDMainViewController.h */,
+				18131DDF2181FC4D00FE9B0E /* ARDMainViewController.m */,
+				18131DDB2181FC4D00FE9B0E /* ARDMessageResponse.h */,
+				18131E0D2181FC5400FE9B0E /* ARDMessageResponse.m */,
+				18131DE92181FC4E00FE9B0E /* ARDMessageResponse+Internal.h */,
+				18131E0B2181FC5400FE9B0E /* ARDRegisterResponse.h */,
+				18131E042181FC5300FE9B0E /* ARDRegisterResponse.m */,
+				18131DDE2181FC4D00FE9B0E /* ARDRoomServerClient.h */,
+				18131E122181FC5500FE9B0E /* ARDSDPUtils.h */,
+				18131DE72181FC4E00FE9B0E /* ARDSDPUtils.m */,
+				18131DFA2181FC5100FE9B0E /* ARDSettingsModel.h */,
+				18131DD72181FC4C00FE9B0E /* ARDSettingsModel.m */,
+				18131E0E2181FC5400FE9B0E /* ARDSettingsModel+Private.h */,
+				18131E0C2181FC5400FE9B0E /* ARDSettingsStore.h */,
+				18131DFE2181FC5200FE9B0E /* ARDSettingsStore.m */,
+				18131E002181FC5200FE9B0E /* ARDSettingsViewController.h */,
+				18131DFC2181FC5100FE9B0E /* ARDSettingsViewController.m */,
+				18131DD82181FC4C00FE9B0E /* ARDSignalingChannel.h */,
+				18131DF72181FC5100FE9B0E /* ARDSignalingMessage.h */,
+				18131DE02181FC4D00FE9B0E /* ARDSignalingMessage.m */,
+				18131DDD2181FC4D00FE9B0E /* ARDStatsBuilder.h */,
+				18131DE32181FC4E00FE9B0E /* ARDStatsBuilder.m */,
+				18131DD52181FC4B00FE9B0E /* ARDStatsView.h */,
+				18131E012181FC5200FE9B0E /* ARDStatsView.m */,
+				18131DD92181FC4C00FE9B0E /* ARDTURNClient.h */,
+				18131DD62181FC4C00FE9B0E /* ARDTURNClient.m */,
+				18131DEE2181FC4F00FE9B0E /* ARDTURNClient+Internal.h */,
+				18131DF92181FC5100FE9B0E /* ARDUtilities.h */,
+				18131DEB2181FC4F00FE9B0E /* ARDUtilities.m */,
+				18131DE22181FC4D00FE9B0E /* ARDVideoCallView.h */,
+				18131DE62181FC4E00FE9B0E /* ARDVideoCallView.m */,
+				18131DE12181FC4D00FE9B0E /* ARDVideoCallViewController.h */,
+				18131DF02181FC4F00FE9B0E /* ARDVideoCallViewController.m */,
+				18131DDA2181FC4C00FE9B0E /* ARDWebSocketChannel.h */,
+				18131DF62181FC5000FE9B0E /* ARDWebSocketChannel.m */,
+				18131E062181FC5300FE9B0E /* RTCICECandidate+JSON.h */,
+				18131E022181FC5200FE9B0E /* RTCICECandidate+JSON.m */,
+				18131DFB2181FC5100FE9B0E /* RTCICEServer+JSON.h */,
+				18131DE82181FC4E00FE9B0E /* RTCICEServer+JSON.m */,
+				18131DF22181FC5000FE9B0E /* RTCMediaConstraints+JSON.h */,
+				18131DF42181FC5000FE9B0E /* RTCMediaConstraints+JSON.m */,
+				18131E0F2181FC5400FE9B0E /* RTCSessionDescription+JSON.h */,
+				18131E0A2181FC5400FE9B0E /* RTCSessionDescription+JSON.m */,
+				18131DF32181FC5000FE9B0E /* UIImage+ARDUtilities.h */,
+				18131DE42181FC4E00FE9B0E /* UIImage+ARDUtilities.m */,
+				18131DD42181FC4A00FE9B0E /* Ai-Tec-Bridging-Header.h */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 		3BFDBBA97902D707C0AE5C99 /* Pods */ = {
@@ -190,6 +407,7 @@
 			isa = PBXGroup;
 			children = (
 				B3ABEF85217495B30072E9F5 /* AppDelegate.swift */,
+				18A8F0A52181F933009B3E62 /* Library */,
 				1873FA0F21757F8F00ED8988 /* Model */,
 				1873FA0A21757F4500ED8988 /* View */,
 				1873FA0921757F3200ED8988 /* Controller */,
@@ -231,6 +449,7 @@
 				B3ABEF7F217495B30072E9F5 /* Frameworks */,
 				B3ABEF80217495B30072E9F5 /* Resources */,
 				3E43919322046682E78D4313 /* [CP] Embed Pods Frameworks */,
+				61A417A82C194793FB7273A2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -291,6 +510,7 @@
 				TargetAttributes = {
 					B3ABEF81217495B30072E9F5 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1010;
 					};
 					B3ABEF98217495B40072E9F5 = {
 						CreatedOnToolsVersion = 10.0;
@@ -329,6 +549,7 @@
 			files = (
 				B3DF816221749E5900AC7934 /* LaunchScreen.xib in Resources */,
 				18576BB7217A42B300013D43 /* Media.xcassets in Resources */,
+				B33B980121899A1B00D8AB12 /* BrushCell.xib in Resources */,
 				B3DF816021749E4D00AC7934 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,18 +602,32 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Ai-Tec/Pods-Ai-Tec-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Material/Material.framework",
+				"${BUILT_PRODUCTS_DIR}/Motion/Motion.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 				"${PODS_ROOT}/WebRTC/WebRTC.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Material.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motion.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketRocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebRTC.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,6 +655,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		61A417A82C194793FB7273A2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Ai-Tec/Pods-Ai-Tec-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ai-Tec/Pods-Ai-Tec-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		66895B5A1869C6FA803EE499 /* [CP] Check Pods Manifest.lock */ = {
@@ -451,18 +710,63 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B33B980921899A5600D8AB12 /* UIViewFrameExtension.swift in Sources */,
 				1873FA11217580CF00ED8988 /* LoginViewController.swift in Sources */,
+				18131E262181FC5500FE9B0E /* ARDSettingsViewController.m in Sources */,
+				18AA0C692181A32C00038963 /* ResolutionCell.swift in Sources */,
 				180A09B7217D7022005B6F35 /* Etension.swift in Sources */,
+				18131E212181FC5500FE9B0E /* ARDCaptureController.m in Sources */,
+				18131E172181FC5500FE9B0E /* ARDSignalingMessage.m in Sources */,
+				18131E1E2181FC5500FE9B0E /* ARDAppClient.m in Sources */,
+				B33B98152189B45500D8AB12 /* Socket.swift in Sources */,
 				18576BB9217A4D4E00013D43 /* RingingViewController.swift in Sources */,
+				18131E242181FC5500FE9B0E /* ARDWebSocketChannel.m in Sources */,
+				B33B97FF218999F900D8AB12 /* Canvas.swift in Sources */,
 				18FA43EA2176E30800A0EB8B /* ContactViewController.swift in Sources */,
+				18AA0C6B2181A5D800038963 /* Ex-CollectionView.swift in Sources */,
+				B33B980D21899DFC00D8AB12 /* ViewPhotoViewController.swift in Sources */,
+				B33B980F2189AECD00D8AB12 /* MessageSocket.swift in Sources */,
+				18131E1A2181FC5500FE9B0E /* ARDMainView.m in Sources */,
+				B33B97FB218999EC00D8AB12 /* Palette.swift in Sources */,
+				18131E1B2181FC5500FE9B0E /* ARDVideoCallView.m in Sources */,
+				18131E142181FC5500FE9B0E /* ARDSettingsModel.m in Sources */,
+				18131E232181FC5500FE9B0E /* ARDAppDelegate.m in Sources */,
+				18131E2D2181FC5500FE9B0E /* ARDMessageResponse.m in Sources */,
+				B33B98112189B25100D8AB12 /* AlbumViewController.swift in Sources */,
+				18131E152181FC5500FE9B0E /* ARDBitrateTracker.m in Sources */,
+				18131E182181FC5500FE9B0E /* ARDStatsBuilder.m in Sources */,
+				18131E1F2181FC5500FE9B0E /* ARDUtilities.m in Sources */,
+				18131E282181FC5500FE9B0E /* ARDStatsView.m in Sources */,
+				B33B980B21899A5E00D8AB12 /* ToolBar.swift in Sources */,
+				B33C69322189984B0077469C /* EditViewController.swift in Sources */,
+				B33B97F7218999DE00D8AB12 /* Drawing.swift in Sources */,
 				181B6806217E048300CF733E /* RTCVideoChatViewController.swift in Sources */,
 				1873FA0821757A9D00ED8988 /* SplashViewController.swift in Sources */,
+				18131E2C2181FC5500FE9B0E /* RTCSessionDescription+JSON.m in Sources */,
+				18131E222181FC5500FE9B0E /* RTCMediaConstraints+JSON.m in Sources */,
 				B3ABEF8E217495B30072E9F5 /* Ai_Tec.xcdatamodeld in Sources */,
+				18131E1C2181FC5500FE9B0E /* ARDSDPUtils.m in Sources */,
+				B33B980321899A2100D8AB12 /* BrushCell.swift in Sources */,
+				18131E2B2181FC5500FE9B0E /* ARDAppEngineClient.m in Sources */,
+				18131E192181FC5500FE9B0E /* UIImage+ARDUtilities.m in Sources */,
 				18F0C90321758BA600E0DEBD /* User.swift in Sources */,
+				18131E202181FC5500FE9B0E /* ARDVideoCallViewController.m in Sources */,
+				18131E1D2181FC5500FE9B0E /* RTCICEServer+JSON.m in Sources */,
 				B3ABEF86217495B30072E9F5 /* AppDelegate.swift in Sources */,
+				B33B980521899A4600D8AB12 /* UIImageExtractExtension.swift in Sources */,
+				18131E272181FC5500FE9B0E /* ARDSettingsStore.m in Sources */,
+				18131E162181FC5500FE9B0E /* ARDMainViewController.m in Sources */,
 				18FA43F021771A7000A0EB8B /* ContactTableViewCell.swift in Sources */,
+				18131E132181FC5500FE9B0E /* ARDTURNClient.m in Sources */,
+				B33B980721899A4A00D8AB12 /* Brush.swift in Sources */,
+				B33B9836218AB84900D8AB12 /* PhotoCell.swift in Sources */,
+				18131E292181FC5500FE9B0E /* RTCICECandidate+JSON.m in Sources */,
 				18F0C90721759D7C00E0DEBD /* Config.swift in Sources */,
+				B33B97F9218999E900D8AB12 /* Session.swift in Sources */,
+				18131E252181FC5500FE9B0E /* ARDJoinResponse.m in Sources */,
 				18FA43EE2176F75A00A0EB8B /* SocketGlobal.swift in Sources */,
+				18131E2A2181FC5500FE9B0E /* ARDRegisterResponse.m in Sources */,
+				B33B97FD218999F500D8AB12 /* CircleButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +837,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -594,6 +899,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -619,16 +925,20 @@
 			baseConfigurationReference = 340B88CA01418C225C224DC9 /* Pods-Ai-Tec.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J83T4QV6YK;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Ai-Tec/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.asanuma.rtc.Ai-Tec";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ai-Tec/Library/Ai-Tec-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -639,16 +949,19 @@
 			baseConfigurationReference = C6418BE0BF709307489A5917 /* Pods-Ai-Tec.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J83T4QV6YK;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Ai-Tec/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.asanuma.rtc.Ai-Tec";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ai-Tec/Library/Ai-Tec-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

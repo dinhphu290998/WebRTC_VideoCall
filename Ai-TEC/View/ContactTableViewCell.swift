@@ -15,7 +15,7 @@ class ContactTableViewCell: UITableViewCell {
     @IBOutlet weak var viewStatus: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        viewStatus.layer.cornerRadius = viewStatus.frame.width/2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
