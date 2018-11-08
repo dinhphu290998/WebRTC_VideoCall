@@ -373,7 +373,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fej-TW-Jck" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="88" y="-268"/>
+            <point key="canvasLocation" x="388" y="-268"/>
         </scene>
         <!--Video Chat View Controller-->
         <scene sceneID="jgH-vu-nW5">
@@ -509,6 +509,7 @@ Cg
                                         </constraints>
                                         <state key="normal" image="cm_arrow_back_white"/>
                                         <connections>
+                                            <action selector="backButtonTouched:" destination="iFm-Yh-cyi" eventType="touchUpInside" id="XHL-3t-ln9"/>
                                             <action selector="hangupButtonPressed:" destination="iFm-Yh-cyi" eventType="touchUpInside" id="zaw-as-kXd"/>
                                         </connections>
                                     </button>
@@ -637,13 +638,13 @@ Cg
                         <outlet property="statusRemoteView" destination="C4e-lB-TVR" id="MRL-kY-bVe"/>
                         <outlet property="videoButton" destination="kcx-j9-I7i" id="jyd-vz-eA2"/>
                         <segue destination="DDB-qt-tTP" kind="show" identifier="unwindToContactSegue" id="mxO-FM-z9u"/>
-                        <segue destination="YPm-fD-l92" kind="showDetail" identifier="" id="Weh-WG-Z7U"/>
+                        <segue destination="YPm-fD-l92" kind="show" identifier="showEditSegueId" id="Weh-WG-Z7U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3jb-SF-qzn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <pinchGestureRecognizer id="RPk-Hr-1MX"/>
             </objects>
-            <point key="canvasLocation" x="829" y="-268"/>
+            <point key="canvasLocation" x="1146" y="-268"/>
         </scene>
         <!--Edit View Controller-->
         <scene sceneID="Bka-Om-isN">
@@ -743,9 +744,6 @@ Cg
                                     <constraint firstItem="9Ty-jM-h4H" firstAttribute="top" secondItem="35U-qS-c6j" secondAttribute="top" id="ukZ-5P-84a"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="00P-TE-rZD">
-                                <rect key="frame" x="0.0" y="100" width="320" height="388"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -753,10 +751,8 @@ Cg
                             <constraint firstItem="LCI-vQ-q9y" firstAttribute="leading" secondItem="tsb-I8-VuI" secondAttribute="trailing" constant="16" id="1AB-Nb-Qbf"/>
                             <constraint firstItem="uim-Z8-INo" firstAttribute="top" secondItem="LCI-vQ-q9y" secondAttribute="bottom" constant="16" id="Dol-kg-VxY"/>
                             <constraint firstItem="tsb-I8-VuI" firstAttribute="width" secondItem="9Kg-no-Pna" secondAttribute="width" id="Gtz-7e-IuP"/>
-                            <constraint firstItem="9Kg-no-Pna" firstAttribute="top" secondItem="00P-TE-rZD" secondAttribute="bottom" constant="20" id="JCA-Uu-QWM"/>
                             <constraint firstItem="9Kg-no-Pna" firstAttribute="leading" secondItem="Pgb-iA-A40" secondAttribute="leadingMargin" id="LH2-ML-ahp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LCI-vQ-q9y" secondAttribute="trailing" id="T5A-gu-egP"/>
-                            <constraint firstItem="00P-TE-rZD" firstAttribute="top" secondItem="1CH-6z-wAs" secondAttribute="bottom" constant="20" id="TZ2-A1-Bk8"/>
                             <constraint firstItem="1CH-6z-wAs" firstAttribute="top" secondItem="K8S-gy-1sy" secondAttribute="bottom" constant="16" id="Uh2-wq-Lcs"/>
                             <constraint firstAttribute="trailing" secondItem="1CH-6z-wAs" secondAttribute="trailing" id="UtU-Qv-KS5"/>
                             <constraint firstItem="tsb-I8-VuI" firstAttribute="top" secondItem="9Kg-no-Pna" secondAttribute="top" id="Wg3-4j-NlX"/>
@@ -764,9 +760,6 @@ Cg
                             <constraint firstItem="LCI-vQ-q9y" firstAttribute="top" secondItem="9Kg-no-Pna" secondAttribute="top" id="aAS-tn-hC2"/>
                             <constraint firstItem="1CH-6z-wAs" firstAttribute="leading" secondItem="Pgb-iA-A40" secondAttribute="leading" id="gAE-j8-dYL"/>
                             <constraint firstItem="LCI-vQ-q9y" firstAttribute="bottom" secondItem="9Kg-no-Pna" secondAttribute="bottom" id="gHl-Qf-fW4"/>
-                            <constraint firstItem="00P-TE-rZD" firstAttribute="centerX" secondItem="Pgb-iA-A40" secondAttribute="centerX" id="kD6-Bs-60f"/>
-                            <constraint firstItem="00P-TE-rZD" firstAttribute="leading" secondItem="Pgb-iA-A40" secondAttribute="leading" id="lzD-Eg-kMq"/>
-                            <constraint firstAttribute="trailing" secondItem="00P-TE-rZD" secondAttribute="trailing" id="qqm-aV-9Kc"/>
                             <constraint firstItem="tsb-I8-VuI" firstAttribute="leading" secondItem="9Kg-no-Pna" secondAttribute="trailing" constant="16" id="xfQ-RX-15f"/>
                         </constraints>
                     </view>
@@ -774,7 +767,6 @@ Cg
                     <connections>
                         <outlet property="colorButton" destination="35U-qS-c6j" id="cV6-Ub-ugq"/>
                         <outlet property="eraerButton" destination="hvC-N3-mWQ" id="Yh0-AA-Onl"/>
-                        <outlet property="photoImage" destination="00P-TE-rZD" id="C8O-3i-BFb"/>
                         <outlet property="sendImageButton" destination="9Kg-no-Pna" id="ScW-jC-xkD"/>
                         <outlet property="toolbarView" destination="1CH-6z-wAs" id="Ny5-jz-8WG"/>
                         <outlet property="widthButton" destination="qJ3-Xe-g5W" id="GcJ-Zc-gut"/>
@@ -783,7 +775,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vmy-zT-n1D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2644" y="-257"/>
+            <point key="canvasLocation" x="3324" y="-270"/>
         </scene>
         <!--Album View Controller-->
         <scene sceneID="UPr-P2-0Iq">
@@ -856,7 +848,7 @@ Cg
                                             <rect key="frame" x="0.0" y="0.0" width="119" height="107"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PqQ-rg-0pl">
+                                                <imageView clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PqQ-rg-0pl">
                                                     <rect key="frame" x="0.0" y="0.0" width="119" height="107"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                 </imageView>
@@ -866,6 +858,9 @@ Cg
                                                         <constraint firstAttribute="width" secondItem="bN7-UD-Gd7" secondAttribute="height" multiplier="1:1" id="o02-re-JLG"/>
                                                     </constraints>
                                                     <state key="normal" image="cm_close_white"/>
+                                                    <connections>
+                                                        <action selector="deleteButtonDidTap:" destination="dzv-dd-9gi" eventType="touchUpInside" id="ZhC-YM-rcq"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4KX-61-vV0">
                                                     <rect key="frame" x="0.0" y="90" width="119" height="17"/>
@@ -920,7 +915,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCy-OO-47M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="853" y="526"/>
+            <point key="canvasLocation" x="1146" y="549"/>
         </scene>
         <!--View Photo View Controller-->
         <scene sceneID="LRR-jA-fVZ">
@@ -943,6 +938,9 @@ Cg
                                             <constraint firstAttribute="width" secondItem="4N8-Bt-FZQ" secondAttribute="height" multiplier="1:1" id="1q3-zF-Fl1"/>
                                         </constraints>
                                         <state key="normal" image="cm_arrow_back_white"/>
+                                        <connections>
+                                            <action selector="backButtonTouched:" destination="T2U-M1-S4O" eventType="touchUpInside" id="HrO-7S-ahH"/>
+                                        </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjc-Im-N1z">
                                         <rect key="frame" x="260" y="0.0" width="60" height="60"/>
@@ -980,6 +978,9 @@ Cg
                                     <segment title="地図"/>
                                 </segments>
                                 <color key="tintColor" red="0.11786433309316635" green="0.55681657791137695" blue="0.60249799489974976" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="segmentedControlChanged:" destination="T2U-M1-S4O" eventType="valueChanged" id="4gL-Gf-GdR"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWK-LA-v0G">
                                 <rect key="frame" x="260" y="508" width="44" height="44"/>
@@ -1001,39 +1002,51 @@ Cg
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="45T-sR-Srb">
+                                <rect key="frame" x="0.0" y="109" width="320" height="394"/>
+                            </imageView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vg5-hb-P6w">
-                                <rect key="frame" x="0.0" y="109" width="320" height="397"/>
+                                <rect key="frame" x="0.0" y="109" width="320" height="394"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2ic-Rs-MKo" firstAttribute="leading" secondItem="nJi-Ba-gYg" secondAttribute="leading" id="34p-pK-nxS"/>
                             <constraint firstItem="YqY-zo-UFc" firstAttribute="leading" secondItem="nJi-Ba-gYg" secondAttribute="leading" id="Clp-g5-HX9"/>
-                            <constraint firstItem="vg5-hb-P6w" firstAttribute="centerX" secondItem="nJi-Ba-gYg" secondAttribute="centerX" id="D1L-AW-csd"/>
-                            <constraint firstItem="zut-hV-AjT" firstAttribute="top" secondItem="vg5-hb-P6w" secondAttribute="bottom" constant="2" id="Mtv-2Y-KOj"/>
+                            <constraint firstItem="zut-hV-AjT" firstAttribute="top" secondItem="vg5-hb-P6w" secondAttribute="bottom" constant="5" id="GrW-eP-Syj"/>
+                            <constraint firstItem="vg5-hb-P6w" firstAttribute="top" secondItem="YqY-zo-UFc" secondAttribute="bottom" constant="5" id="I99-Rm-HE8"/>
+                            <constraint firstItem="vg5-hb-P6w" firstAttribute="leading" secondItem="nJi-Ba-gYg" secondAttribute="leading" id="O9S-io-Erm"/>
+                            <constraint firstAttribute="trailing" secondItem="vg5-hb-P6w" secondAttribute="trailing" id="URc-Wi-vnH"/>
+                            <constraint firstItem="vg5-hb-P6w" firstAttribute="centerX" secondItem="nJi-Ba-gYg" secondAttribute="centerX" id="YGL-80-MMc"/>
                             <constraint firstItem="2ic-Rs-MKo" firstAttribute="top" secondItem="nJi-Ba-gYg" secondAttribute="top" id="b41-hg-q4z"/>
                             <constraint firstItem="YqY-zo-UFc" firstAttribute="top" secondItem="2ic-Rs-MKo" secondAttribute="bottom" id="c0P-e1-YxZ"/>
+                            <constraint firstItem="45T-sR-Srb" firstAttribute="leading" secondItem="nJi-Ba-gYg" secondAttribute="leading" id="eeS-6K-Di2"/>
                             <constraint firstItem="GBg-bO-Z67" firstAttribute="top" secondItem="zut-hV-AjT" secondAttribute="bottom" constant="16" id="gdb-YL-2Pw"/>
                             <constraint firstItem="rWK-LA-v0G" firstAttribute="centerY" secondItem="zut-hV-AjT" secondAttribute="centerY" id="hjA-VI-6ek"/>
-                            <constraint firstItem="vg5-hb-P6w" firstAttribute="top" secondItem="YqY-zo-UFc" secondAttribute="bottom" constant="5" id="hrC-jI-ncO"/>
-                            <constraint firstAttribute="trailing" secondItem="vg5-hb-P6w" secondAttribute="trailing" id="iFq-5O-H9G"/>
                             <constraint firstAttribute="trailing" secondItem="2ic-Rs-MKo" secondAttribute="trailing" id="j7h-4y-P4d"/>
                             <constraint firstItem="rWK-LA-v0G" firstAttribute="trailing" secondItem="nJi-Ba-gYg" secondAttribute="trailingMargin" id="jHW-fi-hpH"/>
                             <constraint firstItem="zut-hV-AjT" firstAttribute="centerX" secondItem="nJi-Ba-gYg" secondAttribute="centerX" id="o2X-VQ-cJE"/>
-                            <constraint firstItem="vg5-hb-P6w" firstAttribute="leading" secondItem="nJi-Ba-gYg" secondAttribute="leading" id="ogj-KG-F49"/>
+                            <constraint firstItem="zut-hV-AjT" firstAttribute="top" secondItem="45T-sR-Srb" secondAttribute="bottom" constant="5" id="q8c-Cx-fQp"/>
                             <constraint firstItem="rWK-LA-v0G" firstAttribute="height" secondItem="zut-hV-AjT" secondAttribute="height" id="qBD-l9-W7s"/>
                             <constraint firstAttribute="trailing" secondItem="YqY-zo-UFc" secondAttribute="trailing" id="qPI-aa-d6n"/>
+                            <constraint firstAttribute="trailing" secondItem="45T-sR-Srb" secondAttribute="trailing" id="rHc-Xr-bQS"/>
+                            <constraint firstItem="45T-sR-Srb" firstAttribute="centerX" secondItem="nJi-Ba-gYg" secondAttribute="centerX" id="rbM-XB-fSk"/>
                             <constraint firstItem="rWK-LA-v0G" firstAttribute="leading" secondItem="zut-hV-AjT" secondAttribute="trailing" constant="16" id="sgQ-d5-TFP"/>
+                            <constraint firstItem="45T-sR-Srb" firstAttribute="top" secondItem="YqY-zo-UFc" secondAttribute="bottom" constant="5" id="urk-gM-87o"/>
                         </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="vg5-hb-P6w" id="jyD-N9-vcw"/>
+                        <outlet property="photoImage" destination="45T-sR-Srb" id="Xp6-AB-T8u"/>
+                        <outlet property="segmentedControl" destination="zut-hV-AjT" id="CMg-nA-oiR"/>
+                        <outlet property="timestampLabel" destination="YqY-zo-UFc" id="r21-Zb-Fvi"/>
+                        <segue destination="iFm-Yh-cyi" kind="show" identifier="unwinVideoChat" id="O7u-WU-c3R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y9p-nG-bHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1851" y="512"/>
+            <point key="canvasLocation" x="2141" y="548"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="ebA-L3-8xA">
@@ -1311,9 +1324,11 @@ Cg
         <image name="voice_on" width="105" height="105"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="erh-UN-a4U"/>
         <segue reference="MgS-9T-Z1w"/>
         <segue reference="D5g-Vq-3h1"/>
         <segue reference="Plp-py-FNY"/>
+        <segue reference="O7u-WU-c3R"/>
         <segue reference="mxO-FM-z9u"/>
     </inferredMetricsTieBreakers>
 </document>

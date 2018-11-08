@@ -67,6 +67,8 @@
 		B33B98152189B45500D8AB12 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B98142189B45500D8AB12 /* Socket.swift */; };
 		B33B9836218AB84900D8AB12 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B9835218AB84900D8AB12 /* PhotoCell.swift */; };
 		B33C69322189984B0077469C /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C69312189984A0077469C /* EditViewController.swift */; };
+		B37BE7BB21901E25007E20E3 /* ExtensionUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37BE7BA21901E25007E20E3 /* ExtensionUIImageView.swift */; };
+		B37BE7C12192C208007E20E3 /* CacheImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37BE7C02192C208007E20E3 /* CacheImage.swift */; };
 		B3ABEF86217495B30072E9F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF85217495B30072E9F5 /* AppDelegate.swift */; };
 		B3ABEF8E217495B30072E9F5 /* Ai_Tec.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF8C217495B30072E9F5 /* Ai_Tec.xcdatamodeld */; };
 		B3ABEF9E217495B40072E9F5 /* Ai_TecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF9D217495B40072E9F5 /* Ai_TecTests.swift */; };
@@ -95,8 +97,7 @@
 /* Begin PBXFileReference section */
 		0872EDCF48AFD29DB3BF317A /* Pods-Ai-TecUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-TecUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-TecUITests/Pods-Ai-TecUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1381B2CD5D2E6702DEC42770 /* Pods_Ai_Tec.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_Tec.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		180A09B6217D7022005B6F35 /* Etension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Etension.swift; path = "Ai-TEC/Model/Etension.swift"; sourceTree = SOURCE_ROOT; };
-		18131DD42181FC4A00FE9B0E /* Ai-Tec-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ai-Tec-Bridging-Header.h"; sourceTree = "<group>"; };
+		180A09B6217D7022005B6F35 /* Etension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Etension.swift; path = "Ai-Tec/Utilies + Extension/Etension.swift"; sourceTree = SOURCE_ROOT; };
 		18131DD52181FC4B00FE9B0E /* ARDStatsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDStatsView.h; sourceTree = "<group>"; };
 		18131DD62181FC4C00FE9B0E /* ARDTURNClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDTURNClient.m; sourceTree = "<group>"; };
 		18131DD72181FC4C00FE9B0E /* ARDSettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDSettingsModel.m; sourceTree = "<group>"; };
@@ -165,7 +166,7 @@
 		1873FA0721757A9D00ED8988 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SplashViewController.swift; path = "Ai-Tec/Controller/SplashViewController.swift"; sourceTree = SOURCE_ROOT; };
 		1873FA10217580CF00ED8988 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "Ai-TEC/Controller/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
 		18AA0C682181A32C00038963 /* ResolutionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResolutionCell.swift; path = "Ai-TEC/View/ResolutionCell.swift"; sourceTree = SOURCE_ROOT; };
-		18AA0C6A2181A5D800038963 /* Ex-CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex-CollectionView.swift"; path = "Ai-TEC/Model/Ex-CollectionView.swift"; sourceTree = SOURCE_ROOT; };
+		18AA0C6A2181A5D800038963 /* Ex-CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex-CollectionView.swift"; path = "Ai-Tec/Utilies + Extension/Ex-CollectionView.swift"; sourceTree = SOURCE_ROOT; };
 		18F0C90221758BA600E0DEBD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		18F0C90621759D7C00E0DEBD /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		18FA43E92176E30800A0EB8B /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactViewController.swift; path = "Ai-TEC/Controller/ContactViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -193,6 +194,9 @@
 		B33B98142189B45500D8AB12 /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
 		B33B9835218AB84900D8AB12 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoCell.swift; path = "Ai-TEC/View/PhotoCell.swift"; sourceTree = SOURCE_ROOT; };
 		B33C69312189984A0077469C /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		B37BE7BA21901E25007E20E3 /* ExtensionUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExtensionUIImageView.swift; path = "Ai-TEC/Utilies + Extension/ExtensionUIImageView.swift"; sourceTree = SOURCE_ROOT; };
+		B37BE7BE2191908A007E20E3 /* Ai-Tec-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Ai-Tec-Bridging-Header.h"; path = "Ai-TEC/Library/Ai-Tec-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		B37BE7C02192C208007E20E3 /* CacheImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CacheImage.swift; path = "Ai-TEC/Model/CacheImage.swift"; sourceTree = SOURCE_ROOT; };
 		B3ABEF82217495B30072E9F5 /* Ai-Tec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ai-Tec.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3ABEF85217495B30072E9F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3ABEF8D217495B30072E9F5 /* Ai_Tec.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ai_Tec.xcdatamodel; sourceTree = "<group>"; };
@@ -266,8 +270,8 @@
 			isa = PBXGroup;
 			children = (
 				B3DF816121749E5900AC7934 /* LaunchScreen.xib */,
-				B33B980221899A2000D8AB12 /* BrushCell.swift */,
 				B33B980021899A1B00D8AB12 /* BrushCell.xib */,
+				B33B980221899A2000D8AB12 /* BrushCell.swift */,
 				18FA43EF21771A7000A0EB8B /* ContactTableViewCell.swift */,
 				18AA0C682181A32C00038963 /* ResolutionCell.swift */,
 				B33B9835218AB84900D8AB12 /* PhotoCell.swift */,
@@ -278,22 +282,14 @@
 		1873FA0F21757F8F00ED8988 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B37BE7BF2192C043007E20E3 /* NXDrawKit */,
 				B33B980E2189AECD00D8AB12 /* MessageSocket.swift */,
 				18F0C90221758BA600E0DEBD /* User.swift */,
 				18F0C90621759D7C00E0DEBD /* Config.swift */,
 				18FA43ED2176F75A00A0EB8B /* SocketGlobal.swift */,
-				180A09B6217D7022005B6F35 /* Etension.swift */,
-				18AA0C6A2181A5D800038963 /* Ex-CollectionView.swift */,
 				B33B97F6218999DE00D8AB12 /* Drawing.swift */,
-				B33B97FA218999EC00D8AB12 /* Palette.swift */,
-				B33B97FC218999F400D8AB12 /* CircleButton.swift */,
-				B33B97F8218999E700D8AB12 /* Session.swift */,
-				B33B97FE218999F800D8AB12 /* Canvas.swift */,
-				B33B980421899A4600D8AB12 /* UIImageExtractExtension.swift */,
-				B33B980821899A5600D8AB12 /* UIViewFrameExtension.swift */,
-				B33B980A21899A5D00D8AB12 /* ToolBar.swift */,
-				B33B980621899A4A00D8AB12 /* Brush.swift */,
 				B33B98142189B45500D8AB12 /* Socket.swift */,
+				B37BE7C02192C208007E20E3 /* CacheImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -363,7 +359,7 @@
 				18131E0A2181FC5400FE9B0E /* RTCSessionDescription+JSON.m */,
 				18131DF32181FC5000FE9B0E /* UIImage+ARDUtilities.h */,
 				18131DE42181FC4E00FE9B0E /* UIImage+ARDUtilities.m */,
-				18131DD42181FC4A00FE9B0E /* Ai-Tec-Bridging-Header.h */,
+				B37BE7BE2191908A007E20E3 /* Ai-Tec-Bridging-Header.h */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -379,6 +375,31 @@
 				0872EDCF48AFD29DB3BF317A /* Pods-Ai-TecUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B37BE7B921901DF3007E20E3 /* Utilies + Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B37BE7BA21901E25007E20E3 /* ExtensionUIImageView.swift */,
+				B33B980421899A4600D8AB12 /* UIImageExtractExtension.swift */,
+				B33B980821899A5600D8AB12 /* UIViewFrameExtension.swift */,
+				180A09B6217D7022005B6F35 /* Etension.swift */,
+				18AA0C6A2181A5D800038963 /* Ex-CollectionView.swift */,
+			);
+			path = "Utilies + Extension";
+			sourceTree = "<group>";
+		};
+		B37BE7BF2192C043007E20E3 /* NXDrawKit */ = {
+			isa = PBXGroup;
+			children = (
+				B33B980A21899A5D00D8AB12 /* ToolBar.swift */,
+				B33B980621899A4A00D8AB12 /* Brush.swift */,
+				B33B97FA218999EC00D8AB12 /* Palette.swift */,
+				B33B97FC218999F400D8AB12 /* CircleButton.swift */,
+				B33B97FE218999F800D8AB12 /* Canvas.swift */,
+				B33B97F8218999E700D8AB12 /* Session.swift */,
+			);
+			path = NXDrawKit;
 			sourceTree = "<group>";
 		};
 		B3ABEF79217495B20072E9F5 = {
@@ -411,6 +432,7 @@
 				1873FA0F21757F8F00ED8988 /* Model */,
 				1873FA0A21757F4500ED8988 /* View */,
 				1873FA0921757F3200ED8988 /* Controller */,
+				B37BE7B921901DF3007E20E3 /* Utilies + Extension */,
 				B3DF815F21749E4C00AC7934 /* Main.storyboard */,
 				B3ABEF94217495B40072E9F5 /* Info.plist */,
 				B3ABEF8C217495B30072E9F5 /* Ai_Tec.xcdatamodeld */,
@@ -730,6 +752,7 @@
 				B33B97FB218999EC00D8AB12 /* Palette.swift in Sources */,
 				18131E1B2181FC5500FE9B0E /* ARDVideoCallView.m in Sources */,
 				18131E142181FC5500FE9B0E /* ARDSettingsModel.m in Sources */,
+				B37BE7BB21901E25007E20E3 /* ExtensionUIImageView.swift in Sources */,
 				18131E232181FC5500FE9B0E /* ARDAppDelegate.m in Sources */,
 				18131E2D2181FC5500FE9B0E /* ARDMessageResponse.m in Sources */,
 				B33B98112189B25100D8AB12 /* AlbumViewController.swift in Sources */,
@@ -759,6 +782,7 @@
 				18FA43F021771A7000A0EB8B /* ContactTableViewCell.swift in Sources */,
 				18131E132181FC5500FE9B0E /* ARDTURNClient.m in Sources */,
 				B33B980721899A4A00D8AB12 /* Brush.swift in Sources */,
+				B37BE7C12192C208007E20E3 /* CacheImage.swift in Sources */,
 				B33B9836218AB84900D8AB12 /* PhotoCell.swift in Sources */,
 				18131E292181FC5500FE9B0E /* RTCICECandidate+JSON.m in Sources */,
 				18F0C90721759D7C00E0DEBD /* Config.swift in Sources */,

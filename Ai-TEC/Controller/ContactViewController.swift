@@ -8,7 +8,7 @@
 
 import UIKit
 import Starscream
-import GoogleMaps
+
 
 class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDelegate , UITableViewDataSource{
     
@@ -28,8 +28,7 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
     var checkButton = true
     var index : Int?
     
-    var currentLocation: CLLocation?
-    var locationManager: CLLocationManager = CLLocationManager()
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,10 +46,6 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
         //login to socket
         SocketGlobal.shared.socket?.write(string: convertString(from: dict))
         
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.stopUpdatingLocation()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -185,8 +180,3 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
     
 }
 
-extension ContactViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        currentLocation = manager.location
-    }
-}

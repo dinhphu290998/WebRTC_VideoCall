@@ -12,6 +12,7 @@ import Starscream
 import AVFoundation
 import AudioToolbox
 
+
 class RTCVideoChatViewController: UIViewController {
     
     @IBOutlet weak var remoteView: RTCEAGLVideoView!
@@ -25,6 +26,7 @@ class RTCVideoChatViewController: UIViewController {
     @IBOutlet weak var statusRemoteView: UIView!
     @IBOutlet weak var resolutionCollectionView: UICollectionView!
     
+    var client: ARDAppClient?
     var nameRemote = ""
     var roomName: NSString?
     var localVideoTrack: RTCVideoTrack?
@@ -36,8 +38,9 @@ class RTCVideoChatViewController: UIViewController {
     let heightCollectionCell = CGFloat((128 - 16)/3)
     let resolutions = ["320 x 240", "640 x 480", "1280 x 720", "1920 x 1080", "2560 x 1440", "3840 x 2160"]
     
-    var captureSession: AVCaptureSession?
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
+    var captureSession: AVCaptureSession?
+    let stillImageOutput = AVCaptureStillImageOutput()
     var device: AVCaptureDevice?
     var input: AVCaptureDeviceInput?
     var output: AVCaptureMetadataOutput?
@@ -46,12 +49,44 @@ class RTCVideoChatViewController: UIViewController {
     let cameraOutPut = AVCapturePhotoOutput()
     var takePhoto = false
     
+    var captureController: ARDCaptureController = ARDCaptureController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.audioButton?.layer.cornerRadius = 22.0
-        self.videoButton?.layer.cornerRadius = 22.0
+      self.isZoom = false
+      self.audioButton?.layer.cornerRadius = 22.0
+      self.videoButton?.layer.cornerRadius = 22.0
+      resolutionCollectionView.allowsMultipleSelection = false
+      SocketGlobal.shared.socket?.delegate = self
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         
+        remoteView.delegate = self
+        localView.delegate = self
+        nameRemoteLabel.text = nameRemote
+        
+        if client == nil {
+            client = ARDAppClient(delegate: self)
+        }
+        
+        let settingsModel = ARDSettingsModel()
+        if client?.state == ARDAppClientState.disconnected {
+            roomName = SocketGlobal.shared.room as NSString?
+            client?.connectToRoom(withId: roomName as String?, settings: settingsModel, isLoopback: false, isAudioOnly: false, shouldMakeAecDump: false, shouldUseLevelControl: false)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        remoteView.delegate = nil
+        localView.delegate = nil
+    }
+    
+    override func viewDidLayoutSubviews() {
         statusRemoteView.layer.cornerRadius = statusRemoteView.frame.width/2
         statusRemoteView.backgroundColor = UIColor.green
         
@@ -59,35 +94,43 @@ class RTCVideoChatViewController: UIViewController {
         avatarRemoteImageView.layer.borderColor = UIColor.white.cgColor
         avatarRemoteImageView.layer.borderWidth = 2
         avatarRemoteImageView.layer.cornerRadius = avatarRemoteImageView.frame.width/2
-        avatarRemoteImageView.image = UIImage(named: "bg_search")
         
-        
-        remoteView?.delegate = self
-        localView?.delegate = self
-        
-        nameRemoteLabel.text = nameRemote
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        
-        createSession()
-
+        avatarRemoteImageView.image = #imageLiteral(resourceName: "ic_launcher")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        cameraPreviewLayer?.frame = localView.bounds
+    override var shouldAutorotate: Bool {
+        return true
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.allButUpsideDown
+    }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        self.disconnect()
+    }
+    
+    func orientationChanged(_ notification: Notification) {
+        if let localVideoSize = self.localVideoSize {
+            self.videoView(self.localView!, didChangeVideoSize: localVideoSize)
+        }
+        if let remoteVideoSize = self.remoteVideoSize {
+            self.videoView(self.remoteView!, didChangeVideoSize: remoteVideoSize)
+        }
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
 
     @IBAction func audioButtonPressed (_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
+        self.client?.toggleAudioMute()
         
     }
     @IBAction func videoButtonPressed(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        
+        self.client?.toggleVideoMute()
     }
     
     @IBAction func hangupButtonPressed(_ sender: UIButton) {
@@ -101,46 +144,51 @@ class RTCVideoChatViewController: UIViewController {
     
     @available(iOS 11.1, *)
     @IBAction func switchCameraButtonTouched(_ sender: UIButton) {
-        let currentCameraInput: AVCaptureInput = captureSession!.inputs[0]
-        captureSession?.removeInput(currentCameraInput)
-        var newCamera: AVCaptureDevice?
-        newCamera = AVCaptureDevice.default(for: AVMediaType.video)
-        if (currentCameraInput as? AVCaptureDeviceInput)?.device.position == .back {
-            newCamera = self.cameraWithPosition(position: .front)!
-        } else {
-            newCamera = self.cameraWithPosition(position: .back)!
-        }
-        do {
-            try self.captureSession?.addInput(AVCaptureDeviceInput(device: newCamera!))
-        }
-        catch {
-            print("error: \(error.localizedDescription)")
-        }
-    }
-    @IBAction func captureButtonTouched(_ sender: UIButton) {
-        takePhoto = true
+        captureController.switchCamera()
     }
     
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        if takePhoto {
-            takePhoto = false
-            
-            if let image = self.getImageFromSamplebuffer(buffer: sampleBuffer) {
-                let photoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditViewcontroller") as! EditViewController
-                let date = Date()
-                photoVC.screenShotImage = image
-                photoVC.nameRemote = nameRemote
-                photoVC.timestampCapture = date
-                print(date)
-                DispatchQueue.main.async {
-                    self.present(photoVC, animated: true, completion:  {
-                        self.stopCaptureSeeion()
-                    })
-                }
+    @objc func zoomRemote() {
+        //Toggle Aspect Fill or Fit
+        self.isZoom = !self.isZoom
+        self.videoView(self.remoteView!, didChangeVideoSize: self.remoteVideoSize!)
+    }
+    
+    @objc func updateUIForRotation() {
+        let statusBarOrientation: UIInterfaceOrientation = UIApplication.shared.statusBarOrientation
+        let deviceOrientation: UIDeviceOrientation  = UIDevice.current.orientation
+        if statusBarOrientation.rawValue == deviceOrientation.rawValue {
+            if let  localVideoSize = self.localVideoSize {
+                self.videoView(self.localView!, didChangeVideoSize: localVideoSize)
             }
+            if let remoteVideoSize = self.remoteVideoSize {
+                self.videoView(self.remoteView!, didChangeVideoSize: remoteVideoSize)
+            }
+        } else {
+            print("Unknown orientation Skipped rotation")
         }
     }
+    
+    @IBAction func captureButtonTouched(_ sender: UIButton) {
+        if let videoConnection = stillImageOutput.connection(with: AVMediaType.video) {
+            stillImageOutput.captureStillImageAsynchronously(from: videoConnection,
+                                                             completionHandler: { (imageDataSampleBuffer, _) in
+                                                                if let buffer = imageDataSampleBuffer,
+                                                                    let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer) {
+                                                                    self.screenShotImage = UIImage(data: imageData)
+                                                                    self.performSegue(withIdentifier: "showEditSegueId", sender: self)
+                                                                }
+            })
+        }
+    }
+  
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return true
+    }
 
+
+    @IBAction func backButtonTouched(_ sender: UIButton) {
+       self.performSegue(withIdentifier: "unwindToContactSegue", sender: self)
+    }
     
     
     // convert string to dictionary
@@ -156,7 +204,114 @@ class RTCVideoChatViewController: UIViewController {
         return jsonString
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showEditSegueId" {
+            if let editVc = segue.destination as? EditViewController {
+                let date = Date()
+                editVc.screenShotImage = screenShotImage?.addTimestamp(date)
+                editVc.nameRemote = nameRemote
+            }
+        }
+    }
     
+}
+
+
+extension RTCVideoChatViewController: ARDAppClientDelegate {
+    func appClient(_ client: ARDAppClient!, didChange state: ARDAppClientState) {
+        switch state {
+        case .connected:
+            print("Client connected.")
+        case .connecting:
+            print("Client connecting.")
+        case .disconnected:
+            print("Client disconnected.")
+            self.remoteDisconnected()
+        }
+    }
+    
+    func appClient(_ client: ARDAppClient!, didChange state: RTCIceConnectionState) {
+    }
+    
+    func appClient(_ client: ARDAppClient!, didCreateLocalCapturer localCapturer: RTCCameraVideoCapturer!) {
+        let settingsModel = ARDSettingsModel()
+        captureController = ARDCaptureController(capturer: localCapturer, settings: settingsModel)
+        captureController.startCapture()
+        if #available(iOS 11.0, *) {
+            stillImageOutput.outputSettings = [AVVideoCodecKey: AVVideoCodecType.jpeg]
+        } else {
+            // Fallback on earlier versions
+        }
+        if localCapturer.captureSession.canAddOutput(stillImageOutput) {
+            localCapturer.captureSession.addOutput(stillImageOutput)
+        }
+    }
+    
+    func appClient(_ client: ARDAppClient!, didReceiveLocalVideoTrack localVideoTrack: RTCVideoTrack!) {
+        self.localVideoTrack?.remove(self.localView!)
+        self.localView.renderFrame(nil)
+        self.localVideoTrack = localVideoTrack
+        self.localVideoTrack?.add(self.localView!)
+    }
+    
+    func appClient(_ client: ARDAppClient!, didReceiveRemoteVideoTrack remoteVideoTrack: RTCVideoTrack!) {
+        self.remoteVideoTrack = remoteVideoTrack
+        self.remoteVideoTrack?.add(self.remoteView!)
+    }
+    
+    func appClient(_ client: ARDAppClient!, didError error: Error!) {
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+        self.disconnect()
+    }
+    func appclient(_ client: ARDAppClient!, didRotateWithLocal localVideoTrack: RTCVideoTrack!,
+                   remoteVideoTrack: RTCVideoTrack!) {
+        NSObject.cancelPreviousPerformRequests(withTarget: self,
+                                               selector: #selector(RTCVideoChatViewController.updateUIForRotation),
+                                               object: nil)
+        // Hack for rotation to get the right video size
+        self.perform(#selector(RTCVideoChatViewController.updateUIForRotation), with: nil, afterDelay: 0.2)
+    }
+    
+    
+    func appClient(_ client: ARDAppClient!, didGetStats stats: [Any]!) {
+    }
+    func disconnect() {
+        if let client = self.client {
+            self.localVideoTrack?.remove(self.localView!)
+            self.remoteVideoTrack?.remove(self.remoteView!)
+            self.localView?.renderFrame(nil)
+            self.remoteView?.renderFrame(nil)
+            self.localVideoTrack=nil
+            self.remoteVideoTrack=nil
+            client.disconnect()
+        }
+    }
+    
+    func pause() {
+        if self.client != nil {
+            self.localVideoTrack?.remove(self.localView!)
+            self.remoteVideoTrack?.remove(self.remoteView!)
+            self.localView?.renderFrame(nil)
+            self.remoteView?.renderFrame(nil)
+            self.localVideoTrack=nil
+            self.remoteVideoTrack=nil
+        }
+    }
+    
+
+    func remoteDisconnected() {
+        self.remoteVideoTrack?.remove(self.remoteView!)
+        self.remoteView?.renderFrame(nil)
+        if self.localVideoSize != nil {
+            self.videoView(self.localView!, didChangeVideoSize: self.localVideoSize!)
+        }
+        performSegue(withIdentifier: "unwindToContactSegue", sender: self)
+    }
+    
+ 
 }
 
 
@@ -180,106 +335,68 @@ extension RTCVideoChatViewController: UICollectionViewDataSource ,UICollectionVi
     
 }
 
+
+
 extension RTCVideoChatViewController: RTCEAGLVideoViewDelegate{
     func videoView(_ videoView: RTCEAGLVideoView, didChangeVideoSize size: CGSize) {
         print("")
     }
 }
 
-extension RTCVideoChatViewController: AVCaptureVideoDataOutputSampleBufferDelegate{
-    func createSession() {
-        captureSession = AVCaptureSession()
-        device = AVCaptureDevice.default(for: AVMediaType.video)
-        do{
-            input = try AVCaptureDeviceInput(device: device!)
-        }
-        catch{
-            print(error)
-        }
-        if let input = input{
-            captureSession?.addInput(input)
-        }
-        cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
-        cameraPreviewLayer?.frame.size = localView.frame.size
-        cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        
-        cameraPreviewLayer?.connection?.videoOrientation = transformOrientation(orientation: UIInterfaceOrientation(rawValue: UIApplication.shared.statusBarOrientation.rawValue)!)
-        
-        localView.layer.addSublayer(cameraPreviewLayer!)
-        
-        
-        // chạy vào hàm capture để chụp ảnh
-        let dataOutput = AVCaptureVideoDataOutput()
-        dataOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(value: kCVPixelFormatType_32BGRA)] as [String : Any]
-        dataOutput.alwaysDiscardsLateVideoFrames = true
-        
-        if (captureSession?.canAddOutput(dataOutput))! {
-            captureSession?.addOutput(dataOutput)
-        }
-        
-        captureSession?.commitConfiguration()
-        
-        let queue = DispatchQueue(label: "com,brianadvent.captureQueue")
-        dataOutput.setSampleBufferDelegate(self, queue: queue)
-        captureSession?.startRunning()
+
+
+extension RTCVideoChatViewController: WebSocketDelegate {
+    func websocketDidConnect(socket: WebSocket) {
+        print("---Message RTCVideoChatViewController----")
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        coordinator.animate(alongsideTransition: { (context) -> Void in
-            self.cameraPreviewLayer?.connection?.videoOrientation = self.transformOrientation(orientation: UIInterfaceOrientation(rawValue: UIApplication.shared.statusBarOrientation.rawValue)!)
-            self.cameraPreviewLayer?.frame = self.localView.bounds
-        }, completion: { (context) -> Void in
-            
-        })
-        super.viewWillTransition(to: size, with: coordinator)
+    func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
+        print(error ?? "")
     }
     
-    func transformOrientation(orientation: UIInterfaceOrientation) -> AVCaptureVideoOrientation {
-        switch orientation {
-        case .landscapeLeft:
-            return .landscapeLeft
-        case .landscapeRight:
-            return .landscapeRight
-        case .portraitUpsideDown:
-            return .portraitUpsideDown
-        default:
-            return .portrait
-        }
-    }
+    func websocketDidReceiveMessage(socket: WebSocket, text: String) {
+        if let messageString: String = text {
+            print(messageString)
+            let userData = UserDefaults(suiteName: UserDefaults.standard.string(forKey: "yourname"))
+            let message: MessageSocket = MessageSocket(message: messageString)
+            if message.type == functionSendImageUrl {
+                var photosSender = userData?.stringArray(forKey: nameRemote)
+                if photosSender == nil {
+                    photosSender = []
+                }
+                if message.url != nil {
+                    let url = "\(urlHostHttp)data/file.jpg"
+                    photosSender?.append(url)
+                    userData?.set(photosSender, forKey: nameRemote)
+                }
+                
+                let alert = UIAlertController(title: "お知らせ",
+                                              message: "画像を受信しました。確認しますか？\n後でギャラリーにて確認する事も出来ます。",
+                                              preferredStyle: .alert)
+                let openAction = UIAlertAction(title: "開く", style: .default, handler: { (_) in
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    if let vc = storyboard.instantiateViewController(withIdentifier: "AlbumViewControllerId")
+                        as? AlbumViewController {
+                        vc.nameRemote = self.nameRemote
     
-    // đổi camera
-    @available(iOS 11.1, *)
-    func cameraWithPosition(position: AVCaptureDevice.Position) -> AVCaptureDevice? {
-        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera, .builtInTelephotoCamera, .builtInTrueDepthCamera, .builtInWideAngleCamera, ], mediaType: .video, position: position)
-        
-        if let device = deviceDiscoverySession.devices.first {
-            return device
-        }
-        return nil
-    }
-    
-    func getImageFromSamplebuffer(buffer: CMSampleBuffer) -> UIImage? {
-        if let pixelBuffer = CMSampleBufferGetImageBuffer(buffer) {
-            let ciImage = CIImage(cvImageBuffer: pixelBuffer)
-            let context = CIContext()
-            
-            let imageRect = CGRect(x: 0, y: 0, width: CVPixelBufferGetWidth(pixelBuffer), height: CVPixelBufferGetHeight(pixelBuffer))
-            
-            if let image = context.createCGImage(ciImage, from: imageRect) {
-                return UIImage(cgImage: image, scale: UIScreen.main.scale, orientation: .right)
+                        self.present(vc, animated: true, completion: nil)
+                    }
+                })
+                
+                let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+                alert.addAction(openAction)
+                alert.addAction(cancelAction)
+                
+                present(alert, animated: true, completion: nil)
             }
         }
-        return nil
     }
     
-    func stopCaptureSeeion() {
-        self.captureSession?.stopRunning()
-        
-        if let inputs = captureSession?.inputs as? [AVCaptureDeviceInput] {
-            for input in inputs {
-                self.captureSession?.removeInput(input)
-            }
-        }
-        
+    func websocketDidReceiveData(socket: WebSocket, data: Data) {
+        print(data)
     }
+    
+    
 }
+
+

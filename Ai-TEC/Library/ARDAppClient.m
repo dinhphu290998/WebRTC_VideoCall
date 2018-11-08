@@ -33,7 +33,7 @@
 #import "ARDTURNClient+Internal.h"
 #import "ARDUtilities.h"
 #import "ARDWebSocketChannel.h"
-#import "RTCIceCandidate+JSON.h"
+#import "RTCICECandidate+JSON.h"
 #import "RTCSessionDescription+JSON.h"
 
 static NSString * const kARDIceServerRequestUrl = @"https://appr.tc/params";
@@ -390,7 +390,7 @@ static int const kKbpsMultiplier = 1000;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [weakSelf configureAVAudioSession];
             });
-            [_delegate appClient:self didReceiveRemoteVideoTrack:videoTrack];
+            [self->_delegate appClient:self didReceiveRemoteVideoTrack:videoTrack];
         }
     });
 }
@@ -408,7 +408,7 @@ static int const kKbpsMultiplier = 1000;
     didChangeIceConnectionState:(RTCIceConnectionState)newState {
   RTCLog(@"ICE state changed: %ld", (long)newState);
   dispatch_async(dispatch_get_main_queue(), ^{
-    [_delegate appClient:self didChangeConnectionState:newState];
+      [self->_delegate appClient:self didChangeConnectionState:newState];
   });
 }
 
@@ -458,15 +458,15 @@ static int const kKbpsMultiplier = 1000;
           [[NSError alloc] initWithDomain:kARDAppClientErrorDomain
                                      code:kARDAppClientErrorCreateSDP
                                  userInfo:userInfo];
-      [_delegate appClient:self didError:sdpError];
+        [self->_delegate appClient:self didError:sdpError];
       return;
     }
     // Prefer codec from settings if available.
     RTCSessionDescription *sdpPreferringCodec =
         [ARDSDPUtils descriptionForDescription:sdp
-                           preferredVideoCodec:[_settings currentVideoCodecSettingFromStore]];
+                           preferredVideoCodec:[self->_settings currentVideoCodecSettingFromStore]];
     __weak ARDAppClient *weakSelf = self;
-    [_peerConnection setLocalDescription:sdpPreferringCodec
+      [self->_peerConnection setLocalDescription:sdpPreferringCodec
                        completionHandler:^(NSError *error) {
       ARDAppClient *strongSelf = weakSelf;
       [strongSelf peerConnection:strongSelf.peerConnection
@@ -493,15 +493,15 @@ static int const kKbpsMultiplier = 1000;
           [[NSError alloc] initWithDomain:kARDAppClientErrorDomain
                                      code:kARDAppClientErrorSetSDP
                                  userInfo:userInfo];
-      [_delegate appClient:self didError:sdpError];
+        [self->_delegate appClient:self didError:sdpError];
       return;
     }
     // If we're answering and we've just set the remote offer we need to create
     // an answer and set the local description.
-    if (!_isInitiator && !_peerConnection.localDescription) {
+      if (!self->_isInitiator && !self->_peerConnection.localDescription) {
       RTCMediaConstraints *constraints = [self defaultAnswerConstraints];
       __weak ARDAppClient *weakSelf = self;
-      [_peerConnection answerForConstraints:constraints
+          [self->_peerConnection answerForConstraints:constraints
                           completionHandler:^(RTCSessionDescription *sdp,
                                               NSError *error) {
         ARDAppClient *strongSelf = weakSelf;

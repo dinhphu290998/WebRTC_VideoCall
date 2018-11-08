@@ -152,7 +152,7 @@ didReceiveRemoteVideoTrack:(RTCVideoTrack *)remoteVideoTrack {
                                      
                                      
                                      if ([session overrideOutputAudioPort:override error:&error]) {
-                                         _portOverride = override;
+                                         self->_portOverride = override;
                                      } else {
                                          RTCLogError(@"Error overriding output port: %@",
                                                      error.localizedDescription);

@@ -102,6 +102,7 @@ class RingingViewController: UIViewController ,WebSocketDelegate{
                 }
                 if "\(dictionary["result"] ?? "")" == "success"{
                     self.performSegue(withIdentifier: "showVideoChatSegueId", sender: self)
+                    SocketGlobal.shared.room = dictionary["room"] as? String
                 }
                 
             }
@@ -124,7 +125,9 @@ class RingingViewController: UIViewController ,WebSocketDelegate{
     }
     
     @IBAction func answerBt(_ sender: UIButton) {
-        let dictSuccess = ["type":"answer","result":"success" ,"room":"\(Date().ticks)","host":nameUserCall]
+        let roomId = Date().ticks
+        SocketGlobal.shared.room = roomId
+        let dictSuccess = ["type":"answer","result":"success" ,"room":"\(roomId)","host":nameUserCall]
         SocketGlobal.shared.socket?.write(string: convertString(from: dictSuccess))
         self.performSegue(withIdentifier: "showVideoChatSegueId", sender: self)
 

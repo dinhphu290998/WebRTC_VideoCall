@@ -62,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * If the provided video codec is not part of the available video codecs
  * the store operation will not be executed and NO will be returned.
- * @param video codec settings the string to be stored.
+ * @param videoCodec codec settings the string to be stored.
  * @return YES/NO depending on success.
  */
 - (BOOL)storeVideoCodecSetting:(NSString *)videoCodec;

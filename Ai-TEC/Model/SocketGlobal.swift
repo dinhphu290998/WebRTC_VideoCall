@@ -14,4 +14,5 @@ class SocketGlobal {
     static let shared: SocketGlobal = SocketGlobal()
     var socket : WebSocket?
     var contacts : [User] = []
+    var room: String?
 }

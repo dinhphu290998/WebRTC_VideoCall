@@ -8,18 +8,22 @@
 
 import UIKit
 import Material
+import Starscream
 class AlbumViewController: UIViewController {
+    
     var nameRemote = ""
     var photos: [String]?
     let widthCell = Device.model.rawValue > DeviceModel.iPad2.rawValue ? Screen.width/4 - 8 : Screen.width/2 - 8
-     let userData = UserDefaults(suiteName: UserDefaults.standard.string(forKey: "yourname"))
+    let userData = UserDefaults(suiteName: UserDefaults.standard.string(forKey: "yourname"))
     @IBOutlet weak var albumCollectionView: UICollectionView!
+    
+    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+        SocketGlobal.shared.socket?.delegate = self
 
-        // Do any additional setup after loading the view.
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -29,30 +33,31 @@ class AlbumViewController: UIViewController {
             })
             self.albumCollectionView.reloadData()
         }
-        
     }
 
     @IBAction func backButtonTouched(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
+ 
 
 }
 
 extension AlbumViewController: UICollectionViewDataSource  {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let photos = photos {
-            return photos.count
-        }
-        return 0
+        return (photos?.count)!
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCellId", for: indexPath) as? PhotoCell {
-            if let photos = photos,
-                let url = URL(string: photos[indexPath.item]) {
+            if let url = URL(string: photos![indexPath.row]) {
                 cell.setPhoto(url: url)
+                cell.index = indexPath
+                cell.delegate = self
             }
             return cell
         }
@@ -65,9 +70,10 @@ extension AlbumViewController: UICollectionViewDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "ViewPhotoViewControllerId") as? ViewPhotoViewController,
             let photos = photos,
-            let url = URL(string: photos[indexPath.item])
+            let url = URL(string: photos[indexPath.row])
             {
                 vc.photoUrl = url
+                vc.nameRemote = nameRemote
                 present(vc, animated: true, completion: nil)
         }
     }
@@ -93,4 +99,66 @@ extension AlbumViewController: UICollectionViewDelegateFlowLayout {
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
     }
+}
+
+extension AlbumViewController: WebSocketDelegate {
+    func websocketDidConnect(socket: WebSocket) {
+       print("")
+    }
+    
+    func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
+        print(error ?? "")
+    }
+    
+    func websocketDidReceiveMessage(socket: WebSocket, text: String) {
+        if let messageString: String = text {
+            print(messageString)
+            let userData = UserDefaults(suiteName: UserDefaults.standard.string(forKey: "yourname"))
+            let message: MessageSocket = MessageSocket(message: messageString)
+            if message.type == functionSendImageUrl {
+                var photosSender = userData?.stringArray(forKey: nameRemote)
+                if photosSender == nil {
+                    photosSender = []
+                }
+                if message.url != nil {
+                    let url = "\(urlHostHttp)data/file.jpg"
+                    photosSender?.append(url)
+                    userData?.set(photosSender, forKey: nameRemote)
+                }
+                
+                let alert = UIAlertController(title: "お知らせ",
+                                              message: "画像を受信しました。確認しますか？\n後でギャラリーにて確認する事も出来ます。",
+                                              preferredStyle: .alert)
+                let openAction = UIAlertAction(title: "開く", style: .default, handler: { (_) in
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    if let vc = storyboard.instantiateViewController(withIdentifier: "AlbumViewControllerId")
+                        as? AlbumViewController {
+                        vc.nameRemote = self.nameRemote
+                        self.present(vc, animated: true, completion: nil)
+                    }
+                })
+                
+                let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+                alert.addAction(openAction)
+                alert.addAction(cancelAction)
+                
+                present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func websocketDidReceiveData(socket: WebSocket, data: Data) {
+        print(data)
+    }
+    
+    
+}
+
+extension AlbumViewController: PhotoCellDelegate {
+    func delete(index: Int) {
+        photos?.remove(at: index)
+        albumCollectionView.reloadData()
+    }
+    
+    
 }

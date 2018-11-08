@@ -9,27 +9,62 @@
 import UIKit
 import MapKit
 import GoogleMaps
+import Toast_Swift
+import Kingfisher
+import Starscream
 protocol HandleMapSearch {
     func dropPinZoomIn(placemark: MKPlacemark)
 }
 class ViewPhotoViewController: UIViewController, GMSMapViewDelegate{
 
     @IBOutlet weak var mapView: MKMapView!
-    var photoUrl: URL?
-    let locationManager = CLLocationManager()
+    @IBOutlet weak var photoImage: UIImageView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var timestampLabel: UILabel!
+    
+    let noLocation = CLLocationCoordinate2D()
+    var locationManager = CLLocationManager()
     var reconMapview: GMSMapView?
     var selectedPin: MKPlacemark? = nil
+    
+    var nameRemote = ""
+    var photoUrl: URL?
+    var hasGPS: Bool = false
+    var photo: Image?
+    var timestampCapture: Date?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.delegate = self
+     
+        mapView.delegate = self
+        mapView.showsUserLocation = true
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
-        reconMapview?.settings.myLocationButton = true
-        reconMapview?.isMyLocationEnabled = true
-        reconMapview?.delegate = self
-        definesPresentationContext = true
+        locationManager.delegate = self
         
+        DispatchQueue.main.async {
+            self.locationManager.startUpdatingLocation()
+        }
+     
+        if let url = photoUrl {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let myString = formatter.string(from: Date())
+            let yourDate = formatter.date(from: myString)
+            let myStrongafd = formatter.string(from: yourDate!)
+            timestampLabel.text = myStrongafd
+            
+            ImageDownloader.default.downloadImage(with: url, retrieveImageTask: nil, options: [], progressBlock: nil, completionHandler: { (image, _, _, data) in
+                self.photo = image
+                self.photoImage.image = image
+            })
+        } else {
+            photoImage.image = nil
+            timestampLabel.text = ""
+            hasGPS = false
+        }
+        mapView.isHidden = segmentedControl.selectedSegmentIndex == 0
+        SocketGlobal.shared.socket?.delegate = self
     }
     
     @objc func getDirections() {
@@ -39,7 +74,32 @@ class ViewPhotoViewController: UIViewController, GMSMapViewDelegate{
             mapItem.openInMaps(launchOptions: lauchOptions)
         }
     }
- 
+    @IBAction func backButtonTouched(_ sender: Any) {
+        self.performSegue(withIdentifier: "unwinVideoChat", sender: self)
+    }
+    
+    
+    @IBAction func segmentedControlChanged(_ sender: Any) {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            mapView.isHidden = true
+            if !hasGPS {
+                self.view.makeToast("Can't get GPS data")
+            }
+         } else {
+            mapView.isHidden = false
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showEditAfterViewSegueId" {
+            if let editVc = segue.destination as? EditViewController {
+                if let photo = photo {
+                    editVc.screenShotImage = photo
+                }
+                editVc.isFirstEdit = false
+            }
+        }
+    }
 
 }
 extension ViewPhotoViewController: CLLocationManagerDelegate {
@@ -49,15 +109,16 @@ extension ViewPhotoViewController: CLLocationManagerDelegate {
         }
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
-            let span = MKCoordinateSpanMake(0.05, 0.05)
-            let region = MKCoordinateRegion(center: location.coordinate, span: span)
-            mapView.setRegion(region, animated: true)
-        }
+        let location = locations.last
+        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+        mapView.setRegion(region, animated: true)
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error: \(error)")
     }
+    
+    
 }
 extension ViewPhotoViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -93,4 +154,57 @@ extension ViewPhotoViewController: HandleMapSearch {
         let region = MKCoordinateRegionMake(placemark.coordinate, span)
         mapView.setRegion(region, animated: true)
     }
+}
+
+extension ViewPhotoViewController: WebSocketDelegate {
+    func websocketDidConnect(socket: WebSocket) {
+        print("")
+    }
+    
+    func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
+        print(error ?? "")
+    }
+    
+    func websocketDidReceiveMessage(socket: WebSocket, text: String) {
+        if let messageString: String = text {
+            print(messageString)
+            let userData = UserDefaults(suiteName: UserDefaults.standard.string(forKey: "yourname"))
+            let message: MessageSocket = MessageSocket(message: messageString)
+            if message.type == functionSendImageUrl {
+                var photosSender = userData?.stringArray(forKey: nameRemote)
+                if photosSender == nil {
+                    photosSender = []
+                }
+                if message.url != nil {
+                    let url = "\(urlHostHttp)data/file.jpg"
+                    photosSender?.append(url)
+                    userData?.set(photosSender, forKey: nameRemote)
+                }
+                
+                let alert = UIAlertController(title: "お知らせ",
+                                              message: "画像を受信しました。確認しますか？\n後でギャラリーにて確認する事も出来ます。",
+                                              preferredStyle: .alert)
+                let openAction = UIAlertAction(title: "開く", style: .default, handler: { (_) in
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    if let vc = storyboard.instantiateViewController(withIdentifier: "AlbumViewControllerId")
+                        as? AlbumViewController {
+                        vc.nameRemote = self.nameRemote
+                        self.present(vc, animated: true, completion: nil)
+                    }
+                })
+                
+                let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+                alert.addAction(openAction)
+                alert.addAction(cancelAction)
+                
+                present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func websocketDidReceiveData(socket: WebSocket, data: Data) {
+        print(data)
+    }
+    
+    
 }

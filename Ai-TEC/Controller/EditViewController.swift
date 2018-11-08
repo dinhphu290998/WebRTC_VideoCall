@@ -13,10 +13,12 @@ import AVFoundation
 import SVProgressHUD
 import Alamofire
 import Toast_Swift
-import GoogleMaps
 import MobileCoreServices
 import SocketRocket
 import Starscream
+
+
+
 class EditViewController: UIViewController {
    
     
@@ -28,8 +30,7 @@ class EditViewController: UIViewController {
     var colorSelectedView: UIView?
     var widthSelectedView: UIView?
     var screenShotImage: UIImage?
-    var currentLocation: CLLocation?
-    var locationManager: CLLocationManager = CLLocationManager()
+
     
     var timestampCapture: Date?
     var isFirstEdit: Bool = true
@@ -38,24 +39,20 @@ class EditViewController: UIViewController {
     @IBOutlet weak var widthButton: UIButton!
     @IBOutlet weak var eraerButton: UIButton!
     @IBOutlet weak var sendImageButton: UIButton!
-    @IBOutlet weak var photoImage: UIImageView!
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+
         setupCanvas()
         setupPalette()
         setupToolDrawView()
         
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
         
         SocketGlobal.shared.socket?.delegate = self
     }
+    
     
  
     fileprivate func setupPalette() {
@@ -65,7 +62,6 @@ class EditViewController: UIViewController {
         self.paletteView = paletteView
         let paletteHeight = paletteView.paletteHeight()
         paletteView.frame = CGRect(x: 0, y: 96, width: self.view.frame.width, height: paletteHeight)
-        
     }
     
     // gán ảnh cho view
@@ -198,25 +194,33 @@ class EditViewController: UIViewController {
         widthSelectedView?.frame = CGRect(x: 3, y: 22 - brushWidth/4, width: width - 36, height: brushWidth/2)
     }
     
+    // events
+    
+    // xoá
     @IBAction func eraserButtonTouched(_ sender: Any) {
         self.brush()?.color = .clear
         changeBrushColor(color: .clear)
     }
     
+    //.. xoá tất cả
+    
     @IBAction func resetButtonTouched(_ sender: Any) {
         self.canvasView?.clear()
-        
     }
     @IBAction func backButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
+    
+    // xoá từng cái
+    
     @IBAction func undoButton(_ sender: Any) {
         self.canvasView?.undo()
     }
+    
+    // gửi và lưu ảnh
+    
     @IBAction func sendImage(_ sender: Any) {
         self.canvasView?.save()
-        
-        
         
     }
     
@@ -226,7 +230,7 @@ class EditViewController: UIViewController {
         guard let data = text.data(using: .utf8) else { return [:] }
         let anyResult: Any = try JSONSerialization.jsonObject(with: data, options: [])
         return anyResult as? [String: String]
-    } 
+    }
     //convert dictionary to string
     func convertString(from dict:[String:String]) -> String {
         let jsonData = try! JSONSerialization.data(withJSONObject: dict, options: JSONSerialization.WritingOptions.prettyPrinted)
@@ -241,18 +245,9 @@ class EditViewController: UIViewController {
 
     
 }
-extension EditViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            locationManager.requestLocation()
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        currentLocation = manager.location
-    }
-    
-}
+
+// save and upload image
+
 extension EditViewController: CanvasDelegate {
     func brush() -> Brush? {
         return self.paletteView?.currentBrush()
@@ -260,6 +255,7 @@ extension EditViewController: CanvasDelegate {
     
     func canvas(_ canvas: Canvas, didSaveDrawing drawing: Drawing, mergedImage image: UIImage?) {
         SVProgressHUD.show()
+   
         guard let data = UIImageJPEGRepresentation(screenShotImage!, 0.9) else {
             return
         }
@@ -277,105 +273,19 @@ extension EditViewController: CanvasDelegate {
                 print(encodingError)
             }
         })
-        let oldEXIF = getEXIFFromImage(image: data)
-        var attached = data
-        if isFirstEdit {
-            if let gpsDict = currentLocation?.getGPSDictionary() {
-                let newEXIF = addInfoToEXIF(old: oldEXIF, gps: gpsDict, dateCapture: self.timestampCapture)
-                attached = attachEXIFToImage(image: attached as NSData, EXIF: newEXIF) as Data
-                print("newEXIF: \(newEXIF)")
-            } else {
-                SVProgressHUD.showError(withStatus: "Can't send image. Please check GPS")
-                return
-            }
-        } else {
-            let newEXIF = addInfoToEXIF(old: oldEXIF, gps: nil, dateCapture: timestampCapture)
-            attached = attachEXIFToImage(image: attached as NSData, EXIF: newEXIF) as Data
-            print("newEXIF: \(newEXIF)")
-        }
-        
         let dict = ["type" : "sendFile" , "receive" : nameRemote , "url" : "data/file.jpg"]
         SocketGlobal.shared.socket?.write(string: convertString(from: dict))
         print(dict)
-        
-       
-        
+    
     }
 
-}
-
-
-
-
-extension EditViewController {
-  public func getEXIFFromImage(image: Data) -> NSDictionary {
-    if let imageSourceRef = CGImageSourceCreateWithData(image as CFData, nil),
-      let currentProperties = CGImageSourceCopyPropertiesAtIndex(imageSourceRef, 0, nil) {
-      let mutableDict = NSMutableDictionary(dictionary: currentProperties)
-      return mutableDict
-    }
-    return NSDictionary()
-  }
-
-  public func attachEXIFToImage(image: NSData, EXIF: NSDictionary) -> NSData {
-    if let imageDataProvider = CGDataProvider(data: image),
-      let imageRef = CGImage(jpegDataProviderSource: imageDataProvider,
-                             decode: nil, shouldInterpolate: true,
-                             intent: CGColorRenderingIntent.defaultIntent),
-      let newImageData = CFDataCreateMutable(nil, 0),
-      let type = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType,
-                                                       "image/jpg" as CFString, kUTTypeImage),
-      let destination = CGImageDestinationCreateWithData(newImageData,
-                                                         type.takeRetainedValue(), 1, nil) {
-      CGImageDestinationAddImage(destination, imageRef, EXIF as CFDictionary)
-      CGImageDestinationFinalize(destination)
-      return newImageData as NSData
-    }
-
-    return NSData()
-  }
-    public func addInfoToEXIF(old: NSDictionary, gps: NSDictionary?, dateCapture: Date?) -> NSDictionary {
-        if let gps = gps {
-            old.setValue(gps, forKey: kCGImagePropertyGPSDictionary as String)
-        }
-        
-        if let exifData = old.value(forKey: kCGImagePropertyExifDictionary as String) as? NSDictionary,
-            let timestampCapture = dateCapture {
-            let dfExif = DateFormatter()
-            dfExif.locale = Locale(identifier: "en_POSIX_US")
-            dfExif.timeZone = TimeZone.current
-            dfExif.dateFormat = "yyyy:MM:dd HH:mm:ss"
-            
-            exifData.setValue(dfExif.string(from: timestampCapture),
-                              forKey: kCGImagePropertyExifDateTimeOriginal as String)
-            exifData.setValue(dfExif.string(from: timestampCapture),
-                              forKey: kCGImagePropertyExifDateTimeDigitized as String)
-            
-            old.setValue(exifData, forKey: kCGImagePropertyExifDictionary as String)
-        }
-        
-        if let exifData = old.value(forKey: kCGImagePropertyTIFFDictionary as String) as? NSDictionary,
-            let timestampCapture = dateCapture {
-            let dfExif = DateFormatter()
-            dfExif.locale = Locale(identifier: "en_POSIX_US")
-            dfExif.timeZone = TimeZone.current
-            dfExif.dateFormat = "yyyy:MM:dd HH:mm:ss"
-            
-            exifData.setValue(dfExif.string(from: timestampCapture),
-                              forKey: kCGImagePropertyTIFFDateTime as String)
-            
-            old.setValue(exifData, forKey: kCGImagePropertyTIFFDictionary as String)
-        }
-        
-        return old
-    }
 }
 
 
 
 extension EditViewController: WebSocketDelegate {
     func websocketDidConnect(socket: WebSocket) {
-        print("")
+        print("--- Message EditViewcontroller ---")
     }
     
     func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
@@ -383,7 +293,6 @@ extension EditViewController: WebSocketDelegate {
     }
     
     func websocketDidReceiveMessage(socket: WebSocket, text: String) {
-        
         if let messageString: String = text {
             print(messageString)
             let userData = UserDefaults(suiteName: UserDefaults.standard.string(forKey: "yourname"))
@@ -395,6 +304,7 @@ extension EditViewController: WebSocketDelegate {
                 }
                 if message.url != nil {
                     let url = "\(urlHostHttp)data/file.jpg"
+                    print("--------\(url)---------")
                     photosSender?.append(url)
                     userData?.set(photosSender, forKey: nameRemote)
                 }
@@ -403,12 +313,11 @@ extension EditViewController: WebSocketDelegate {
                                               message: "画像を受信しました。確認しますか？\n後でギャラリーにて確認する事も出来ます。",
                                               preferredStyle: .alert)
                 let openAction = UIAlertAction(title: "開く", style: .default, handler: { (_) in
-                    //                        self.performSegue(withIdentifier: "showAlbumSegueId", sender: self)
-                  
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     if let vc = storyboard.instantiateViewController(withIdentifier: "AlbumViewControllerId")
                         as? AlbumViewController {
                         vc.nameRemote = self.nameRemote
+             
                         self.present(vc, animated: true, completion: nil)
                     }
                 })
