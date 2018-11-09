@@ -8,7 +8,7 @@
 
 import UIKit
 import Kingfisher
-
+import Photos
 protocol PhotoCellDelegate: class {
     func delete(index: Int)
 }
@@ -19,18 +19,27 @@ class PhotoCell: UICollectionViewCell {
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var timestampLabel: UILabel!
     
-  
+
+    let viewModel = ViewModel()
     var index: IndexPath?
     weak var delegate: PhotoCellDelegate?
-    public func setPhoto(url: URL) {   
-//      photoImageView.kf.indicatorType = .activity
-//      photoImageView.kf.setImage(with: url)
+    public func setPhoto(url: URL) {
+    
         ImageDownloader.default.downloadImage(with: url, retrieveImageTask: nil, options: [], progressBlock: nil, completionHandler: { (image,_ ,_ ,data) in
-
+            
             self.photoImageView.image = image
-            print(image)
-            UIImageWriteToSavedPhotosAlbum(self.photoImageView.image!, self, nil, nil)
+            print(image as Any)
+           
+            self.viewModel.savePhoto(self.photoImageView.image!, completion: { (error) in
+                DispatchQueue.main.async {
+                    if let error = error {
+                        print(error)
+                    }
+                    print("Save Image To Album -------------------")
+                }
+            })
         })
+    
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let myString = formatter.string(from: Date())
@@ -41,9 +50,6 @@ class PhotoCell: UICollectionViewCell {
     
     @IBAction func deleteButtonDidTap(_ sender: Any) {
         delegate?.delete(index: index?.row ?? 0)
-     
+        
     }
-    
-
-    
 }

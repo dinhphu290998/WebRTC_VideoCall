@@ -766,9 +766,12 @@ Cg
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="colorButton" destination="35U-qS-c6j" id="cV6-Ub-ugq"/>
+                        <outlet property="dismisButton" destination="LCI-vQ-q9y" id="wEg-1c-J0Z"/>
                         <outlet property="eraerButton" destination="hvC-N3-mWQ" id="Yh0-AA-Onl"/>
+                        <outlet property="sendButton" destination="9Kg-no-Pna" id="RL0-iB-uVq"/>
                         <outlet property="sendImageButton" destination="9Kg-no-Pna" id="ScW-jC-xkD"/>
                         <outlet property="toolbarView" destination="1CH-6z-wAs" id="Ny5-jz-8WG"/>
+                        <outlet property="undoButton" destination="tsb-I8-VuI" id="AZ5-Qo-Ipf"/>
                         <outlet property="widthButton" destination="qJ3-Xe-g5W" id="GcJ-Zc-gut"/>
                         <segue destination="qHD-jV-k4P" kind="show" identifier="showAlbumFromEditSegueId" id="D5g-Vq-3h1"/>
                     </connections>
@@ -1324,7 +1327,6 @@ Cg
         <image name="voice_on" width="105" height="105"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="erh-UN-a4U"/>
         <segue reference="MgS-9T-Z1w"/>
         <segue reference="D5g-Vq-3h1"/>
         <segue reference="Plp-py-FNY"/>

@@ -50,6 +50,11 @@
 		18FA43EE2176F75A00A0EB8B /* SocketGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA43ED2176F75A00A0EB8B /* SocketGlobal.swift */; };
 		18FA43F021771A7000A0EB8B /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA43EF21771A7000A0EB8B /* ContactTableViewCell.swift */; };
 		8D10FCF84A798504B9EF769C /* Pods_Ai_Tec.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381B2CD5D2E6702DEC42770 /* Pods_Ai_Tec.framework */; };
+		B3087EBC219566F1004204F4 /* PhotoAlbumHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3087EBB219566F1004204F4 /* PhotoAlbumHandler.swift */; };
+		B3087EBE2195675F004204F4 /* PhotoAlbumHandlerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3087EBD2195675F004204F4 /* PhotoAlbumHandlerError.swift */; };
+		B3087EC0219571F2004204F4 /* PhotoAlnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3087EBF219571F2004204F4 /* PhotoAlnums.swift */; };
+		B3087EC221957286004204F4 /* PhotoAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3087EC121957286004204F4 /* PhotoAlbum.swift */; };
+		B3087EC421957306004204F4 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3087EC321957306004204F4 /* ViewModel.swift */; };
 		B33B97F7218999DE00D8AB12 /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B97F6218999DE00D8AB12 /* Drawing.swift */; };
 		B33B97F9218999E900D8AB12 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B97F8218999E700D8AB12 /* Session.swift */; };
 		B33B97FB218999EC00D8AB12 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B97FA218999EC00D8AB12 /* Palette.swift */; };
@@ -177,6 +182,11 @@
 		406AEE77466067F4B97DBD99 /* Pods_Ai_TecUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_TecUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54DB82D607AA9494F139E009 /* Pods-Ai-TecUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-TecUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-TecUITests/Pods-Ai-TecUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		787889CFDFCC3FFB53443B73 /* Pods_Ai_TecTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_TecTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3087EBB219566F1004204F4 /* PhotoAlbumHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoAlbumHandler.swift; path = "Ai-TEC/Model/Photos/PhotoAlbumHandler.swift"; sourceTree = SOURCE_ROOT; };
+		B3087EBD2195675F004204F4 /* PhotoAlbumHandlerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumHandlerError.swift; sourceTree = "<group>"; };
+		B3087EBF219571F2004204F4 /* PhotoAlnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlnums.swift; sourceTree = "<group>"; };
+		B3087EC121957286004204F4 /* PhotoAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbum.swift; sourceTree = "<group>"; };
+		B3087EC321957306004204F4 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		B33B97F6218999DE00D8AB12 /* Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drawing.swift; sourceTree = "<group>"; };
 		B33B97F8218999E700D8AB12 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		B33B97FA218999EC00D8AB12 /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -282,6 +292,7 @@
 		1873FA0F21757F8F00ED8988 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B3087EBA219566C4004204F4 /* Photos */,
 				B37BE7BF2192C043007E20E3 /* NXDrawKit */,
 				B33B980E2189AECD00D8AB12 /* MessageSocket.swift */,
 				18F0C90221758BA600E0DEBD /* User.swift */,
@@ -375,6 +386,18 @@
 				0872EDCF48AFD29DB3BF317A /* Pods-Ai-TecUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B3087EBA219566C4004204F4 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				B3087EBB219566F1004204F4 /* PhotoAlbumHandler.swift */,
+				B3087EBD2195675F004204F4 /* PhotoAlbumHandlerError.swift */,
+				B3087EBF219571F2004204F4 /* PhotoAlnums.swift */,
+				B3087EC121957286004204F4 /* PhotoAlbum.swift */,
+				B3087EC321957306004204F4 /* ViewModel.swift */,
+			);
+			path = Photos;
 			sourceTree = "<group>";
 		};
 		B37BE7B921901DF3007E20E3 /* Utilies + Extension */ = {
@@ -735,6 +758,7 @@
 				B33B980921899A5600D8AB12 /* UIViewFrameExtension.swift in Sources */,
 				1873FA11217580CF00ED8988 /* LoginViewController.swift in Sources */,
 				18131E262181FC5500FE9B0E /* ARDSettingsViewController.m in Sources */,
+				B3087EBE2195675F004204F4 /* PhotoAlbumHandlerError.swift in Sources */,
 				18AA0C692181A32C00038963 /* ResolutionCell.swift in Sources */,
 				180A09B7217D7022005B6F35 /* Etension.swift in Sources */,
 				18131E212181FC5500FE9B0E /* ARDCaptureController.m in Sources */,
@@ -781,13 +805,17 @@
 				18131E162181FC5500FE9B0E /* ARDMainViewController.m in Sources */,
 				18FA43F021771A7000A0EB8B /* ContactTableViewCell.swift in Sources */,
 				18131E132181FC5500FE9B0E /* ARDTURNClient.m in Sources */,
+				B3087EC0219571F2004204F4 /* PhotoAlnums.swift in Sources */,
 				B33B980721899A4A00D8AB12 /* Brush.swift in Sources */,
 				B37BE7C12192C208007E20E3 /* CacheImage.swift in Sources */,
 				B33B9836218AB84900D8AB12 /* PhotoCell.swift in Sources */,
+				B3087EC421957306004204F4 /* ViewModel.swift in Sources */,
 				18131E292181FC5500FE9B0E /* RTCICECandidate+JSON.m in Sources */,
 				18F0C90721759D7C00E0DEBD /* Config.swift in Sources */,
 				B33B97F9218999E900D8AB12 /* Session.swift in Sources */,
+				B3087EBC219566F1004204F4 /* PhotoAlbumHandler.swift in Sources */,
 				18131E252181FC5500FE9B0E /* ARDJoinResponse.m in Sources */,
+				B3087EC221957286004204F4 /* PhotoAlbum.swift in Sources */,
 				18FA43EE2176F75A00A0EB8B /* SocketGlobal.swift in Sources */,
 				18131E2A2181FC5500FE9B0E /* ARDRegisterResponse.m in Sources */,
 				B33B97FD218999F500D8AB12 /* CircleButton.swift in Sources */,

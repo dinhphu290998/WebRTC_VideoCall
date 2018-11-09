@@ -39,15 +39,16 @@ class EditViewController: UIViewController {
     @IBOutlet weak var widthButton: UIButton!
     @IBOutlet weak var eraerButton: UIButton!
     @IBOutlet weak var sendImageButton: UIButton!
-
-    
-    
+    @IBOutlet weak var undoButton: UIButton!
+    @IBOutlet weak var dismisButton: UIButton!
+    @IBOutlet weak var sendButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupCanvas()
         setupPalette()
         setupToolDrawView()
+        
         
         
         SocketGlobal.shared.socket?.delegate = self
@@ -173,7 +174,6 @@ class EditViewController: UIViewController {
         changeBrushWidth(brushWidth: 20)
         
         self.view.bringSubview(toFront: toolbarView)
-        
     }
     
     @objc fileprivate func showColorPicker() {
@@ -220,10 +220,19 @@ class EditViewController: UIViewController {
     // gửi và lưu ảnh
     
     @IBAction func sendImage(_ sender: Any) {
+        toolbarView.isHidden = true
+        colorButton.isHidden = true
+        widthButton.isHidden = true
+        eraerButton.isHidden = true
+        sendImageButton.isHidden = true
+        undoButton.isHidden = true
+        dismisButton.isHidden = true
+        sendButton.isHidden = true
         self.canvasView?.save()
         
     }
     
+   
     
     // convert string to dictionary
     func convertToDictionary(from text: String) throws -> [String: String]? {
@@ -238,12 +247,15 @@ class EditViewController: UIViewController {
         return jsonString
     }
     
-
-
-    
- 
-
-    
+    func captureScreen() -> UIImage {
+        var window: UIWindow? = UIApplication.shared.keyWindow
+        window = UIApplication.shared.windows[0] as? UIWindow
+        UIGraphicsBeginImageContextWithOptions(window!.frame.size, window!.isOpaque, 0.0)
+        window!.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
 }
 
 // save and upload image
@@ -256,10 +268,34 @@ extension EditViewController: CanvasDelegate {
     func canvas(_ canvas: Canvas, didSaveDrawing drawing: Drawing, mergedImage image: UIImage?) {
         SVProgressHUD.show()
    
-        guard let data = UIImageJPEGRepresentation(screenShotImage!, 0.9) else {
+        
+        guard let layer = UIApplication.shared.keyWindow?.layer else { return }
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, true, 0)
+        guard let context = UIGraphicsGetCurrentContext() else { return }
+        layer.render(in: context)
+        guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return }
+        UIGraphicsEndImageContext()
+        guard let data = UIImageJPEGRepresentation(image, 0.9) else {
             return
         }
-        
+      
+        toolbarView.isHidden = true
+        colorButton.isHidden = true
+        widthButton.isHidden = true
+        eraerButton.isHidden = true
+        sendImageButton.isHidden = true
+        undoButton.isHidden = true
+        dismisButton.isHidden = true
+        sendButton.isHidden = true
+        toolbarView.isHidden = false
+        colorButton.isHidden = false
+        widthButton.isHidden = false
+        eraerButton.isHidden = false
+        sendImageButton.isHidden = false
+        undoButton.isHidden = false
+        dismisButton.isHidden = false
+        sendButton.isHidden = false
+      
         Alamofire.upload(multipartFormData: { (form) in
             form.append(data, withName: "data", fileName: "file.jpg", mimeType: "image/jpeg")
         }, to: apiSendImage, encodingCompletion: { result in
