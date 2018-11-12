@@ -23,6 +23,9 @@ class PhotoCell: UICollectionViewCell {
     let viewModel = ViewModel()
     var index: IndexPath?
     weak var delegate: PhotoCellDelegate?
+    
+   // assign a url for the photo
+    
     public func setPhoto(url: URL) {
     
         ImageDownloader.default.downloadImage(with: url, retrieveImageTask: nil, options: [], progressBlock: nil, completionHandler: { (image,_ ,_ ,data) in
@@ -30,11 +33,14 @@ class PhotoCell: UICollectionViewCell {
             self.photoImageView.image = image
             print(image as Any)
            
+            // create a sender album
+            
             self.viewModel.savePhoto(self.photoImageView.image!, completion: { (error) in
                 DispatchQueue.main.async {
                     if let error = error {
                         print(error)
                     }
+                    UIImageWriteToSavedPhotosAlbum(self.photoImageView.image!, self, nil, nil)
                     print("Save Image To Album -------------------")
                 }
             })
@@ -46,6 +52,8 @@ class PhotoCell: UICollectionViewCell {
         let yourDate = formatter.date(from: myString)
         let myStrongafd = formatter.string(from: yourDate!)
         timestampLabel.text = myStrongafd
+        UserDefaults.standard.set(timestampLabel.text, forKey: "name")
+        
     }
     
     @IBAction func deleteButtonDidTap(_ sender: Any) {

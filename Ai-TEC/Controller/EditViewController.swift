@@ -32,7 +32,7 @@ class EditViewController: UIViewController {
     var screenShotImage: UIImage?
 
     
-    var timestampCapture: Date?
+    var timestampCapture: String?
     var isFirstEdit: Bool = true
     @IBOutlet weak var toolbarView: UIView!
     @IBOutlet weak var colorButton: UIButton!
@@ -228,8 +228,9 @@ class EditViewController: UIViewController {
         undoButton.isHidden = true
         dismisButton.isHidden = true
         sendButton.isHidden = true
-        self.canvasView?.save()
         
+        self.canvasView?.save()
+
     }
     
    
@@ -246,19 +247,9 @@ class EditViewController: UIViewController {
         let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)! as String
         return jsonString
     }
-    
-    func captureScreen() -> UIImage {
-        var window: UIWindow? = UIApplication.shared.keyWindow
-        window = UIApplication.shared.windows[0] as? UIWindow
-        UIGraphicsBeginImageContextWithOptions(window!.frame.size, window!.isOpaque, 0.0)
-        window!.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image!
-    }
 }
 
-// save and upload image
+// save and upload image to server
 
 extension EditViewController: CanvasDelegate {
     func brush() -> Brush? {
@@ -287,6 +278,7 @@ extension EditViewController: CanvasDelegate {
         undoButton.isHidden = true
         dismisButton.isHidden = true
         sendButton.isHidden = true
+        
         toolbarView.isHidden = false
         colorButton.isHidden = false
         widthButton.isHidden = false
@@ -295,9 +287,19 @@ extension EditViewController: CanvasDelegate {
         undoButton.isHidden = false
         dismisButton.isHidden = false
         sendButton.isHidden = false
+        
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-ddHH:mm:ss"
+        let myString = formatter.string(from: Date())
+        let yourDate = formatter.date(from: myString)
+        let myStrongafd = formatter.string(from: yourDate!)
+        
+        timestampCapture = myStrongafd
+      
       
         Alamofire.upload(multipartFormData: { (form) in
-            form.append(data, withName: "data", fileName: "file.jpg", mimeType: "image/jpeg")
+            form.append(data, withName: "data", fileName: "\(self.timestampCapture!).file.jpg", mimeType: "image/jpeg")
         }, to: apiSendImage, encodingCompletion: { result in
             switch result {
             case .success(let upload, _, _):
@@ -309,7 +311,7 @@ extension EditViewController: CanvasDelegate {
                 print(encodingError)
             }
         })
-        let dict = ["type" : "sendFile" , "receive" : nameRemote , "url" : "data/file.jpg"]
+        let dict = ["type" : "sendFile" , "receive" : nameRemote , "url" : "\(timestampCapture!).file.jpg"]
         SocketGlobal.shared.socket?.write(string: convertString(from: dict))
         print(dict)
     
@@ -328,6 +330,8 @@ extension EditViewController: WebSocketDelegate {
         print(error ?? "")
     }
     
+    // Receive a message after the sender has sent
+    
     func websocketDidReceiveMessage(socket: WebSocket, text: String) {
         if let messageString: String = text {
             print(messageString)
@@ -338,8 +342,8 @@ extension EditViewController: WebSocketDelegate {
                 if photosSender == nil {
                     photosSender = []
                 }
-                if message.url != nil {
-                    let url = "\(urlHostHttp)data/file.jpg"
+                if let photo = message.url {
+                    let url = "\(urlHostHttp)data/\(photo)"
                     print("--------\(url)---------")
                     photosSender?.append(url)
                     userData?.set(photosSender, forKey: nameRemote)
@@ -349,9 +353,18 @@ extension EditViewController: WebSocketDelegate {
                                               message: "画像を受信しました。確認しますか？\n後でギャラリーにて確認する事も出来ます。",
                                               preferredStyle: .alert)
                 let openAction = UIAlertAction(title: "開く", style: .default, handler: { (_) in
+                    
+                    if self is AlbumViewController {
+                        if let vc = self as? AlbumViewController {
+                            vc.albumCollectionView.reloadData()
+                        }
+                        return
+                    }
+                    
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     if let vc = storyboard.instantiateViewController(withIdentifier: "AlbumViewControllerId")
                         as? AlbumViewController {
+                  
                         vc.nameRemote = self.nameRemote
              
                         self.present(vc, animated: true, completion: nil)

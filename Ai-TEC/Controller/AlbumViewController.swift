@@ -22,7 +22,7 @@ class AlbumViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SocketGlobal.shared.socket?.delegate = self
-
+       
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -33,6 +33,7 @@ class AlbumViewController: UIViewController {
             })
             self.albumCollectionView.reloadData()
         }
+        albumCollectionView.reloadData()
     }
 
     @IBAction func backButtonTouched(_ sender: Any) {
@@ -43,24 +44,30 @@ class AlbumViewController: UIViewController {
         return true
     }
     
- 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 
 }
 
 extension AlbumViewController: UICollectionViewDataSource  {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (photos?.count)!
+        if let photos = photos {
+            return photos.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCellId", for: indexPath) as? PhotoCell {
-            if let url = URL(string: photos![indexPath.row]) {
+            if let url = URL(string: photos![indexPath.item]) {
                 cell.setPhoto(url: url)
                 cell.index = indexPath
                 cell.delegate = self
             }
             return cell
         }
+        albumCollectionView.reloadData()
         return UICollectionViewCell()
     }
 }
@@ -70,7 +77,7 @@ extension AlbumViewController: UICollectionViewDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "ViewPhotoViewControllerId") as? ViewPhotoViewController,
             let photos = photos,
-            let url = URL(string: photos[indexPath.row])
+            let url = URL(string: photos[indexPath.item])
             {
                 vc.photoUrl = url
                 vc.nameRemote = nameRemote
@@ -120,8 +127,8 @@ extension AlbumViewController: WebSocketDelegate {
                 if photosSender == nil {
                     photosSender = []
                 }
-                if message.url != nil {
-                    let url = "\(urlHostHttp)data/file.jpg"
+                if let photo = message.url  {
+                    let url = "\(urlHostHttp)data/\(photo)"
                     photosSender?.append(url)
                     userData?.set(photosSender, forKey: nameRemote)
                 }
@@ -130,10 +137,19 @@ extension AlbumViewController: WebSocketDelegate {
                                               message: "画像を受信しました。確認しますか？\n後でギャラリーにて確認する事も出来ます。",
                                               preferredStyle: .alert)
                 let openAction = UIAlertAction(title: "開く", style: .default, handler: { (_) in
+                    
+                    if self is AlbumViewController {
+                        if let vc = self as? AlbumViewController {
+                            vc.albumCollectionView.reloadData()
+                        }
+                        return
+                    }
+                    
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     if let vc = storyboard.instantiateViewController(withIdentifier: "AlbumViewControllerId")
                         as? AlbumViewController {
                         vc.nameRemote = self.nameRemote
+                        
                         self.present(vc, animated: true, completion: nil)
                     }
                 })

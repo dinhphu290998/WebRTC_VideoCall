@@ -210,6 +210,9 @@ class RTCVideoChatViewController: UIViewController {
                 let date = Date()
                 editVc.screenShotImage = screenShotImage?.addTimestamp(date)
                 editVc.nameRemote = nameRemote
+                
+                
+               
             }
         }
     }
@@ -364,8 +367,8 @@ extension RTCVideoChatViewController: WebSocketDelegate {
                 if photosSender == nil {
                     photosSender = []
                 }
-                if message.url != nil {
-                    let url = "\(urlHostHttp)data/file.jpg"
+                if let photo = message.url  {
+                    let url = "\(urlHostHttp)data/\(photo)"
                     photosSender?.append(url)
                     userData?.set(photosSender, forKey: nameRemote)
                 }
@@ -374,11 +377,12 @@ extension RTCVideoChatViewController: WebSocketDelegate {
                                               message: "画像を受信しました。確認しますか？\n後でギャラリーにて確認する事も出来ます。",
                                               preferredStyle: .alert)
                 let openAction = UIAlertAction(title: "開く", style: .default, handler: { (_) in
+                    
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     if let vc = storyboard.instantiateViewController(withIdentifier: "AlbumViewControllerId")
                         as? AlbumViewController {
                         vc.nameRemote = self.nameRemote
-    
+                        
                         self.present(vc, animated: true, completion: nil)
                     }
                 })

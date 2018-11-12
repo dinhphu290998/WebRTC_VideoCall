@@ -10,7 +10,7 @@ import UIKit
 
 class ViewModel {
     let landscapeAlbum = PhotoAlbums.landscapes.album()
-    let portraitAlbum = PhotoAlbums.portraits.album()
+   
     
     func savePhoto(_ photo: UIImage?, completion: @escaping (PhotoAlbumHandlerError?) -> Void) {
         guard let photo = photo else {

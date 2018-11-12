@@ -12,6 +12,7 @@ import GoogleMaps
 import Toast_Swift
 import Kingfisher
 import Starscream
+import Alamofire
 protocol HandleMapSearch {
     func dropPinZoomIn(placemark: MKPlacemark)
 }
@@ -88,6 +89,28 @@ class ViewPhotoViewController: UIViewController, GMSMapViewDelegate{
          } else {
             mapView.isHidden = false
         }
+    }
+    
+    @IBAction func sendImageButton(_ sender: Any) {
+        
+        guard let data = UIImageJPEGRepresentation(photoImage.image!, 0.9) else {
+            return
+        }
+        
+        
+        Alamofire.upload(multipartFormData: { (form) in
+            form.append(data, withName: "data", fileName: "file.jpg", mimeType: "image/jpeg")
+        }, to: apiSendImage, encodingCompletion: { result in
+            switch result {
+            case .success(let upload, _, _):
+                upload.responseString { response in
+                    print(response.result.value ?? "")
+                    print("Upload Image ViewPhotoController ---------")
+                }
+            case .failure(let encodingError):
+                print(encodingError)
+            }
+        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -175,8 +198,8 @@ extension ViewPhotoViewController: WebSocketDelegate {
                 if photosSender == nil {
                     photosSender = []
                 }
-                if message.url != nil {
-                    let url = "\(urlHostHttp)data/file.jpg"
+                if let photo = message.url  {
+                    let url = "\(urlHostHttp)data/\(photo)"
                     photosSender?.append(url)
                     userData?.set(photosSender, forKey: nameRemote)
                 }
@@ -185,9 +208,13 @@ extension ViewPhotoViewController: WebSocketDelegate {
                                               message: "画像を受信しました。確認しますか？\n後でギャラリーにて確認する事も出来ます。",
                                               preferredStyle: .alert)
                 let openAction = UIAlertAction(title: "開く", style: .default, handler: { (_) in
+                    
+                  
+                    
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     if let vc = storyboard.instantiateViewController(withIdentifier: "AlbumViewControllerId")
                         as? AlbumViewController {
+                       
                         vc.nameRemote = self.nameRemote
                         self.present(vc, animated: true, completion: nil)
                     }

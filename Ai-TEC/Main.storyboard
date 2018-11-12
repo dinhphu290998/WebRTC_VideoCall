@@ -993,6 +993,7 @@ Cg
                                 </constraints>
                                 <state key="normal" image="btn_edit"/>
                                 <connections>
+                                    <action selector="sendImageButton:" destination="T2U-M1-S4O" eventType="touchUpInside" id="t8n-XK-y61"/>
                                     <segue destination="YPm-fD-l92" kind="show" identifier="showEditAfterViewSegueId" id="Plp-py-FNY"/>
                                 </connections>
                             </button>
@@ -1327,10 +1328,10 @@ Cg
         <image name="voice_on" width="105" height="105"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MgS-9T-Z1w"/>
+        <segue reference="jKM-9S-U4T"/>
         <segue reference="D5g-Vq-3h1"/>
         <segue reference="Plp-py-FNY"/>
         <segue reference="O7u-WU-c3R"/>
-        <segue reference="mxO-FM-z9u"/>
+        <segue reference="h0H-kf-gPu"/>
     </inferredMetricsTieBreakers>
 </document>

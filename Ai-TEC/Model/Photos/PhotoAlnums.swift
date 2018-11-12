@@ -13,15 +13,13 @@ public enum PhotoAlbums {
     
     
     case landscapes
-    case portraits
+   
     
     var albumName: String {
         switch self {
         case .landscapes:
             let data = UserDefaults.standard.value(forKey: "yourname") as? String ?? ""
             return data
-        case .portraits:
-            return "Portraits"
         }
     }
     
