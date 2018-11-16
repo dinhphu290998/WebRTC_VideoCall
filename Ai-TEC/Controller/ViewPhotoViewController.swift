@@ -97,35 +97,8 @@ class ViewPhotoViewController: UIViewController, GMSMapViewDelegate{
         }
     }
     
-    @IBAction func sendImageButton(_ sender: Any) {
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-ddHH:mm:ss"
-        let myString = formatter.string(from: Date())
-        let yourDate = formatter.date(from: myString)
-        let myStrongafd = formatter.string(from: yourDate!)
-        time = myStrongafd
-        
-        guard let data = UIImageJPEGRepresentation(photoImage.image!, 0.9) else {
-            return
-        }
-        
-          print("Upload Image ViewPhotoController ---------")
-        
-        Alamofire.upload(multipartFormData: { (form) in
-            form.append(data, withName: "data", fileName: "\(self.time!).file.jpg", mimeType: "image/jpeg")
-        }, to: apiSendImage, encodingCompletion: { result in
-            switch result {
-            case .success(let upload, _, _):
-                upload.responseString { response in
-                    print(response.result.value ?? "")
-                    print("Upload Image ViewPhotoController ---------")
-                }
-            case .failure(let encodingError):
-                print(encodingError)
-            }
-        })
-    }
+   
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showEditAfterViewSegueId" {
@@ -136,6 +109,10 @@ class ViewPhotoViewController: UIViewController, GMSMapViewDelegate{
                 editVc.isFirstEdit = false
             }
         }
+    }
+    
+    deinit {
+        print("deinit ViewPhotoViewController -------------------------------:)")
     }
 
 }

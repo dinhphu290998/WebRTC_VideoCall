@@ -75,7 +75,6 @@
 		B33B98152189B45500D8AB12 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B98142189B45500D8AB12 /* Socket.swift */; };
 		B33B9836218AB84900D8AB12 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B9835218AB84900D8AB12 /* PhotoCell.swift */; };
 		B33C69322189984B0077469C /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C69312189984A0077469C /* EditViewController.swift */; };
-		B3514B13219E67E400AF28DC /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3514B12219E67E400AF28DC /* DataService.swift */; };
 		B37BE7BB21901E25007E20E3 /* ExtensionUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37BE7BA21901E25007E20E3 /* ExtensionUIImageView.swift */; };
 		B3ABEF86217495B30072E9F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF85217495B30072E9F5 /* AppDelegate.swift */; };
 		B3ABEF8E217495B30072E9F5 /* Ai_Tec.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF8C217495B30072E9F5 /* Ai_Tec.xcdatamodeld */; };
@@ -210,7 +209,6 @@
 		B33B98142189B45500D8AB12 /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
 		B33B9835218AB84900D8AB12 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoCell.swift; path = "Ai-TEC/View/PhotoCell.swift"; sourceTree = SOURCE_ROOT; };
 		B33C69312189984A0077469C /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
-		B3514B12219E67E400AF28DC /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataService.swift; path = "Ai-Tec/Model/DataService.swift"; sourceTree = SOURCE_ROOT; };
 		B37BE7BA21901E25007E20E3 /* ExtensionUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExtensionUIImageView.swift; path = "Ai-TEC/Utilies + Extension/ExtensionUIImageView.swift"; sourceTree = SOURCE_ROOT; };
 		B37BE7BE2191908A007E20E3 /* Ai-Tec-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Ai-Tec-Bridging-Header.h"; path = "Ai-TEC/Library/Ai-Tec-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		B3ABEF82217495B30072E9F5 /* Ai-Tec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ai-Tec.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -301,7 +299,6 @@
 				B3087EBA219566C4004204F4 /* Photos */,
 				B37BE7BF2192C043007E20E3 /* NXDrawKit */,
 				B33B980E2189AECD00D8AB12 /* MessageSocket.swift */,
-				B3514B12219E67E400AF28DC /* DataService.swift */,
 				18F0C90221758BA600E0DEBD /* User.swift */,
 				18F0C90621759D7C00E0DEBD /* Config.swift */,
 				18FA43ED2176F75A00A0EB8B /* SocketGlobal.swift */,
@@ -803,7 +800,6 @@
 				B33B98112189B25100D8AB12 /* AlbumViewController.swift in Sources */,
 				18131E152181FC5500FE9B0E /* ARDBitrateTracker.m in Sources */,
 				18131E182181FC5500FE9B0E /* ARDStatsBuilder.m in Sources */,
-				B3514B13219E67E400AF28DC /* DataService.swift in Sources */,
 				18131E1F2181FC5500FE9B0E /* ARDUtilities.m in Sources */,
 				18131E282181FC5500FE9B0E /* ARDStatsView.m in Sources */,
 				B33B980B21899A5E00D8AB12 /* ToolBar.swift in Sources */,

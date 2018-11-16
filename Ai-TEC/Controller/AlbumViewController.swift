@@ -31,8 +31,8 @@ class AlbumViewController: UIViewController {
             self.photos = photos.sorted(by: { (photo1, photo2) -> Bool in
                 return photo1 > photo2
             })
-            self.albumCollectionView.reloadData()
         }
+        self.albumCollectionView.reloadData()
         SocketGlobal.shared.socket?.delegate = self
     
     }

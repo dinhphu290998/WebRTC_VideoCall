@@ -636,7 +636,7 @@ Cg
                         <outlet property="resolutionCollectionView" destination="OQ5-ih-09C" id="tZy-JR-gJZ"/>
                         <outlet property="statusRemoteView" destination="C4e-lB-TVR" id="MRL-kY-bVe"/>
                         <outlet property="videoButton" destination="kcx-j9-I7i" id="jyd-vz-eA2"/>
-                        <segue destination="YPm-fD-l92" kind="show" identifier="showEditSegueId" id="Weh-WG-Z7U"/>
+                        <segue destination="YPm-fD-l92" kind="presentation" identifier="showEditSegueId" modalPresentationStyle="fullScreen" id="Weh-WG-Z7U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3jb-SF-qzn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -993,7 +993,6 @@ Cg
                                 </constraints>
                                 <state key="normal" image="btn_edit"/>
                                 <connections>
-                                    <action selector="sendImageButton:" destination="T2U-M1-S4O" eventType="touchUpInside" id="t8n-XK-y61"/>
                                     <segue destination="YPm-fD-l92" kind="show" identifier="showEditAfterViewSegueId" id="Plp-py-FNY"/>
                                 </connections>
                             </button>
@@ -1329,6 +1328,6 @@ Cg
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="MgS-9T-Z1w"/>
-        <segue reference="Weh-WG-Z7U"/>
+        <segue reference="Plp-py-FNY"/>
     </inferredMetricsTieBreakers>
 </document>

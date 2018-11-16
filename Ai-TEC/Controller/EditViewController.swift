@@ -49,6 +49,10 @@ class EditViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         SocketGlobal.shared.socket?.delegate = self
     }
     
@@ -204,7 +208,7 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func backButton(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     // xoá từng cái
@@ -216,22 +220,7 @@ class EditViewController: UIViewController {
     // gửi và lưu ảnh
     
     @IBAction func sendImage(_ sender: Any) {
-        
-       
-            toolbarView.isHidden = true
-            colorButton.isHidden = true
-            widthButton.isHidden = true
-            eraerButton.isHidden = true
-            sendImageButton.isHidden = true
-            undoButton.isHidden = true
-            dismisButton.isHidden = true
-            sendButton.isHidden = true
-            
-        
-        
-        
         self.canvasView?.save()
-
     }
     
    
@@ -259,50 +248,32 @@ extension EditViewController: CanvasDelegate {
     
     func canvas(_ canvas: Canvas, didSaveDrawing drawing: Drawing, mergedImage image: UIImage?) {
         SVProgressHUD.show()
-   
         
-        guard let layer = UIApplication.shared.keyWindow?.layer else { return }
-        UIGraphicsBeginImageContextWithOptions(layer.frame.size, true, 0)
-        guard let context = UIGraphicsGetCurrentContext() else { return }
-        layer.render(in: context)
-        guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return }
-        UIGraphicsEndImageContext()
-        guard let data = UIImageJPEGRepresentation(image, 0.9) else {
-            return
-        }
-        
-        toolbarView.isHidden = false
-        colorButton.isHidden = false
-        widthButton.isHidden = false
-        eraerButton.isHidden = false
-        sendImageButton.isHidden = false
-        undoButton.isHidden = false
-        dismisButton.isHidden = false
-        sendButton.isHidden = false
-      
-     
-        
+        let data = image?.asJPEGData(1)
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyyMMddHHmmss"
         let myString = formatter.string(from: Date())
         let yourDate = formatter.date(from: myString)
         let myStrongafd = formatter.string(from: yourDate!)
-        
         timestampCapture = myStrongafd
-         
       
         Alamofire.upload(multipartFormData: { (form) in
-            form.append(data, withName: "data", fileName: "\(self.timestampCapture!).file.jpg", mimeType: "image/jpeg")
+            form.append(data!, withName: "data", fileName: "\(self.timestampCapture!).file.jpg", mimeType: "image/jpeg")
         }, to: apiSendImage, encodingCompletion: { result in
             switch result {
             case .success(let upload, _, _):
                 upload.responseString { response in
                     print(response.result.value ?? "")
+                    
                     SVProgressHUD.dismiss()
                 }
             case .failure(let encodingError):
                 print(encodingError)
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    SVProgressHUD.showError(withStatus: "Can't send image")
+                }
             }
         })
         
