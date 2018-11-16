@@ -58,7 +58,6 @@ class RTCVideoChatViewController: UIViewController {
       self.audioButton?.layer.cornerRadius = 22.0
       self.videoButton?.layer.cornerRadius = 22.0
       resolutionCollectionView.allowsMultipleSelection = false
-      SocketGlobal.shared.socket?.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +77,7 @@ class RTCVideoChatViewController: UIViewController {
             roomName = SocketGlobal.shared.room as NSString?
             client?.connectToRoom(withId: roomName as String?, settings: settingsModel, isLoopback: false, isAudioOnly: false, shouldMakeAecDump: false, shouldUseLevelControl: false)
         }
+        SocketGlobal.shared.socket?.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -132,8 +132,9 @@ class RTCVideoChatViewController: UIViewController {
         sender.isSelected = !sender.isSelected
         self.client?.toggleVideoMute()
     }
-    
+
     @IBAction func hangupButtonPressed(_ sender: UIButton) {
+        self.disconnect()
         self.performSegue(withIdentifier: "unwindToContactSegue", sender: self)
         let yourName = UserDefaults.standard.value(forKey: "yourname") ?? ""
         let nameRecieve = UserDefaults.standard.value(forKey: "nameRecieve") ?? ""
@@ -185,11 +186,17 @@ class RTCVideoChatViewController: UIViewController {
         return true
     }
 
-
-    @IBAction func backButtonTouched(_ sender: UIButton) {
-       self.performSegue(withIdentifier: "unwindToContactSegue", sender: self)
+   @IBAction func unwindToVideoChat(segue: UIStoryboardSegue) { }
+   
+    @IBAction func showAlbumButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "AlbumViewControllerId")
+            as? AlbumViewController {
+            vc.nameRemote = self.nameRemote
+            
+            self.present(vc, animated: true, completion: nil)
+        }
     }
-    
     
     // convert string to dictionary
     func convertToDictionary(from text: String) throws -> [String: Any]? {
@@ -208,11 +215,10 @@ class RTCVideoChatViewController: UIViewController {
         if segue.identifier == "showEditSegueId" {
             if let editVc = segue.destination as? EditViewController {
                 let date = Date()
+                UserDefaults.standard.set(Date(), forKey: "hours")
                 editVc.screenShotImage = screenShotImage?.addTimestamp(date)
                 editVc.nameRemote = nameRemote
-                
-                
-               
+    
             }
         }
     }

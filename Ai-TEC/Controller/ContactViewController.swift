@@ -8,7 +8,7 @@
 
 import UIKit
 import Starscream
-
+import CoreLocation
 
 class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDelegate , UITableViewDataSource{
     
@@ -28,7 +28,10 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
     var checkButton = true
     var index : Int?
     
-   
+    var currentLocation: CLLocation?
+    var locationManager: CLLocationManager = CLLocationManager()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,17 +43,25 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
         
         SocketGlobal.shared.socket?.delegate = self
         
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+        
         userName = UserDefaults.standard.value(forKey: "yourname") as? String ?? ""
         let dict = ["type":DISCOVERY,"name":userName]
         
         //login to socket
         SocketGlobal.shared.socket?.write(string: convertString(from: dict))
-        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         contactTableView.reloadData()
     }
+    
+     @IBAction func unwindToContact(segue: UIStoryboardSegue) { }
+    
     @IBAction func logoutButtonTouched(_ sender: Any) {
         let alert = UIAlertController(title: "ログアウトアカウント", message: "本気ですか？?", preferredStyle: UIAlertControllerStyle.alert)
         
@@ -68,11 +79,13 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
     func websocketDidConnect(socket: WebSocket) {
         print("")
     }
+    
     func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
         print(error ?? "")
     }
+    
     func websocketDidReceiveMessage(socket: WebSocket, text: String) {
-
+        
         do {
             if let dictionary = try convertToDictionary(from: text){
                 switch "\(dictionary["type"] ?? "")" {
@@ -106,6 +119,7 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
             print(error)
         }
     }
+    
     func websocketDidReceiveData(socket: WebSocket, data: Data) {
         print(data)
     }
@@ -122,7 +136,7 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
         if SocketGlobal.shared.contacts[indexPath.row].status == 1 {
             cell.viewStatus.backgroundColor = .green
             cell.isUserInteractionEnabled = true
-        }else{
+        } else {
             cell.viewStatus.backgroundColor = .red
             cell.isUserInteractionEnabled = false
         }
@@ -135,12 +149,9 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
         index = indexPath.row
         let receiName = SocketGlobal.shared.contacts[indexPath.row].name
         UserDefaults.standard.set(receiName, forKey: "nameReceive")
-        let dict = ["type" : CALL ,"name" : userName, "host" : userName , "receive" : receiName]
+        let dict = ["type" : CALL, "name" : userName, "host" : userName , "receive" : receiName]
         dictCall = dict
-        
-        
     }
-    
     
     @IBAction func CallP2P(_ sender: UIButton) {
         if index != nil {
@@ -159,12 +170,11 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showRingingSegueId" {
             let callingVc = segue.destination as? RingingViewController
-                callingVc?.nameUserCall = nameUserAnswer
-                callingVc?.check = checkButton
+            callingVc?.nameUserCall = nameUserAnswer
+            callingVc?.check = checkButton
         }
+        
     }
-    
-    
     // convert string to dictionary
     func convertToDictionary(from text: String) throws -> [String: Any]? {
         guard let data = text.data(using: .utf8) else { return [:] }
@@ -180,3 +190,9 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
     
 }
 
+
+extension ContactViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        currentLocation = manager.location
+    }
+}

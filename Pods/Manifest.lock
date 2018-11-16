@@ -1,4 +1,5 @@
 PODS:
+  - AEXML (4.3.3)
   - Alamofire (4.7.3)
   - DropDown (2.3.12)
   - GoogleMaps (2.7.0):
@@ -24,6 +25,7 @@ PODS:
   - WebRTC (63.11.20455)
 
 DEPENDENCIES:
+  - AEXML
   - Alamofire (~> 4.7)
   - DropDown
   - GoogleMaps
@@ -39,6 +41,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AEXML
     - Alamofire
     - DropDown
     - GoogleMaps
@@ -54,6 +57,7 @@ SPEC REPOS:
     - WebRTC
 
 SPEC CHECKSUMS:
+  AEXML: 601f41fcaa7bda7605cad153b0f43db9ec006c0f
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   DropDown: 0bcc278799ec11a3d34ce1aac9367fbbaf5423d9
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
@@ -68,6 +72,6 @@ SPEC CHECKSUMS:
   Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
   WebRTC: f2a6203584745fe53532633397557876b5d71640
 
-PODFILE CHECKSUM: ffa3b7df97ec12afbef4296ae1a92311cb1babe8
+PODFILE CHECKSUM: df1fa46ab481f6f139074c57c264ef9b5dd0c954
 
 COCOAPODS: 1.5.3

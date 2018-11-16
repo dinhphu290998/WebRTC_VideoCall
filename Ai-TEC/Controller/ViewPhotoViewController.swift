@@ -32,8 +32,8 @@ class ViewPhotoViewController: UIViewController, GMSMapViewDelegate{
     var photoUrl: URL?
     var hasGPS: Bool = false
     var photo: Image?
-    var timestampCapture: Date?
-    
+    var timestampCapture: String?
+    var time: String?
     override func viewDidLoad() {
         super.viewDidLoad()
      
@@ -65,7 +65,13 @@ class ViewPhotoViewController: UIViewController, GMSMapViewDelegate{
             hasGPS = false
         }
         mapView.isHidden = segmentedControl.selectedSegmentIndex == 0
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         SocketGlobal.shared.socket?.delegate = self
+        
     }
     
     @objc func getDirections() {
@@ -76,7 +82,7 @@ class ViewPhotoViewController: UIViewController, GMSMapViewDelegate{
         }
     }
     @IBAction func backButtonTouched(_ sender: Any) {
-        self.performSegue(withIdentifier: "unwinVideoChat", sender: self)
+        self.performSegue(withIdentifier: "unwindToVideochatSegueId", sender: self)
     }
     
     
@@ -93,13 +99,21 @@ class ViewPhotoViewController: UIViewController, GMSMapViewDelegate{
     
     @IBAction func sendImageButton(_ sender: Any) {
         
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-ddHH:mm:ss"
+        let myString = formatter.string(from: Date())
+        let yourDate = formatter.date(from: myString)
+        let myStrongafd = formatter.string(from: yourDate!)
+        time = myStrongafd
+        
         guard let data = UIImageJPEGRepresentation(photoImage.image!, 0.9) else {
             return
         }
         
+          print("Upload Image ViewPhotoController ---------")
         
         Alamofire.upload(multipartFormData: { (form) in
-            form.append(data, withName: "data", fileName: "file.jpg", mimeType: "image/jpeg")
+            form.append(data, withName: "data", fileName: "\(self.time!).file.jpg", mimeType: "image/jpeg")
         }, to: apiSendImage, encodingCompletion: { result in
             switch result {
             case .success(let upload, _, _):
@@ -140,7 +154,6 @@ extension ViewPhotoViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error: \(error)")
     }
-    
     
 }
 extension ViewPhotoViewController: MKMapViewDelegate {

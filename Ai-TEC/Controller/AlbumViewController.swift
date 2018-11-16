@@ -13,6 +13,7 @@ class AlbumViewController: UIViewController {
     
     var nameRemote = ""
     var photos: [String]?
+
     let widthCell = Device.model.rawValue > DeviceModel.iPad2.rawValue ? Screen.width/4 - 8 : Screen.width/2 - 8
     let userData = UserDefaults(suiteName: UserDefaults.standard.string(forKey: "yourname"))
     @IBOutlet weak var albumCollectionView: UICollectionView!
@@ -21,7 +22,6 @@ class AlbumViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        SocketGlobal.shared.socket?.delegate = self
        
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -33,11 +33,13 @@ class AlbumViewController: UIViewController {
             })
             self.albumCollectionView.reloadData()
         }
-        albumCollectionView.reloadData()
+        SocketGlobal.shared.socket?.delegate = self
+    
     }
+    
 
     @IBAction func backButtonTouched(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+      self.dismiss(animated: true, completion: nil)
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -47,6 +49,8 @@ class AlbumViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    
 
 }
 
@@ -67,9 +71,10 @@ extension AlbumViewController: UICollectionViewDataSource  {
             }
             return cell
         }
-        albumCollectionView.reloadData()
+      
         return UICollectionViewCell()
     }
+   
 }
 
 extension AlbumViewController: UICollectionViewDelegate {
@@ -84,6 +89,8 @@ extension AlbumViewController: UICollectionViewDelegate {
                 present(vc, animated: true, completion: nil)
         }
     }
+    
+    
 }
 
 extension AlbumViewController: UICollectionViewDelegateFlowLayout {
@@ -131,6 +138,7 @@ extension AlbumViewController: WebSocketDelegate {
                     let url = "\(urlHostHttp)data/\(photo)"
                     photosSender?.append(url)
                     userData?.set(photosSender, forKey: nameRemote)
+                  
                 }
                 
                 let alert = UIAlertController(title: "お知らせ",
@@ -138,20 +146,7 @@ extension AlbumViewController: WebSocketDelegate {
                                               preferredStyle: .alert)
                 let openAction = UIAlertAction(title: "開く", style: .default, handler: { (_) in
                     
-                    if self is AlbumViewController {
-                        if let vc = self as? AlbumViewController {
-                            vc.albumCollectionView.reloadData()
-                        }
-                        return
-                    }
-                    
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    if let vc = storyboard.instantiateViewController(withIdentifier: "AlbumViewControllerId")
-                        as? AlbumViewController {
-                        vc.nameRemote = self.nameRemote
-                        
-                        self.present(vc, animated: true, completion: nil)
-                    }
+
                 })
                 
                 let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
@@ -172,6 +167,7 @@ extension AlbumViewController: WebSocketDelegate {
 
 extension AlbumViewController: PhotoCellDelegate {
     func delete(index: Int) {
+       
         photos?.remove(at: index)
         albumCollectionView.reloadData()
     }

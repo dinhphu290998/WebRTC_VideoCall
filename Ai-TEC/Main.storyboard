@@ -368,7 +368,6 @@ Cg
                         <outlet property="rejectReceiveButton" destination="aXZ-M9-mrH" id="fas-9k-wLh"/>
                         <outlet property="searchAnimationImageView" destination="gXJ-Ds-G8Z" id="alz-Of-HK8"/>
                         <segue destination="iFm-Yh-cyi" kind="show" identifier="showVideoChatSegueId" id="YuT-Qn-UaS"/>
-                        <segue destination="DDB-qt-tTP" kind="show" identifier="backContactSegueId" id="NZ9-6g-EPh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fej-TW-Jck" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -509,8 +508,8 @@ Cg
                                         </constraints>
                                         <state key="normal" image="cm_arrow_back_white"/>
                                         <connections>
-                                            <action selector="backButtonTouched:" destination="iFm-Yh-cyi" eventType="touchUpInside" id="XHL-3t-ln9"/>
-                                            <action selector="hangupButtonPressed:" destination="iFm-Yh-cyi" eventType="touchUpInside" id="zaw-as-kXd"/>
+                                            <action selector="hangupButtonPressed:" destination="iFm-Yh-cyi" eventType="touchUpInside" id="4ii-TQ-zB1"/>
+                                            <segue destination="JU2-Hs-BPV" kind="unwind" identifier="unwindToContactSegue" unwindAction="unwindToContactWithSegue:" id="gjL-Xc-Qfy"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OI7-EM-lxL">
@@ -520,7 +519,7 @@ Cg
                                         </constraints>
                                         <state key="normal" image="cm_arrow_next_white"/>
                                         <connections>
-                                            <segue destination="qHD-jV-k4P" kind="presentation" identifier="showAlbumSegueId" modalPresentationStyle="fullScreen" id="3zj-tc-zFS"/>
+                                            <action selector="showAlbumButton:" destination="iFm-Yh-cyi" eventType="touchUpInside" id="oSB-FG-5Nz"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="メイン画面" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBv-T2-wNj">
@@ -637,14 +636,14 @@ Cg
                         <outlet property="resolutionCollectionView" destination="OQ5-ih-09C" id="tZy-JR-gJZ"/>
                         <outlet property="statusRemoteView" destination="C4e-lB-TVR" id="MRL-kY-bVe"/>
                         <outlet property="videoButton" destination="kcx-j9-I7i" id="jyd-vz-eA2"/>
-                        <segue destination="DDB-qt-tTP" kind="show" identifier="unwindToContactSegue" id="mxO-FM-z9u"/>
                         <segue destination="YPm-fD-l92" kind="show" identifier="showEditSegueId" id="Weh-WG-Z7U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3jb-SF-qzn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="JU2-Hs-BPV" userLabel="Exit" sceneMemberID="exit"/>
                 <pinchGestureRecognizer id="RPk-Hr-1MX"/>
             </objects>
-            <point key="canvasLocation" x="1146" y="-268"/>
+            <point key="canvasLocation" x="1333" y="-245"/>
         </scene>
         <!--Edit View Controller-->
         <scene sceneID="Bka-Om-isN">
@@ -918,7 +917,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCy-OO-47M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1146" y="549"/>
+            <point key="canvasLocation" x="1393" y="630"/>
         </scene>
         <!--View Photo View Controller-->
         <scene sceneID="LRR-jA-fVZ">
@@ -943,6 +942,7 @@ Cg
                                         <state key="normal" image="cm_arrow_back_white"/>
                                         <connections>
                                             <action selector="backButtonTouched:" destination="T2U-M1-S4O" eventType="touchUpInside" id="HrO-7S-ahH"/>
+                                            <segue destination="AW5-7g-IP7" kind="unwind" identifier="unwindToVideochatSegueId" unwindAction="unwindToVideoChatWithSegue:" id="fZI-OI-6bj"/>
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjc-Im-N1z">
@@ -1009,7 +1009,7 @@ Cg
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="45T-sR-Srb">
                                 <rect key="frame" x="0.0" y="109" width="320" height="394"/>
                             </imageView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vg5-hb-P6w">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Rgr-49-6iE">
                                 <rect key="frame" x="0.0" y="109" width="320" height="394"/>
                             </mapView>
                         </subviews>
@@ -1017,22 +1017,22 @@ Cg
                         <constraints>
                             <constraint firstItem="2ic-Rs-MKo" firstAttribute="leading" secondItem="nJi-Ba-gYg" secondAttribute="leading" id="34p-pK-nxS"/>
                             <constraint firstItem="YqY-zo-UFc" firstAttribute="leading" secondItem="nJi-Ba-gYg" secondAttribute="leading" id="Clp-g5-HX9"/>
-                            <constraint firstItem="zut-hV-AjT" firstAttribute="top" secondItem="vg5-hb-P6w" secondAttribute="bottom" constant="5" id="GrW-eP-Syj"/>
-                            <constraint firstItem="vg5-hb-P6w" firstAttribute="top" secondItem="YqY-zo-UFc" secondAttribute="bottom" constant="5" id="I99-Rm-HE8"/>
-                            <constraint firstItem="vg5-hb-P6w" firstAttribute="leading" secondItem="nJi-Ba-gYg" secondAttribute="leading" id="O9S-io-Erm"/>
-                            <constraint firstAttribute="trailing" secondItem="vg5-hb-P6w" secondAttribute="trailing" id="URc-Wi-vnH"/>
-                            <constraint firstItem="vg5-hb-P6w" firstAttribute="centerX" secondItem="nJi-Ba-gYg" secondAttribute="centerX" id="YGL-80-MMc"/>
                             <constraint firstItem="2ic-Rs-MKo" firstAttribute="top" secondItem="nJi-Ba-gYg" secondAttribute="top" id="b41-hg-q4z"/>
                             <constraint firstItem="YqY-zo-UFc" firstAttribute="top" secondItem="2ic-Rs-MKo" secondAttribute="bottom" id="c0P-e1-YxZ"/>
+                            <constraint firstItem="Rgr-49-6iE" firstAttribute="top" secondItem="YqY-zo-UFc" secondAttribute="bottom" constant="5" id="cSh-Rr-NSc"/>
                             <constraint firstItem="45T-sR-Srb" firstAttribute="leading" secondItem="nJi-Ba-gYg" secondAttribute="leading" id="eeS-6K-Di2"/>
                             <constraint firstItem="GBg-bO-Z67" firstAttribute="top" secondItem="zut-hV-AjT" secondAttribute="bottom" constant="16" id="gdb-YL-2Pw"/>
                             <constraint firstItem="rWK-LA-v0G" firstAttribute="centerY" secondItem="zut-hV-AjT" secondAttribute="centerY" id="hjA-VI-6ek"/>
                             <constraint firstAttribute="trailing" secondItem="2ic-Rs-MKo" secondAttribute="trailing" id="j7h-4y-P4d"/>
                             <constraint firstItem="rWK-LA-v0G" firstAttribute="trailing" secondItem="nJi-Ba-gYg" secondAttribute="trailingMargin" id="jHW-fi-hpH"/>
+                            <constraint firstAttribute="trailing" secondItem="Rgr-49-6iE" secondAttribute="trailing" id="jJT-Nh-n2R"/>
+                            <constraint firstItem="zut-hV-AjT" firstAttribute="top" secondItem="Rgr-49-6iE" secondAttribute="bottom" constant="5" id="jk5-Xw-DgM"/>
                             <constraint firstItem="zut-hV-AjT" firstAttribute="centerX" secondItem="nJi-Ba-gYg" secondAttribute="centerX" id="o2X-VQ-cJE"/>
                             <constraint firstItem="zut-hV-AjT" firstAttribute="top" secondItem="45T-sR-Srb" secondAttribute="bottom" constant="5" id="q8c-Cx-fQp"/>
+                            <constraint firstItem="Rgr-49-6iE" firstAttribute="centerX" secondItem="nJi-Ba-gYg" secondAttribute="centerX" id="q93-Mt-Aut"/>
                             <constraint firstItem="rWK-LA-v0G" firstAttribute="height" secondItem="zut-hV-AjT" secondAttribute="height" id="qBD-l9-W7s"/>
                             <constraint firstAttribute="trailing" secondItem="YqY-zo-UFc" secondAttribute="trailing" id="qPI-aa-d6n"/>
+                            <constraint firstItem="Rgr-49-6iE" firstAttribute="leading" secondItem="nJi-Ba-gYg" secondAttribute="leading" id="qpV-Sf-Y5m"/>
                             <constraint firstAttribute="trailing" secondItem="45T-sR-Srb" secondAttribute="trailing" id="rHc-Xr-bQS"/>
                             <constraint firstItem="45T-sR-Srb" firstAttribute="centerX" secondItem="nJi-Ba-gYg" secondAttribute="centerX" id="rbM-XB-fSk"/>
                             <constraint firstItem="rWK-LA-v0G" firstAttribute="leading" secondItem="zut-hV-AjT" secondAttribute="trailing" constant="16" id="sgQ-d5-TFP"/>
@@ -1041,16 +1041,16 @@ Cg
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="mapView" destination="vg5-hb-P6w" id="jyD-N9-vcw"/>
+                        <outlet property="mapView" destination="Rgr-49-6iE" id="1Iy-0e-sfw"/>
                         <outlet property="photoImage" destination="45T-sR-Srb" id="Xp6-AB-T8u"/>
                         <outlet property="segmentedControl" destination="zut-hV-AjT" id="CMg-nA-oiR"/>
                         <outlet property="timestampLabel" destination="YqY-zo-UFc" id="r21-Zb-Fvi"/>
-                        <segue destination="iFm-Yh-cyi" kind="show" identifier="unwinVideoChat" id="O7u-WU-c3R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y9p-nG-bHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="AW5-7g-IP7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2141" y="548"/>
+            <point key="canvasLocation" x="2235" y="630"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="ebA-L3-8xA">
@@ -1328,10 +1328,7 @@ Cg
         <image name="voice_on" width="105" height="105"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jKM-9S-U4T"/>
-        <segue reference="D5g-Vq-3h1"/>
-        <segue reference="Plp-py-FNY"/>
-        <segue reference="O7u-WU-c3R"/>
-        <segue reference="h0H-kf-gPu"/>
+        <segue reference="MgS-9T-Z1w"/>
+        <segue reference="Weh-WG-Z7U"/>
     </inferredMetricsTieBreakers>
 </document>

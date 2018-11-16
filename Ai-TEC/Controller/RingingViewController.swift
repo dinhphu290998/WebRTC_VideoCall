@@ -120,7 +120,12 @@ class RingingViewController: UIViewController ,WebSocketDelegate{
     @IBAction func cancelBt(_ sender: UIButton) {
         let dictReject = ["type":"answer","result":"reject" ,"receive":nameUserCall]
         SocketGlobal.shared.socket?.write(string: convertString(from: dictReject))
-        self.performSegue(withIdentifier: "backContactSegueId", sender: self)
+        if let keyWindow = UIApplication.shared.keyWindow,
+            let navigationController = keyWindow.rootViewController as? UINavigationController {
+            navigationController.popViewController(animated: true)
+        }
+        timerSoundAlert?.invalidate()
+        timerSoundAlert = nil
         
     }
     

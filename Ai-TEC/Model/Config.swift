@@ -24,7 +24,6 @@ let EMERGENCY = "emergency"
 let functionSendImageUrl = "sendFile"
 let googleMapApiKey =  "AIzaSyBPQJ18bEW0gGU3JANcIF2waD5rigJLdbk"
 
-
 enum SocketError {
     case success
     case messageEmpty

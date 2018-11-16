@@ -17,11 +17,7 @@ import MobileCoreServices
 import SocketRocket
 import Starscream
 
-
-
 class EditViewController: UIViewController {
-   
-    
     weak var paletteView: Palette?
     weak var canvasView: Canvas?
     var nameRemote = ""
@@ -30,10 +26,9 @@ class EditViewController: UIViewController {
     var colorSelectedView: UIView?
     var widthSelectedView: UIView?
     var screenShotImage: UIImage?
-
-    
     var timestampCapture: String?
     var isFirstEdit: Bool = true
+    
     @IBOutlet weak var toolbarView: UIView!
     @IBOutlet weak var colorButton: UIButton!
     @IBOutlet weak var widthButton: UIButton!
@@ -42,6 +37,7 @@ class EditViewController: UIViewController {
     @IBOutlet weak var undoButton: UIButton!
     @IBOutlet weak var dismisButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,11 +45,12 @@ class EditViewController: UIViewController {
         setupPalette()
         setupToolDrawView()
         
-        
-        
-        SocketGlobal.shared.socket?.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        SocketGlobal.shared.socket?.delegate = self
+    }
     
  
     fileprivate func setupPalette() {
@@ -66,7 +63,6 @@ class EditViewController: UIViewController {
     }
     
     // gán ảnh cho view
-    
     fileprivate func setupCanvas() {
         let sizeView = self.view.frame.size
         let width = min(sizeView.width, sizeView.height)
@@ -84,7 +80,6 @@ class EditViewController: UIViewController {
     
     
     // thanh màu
-    
     fileprivate func setupToolDrawView() {
         var width = min(UIScreen.main.bounds.height, UIScreen.main.bounds.width)
         width = (width - 6*16 - 38*2)/2
@@ -102,11 +97,11 @@ class EditViewController: UIViewController {
         let colorGesture = UITapGestureRecognizer(target: self, action: #selector(showColorPicker))
         colorSelectedView?.addGestureRecognizer(colorGesture)
         let colorClearImageView = UIImageView(image: UIImage(named: "icon_eraser"))
-        colorButton.addSubview(colorClearImageView)
         colorClearImageView.frame = (colorSelectedView?.frame)!
         colorClearImageView.contentMode = .scaleAspectFill
         colorClearImageView.clipsToBounds = true
         colorButton.bringSubview(toFront: colorSelectedView!)
+        colorButton.addSubview(colorClearImageView)
         
         
         widthSelectedView = UIView()
@@ -207,6 +202,7 @@ class EditViewController: UIViewController {
     @IBAction func resetButtonTouched(_ sender: Any) {
         self.canvasView?.clear()
     }
+    
     @IBAction func backButton(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
@@ -220,14 +216,19 @@ class EditViewController: UIViewController {
     // gửi và lưu ảnh
     
     @IBAction func sendImage(_ sender: Any) {
-        toolbarView.isHidden = true
-        colorButton.isHidden = true
-        widthButton.isHidden = true
-        eraerButton.isHidden = true
-        sendImageButton.isHidden = true
-        undoButton.isHidden = true
-        dismisButton.isHidden = true
-        sendButton.isHidden = true
+        
+       
+            toolbarView.isHidden = true
+            colorButton.isHidden = true
+            widthButton.isHidden = true
+            eraerButton.isHidden = true
+            sendImageButton.isHidden = true
+            undoButton.isHidden = true
+            dismisButton.isHidden = true
+            sendButton.isHidden = true
+            
+        
+        
         
         self.canvasView?.save()
 
@@ -269,15 +270,6 @@ extension EditViewController: CanvasDelegate {
         guard let data = UIImageJPEGRepresentation(image, 0.9) else {
             return
         }
-      
-        toolbarView.isHidden = true
-        colorButton.isHidden = true
-        widthButton.isHidden = true
-        eraerButton.isHidden = true
-        sendImageButton.isHidden = true
-        undoButton.isHidden = true
-        dismisButton.isHidden = true
-        sendButton.isHidden = true
         
         toolbarView.isHidden = false
         colorButton.isHidden = false
@@ -287,16 +279,18 @@ extension EditViewController: CanvasDelegate {
         undoButton.isHidden = false
         dismisButton.isHidden = false
         sendButton.isHidden = false
+      
+     
         
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-ddHH:mm:ss"
+        formatter.dateFormat = "yyyyMMddHHmmss"
         let myString = formatter.string(from: Date())
         let yourDate = formatter.date(from: myString)
         let myStrongafd = formatter.string(from: yourDate!)
         
         timestampCapture = myStrongafd
-      
+         
       
         Alamofire.upload(multipartFormData: { (form) in
             form.append(data, withName: "data", fileName: "\(self.timestampCapture!).file.jpg", mimeType: "image/jpeg")
@@ -311,6 +305,7 @@ extension EditViewController: CanvasDelegate {
                 print(encodingError)
             }
         })
+        
         let dict = ["type" : "sendFile" , "receive" : nameRemote , "url" : "\(timestampCapture!).file.jpg"]
         SocketGlobal.shared.socket?.write(string: convertString(from: dict))
         print(dict)
@@ -354,19 +349,12 @@ extension EditViewController: WebSocketDelegate {
                                               preferredStyle: .alert)
                 let openAction = UIAlertAction(title: "開く", style: .default, handler: { (_) in
                     
-                    if self is AlbumViewController {
-                        if let vc = self as? AlbumViewController {
-                            vc.albumCollectionView.reloadData()
-                        }
-                        return
-                    }
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     if let vc = storyboard.instantiateViewController(withIdentifier: "AlbumViewControllerId")
                         as? AlbumViewController {
-                  
                         vc.nameRemote = self.nameRemote
-             
+                       
                         self.present(vc, animated: true, completion: nil)
                     }
                 })

@@ -11,6 +11,7 @@ import CoreData
 import GoogleMaps
 import GooglePlaces
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
@@ -44,12 +45,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        self.saveContext()
+        AppDelegate.saveContext()
     }
 
     // MARK: - Core Data stack
 
-    lazy var persistentContainer: NSPersistentContainer = {
+    static var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the
@@ -77,9 +78,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     // MARK: - Core Data Saving support
-
-    func saveContext () {
-        let context = persistentContainer.viewContext
+    static var context: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
+    
+    static func saveContext () {
         if context.hasChanges {
             do {
                 try context.save()

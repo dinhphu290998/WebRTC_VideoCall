@@ -19,6 +19,7 @@ class LoginViewController: UIViewController , WebSocketDelegate{
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField:UITextField!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
