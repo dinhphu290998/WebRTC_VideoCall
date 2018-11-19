@@ -20,7 +20,7 @@ extension CLLocationCoordinate2D {
             var lat: Double = 0.0, lon: Double = 0.0
             let scanner = Scanner(string: tuple)
             scanner.charactersToBeSkipped = CharacterSet(charactersIn: ",")
-            var success = scanner.scanDouble(&lon)
+            let success = scanner.scanDouble(&lon)
             if success {
                 let c = CLLocationCoordinate2DMake(lat, lon)
                 if CLLocationCoordinate2DIsValid(c) {

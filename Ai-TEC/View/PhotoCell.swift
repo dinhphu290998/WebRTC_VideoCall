@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import Photos
 protocol PhotoCellDelegate: class {
-    func delete(index: Int)
+    func remove(indexPath: IndexPath)
 }
 
 
@@ -21,9 +21,9 @@ class PhotoCell: UICollectionViewCell {
 
     var dispatchWorkItem: DispatchWorkItem?
     let viewModel = ViewModel()
-    var index: IndexPath?
+    var indexPath: IndexPath!
     weak var delegate: PhotoCellDelegate?
-    
+
    // assign a url for the photo
     
     public func setPhoto(url: URL) {
@@ -31,8 +31,11 @@ class PhotoCell: UICollectionViewCell {
         ImageDownloader.default.downloadImage(with: url, retrieveImageTask: nil, options: [], progressBlock: nil, completionHandler: { (image,_ ,_ ,data) in
       
             self.photoImageView.image = image
+
+            
             print(image as Any)
            
+            
             // create a sender album
             
 
@@ -57,13 +60,14 @@ class PhotoCell: UICollectionViewCell {
         let yourDate = formatter.date(from: myString)
         let myStrongafd = formatter.string(from: yourDate!)
         timestampLabel.text = myStrongafd
-        UserDefaults.standard.set(timestampLabel.text, forKey: "name")
+        
+   
         
     }
     
     
     @IBAction func deleteButtonDidTap(_ sender: Any) {
-        delegate?.delete(index: index?.row ?? 0)
+        delegate?.remove(indexPath: indexPath)
         
     }
     

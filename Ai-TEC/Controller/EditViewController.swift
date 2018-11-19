@@ -40,21 +40,18 @@ class EditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupCanvas()
         setupPalette()
         setupToolDrawView()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         SocketGlobal.shared.socket?.delegate = self
     }
+    
+  
     
  
     fileprivate func setupPalette() {
@@ -107,7 +104,6 @@ class EditViewController: UIViewController {
         colorButton.bringSubview(toFront: colorSelectedView!)
         colorButton.addSubview(colorClearImageView)
         
-        
         widthSelectedView = UIView()
         widthButton.addSubview(widthSelectedView!)
         widthSelectedView?.frame = CGRect(x: 3, y: 17, width: width - 36, height: 10)
@@ -126,8 +122,8 @@ class EditViewController: UIViewController {
                       UIColor.init(red: 39/255.0, green: 244/255.0, blue: 86/255.0, alpha: 1.0),
                       UIColor.init(red: 88/255.0, green: 161/255.0, blue: 237/255.0, alpha: 1.0),
                       UIColor.init(red: 136/255.0, green: 15/255.0, blue: 125/255.0, alpha: 1.0),
-                      UIColor.init(red: 252/255.0, green: 50/255.0, blue: 128/255.0, alpha: 1.0)
-        ]
+                      UIColor.init(red: 252/255.0, green: 50/255.0, blue: 128/255.0, alpha: 1.0)]
+        
         if let color = colors.first {
             self.brush()?.color = color
             colorSelectedView?.backgroundColor = color
@@ -337,7 +333,6 @@ extension EditViewController: WebSocketDelegate {
                 present(alert, animated: true, completion: nil)
             }
         }
-        
         
     }
     

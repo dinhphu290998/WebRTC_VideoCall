@@ -9,7 +9,7 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (2.7.0):
     - GoogleMaps/Base (= 2.7.0)
-  - Kingfisher (4.10.0)
+  - Kingfisher (4.10.1)
   - Material (2.16.4):
     - Material/Core (= 2.16.4)
   - Material/Core (2.16.4):
@@ -62,7 +62,7 @@ SPEC CHECKSUMS:
   DropDown: 0bcc278799ec11a3d34ce1aac9367fbbaf5423d9
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
-  Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Material: 4ed78690b09ffd148b5ffab6b4367fb1d8da1cd3
   Motion: 153ba49692997888556c7a95207278a8b1f8be95
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531

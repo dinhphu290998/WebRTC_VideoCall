@@ -105,6 +105,7 @@ class ViewPhotoViewController: UIViewController, GMSMapViewDelegate{
             if let editVc = segue.destination as? EditViewController {
                 if let photo = photo {
                     editVc.screenShotImage = photo
+                    editVc.nameRemote = nameRemote
                 }
                 editVc.isFirstEdit = false
             }

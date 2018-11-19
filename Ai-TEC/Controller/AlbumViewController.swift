@@ -9,17 +9,18 @@
 import UIKit
 import Material
 import Starscream
+import CoreData
+import os.log
+
 class AlbumViewController: UIViewController {
     
     var nameRemote = ""
     var photos: [String]?
-
     let widthCell = Device.model.rawValue > DeviceModel.iPad2.rawValue ? Screen.width/4 - 8 : Screen.width/2 - 8
     let userData = UserDefaults(suiteName: UserDefaults.standard.string(forKey: "yourname"))
+    
     @IBOutlet weak var albumCollectionView: UICollectionView!
     
-    
-   
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -49,12 +50,10 @@ class AlbumViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    
 
 }
 
-extension AlbumViewController: UICollectionViewDataSource  {
+extension AlbumViewController: UICollectionViewDataSource, UICollectionViewDelegate  {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let photos = photos {
             return photos.count
@@ -66,7 +65,8 @@ extension AlbumViewController: UICollectionViewDataSource  {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCellId", for: indexPath) as? PhotoCell {
             if let url = URL(string: photos![indexPath.item]) {
                 cell.setPhoto(url: url)
-                cell.index = indexPath
+                cell.indexPath = indexPath
+                
                 cell.delegate = self
             }
             return cell
@@ -74,23 +74,20 @@ extension AlbumViewController: UICollectionViewDataSource  {
       
         return UICollectionViewCell()
     }
-   
-}
-
-extension AlbumViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "ViewPhotoViewControllerId") as? ViewPhotoViewController,
             let photos = photos,
             let url = URL(string: photos[indexPath.item])
-            {
-                vc.photoUrl = url
-                vc.nameRemote = nameRemote
-                present(vc, animated: true, completion: nil)
+        {
+            vc.photoUrl = url
+            vc.nameRemote = nameRemote
+            present(vc, animated: true, completion: nil)
         }
     }
     
-    
+ 
 }
 
 extension AlbumViewController: UICollectionViewDelegateFlowLayout {
@@ -138,15 +135,12 @@ extension AlbumViewController: WebSocketDelegate {
                     let url = "\(urlHostHttp)data/\(photo)"
                     photosSender?.append(url)
                     userData?.set(photosSender, forKey: nameRemote)
-                  
                 }
                 
                 let alert = UIAlertController(title: "お知らせ",
                                               message: "画像を受信しました。確認しますか？\n後でギャラリーにて確認する事も出来ます。",
                                               preferredStyle: .alert)
                 let openAction = UIAlertAction(title: "開く", style: .default, handler: { (_) in
-                    
-
                 })
                 
                 let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
@@ -162,15 +156,11 @@ extension AlbumViewController: WebSocketDelegate {
         print(data)
     }
     
-    
 }
 
 extension AlbumViewController: PhotoCellDelegate {
-    func delete(index: Int) {
-       
-        photos?.remove(at: index)
-        albumCollectionView.reloadData()
+    func remove(indexPath: IndexPath) {
+        photos?.remove(at: indexPath.row)
     }
-    
-    
+
 }
