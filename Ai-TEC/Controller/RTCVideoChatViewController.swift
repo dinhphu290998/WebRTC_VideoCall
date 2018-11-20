@@ -215,10 +215,10 @@ class RTCVideoChatViewController: UIViewController {
         if segue.identifier == "showEditSegueId" {
             if let editVc = segue.destination as? EditViewController {
                 let date = Date()
-                UserDefaults.standard.set(Date(), forKey: "hours")
+                UserDefaults.standard.set(date, forKey: "hours")
                 editVc.screenShotImage = screenShotImage?.addTimestamp(date)
                 editVc.nameRemote = nameRemote
-    
+                editVc.timestampCapture = date
             }
         }
     }

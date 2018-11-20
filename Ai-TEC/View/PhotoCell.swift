@@ -25,57 +25,49 @@ class PhotoCell: UICollectionViewCell {
     weak var delegate: PhotoCellDelegate?
 
    // assign a url for the photo
-    
     public func setPhoto(url: URL) {
-    
         ImageDownloader.default.downloadImage(with: url, retrieveImageTask: nil, options: [], progressBlock: nil, completionHandler: { (image,_ ,_ ,data) in
       
+
             self.photoImageView.image = image
-
-            
             print(image as Any)
-           
-            
             // create a sender album
-            
-
-            self.viewModel.savePhoto(self.photoImageView.image!, completion: { (error) in
-                DispatchQueue.main.async {
-                    if let error = error {
-                        print(error)
+            if self.photoImageView.image != nil {
+                self.viewModel.savePhoto(self.photoImageView.image!, completion: { (error) in
+                    DispatchQueue.main.async {
+                        if let error = error {
+                            print(error)
+                        }
+                        
+                        print("Save Image To Album -------------------")
                     }
-                   
-                    print("Save Image To Album -------------------")
-                }
-            })
+                })
+            } else {
+                self.photoImageView.image = nil
+            }
+            
+            
         })
         
         fetchImage(from: url) { (image) in
             self.photoImageView.image = image
         }
-    
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let myString = formatter.string(from: Date())
-        let yourDate = formatter.date(from: myString)
-        let myStrongafd = formatter.string(from: yourDate!)
-        timestampLabel.text = myStrongafd
         
-   
+        if let timestampCapture = url.timestampCaptured {
+            timestampLabel.text = timestampCapture
+        } else {
+            timestampLabel.text = ""
+        }
         
-    }
-    
+}
     
     @IBAction func deleteButtonDidTap(_ sender: Any) {
         delegate?.remove(indexPath: indexPath)
-        
     }
     
     func fetchImage(from url: URL, completedHandler: @escaping (UIImage?) -> Void) {
         var image: UIImage?
         dispatchWorkItem = DispatchWorkItem(block: {
-           
-            
             if let cache = CacheImage.images.object(forKey: url.absoluteString as NSString) as? UIImage {
                 image = cache
             } else {

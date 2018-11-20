@@ -16,7 +16,7 @@ import Toast_Swift
 import MobileCoreServices
 import SocketRocket
 import Starscream
-
+import CoreLocation
 class EditViewController: UIViewController {
     weak var paletteView: Palette?
     weak var canvasView: Canvas?
@@ -26,8 +26,13 @@ class EditViewController: UIViewController {
     var colorSelectedView: UIView?
     var widthSelectedView: UIView?
     var screenShotImage: UIImage?
-    var timestampCapture: String?
+    var times: String?
+    var timestampCapture: Date?
+    
     var isFirstEdit: Bool = true
+    
+    var currentLocation: CLLocation?
+    var locationManager: CLLocationManager = CLLocationManager()
     
     @IBOutlet weak var toolbarView: UIView!
     @IBOutlet weak var colorButton: UIButton!
@@ -41,6 +46,11 @@ class EditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+
         setupCanvas()
         setupPalette()
         setupToolDrawView()
@@ -235,6 +245,12 @@ class EditViewController: UIViewController {
     }
 }
 
+extension EditViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        currentLocation = manager.location
+    }
+}
+
 // save and upload image to server
 
 extension EditViewController: CanvasDelegate {
@@ -252,16 +268,33 @@ extension EditViewController: CanvasDelegate {
         let myString = formatter.string(from: Date())
         let yourDate = formatter.date(from: myString)
         let myStrongafd = formatter.string(from: yourDate!)
-        timestampCapture = myStrongafd
+        times = myStrongafd
+        
+        let oldEXIF = self.getEXIFFromImage(image: data!)
+        var attached = data
+        let imageNameFile = getImageNameFile(nameRemote: nameRemote)
+        if isFirstEdit {
+             if let gpsDict = currentLocation?.getGPSDictionary() {
+                let newExif = addInfoToEXIF(old: oldEXIF, gps: gpsDict, dateCapture: yourDate)
+                attached = attachEXIFToImage(image: data! as NSData, EXIF: newExif) as Data
+                print("newEXIF: \(newExif)")
+            } else {
+                SVProgressHUD.showError(withStatus: "Can't send image. Please check GPS")
+                return
+            }
+        } else {
+            let newEXIF = addInfoToEXIF(old: oldEXIF, gps: nil, dateCapture: yourDate)
+            attached = attachEXIFToImage(image: data! as NSData, EXIF: newEXIF) as Data
+            print("newEXIF: \(newEXIF)")
+        }
       
         Alamofire.upload(multipartFormData: { (form) in
-            form.append(data!, withName: "data", fileName: "\(self.timestampCapture!).file.jpg", mimeType: "image/jpeg")
+            form.append(data!, withName: "data", fileName: "\(imageNameFile!)", mimeType: "image/jpeg")
         }, to: apiSendImage, encodingCompletion: { result in
             switch result {
             case .success(let upload, _, _):
                 upload.responseString { response in
                     print(response.result.value ?? "")
-                    
                     SVProgressHUD.dismiss()
                 }
             case .failure(let encodingError):
@@ -273,15 +306,13 @@ extension EditViewController: CanvasDelegate {
             }
         })
         
-        let dict = ["type" : "sendFile" , "receive" : nameRemote , "url" : "\(timestampCapture!).file.jpg"]
+        let dict = ["type" : "sendFile" , "receive" : nameRemote , "url" : "\(imageNameFile!)"]
         SocketGlobal.shared.socket?.write(string: convertString(from: dict))
         print(dict)
     
     }
 
 }
-
-
 
 extension EditViewController: WebSocketDelegate {
     func websocketDidConnect(socket: WebSocket) {
@@ -339,6 +370,90 @@ extension EditViewController: WebSocketDelegate {
     func websocketDidReceiveData(socket: WebSocket, data: Data) {
         print(data)
     }
+}
+
+extension EditViewController {
     
+    public func addInfoToEXIF(old: NSDictionary, gps: NSDictionary?, dateCapture: Date?) -> NSDictionary {
+        if let gps = gps {
+            old.setValue(gps, forKey: kCGImagePropertyGPSDictionary as String)
+        }
+        
+        if let exifData = old.value(forKey: kCGImagePropertyExifDictionary as String) as? NSDictionary,
+            let timestampCapture = dateCapture {
+            let dfExif = DateFormatter()
+            dfExif.locale = Locale(identifier: "en_POSIX_US")
+            dfExif.timeZone = TimeZone.current
+            dfExif.dateFormat = "yyyy:MM:dd HH:mm:ss"
+            
+            exifData.setValue(dfExif.string(from: timestampCapture),
+                              forKey: kCGImagePropertyExifDateTimeOriginal as String)
+            exifData.setValue(dfExif.string(from: timestampCapture),
+                              forKey: kCGImagePropertyExifDateTimeDigitized as String)
+            
+            old.setValue(exifData, forKey: kCGImagePropertyExifDictionary as String)
+        }
+        
+        if let exifData = old.value(forKey: kCGImagePropertyTIFFDictionary as String) as? NSDictionary,
+            let timestampCapture = dateCapture {
+            let dfExif = DateFormatter()
+            dfExif.locale = Locale(identifier: "en_POSIX_US")
+            dfExif.timeZone = TimeZone.current
+            dfExif.dateFormat = "yyyy:MM:dd HH:mm:ss"
+            
+            exifData.setValue(dfExif.string(from: timestampCapture),
+                              forKey: kCGImagePropertyTIFFDateTime as String)
+            
+            old.setValue(exifData, forKey: kCGImagePropertyTIFFDictionary as String)
+        }
+        
+        return old
+    }
     
+    public func getEXIFFromImage(image: Data) -> NSDictionary {
+        if let imageSourceRef = CGImageSourceCreateWithData(image as CFData, nil),
+            let currentProperties = CGImageSourceCopyPropertiesAtIndex(imageSourceRef, 0, nil) {
+            let mutableDict = NSMutableDictionary(dictionary: currentProperties)
+            return mutableDict
+        }
+        return NSDictionary()
+    }
+    
+    public func attachEXIFToImage(image: NSData, EXIF: NSDictionary) -> NSData {
+        if let imageDataProvider = CGDataProvider(data: image),
+            let imageRef = CGImage(jpegDataProviderSource: imageDataProvider,
+                                   decode: nil, shouldInterpolate: true,
+                                   intent: CGColorRenderingIntent.defaultIntent),
+            let newImageData = CFDataCreateMutable(nil, 0),
+            let type = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType,
+                                                             "image/jpg" as CFString, kUTTypeImage),
+            let destination = CGImageDestinationCreateWithData(newImageData,
+                                                               type.takeRetainedValue(), 1, nil) {
+            CGImageDestinationAddImage(destination, imageRef, EXIF as CFDictionary)
+            CGImageDestinationFinalize(destination)
+            return newImageData as NSData
+        }
+        
+        return NSData()
+    }
+    
+    func getImageNameFile(nameRemote: String) -> String? {
+        if let timestamCapture = timestampCapture?.fileNameFromeDate {
+            var imageNameFile: String
+            if nameRemote != nil {
+                imageNameFile = "\(nameRemote)_\(timestamCapture)"
+            } else {
+                imageNameFile = "\(nameRemote)_\(timestamCapture)"
+            }
+            
+            if isFirstEdit {
+                imageNameFile = "\(imageNameFile).jpg"
+            } else {
+                imageNameFile = "\(imageNameFile)_\(Date().fileNameFromeDate).jpg"
+            }
+            return imageNameFile
+        } else {
+            return nil
+        }
+    }
 }

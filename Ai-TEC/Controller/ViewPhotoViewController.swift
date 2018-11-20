@@ -48,17 +48,12 @@ class ViewPhotoViewController: UIViewController, GMSMapViewDelegate{
         }
      
         if let url = photoUrl {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            let myString = formatter.string(from: Date())
-            let yourDate = formatter.date(from: myString)
-            let myStrongafd = formatter.string(from: yourDate!)
-            timestampLabel.text = myStrongafd
-            
+            timestampCapture = url.timestampCaptured
             ImageDownloader.default.downloadImage(with: url, retrieveImageTask: nil, options: [], progressBlock: nil, completionHandler: { (image, _, _, data) in
                 self.photo = image
                 self.photoImage.image = image
             })
+            timestampLabel.text = url.timestampCaptured
         } else {
             photoImage.image = nil
             timestampLabel.text = ""
@@ -66,12 +61,10 @@ class ViewPhotoViewController: UIViewController, GMSMapViewDelegate{
         }
         mapView.isHidden = segmentedControl.selectedSegmentIndex == 0
     }
-    
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         SocketGlobal.shared.socket?.delegate = self
-        
     }
     
     @objc func getDirections() {
@@ -85,7 +78,6 @@ class ViewPhotoViewController: UIViewController, GMSMapViewDelegate{
         self.performSegue(withIdentifier: "unwindToVideochatSegueId", sender: self)
     }
     
-    
     @IBAction func segmentedControlChanged(_ sender: Any) {
         if segmentedControl.selectedSegmentIndex == 0 {
             mapView.isHidden = true
@@ -96,10 +88,7 @@ class ViewPhotoViewController: UIViewController, GMSMapViewDelegate{
             mapView.isHidden = false
         }
     }
-    
-   
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showEditAfterViewSegueId" {
             if let editVc = segue.destination as? EditViewController {
@@ -200,12 +189,9 @@ extension ViewPhotoViewController: WebSocketDelegate {
                                               preferredStyle: .alert)
                 let openAction = UIAlertAction(title: "開く", style: .default, handler: { (_) in
                     
-                  
-                    
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     if let vc = storyboard.instantiateViewController(withIdentifier: "AlbumViewControllerId")
                         as? AlbumViewController {
-                       
                         vc.nameRemote = self.nameRemote
                         self.present(vc, animated: true, completion: nil)
                     }
@@ -214,7 +200,6 @@ extension ViewPhotoViewController: WebSocketDelegate {
                 let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
                 alert.addAction(openAction)
                 alert.addAction(cancelAction)
-                
                 present(alert, animated: true, completion: nil)
             }
         }
@@ -223,6 +208,4 @@ extension ViewPhotoViewController: WebSocketDelegate {
     func websocketDidReceiveData(socket: WebSocket, data: Data) {
         print(data)
     }
-    
-    
 }

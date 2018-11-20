@@ -35,9 +35,7 @@ class AlbumViewController: UIViewController {
         }
         self.albumCollectionView.reloadData()
         SocketGlobal.shared.socket?.delegate = self
-    
     }
-    
 
     @IBAction func backButtonTouched(_ sender: Any) {
       self.dismiss(animated: true, completion: nil)
@@ -50,7 +48,6 @@ class AlbumViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
 }
 
 extension AlbumViewController: UICollectionViewDataSource, UICollectionViewDelegate  {
@@ -86,8 +83,6 @@ extension AlbumViewController: UICollectionViewDataSource, UICollectionViewDeleg
             present(vc, animated: true, completion: nil)
         }
     }
-    
- 
 }
 
 extension AlbumViewController: UICollectionViewDelegateFlowLayout {
@@ -142,7 +137,7 @@ extension AlbumViewController: WebSocketDelegate {
                                               preferredStyle: .alert)
                 let openAction = UIAlertAction(title: "開く", style: .default, handler: { (_) in
                 })
-                
+
                 let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
                 alert.addAction(openAction)
                 alert.addAction(cancelAction)
@@ -155,12 +150,10 @@ extension AlbumViewController: WebSocketDelegate {
     func websocketDidReceiveData(socket: WebSocket, data: Data) {
         print(data)
     }
-    
 }
 
 extension AlbumViewController: PhotoCellDelegate {
     func remove(indexPath: IndexPath) {
         photos?.remove(at: indexPath.row)
     }
-
 }
