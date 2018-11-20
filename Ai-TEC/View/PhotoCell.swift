@@ -45,8 +45,6 @@ class PhotoCell: UICollectionViewCell {
             } else {
                 self.photoImageView.image = nil
             }
-            
-            
         })
         
         fetchImage(from: url) { (image) in

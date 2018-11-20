@@ -32,15 +32,11 @@ class AlbumViewController: UIViewController {
             self.photos = photos.sorted(by: { (photo1, photo2) -> Bool in
                 return photo1 > photo2
             })
+            self.albumCollectionView.reloadData()
         }
-        self.albumCollectionView.reloadData()
         SocketGlobal.shared.socket?.delegate = self
     }
 
-    @IBAction func backButtonTouched(_ sender: Any) {
-      self.dismiss(animated: true, completion: nil)
-    }
-    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -48,6 +44,11 @@ class AlbumViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    deinit {
+        print("deinit Album ----------")
+    }
+    
 }
 
 extension AlbumViewController: UICollectionViewDataSource, UICollectionViewDelegate  {
@@ -63,7 +64,6 @@ extension AlbumViewController: UICollectionViewDataSource, UICollectionViewDeleg
             if let url = URL(string: photos![indexPath.item]) {
                 cell.setPhoto(url: url)
                 cell.indexPath = indexPath
-                
                 cell.delegate = self
             }
             return cell
@@ -136,12 +136,18 @@ extension AlbumViewController: WebSocketDelegate {
                                               message: "画像を受信しました。確認しますか？\n後でギャラリーにて確認する事も出来ます。",
                                               preferredStyle: .alert)
                 let openAction = UIAlertAction(title: "開く", style: .default, handler: { (_) in
+    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    if let vc = storyboard.instantiateViewController(withIdentifier: "AlbumViewControllerId")
+                        as? AlbumViewController {
+                        vc.nameRemote = self.nameRemote
+                        self.present(vc, animated: true, completion: nil)
+                    }
                 })
 
                 let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
                 alert.addAction(openAction)
                 alert.addAction(cancelAction)
-                
                 present(alert, animated: true, completion: nil)
             }
         }
@@ -155,5 +161,6 @@ extension AlbumViewController: WebSocketDelegate {
 extension AlbumViewController: PhotoCellDelegate {
     func remove(indexPath: IndexPath) {
         photos?.remove(at: indexPath.row)
+        albumCollectionView.reloadData()
     }
 }
