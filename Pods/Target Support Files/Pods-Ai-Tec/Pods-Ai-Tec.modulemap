@@ -1,6 +1,0 @@
-framework module Pods_Ai_Tec {
-  umbrella header "Pods-Ai-Tec-umbrella.h"
-
-  export *
-  module * { export * }
-}
