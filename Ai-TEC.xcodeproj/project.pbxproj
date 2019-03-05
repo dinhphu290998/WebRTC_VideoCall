@@ -1,0 +1,1281 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		048AB70D729283334D8FC8A7 /* Pods_Ai_TecTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 787889CFDFCC3FFB53443B73 /* Pods_Ai_TecTests.framework */; };
+		148795EFBDB78135EDC9C087 /* Pods_Ai_TecUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 406AEE77466067F4B97DBD99 /* Pods_Ai_TecUITests.framework */; };
+		180A09B7217D7022005B6F35 /* Etension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A09B6217D7022005B6F35 /* Etension.swift */; };
+		180D01DE21C89B7B00DFEAB5 /* NeedleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180D01DD21C89B7B00DFEAB5 /* NeedleView.swift */; };
+		180D01E021C8B2EF00DFEAB5 /* UserDefauts+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180D01DF21C8B2EE00DFEAB5 /* UserDefauts+Extensions.swift */; };
+		180D01E221C8B38500DFEAB5 /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180D01E121C8B38400DFEAB5 /* LocationDelegate.swift */; };
+		180D01E421C8CF8700DFEAB5 /* CLLocation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180D01E321C8CF8700DFEAB5 /* CLLocation+Extension.swift */; };
+		1812FCD721E6FB1800894B2D /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812FCD621E6FB1800894B2D /* Remote.swift */; };
+		1814562A21C78F08005839E6 /* CompassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814562921C78F08005839E6 /* CompassView.swift */; };
+		181B6806217E048300CF733E /* RTCVideoChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B6805217E048300CF733E /* RTCVideoChatViewController.swift */; };
+		183EF34821CB8AC7004FA737 /* Accelerometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EF34721CB8AC7004FA737 /* Accelerometer.swift */; };
+		18576BB7217A42B300013D43 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18576BB6217A42B300013D43 /* Media.xcassets */; };
+		18576BB9217A4D4E00013D43 /* RingingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18576BB8217A4D4E00013D43 /* RingingViewController.swift */; };
+		1873FA0821757A9D00ED8988 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873FA0721757A9D00ED8988 /* SplashViewController.swift */; };
+		1873FA11217580CF00ED8988 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873FA10217580CF00ED8988 /* LoginViewController.swift */; };
+		18AA0C692181A32C00038963 /* ResolutionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AA0C682181A32C00038963 /* ResolutionCell.swift */; };
+		18AA0C6B2181A5D800038963 /* Ex-CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AA0C6A2181A5D800038963 /* Ex-CollectionView.swift */; };
+		18F0C90321758BA600E0DEBD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0C90221758BA600E0DEBD /* User.swift */; };
+		18F0C90721759D7C00E0DEBD /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0C90621759D7C00E0DEBD /* Config.swift */; };
+		18FA43EA2176E30800A0EB8B /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA43E92176E30800A0EB8B /* ContactViewController.swift */; };
+		18FA43EE2176F75A00A0EB8B /* SocketGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA43ED2176F75A00A0EB8B /* SocketGlobal.swift */; };
+		18FA43F021771A7000A0EB8B /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA43EF21771A7000A0EB8B /* ContactTableViewCell.swift */; };
+		8D10FCF84A798504B9EF769C /* Pods_Ai_Tec.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381B2CD5D2E6702DEC42770 /* Pods_Ai_Tec.framework */; };
+		B3087F04219D7701004204F4 /* CacheImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3087F03219D7701004204F4 /* CacheImage.swift */; };
+		B30BFF9121AD043900A68625 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30BFF9021AD043900A68625 /* Storage.swift */; };
+		B30BFF9F21AD650E00A68625 /* KML.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30BFF9E21AD650E00A68625 /* KML.swift */; };
+		B33B97F7218999DE00D8AB12 /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B97F6218999DE00D8AB12 /* Drawing.swift */; };
+		B33B97F9218999E900D8AB12 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B97F8218999E700D8AB12 /* Session.swift */; };
+		B33B97FB218999EC00D8AB12 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B97FA218999EC00D8AB12 /* Palette.swift */; };
+		B33B97FD218999F500D8AB12 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B97FC218999F400D8AB12 /* CircleButton.swift */; };
+		B33B97FF218999F900D8AB12 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B97FE218999F800D8AB12 /* Canvas.swift */; };
+		B33B980121899A1B00D8AB12 /* BrushCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B33B980021899A1B00D8AB12 /* BrushCell.xib */; };
+		B33B980321899A2100D8AB12 /* BrushCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B980221899A2000D8AB12 /* BrushCell.swift */; };
+		B33B980521899A4600D8AB12 /* UIImageExtractExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B980421899A4600D8AB12 /* UIImageExtractExtension.swift */; };
+		B33B980721899A4A00D8AB12 /* Brush.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B980621899A4A00D8AB12 /* Brush.swift */; };
+		B33B980921899A5600D8AB12 /* UIViewFrameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B980821899A5600D8AB12 /* UIViewFrameExtension.swift */; };
+		B33B980B21899A5E00D8AB12 /* ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B980A21899A5D00D8AB12 /* ToolBar.swift */; };
+		B33B980D21899DFC00D8AB12 /* ViewPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B980C21899DFC00D8AB12 /* ViewPhotoViewController.swift */; };
+		B33B980F2189AECD00D8AB12 /* MessageSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B980E2189AECD00D8AB12 /* MessageSocket.swift */; };
+		B33B98112189B25100D8AB12 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B98102189B25100D8AB12 /* AlbumViewController.swift */; };
+		B33B98152189B45500D8AB12 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B98142189B45500D8AB12 /* Socket.swift */; };
+		B33B9836218AB84900D8AB12 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B9835218AB84900D8AB12 /* PhotoCell.swift */; };
+		B33C69322189984B0077469C /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C69312189984A0077469C /* EditViewController.swift */; };
+		B34314DA21BE01FF007D447F /* KMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34314D921BE01FF007D447F /* KMLParser.swift */; };
+		B3514B4621A3F2BB00AF28DC /* CheckImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3514B4521A3F2BB00AF28DC /* CheckImage.swift */; };
+		B37582DD21C2723E0061C990 /* KurentoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37582DC21C2723E0061C990 /* KurentoViewController.swift */; };
+		B375831221C273300061C990 /* NBMEAGLVideoViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B375830321C2732C0061C990 /* NBMEAGLVideoViewContainer.m */; };
+		B375831321C273300061C990 /* NBMSessionDescriptionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B375830421C2732C0061C990 /* NBMSessionDescriptionFactory.m */; };
+		B375831421C273300061C990 /* NBMMediaConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = B375830521C2732C0061C990 /* NBMMediaConfiguration.m */; };
+		B375831521C273300061C990 /* NBMEAGLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = B375830721C2732D0061C990 /* NBMEAGLRenderer.m */; };
+		B375831621C273300061C990 /* NBMPeerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B375830921C2732D0061C990 /* NBMPeerConnection.m */; };
+		B375831721C273300061C990 /* NBMWebRTCPeer.m in Sources */ = {isa = PBXBuildFile; fileRef = B375830A21C2732E0061C990 /* NBMWebRTCPeer.m */; };
+		B375831821C273300061C990 /* RTCMediaStream+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = B375830E21C2732F0061C990 /* RTCMediaStream+Configuration.m */; };
+		B37583DF21C345010061C990 /* ARDSettingsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583A321C344D10061C990 /* ARDSettingsStore.m */; };
+		B37583E021C345010061C990 /* ARDMessageResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583A621C344D30061C990 /* ARDMessageResponse.m */; };
+		B37583E121C345020061C990 /* ARDTURNClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583A721C344D40061C990 /* ARDTURNClient.m */; };
+		B37583E221C345020061C990 /* ARDStatsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583A821C344DE0061C990 /* ARDStatsBuilder.m */; };
+		B37583E321C345020061C990 /* ARDStatsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583AE21C344E20061C990 /* ARDStatsView.m */; };
+		B37583E421C345020061C990 /* ARDWebSocketChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583AF21C344E30061C990 /* ARDWebSocketChannel.m */; };
+		B37583E521C345020061C990 /* ARDSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583B221C344E50061C990 /* ARDSettingsViewController.m */; };
+		B37583E621C345020061C990 /* ARDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583B321C344E60061C990 /* ARDUtilities.m */; };
+		B37583E721C345020061C990 /* ARDCaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583B521C344E70061C990 /* ARDCaptureController.m */; };
+		B37583E821C345020061C990 /* ARDAppEngineClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583B721C344E90061C990 /* ARDAppEngineClient.m */; };
+		B37583E921C345020061C990 /* UIImage+ARDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583BB21C344ED0061C990 /* UIImage+ARDUtilities.m */; };
+		B37583EA21C345020061C990 /* ARDMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583BF21C344F00061C990 /* ARDMainView.m */; };
+		B37583EB21C345020061C990 /* ARDAppClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583C121C344F10061C990 /* ARDAppClient.m */; };
+		B37583EC21C345020061C990 /* ARDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583C321C344F20061C990 /* ARDAppDelegate.m */; };
+		B37583ED21C345020061C990 /* ARDBitrateTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583C421C344F30061C990 /* ARDBitrateTracker.m */; };
+		B37583EE21C345020061C990 /* ARDSignalingMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583C621C344F40061C990 /* ARDSignalingMessage.m */; };
+		B37583EF21C345020061C990 /* RTCICECandidate+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583CA21C344F60061C990 /* RTCICECandidate+JSON.m */; };
+		B37583F021C345020061C990 /* ARDJoinResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583CB21C344F70061C990 /* ARDJoinResponse.m */; };
+		B37583F121C345020061C990 /* ARDRegisterResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583CE21C344F90061C990 /* ARDRegisterResponse.m */; };
+		B37583F221C345020061C990 /* ARDVideoCallView.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583D221C344FB0061C990 /* ARDVideoCallView.m */; };
+		B37583F321C345020061C990 /* ARDSDPUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583D321C344FB0061C990 /* ARDSDPUtils.m */; };
+		B37583F421C345020061C990 /* RTCMediaConstraints+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583D421C344FC0061C990 /* RTCMediaConstraints+JSON.m */; };
+		B37583F521C345020061C990 /* ARDMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583D521C344FC0061C990 /* ARDMainViewController.m */; };
+		B37583F621C345020061C990 /* ARDVideoCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583D721C344FE0061C990 /* ARDVideoCallViewController.m */; };
+		B37583F721C345020061C990 /* RTCSessionDescription+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583D921C344FF0061C990 /* RTCSessionDescription+JSON.m */; };
+		B37583F821C345020061C990 /* RTCICEServer+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583DB21C345000061C990 /* RTCICEServer+JSON.m */; };
+		B37583F921C345020061C990 /* ARDSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B37583DC21C345000061C990 /* ARDSettingsModel.m */; };
+		B37583FB21C348C10061C990 /* UserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37583FA21C348C10061C990 /* UserCollectionViewCell.xib */; };
+		B37583FD21C348C90061C990 /* RemoteViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37583FC21C348C90061C990 /* RemoteViewCollectionViewCell.xib */; };
+		B37583FF21C348D30061C990 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37583FE21C348D30061C990 /* UserCollectionViewCell.swift */; };
+		B375840121C348DA0061C990 /* RemoteViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B375840021C348DA0061C990 /* RemoteViewCollectionViewCell.swift */; };
+		B37BE7BB21901E25007E20E3 /* ExtensionUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37BE7BA21901E25007E20E3 /* ExtensionUIImageView.swift */; };
+		B3ABEF86217495B30072E9F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF85217495B30072E9F5 /* AppDelegate.swift */; };
+		B3ABEF8E217495B30072E9F5 /* Ai_Tec.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF8C217495B30072E9F5 /* Ai_Tec.xcdatamodeld */; };
+		B3ABEF9E217495B40072E9F5 /* Ai_TecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEF9D217495B40072E9F5 /* Ai_TecTests.swift */; };
+		B3ABEFA9217495B40072E9F5 /* Ai_TecUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABEFA8217495B40072E9F5 /* Ai_TecUITests.swift */; };
+		B3DF816021749E4D00AC7934 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3DF815F21749E4C00AC7934 /* Main.storyboard */; };
+		B3DF816221749E5900AC7934 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3DF816121749E5900AC7934 /* LaunchScreen.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B3ABEF9A217495B40072E9F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3ABEF7A217495B20072E9F5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B3ABEF81217495B30072E9F5;
+			remoteInfo = "Ai-Tec";
+		};
+		B3ABEFA5217495B40072E9F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3ABEF7A217495B20072E9F5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B3ABEF81217495B30072E9F5;
+			remoteInfo = "Ai-Tec";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0872EDCF48AFD29DB3BF317A /* Pods-Ai-TecUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-TecUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-TecUITests/Pods-Ai-TecUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1381B2CD5D2E6702DEC42770 /* Pods_Ai_Tec.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_Tec.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		180A09B6217D7022005B6F35 /* Etension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Etension.swift; path = "Ai-Tec/Utilies + Extension/Etension.swift"; sourceTree = SOURCE_ROOT; };
+		180D01DD21C89B7B00DFEAB5 /* NeedleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NeedleView.swift; path = "Ai-TEC/View/NeedleView.swift"; sourceTree = SOURCE_ROOT; };
+		180D01DF21C8B2EE00DFEAB5 /* UserDefauts+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefauts+Extensions.swift"; sourceTree = "<group>"; };
+		180D01E121C8B38400DFEAB5 /* LocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDelegate.swift; sourceTree = "<group>"; };
+		180D01E321C8CF8700DFEAB5 /* CLLocation+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extension.swift"; sourceTree = "<group>"; };
+		1812FCD621E6FB1800894B2D /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Remote.swift; path = "Ai-TEC/Model/Remote.swift"; sourceTree = SOURCE_ROOT; };
+		1814562921C78F08005839E6 /* CompassView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompassView.swift; sourceTree = "<group>"; };
+		181B6805217E048300CF733E /* RTCVideoChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RTCVideoChatViewController.swift; path = "Ai-TEC/Controller/RTCVideoChatViewController.swift"; sourceTree = SOURCE_ROOT; };
+		183EF34721CB8AC7004FA737 /* Accelerometer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Accelerometer.swift; path = "Ai-TEC/Utilies + Extension/Accelerometer.swift"; sourceTree = SOURCE_ROOT; };
+		18576BB6217A42B300013D43 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = "Ai-TEC/Media.xcassets"; sourceTree = SOURCE_ROOT; };
+		18576BB8217A4D4E00013D43 /* RingingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RingingViewController.swift; path = "Ai-TEC/Controller/RingingViewController.swift"; sourceTree = SOURCE_ROOT; };
+		1873FA0721757A9D00ED8988 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SplashViewController.swift; path = "Ai-Tec/Controller/SplashViewController.swift"; sourceTree = SOURCE_ROOT; };
+		1873FA10217580CF00ED8988 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "Ai-TEC/Controller/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
+		18AA0C682181A32C00038963 /* ResolutionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResolutionCell.swift; path = "Ai-TEC/View/ResolutionCell.swift"; sourceTree = SOURCE_ROOT; };
+		18AA0C6A2181A5D800038963 /* Ex-CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex-CollectionView.swift"; path = "Ai-Tec/Utilies + Extension/Ex-CollectionView.swift"; sourceTree = SOURCE_ROOT; };
+		18F0C90221758BA600E0DEBD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		18F0C90621759D7C00E0DEBD /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		18FA43E92176E30800A0EB8B /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactViewController.swift; path = "Ai-TEC/Controller/ContactViewController.swift"; sourceTree = SOURCE_ROOT; };
+		18FA43ED2176F75A00A0EB8B /* SocketGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketGlobal.swift; sourceTree = "<group>"; };
+		18FA43EF21771A7000A0EB8B /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactTableViewCell.swift; path = "Ai-TEC/View/ContactTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		227AB763F649D9D69460EF6E /* Pods-Ai-TecTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-TecTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-TecTests/Pods-Ai-TecTests.debug.xcconfig"; sourceTree = "<group>"; };
+		340B88CA01418C225C224DC9 /* Pods-Ai-Tec.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-Tec.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-Tec/Pods-Ai-Tec.debug.xcconfig"; sourceTree = "<group>"; };
+		406AEE77466067F4B97DBD99 /* Pods_Ai_TecUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_TecUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		54DB82D607AA9494F139E009 /* Pods-Ai-TecUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-TecUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-TecUITests/Pods-Ai-TecUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		787889CFDFCC3FFB53443B73 /* Pods_Ai_TecTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_TecTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3087F03219D7701004204F4 /* CacheImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CacheImage.swift; path = "Ai-TEC/Model/CacheImage.swift"; sourceTree = SOURCE_ROOT; };
+		B30BFF9021AD043900A68625 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		B30BFF9E21AD650E00A68625 /* KML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KML.swift; path = "Ai-TEC/Model/KML/KML.swift"; sourceTree = SOURCE_ROOT; };
+		B33B97F6218999DE00D8AB12 /* Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drawing.swift; sourceTree = "<group>"; };
+		B33B97F8218999E700D8AB12 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		B33B97FA218999EC00D8AB12 /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		B33B97FC218999F400D8AB12 /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		B33B97FE218999F800D8AB12 /* Canvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
+		B33B980021899A1B00D8AB12 /* BrushCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrushCell.xib; sourceTree = "<group>"; };
+		B33B980221899A2000D8AB12 /* BrushCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrushCell.swift; sourceTree = "<group>"; };
+		B33B980421899A4600D8AB12 /* UIImageExtractExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtractExtension.swift; sourceTree = "<group>"; };
+		B33B980621899A4A00D8AB12 /* Brush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brush.swift; sourceTree = "<group>"; };
+		B33B980821899A5600D8AB12 /* UIViewFrameExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewFrameExtension.swift; sourceTree = "<group>"; };
+		B33B980A21899A5D00D8AB12 /* ToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBar.swift; sourceTree = "<group>"; };
+		B33B980C21899DFC00D8AB12 /* ViewPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewPhotoViewController.swift; path = "Ai-TEC/Controller/ViewPhotoViewController.swift"; sourceTree = SOURCE_ROOT; };
+		B33B980E2189AECD00D8AB12 /* MessageSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSocket.swift; sourceTree = "<group>"; };
+		B33B98102189B25100D8AB12 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
+		B33B98142189B45500D8AB12 /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
+		B33B9835218AB84900D8AB12 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoCell.swift; path = "Ai-TEC/View/PhotoCell.swift"; sourceTree = SOURCE_ROOT; };
+		B33C69312189984A0077469C /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		B34314D921BE01FF007D447F /* KMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KMLParser.swift; path = "Ai-TEC/Model/KML/KMLParser.swift"; sourceTree = SOURCE_ROOT; };
+		B3514B4521A3F2BB00AF28DC /* CheckImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CheckImage.swift; path = "Ai-TEC/Model/CheckImage.swift"; sourceTree = SOURCE_ROOT; };
+		B37582DC21C2723E0061C990 /* KurentoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KurentoViewController.swift; path = "Ai-TEC/Controller/KurentoViewController.swift"; sourceTree = SOURCE_ROOT; };
+		B375830121C2732B0061C990 /* NBMPeerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBMPeerConnection.h; sourceTree = "<group>"; };
+		B375830221C2732C0061C990 /* NBMWebRTCPeer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBMWebRTCPeer.h; sourceTree = "<group>"; };
+		B375830321C2732C0061C990 /* NBMEAGLVideoViewContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBMEAGLVideoViewContainer.m; sourceTree = "<group>"; };
+		B375830421C2732C0061C990 /* NBMSessionDescriptionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBMSessionDescriptionFactory.m; sourceTree = "<group>"; };
+		B375830521C2732C0061C990 /* NBMMediaConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBMMediaConfiguration.m; sourceTree = "<group>"; };
+		B375830621C2732D0061C990 /* WebRTC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebRTC.h; sourceTree = "<group>"; };
+		B375830721C2732D0061C990 /* NBMEAGLRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBMEAGLRenderer.m; sourceTree = "<group>"; };
+		B375830821C2732D0061C990 /* NBMMediaConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBMMediaConfiguration.h; sourceTree = "<group>"; };
+		B375830921C2732D0061C990 /* NBMPeerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBMPeerConnection.m; sourceTree = "<group>"; };
+		B375830A21C2732E0061C990 /* NBMWebRTCPeer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBMWebRTCPeer.m; sourceTree = "<group>"; };
+		B375830B21C2732E0061C990 /* NBMSessionDescriptionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBMSessionDescriptionFactory.h; sourceTree = "<group>"; };
+		B375830C21C2732E0061C990 /* NBMEAGLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBMEAGLRenderer.h; sourceTree = "<group>"; };
+		B375830D21C2732E0061C990 /* NBMTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBMTypes.h; sourceTree = "<group>"; };
+		B375830E21C2732F0061C990 /* RTCMediaStream+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RTCMediaStream+Configuration.m"; sourceTree = "<group>"; };
+		B375830F21C2732F0061C990 /* RTCMediaStream+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RTCMediaStream+Configuration.h"; sourceTree = "<group>"; };
+		B375831021C273300061C990 /* NBMEAGLVideoViewContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBMEAGLVideoViewContainer.h; sourceTree = "<group>"; };
+		B375831121C273300061C990 /* NBMRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBMRenderer.h; sourceTree = "<group>"; };
+		B375833F21C273B00061C990 /* KurentoToolbox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KurentoToolbox.h; sourceTree = "<group>"; };
+		B375839F21C342E90061C990 /* Ai-Tec-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ai-Tec-Bridging-Header.h"; sourceTree = "<group>"; };
+		B37583A121C344D00061C990 /* ARDBitrateTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDBitrateTracker.h; sourceTree = "<group>"; };
+		B37583A221C344D10061C990 /* ARDStatsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDStatsView.h; sourceTree = "<group>"; };
+		B37583A321C344D10061C990 /* ARDSettingsStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDSettingsStore.m; sourceTree = "<group>"; };
+		B37583A421C344D20061C990 /* ARDMessageResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDMessageResponse.h; sourceTree = "<group>"; };
+		B37583A521C344D20061C990 /* UIImage+ARDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ARDUtilities.h"; sourceTree = "<group>"; };
+		B37583A621C344D30061C990 /* ARDMessageResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDMessageResponse.m; sourceTree = "<group>"; };
+		B37583A721C344D40061C990 /* ARDTURNClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDTURNClient.m; sourceTree = "<group>"; };
+		B37583A821C344DE0061C990 /* ARDStatsBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDStatsBuilder.m; sourceTree = "<group>"; };
+		B37583A921C344DF0061C990 /* ARDJoinResponse+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARDJoinResponse+Internal.h"; sourceTree = "<group>"; };
+		B37583AA21C344E00061C990 /* ARDMessageResponse+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARDMessageResponse+Internal.h"; sourceTree = "<group>"; };
+		B37583AB21C344E00061C990 /* ARDRegisterResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDRegisterResponse.h; sourceTree = "<group>"; };
+		B37583AC21C344E10061C990 /* ARDSettingsModel+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARDSettingsModel+Private.h"; sourceTree = "<group>"; };
+		B37583AD21C344E20061C990 /* ARDSDPUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDSDPUtils.h; sourceTree = "<group>"; };
+		B37583AE21C344E20061C990 /* ARDStatsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDStatsView.m; sourceTree = "<group>"; };
+		B37583AF21C344E30061C990 /* ARDWebSocketChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDWebSocketChannel.m; sourceTree = "<group>"; };
+		B37583B021C344E40061C990 /* ARDAppClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDAppClient.h; sourceTree = "<group>"; };
+		B37583B121C344E50061C990 /* ARDStatsBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDStatsBuilder.h; sourceTree = "<group>"; };
+		B37583B221C344E50061C990 /* ARDSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDSettingsViewController.m; sourceTree = "<group>"; };
+		B37583B321C344E60061C990 /* ARDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDUtilities.m; sourceTree = "<group>"; };
+		B37583B421C344E70061C990 /* ARDAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDAppDelegate.h; sourceTree = "<group>"; };
+		B37583B521C344E70061C990 /* ARDCaptureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDCaptureController.m; sourceTree = "<group>"; };
+		B37583B621C344E80061C990 /* ARDAppEngineClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDAppEngineClient.h; sourceTree = "<group>"; };
+		B37583B721C344E90061C990 /* ARDAppEngineClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDAppEngineClient.m; sourceTree = "<group>"; };
+		B37583B821C344EA0061C990 /* RTCSessionDescription+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RTCSessionDescription+JSON.h"; sourceTree = "<group>"; };
+		B37583B921C344EB0061C990 /* ARDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDUtilities.h; sourceTree = "<group>"; };
+		B37583BA21C344EC0061C990 /* ARDWebSocketChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDWebSocketChannel.h; sourceTree = "<group>"; };
+		B37583BB21C344ED0061C990 /* UIImage+ARDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ARDUtilities.m"; sourceTree = "<group>"; };
+		B37583BC21C344EE0061C990 /* ARDMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDMainViewController.h; sourceTree = "<group>"; };
+		B37583BD21C344EE0061C990 /* ARDAppClient+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARDAppClient+Internal.h"; sourceTree = "<group>"; };
+		B37583BE21C344EF0061C990 /* ARDSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDSettingsViewController.h; sourceTree = "<group>"; };
+		B37583BF21C344F00061C990 /* ARDMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDMainView.m; sourceTree = "<group>"; };
+		B37583C021C344F00061C990 /* RTCICECandidate+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RTCICECandidate+JSON.h"; sourceTree = "<group>"; };
+		B37583C121C344F10061C990 /* ARDAppClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDAppClient.m; sourceTree = "<group>"; };
+		B37583C221C344F20061C990 /* RTCICEServer+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RTCICEServer+JSON.h"; sourceTree = "<group>"; };
+		B37583C321C344F20061C990 /* ARDAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDAppDelegate.m; sourceTree = "<group>"; };
+		B37583C421C344F30061C990 /* ARDBitrateTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDBitrateTracker.m; sourceTree = "<group>"; };
+		B37583C521C344F30061C990 /* ARDTURNClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDTURNClient.h; sourceTree = "<group>"; };
+		B37583C621C344F40061C990 /* ARDSignalingMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDSignalingMessage.m; sourceTree = "<group>"; };
+		B37583C721C344F40061C990 /* ARDRoomServerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDRoomServerClient.h; sourceTree = "<group>"; };
+		B37583C821C344F50061C990 /* ARDCaptureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDCaptureController.h; sourceTree = "<group>"; };
+		B37583C921C344F60061C990 /* ARDSignalingMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDSignalingMessage.h; sourceTree = "<group>"; };
+		B37583CA21C344F60061C990 /* RTCICECandidate+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RTCICECandidate+JSON.m"; sourceTree = "<group>"; };
+		B37583CB21C344F70061C990 /* ARDJoinResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDJoinResponse.m; sourceTree = "<group>"; };
+		B37583CC21C344F70061C990 /* ARDTURNClient+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARDTURNClient+Internal.h"; sourceTree = "<group>"; };
+		B37583CD21C344F80061C990 /* ARDVideoCallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDVideoCallViewController.h; sourceTree = "<group>"; };
+		B37583CE21C344F90061C990 /* ARDRegisterResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDRegisterResponse.m; sourceTree = "<group>"; };
+		B37583CF21C344F90061C990 /* AppRTCMobile-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppRTCMobile-Prefix.pch"; sourceTree = "<group>"; };
+		B37583D021C344FA0061C990 /* ARDVideoCallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDVideoCallView.h; sourceTree = "<group>"; };
+		B37583D121C344FA0061C990 /* ARDJoinResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDJoinResponse.h; sourceTree = "<group>"; };
+		B37583D221C344FB0061C990 /* ARDVideoCallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDVideoCallView.m; sourceTree = "<group>"; };
+		B37583D321C344FB0061C990 /* ARDSDPUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDSDPUtils.m; sourceTree = "<group>"; };
+		B37583D421C344FC0061C990 /* RTCMediaConstraints+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RTCMediaConstraints+JSON.m"; sourceTree = "<group>"; };
+		B37583D521C344FC0061C990 /* ARDMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDMainViewController.m; sourceTree = "<group>"; };
+		B37583D621C344FD0061C990 /* RTCMediaConstraints+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RTCMediaConstraints+JSON.h"; sourceTree = "<group>"; };
+		B37583D721C344FE0061C990 /* ARDVideoCallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDVideoCallViewController.m; sourceTree = "<group>"; };
+		B37583D821C344FE0061C990 /* ARDSignalingChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDSignalingChannel.h; sourceTree = "<group>"; };
+		B37583D921C344FF0061C990 /* RTCSessionDescription+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RTCSessionDescription+JSON.m"; sourceTree = "<group>"; };
+		B37583DA21C344FF0061C990 /* ARDSettingsStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDSettingsStore.h; sourceTree = "<group>"; };
+		B37583DB21C345000061C990 /* RTCICEServer+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RTCICEServer+JSON.m"; sourceTree = "<group>"; };
+		B37583DC21C345000061C990 /* ARDSettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDSettingsModel.m; sourceTree = "<group>"; };
+		B37583DD21C345010061C990 /* ARDMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDMainView.h; sourceTree = "<group>"; };
+		B37583DE21C345010061C990 /* ARDSettingsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDSettingsModel.h; sourceTree = "<group>"; };
+		B37583FA21C348C10061C990 /* UserCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCollectionViewCell.xib; sourceTree = "<group>"; };
+		B37583FC21C348C90061C990 /* RemoteViewCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RemoteViewCollectionViewCell.xib; sourceTree = "<group>"; };
+		B37583FE21C348D30061C990 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
+		B375840021C348DA0061C990 /* RemoteViewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteViewCollectionViewCell.swift; sourceTree = "<group>"; };
+		B37BE7BA21901E25007E20E3 /* ExtensionUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExtensionUIImageView.swift; path = "Ai-TEC/Utilies + Extension/ExtensionUIImageView.swift"; sourceTree = SOURCE_ROOT; };
+		B3ABEF82217495B30072E9F5 /* Ai-Tec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ai-Tec.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3ABEF85217495B30072E9F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B3ABEF8D217495B30072E9F5 /* Ai_Tec.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ai_Tec.xcdatamodel; sourceTree = "<group>"; };
+		B3ABEF94217495B40072E9F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3ABEF99217495B40072E9F5 /* Ai-TecTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ai-TecTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3ABEF9D217495B40072E9F5 /* Ai_TecTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ai_TecTests.swift; sourceTree = "<group>"; };
+		B3ABEF9F217495B40072E9F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3ABEFA4217495B40072E9F5 /* Ai-TecUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ai-TecUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3ABEFA8217495B40072E9F5 /* Ai_TecUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ai_TecUITests.swift; sourceTree = "<group>"; };
+		B3ABEFAA217495B40072E9F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3DF815F21749E4C00AC7934 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B3DF816121749E5900AC7934 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		B8FDF5BAC2F50E2D473F055B /* Pods-Ai-TecTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-TecTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-TecTests/Pods-Ai-TecTests.release.xcconfig"; sourceTree = "<group>"; };
+		C6418BE0BF709307489A5917 /* Pods-Ai-Tec.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-Tec.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-Tec/Pods-Ai-Tec.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B3ABEF7F217495B30072E9F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D10FCF84A798504B9EF769C /* Pods_Ai_Tec.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3ABEF96217495B40072E9F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				048AB70D729283334D8FC8A7 /* Pods_Ai_TecTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3ABEFA1217495B40072E9F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				148795EFBDB78135EDC9C087 /* Pods_Ai_TecUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		036336103D3A648BE8E0C28D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1381B2CD5D2E6702DEC42770 /* Pods_Ai_Tec.framework */,
+				787889CFDFCC3FFB53443B73 /* Pods_Ai_TecTests.framework */,
+				406AEE77466067F4B97DBD99 /* Pods_Ai_TecUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1873FA0921757F3200ED8988 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1873FA0721757A9D00ED8988 /* SplashViewController.swift */,
+				1873FA10217580CF00ED8988 /* LoginViewController.swift */,
+				18FA43E92176E30800A0EB8B /* ContactViewController.swift */,
+				18576BB8217A4D4E00013D43 /* RingingViewController.swift */,
+				181B6805217E048300CF733E /* RTCVideoChatViewController.swift */,
+				B37582DC21C2723E0061C990 /* KurentoViewController.swift */,
+				B33C69312189984A0077469C /* EditViewController.swift */,
+				B33B98102189B25100D8AB12 /* AlbumViewController.swift */,
+				B33B980C21899DFC00D8AB12 /* ViewPhotoViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1873FA0A21757F4500ED8988 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B3DF816121749E5900AC7934 /* LaunchScreen.xib */,
+				B33B980021899A1B00D8AB12 /* BrushCell.xib */,
+				B37583FA21C348C10061C990 /* UserCollectionViewCell.xib */,
+				B37583FC21C348C90061C990 /* RemoteViewCollectionViewCell.xib */,
+				B33B980221899A2000D8AB12 /* BrushCell.swift */,
+				18FA43EF21771A7000A0EB8B /* ContactTableViewCell.swift */,
+				18AA0C682181A32C00038963 /* ResolutionCell.swift */,
+				B33B9835218AB84900D8AB12 /* PhotoCell.swift */,
+				B37583FE21C348D30061C990 /* UserCollectionViewCell.swift */,
+				B375840021C348DA0061C990 /* RemoteViewCollectionViewCell.swift */,
+				1814562921C78F08005839E6 /* CompassView.swift */,
+				180D01DD21C89B7B00DFEAB5 /* NeedleView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1873FA0F21757F8F00ED8988 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B30BFF9D21AD650100A68625 /* KML */,
+				B37BE7BF2192C043007E20E3 /* NXDrawKit */,
+				B33B980E2189AECD00D8AB12 /* MessageSocket.swift */,
+				18F0C90221758BA600E0DEBD /* User.swift */,
+				1812FCD621E6FB1800894B2D /* Remote.swift */,
+				18F0C90621759D7C00E0DEBD /* Config.swift */,
+				18FA43ED2176F75A00A0EB8B /* SocketGlobal.swift */,
+				B33B97F6218999DE00D8AB12 /* Drawing.swift */,
+				B33B98142189B45500D8AB12 /* Socket.swift */,
+				B3087F03219D7701004204F4 /* CacheImage.swift */,
+				B3514B4521A3F2BB00AF28DC /* CheckImage.swift */,
+				B30BFF9021AD043900A68625 /* Storage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3BFDBBA97902D707C0AE5C99 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				340B88CA01418C225C224DC9 /* Pods-Ai-Tec.debug.xcconfig */,
+				C6418BE0BF709307489A5917 /* Pods-Ai-Tec.release.xcconfig */,
+				227AB763F649D9D69460EF6E /* Pods-Ai-TecTests.debug.xcconfig */,
+				B8FDF5BAC2F50E2D473F055B /* Pods-Ai-TecTests.release.xcconfig */,
+				54DB82D607AA9494F139E009 /* Pods-Ai-TecUITests.debug.xcconfig */,
+				0872EDCF48AFD29DB3BF317A /* Pods-Ai-TecUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B30BFF9D21AD650100A68625 /* KML */ = {
+			isa = PBXGroup;
+			children = (
+				B30BFF9E21AD650E00A68625 /* KML.swift */,
+				B34314D921BE01FF007D447F /* KMLParser.swift */,
+			);
+			path = KML;
+			sourceTree = "<group>";
+		};
+		B37582DE21C2728B0061C990 /* LibrartyKurento */ = {
+			isa = PBXGroup;
+			children = (
+				B37582EA21C272E10061C990 /* KurentoWebRTC */,
+				B375833F21C273B00061C990 /* KurentoToolbox.h */,
+			);
+			path = LibrartyKurento;
+			sourceTree = "<group>";
+		};
+		B37582EA21C272E10061C990 /* KurentoWebRTC */ = {
+			isa = PBXGroup;
+			children = (
+				B375830C21C2732E0061C990 /* NBMEAGLRenderer.h */,
+				B375830721C2732D0061C990 /* NBMEAGLRenderer.m */,
+				B375831021C273300061C990 /* NBMEAGLVideoViewContainer.h */,
+				B375830321C2732C0061C990 /* NBMEAGLVideoViewContainer.m */,
+				B375830821C2732D0061C990 /* NBMMediaConfiguration.h */,
+				B375830521C2732C0061C990 /* NBMMediaConfiguration.m */,
+				B375830121C2732B0061C990 /* NBMPeerConnection.h */,
+				B375830921C2732D0061C990 /* NBMPeerConnection.m */,
+				B375831121C273300061C990 /* NBMRenderer.h */,
+				B375830B21C2732E0061C990 /* NBMSessionDescriptionFactory.h */,
+				B375830421C2732C0061C990 /* NBMSessionDescriptionFactory.m */,
+				B375830D21C2732E0061C990 /* NBMTypes.h */,
+				B375830221C2732C0061C990 /* NBMWebRTCPeer.h */,
+				B375830A21C2732E0061C990 /* NBMWebRTCPeer.m */,
+				B375830F21C2732F0061C990 /* RTCMediaStream+Configuration.h */,
+				B375830E21C2732F0061C990 /* RTCMediaStream+Configuration.m */,
+				B375830621C2732D0061C990 /* WebRTC.h */,
+			);
+			path = KurentoWebRTC;
+			sourceTree = "<group>";
+		};
+		B37583A021C344A50061C990 /* LibraryWebRTC */ = {
+			isa = PBXGroup;
+			children = (
+				B37583CF21C344F90061C990 /* AppRTCMobile-Prefix.pch */,
+				B37583B021C344E40061C990 /* ARDAppClient.h */,
+				B37583C121C344F10061C990 /* ARDAppClient.m */,
+				B37583BD21C344EE0061C990 /* ARDAppClient+Internal.h */,
+				B37583B421C344E70061C990 /* ARDAppDelegate.h */,
+				B37583C321C344F20061C990 /* ARDAppDelegate.m */,
+				B37583B621C344E80061C990 /* ARDAppEngineClient.h */,
+				B37583B721C344E90061C990 /* ARDAppEngineClient.m */,
+				B37583A121C344D00061C990 /* ARDBitrateTracker.h */,
+				B37583C421C344F30061C990 /* ARDBitrateTracker.m */,
+				B37583C821C344F50061C990 /* ARDCaptureController.h */,
+				B37583B521C344E70061C990 /* ARDCaptureController.m */,
+				B37583D121C344FA0061C990 /* ARDJoinResponse.h */,
+				B37583CB21C344F70061C990 /* ARDJoinResponse.m */,
+				B37583A921C344DF0061C990 /* ARDJoinResponse+Internal.h */,
+				B37583DD21C345010061C990 /* ARDMainView.h */,
+				B37583BF21C344F00061C990 /* ARDMainView.m */,
+				B37583BC21C344EE0061C990 /* ARDMainViewController.h */,
+				B37583D521C344FC0061C990 /* ARDMainViewController.m */,
+				B37583A421C344D20061C990 /* ARDMessageResponse.h */,
+				B37583A621C344D30061C990 /* ARDMessageResponse.m */,
+				B37583AA21C344E00061C990 /* ARDMessageResponse+Internal.h */,
+				B37583AB21C344E00061C990 /* ARDRegisterResponse.h */,
+				B37583CE21C344F90061C990 /* ARDRegisterResponse.m */,
+				B37583C721C344F40061C990 /* ARDRoomServerClient.h */,
+				B37583AD21C344E20061C990 /* ARDSDPUtils.h */,
+				B37583D321C344FB0061C990 /* ARDSDPUtils.m */,
+				B37583DE21C345010061C990 /* ARDSettingsModel.h */,
+				B37583DC21C345000061C990 /* ARDSettingsModel.m */,
+				B37583AC21C344E10061C990 /* ARDSettingsModel+Private.h */,
+				B37583DA21C344FF0061C990 /* ARDSettingsStore.h */,
+				B37583A321C344D10061C990 /* ARDSettingsStore.m */,
+				B37583BE21C344EF0061C990 /* ARDSettingsViewController.h */,
+				B37583B221C344E50061C990 /* ARDSettingsViewController.m */,
+				B37583D821C344FE0061C990 /* ARDSignalingChannel.h */,
+				B37583C921C344F60061C990 /* ARDSignalingMessage.h */,
+				B37583C621C344F40061C990 /* ARDSignalingMessage.m */,
+				B37583B121C344E50061C990 /* ARDStatsBuilder.h */,
+				B37583A821C344DE0061C990 /* ARDStatsBuilder.m */,
+				B37583A221C344D10061C990 /* ARDStatsView.h */,
+				B37583AE21C344E20061C990 /* ARDStatsView.m */,
+				B37583C521C344F30061C990 /* ARDTURNClient.h */,
+				B37583A721C344D40061C990 /* ARDTURNClient.m */,
+				B37583CC21C344F70061C990 /* ARDTURNClient+Internal.h */,
+				B37583B921C344EB0061C990 /* ARDUtilities.h */,
+				B37583B321C344E60061C990 /* ARDUtilities.m */,
+				B37583D021C344FA0061C990 /* ARDVideoCallView.h */,
+				B37583D221C344FB0061C990 /* ARDVideoCallView.m */,
+				B37583CD21C344F80061C990 /* ARDVideoCallViewController.h */,
+				B37583D721C344FE0061C990 /* ARDVideoCallViewController.m */,
+				B37583BA21C344EC0061C990 /* ARDWebSocketChannel.h */,
+				B37583AF21C344E30061C990 /* ARDWebSocketChannel.m */,
+				B37583C021C344F00061C990 /* RTCICECandidate+JSON.h */,
+				B37583CA21C344F60061C990 /* RTCICECandidate+JSON.m */,
+				B37583C221C344F20061C990 /* RTCICEServer+JSON.h */,
+				B37583DB21C345000061C990 /* RTCICEServer+JSON.m */,
+				B37583D621C344FD0061C990 /* RTCMediaConstraints+JSON.h */,
+				B37583D421C344FC0061C990 /* RTCMediaConstraints+JSON.m */,
+				B37583B821C344EA0061C990 /* RTCSessionDescription+JSON.h */,
+				B37583D921C344FF0061C990 /* RTCSessionDescription+JSON.m */,
+				B37583A521C344D20061C990 /* UIImage+ARDUtilities.h */,
+				B37583BB21C344ED0061C990 /* UIImage+ARDUtilities.m */,
+			);
+			path = LibraryWebRTC;
+			sourceTree = "<group>";
+		};
+		B37BE7B921901DF3007E20E3 /* Utilies + Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B37BE7BA21901E25007E20E3 /* ExtensionUIImageView.swift */,
+				B33B980421899A4600D8AB12 /* UIImageExtractExtension.swift */,
+				B33B980821899A5600D8AB12 /* UIViewFrameExtension.swift */,
+				180A09B6217D7022005B6F35 /* Etension.swift */,
+				18AA0C6A2181A5D800038963 /* Ex-CollectionView.swift */,
+				180D01DF21C8B2EE00DFEAB5 /* UserDefauts+Extensions.swift */,
+				180D01E121C8B38400DFEAB5 /* LocationDelegate.swift */,
+				180D01E321C8CF8700DFEAB5 /* CLLocation+Extension.swift */,
+				183EF34721CB8AC7004FA737 /* Accelerometer.swift */,
+			);
+			path = "Utilies + Extension";
+			sourceTree = "<group>";
+		};
+		B37BE7BF2192C043007E20E3 /* NXDrawKit */ = {
+			isa = PBXGroup;
+			children = (
+				B33B980A21899A5D00D8AB12 /* ToolBar.swift */,
+				B33B980621899A4A00D8AB12 /* Brush.swift */,
+				B33B97FA218999EC00D8AB12 /* Palette.swift */,
+				B33B97FC218999F400D8AB12 /* CircleButton.swift */,
+				B33B97FE218999F800D8AB12 /* Canvas.swift */,
+				B33B97F8218999E700D8AB12 /* Session.swift */,
+			);
+			path = NXDrawKit;
+			sourceTree = "<group>";
+		};
+		B3ABEF79217495B20072E9F5 = {
+			isa = PBXGroup;
+			children = (
+				B3ABEF84217495B30072E9F5 /* Ai-Tec */,
+				B3ABEF9C217495B40072E9F5 /* Ai-TecTests */,
+				B3ABEFA7217495B40072E9F5 /* Ai-TecUITests */,
+				B3ABEF83217495B30072E9F5 /* Products */,
+				3BFDBBA97902D707C0AE5C99 /* Pods */,
+				036336103D3A648BE8E0C28D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B3ABEF83217495B30072E9F5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B3ABEF82217495B30072E9F5 /* Ai-Tec.app */,
+				B3ABEF99217495B40072E9F5 /* Ai-TecTests.xctest */,
+				B3ABEFA4217495B40072E9F5 /* Ai-TecUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B3ABEF84217495B30072E9F5 /* Ai-Tec */ = {
+			isa = PBXGroup;
+			children = (
+				B3ABEF85217495B30072E9F5 /* AppDelegate.swift */,
+				B37583A021C344A50061C990 /* LibraryWebRTC */,
+				B37582DE21C2728B0061C990 /* LibrartyKurento */,
+				B37BE7B921901DF3007E20E3 /* Utilies + Extension */,
+				1873FA0F21757F8F00ED8988 /* Model */,
+				1873FA0A21757F4500ED8988 /* View */,
+				1873FA0921757F3200ED8988 /* Controller */,
+				B3DF815F21749E4C00AC7934 /* Main.storyboard */,
+				B3ABEF94217495B40072E9F5 /* Info.plist */,
+				B3ABEF8C217495B30072E9F5 /* Ai_Tec.xcdatamodeld */,
+				18576BB6217A42B300013D43 /* Media.xcassets */,
+				B375839F21C342E90061C990 /* Ai-Tec-Bridging-Header.h */,
+			);
+			path = "Ai-Tec";
+			sourceTree = "<group>";
+		};
+		B3ABEF9C217495B40072E9F5 /* Ai-TecTests */ = {
+			isa = PBXGroup;
+			children = (
+				B3ABEF9D217495B40072E9F5 /* Ai_TecTests.swift */,
+				B3ABEF9F217495B40072E9F5 /* Info.plist */,
+			);
+			path = "Ai-TecTests";
+			sourceTree = "<group>";
+		};
+		B3ABEFA7217495B40072E9F5 /* Ai-TecUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B3ABEFA8217495B40072E9F5 /* Ai_TecUITests.swift */,
+				B3ABEFAA217495B40072E9F5 /* Info.plist */,
+			);
+			path = "Ai-TecUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B3ABEF81217495B30072E9F5 /* Ai-Tec */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3ABEFAD217495B40072E9F5 /* Build configuration list for PBXNativeTarget "Ai-Tec" */;
+			buildPhases = (
+				1EBA7136D825119A0397FE3D /* [CP] Check Pods Manifest.lock */,
+				B3ABEF7E217495B30072E9F5 /* Sources */,
+				B3ABEF7F217495B30072E9F5 /* Frameworks */,
+				B3ABEF80217495B30072E9F5 /* Resources */,
+				3E43919322046682E78D4313 /* [CP] Embed Pods Frameworks */,
+				61A417A82C194793FB7273A2 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Ai-Tec";
+			productName = "Ai-Tec";
+			productReference = B3ABEF82217495B30072E9F5 /* Ai-Tec.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B3ABEF98217495B40072E9F5 /* Ai-TecTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3ABEFB0217495B40072E9F5 /* Build configuration list for PBXNativeTarget "Ai-TecTests" */;
+			buildPhases = (
+				4839C12768E8E8FF81B5FF3C /* [CP] Check Pods Manifest.lock */,
+				B3ABEF95217495B40072E9F5 /* Sources */,
+				B3ABEF96217495B40072E9F5 /* Frameworks */,
+				B3ABEF97217495B40072E9F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B3ABEF9B217495B40072E9F5 /* PBXTargetDependency */,
+			);
+			name = "Ai-TecTests";
+			productName = "Ai-TecTests";
+			productReference = B3ABEF99217495B40072E9F5 /* Ai-TecTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B3ABEFA3217495B40072E9F5 /* Ai-TecUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3ABEFB3217495B40072E9F5 /* Build configuration list for PBXNativeTarget "Ai-TecUITests" */;
+			buildPhases = (
+				66895B5A1869C6FA803EE499 /* [CP] Check Pods Manifest.lock */,
+				B3ABEFA0217495B40072E9F5 /* Sources */,
+				B3ABEFA1217495B40072E9F5 /* Frameworks */,
+				B3ABEFA2217495B40072E9F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B3ABEFA6217495B40072E9F5 /* PBXTargetDependency */,
+			);
+			name = "Ai-TecUITests";
+			productName = "Ai-TecUITests";
+			productReference = B3ABEFA4217495B40072E9F5 /* Ai-TecUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B3ABEF7A217495B20072E9F5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = vMio;
+				TargetAttributes = {
+					B3ABEF81217495B30072E9F5 = {
+						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1010;
+					};
+					B3ABEF98217495B40072E9F5 = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = B3ABEF81217495B30072E9F5;
+					};
+					B3ABEFA3217495B40072E9F5 = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = B3ABEF81217495B30072E9F5;
+					};
+				};
+			};
+			buildConfigurationList = B3ABEF7D217495B20072E9F5 /* Build configuration list for PBXProject "Ai-TEC" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B3ABEF79217495B20072E9F5;
+			productRefGroup = B3ABEF83217495B30072E9F5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B3ABEF81217495B30072E9F5 /* Ai-Tec */,
+				B3ABEF98217495B40072E9F5 /* Ai-TecTests */,
+				B3ABEFA3217495B40072E9F5 /* Ai-TecUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B3ABEF80217495B30072E9F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B37583FD21C348C90061C990 /* RemoteViewCollectionViewCell.xib in Resources */,
+				B3DF816221749E5900AC7934 /* LaunchScreen.xib in Resources */,
+				B37583FB21C348C10061C990 /* UserCollectionViewCell.xib in Resources */,
+				18576BB7217A42B300013D43 /* Media.xcassets in Resources */,
+				B33B980121899A1B00D8AB12 /* BrushCell.xib in Resources */,
+				B3DF816021749E4D00AC7934 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3ABEF97217495B40072E9F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3ABEFA2217495B40072E9F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1EBA7136D825119A0397FE3D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ai-Tec-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3E43919322046682E78D4313 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Ai-Tec/Pods-Ai-Tec-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AEXML/AEXML.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Material/Material.framework",
+				"${BUILT_PRODUCTS_DIR}/Motion/Motion.framework",
+				"${BUILT_PRODUCTS_DIR}/SBJson/SBJson.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
+				"${PODS_ROOT}/WebRTC/WebRTC.framework",
+				"${BUILT_PRODUCTS_DIR}/Zip/Zip.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEXML.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Material.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SBJson.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketRocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebRTC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Zip.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ai-Tec/Pods-Ai-Tec-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4839C12768E8E8FF81B5FF3C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ai-TecTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		61A417A82C194793FB7273A2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Ai-Tec/Pods-Ai-Tec-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ai-Tec/Pods-Ai-Tec-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66895B5A1869C6FA803EE499 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ai-TecUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B3ABEF7E217495B30072E9F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1814562A21C78F08005839E6 /* CompassView.swift in Sources */,
+				B37583E821C345020061C990 /* ARDAppEngineClient.m in Sources */,
+				B33B980921899A5600D8AB12 /* UIViewFrameExtension.swift in Sources */,
+				1873FA11217580CF00ED8988 /* LoginViewController.swift in Sources */,
+				B375831421C273300061C990 /* NBMMediaConfiguration.m in Sources */,
+				B375831521C273300061C990 /* NBMEAGLRenderer.m in Sources */,
+				B37583E621C345020061C990 /* ARDUtilities.m in Sources */,
+				180D01DE21C89B7B00DFEAB5 /* NeedleView.swift in Sources */,
+				B37583F921C345020061C990 /* ARDSettingsModel.m in Sources */,
+				18AA0C692181A32C00038963 /* ResolutionCell.swift in Sources */,
+				1812FCD721E6FB1800894B2D /* Remote.swift in Sources */,
+				180A09B7217D7022005B6F35 /* Etension.swift in Sources */,
+				B33B98152189B45500D8AB12 /* Socket.swift in Sources */,
+				18576BB9217A4D4E00013D43 /* RingingViewController.swift in Sources */,
+				B375831321C273300061C990 /* NBMSessionDescriptionFactory.m in Sources */,
+				B37583EC21C345020061C990 /* ARDAppDelegate.m in Sources */,
+				B33B97FF218999F900D8AB12 /* Canvas.swift in Sources */,
+				B37583E521C345020061C990 /* ARDSettingsViewController.m in Sources */,
+				B37583EB21C345020061C990 /* ARDAppClient.m in Sources */,
+				B37583E221C345020061C990 /* ARDStatsBuilder.m in Sources */,
+				18FA43EA2176E30800A0EB8B /* ContactViewController.swift in Sources */,
+				B37583FF21C348D30061C990 /* UserCollectionViewCell.swift in Sources */,
+				B37583F721C345020061C990 /* RTCSessionDescription+JSON.m in Sources */,
+				18AA0C6B2181A5D800038963 /* Ex-CollectionView.swift in Sources */,
+				B37583E121C345020061C990 /* ARDTURNClient.m in Sources */,
+				B33B980D21899DFC00D8AB12 /* ViewPhotoViewController.swift in Sources */,
+				B37583E321C345020061C990 /* ARDStatsView.m in Sources */,
+				B37582DD21C2723E0061C990 /* KurentoViewController.swift in Sources */,
+				B37583EA21C345020061C990 /* ARDMainView.m in Sources */,
+				B33B980F2189AECD00D8AB12 /* MessageSocket.swift in Sources */,
+				B33B97FB218999EC00D8AB12 /* Palette.swift in Sources */,
+				B37BE7BB21901E25007E20E3 /* ExtensionUIImageView.swift in Sources */,
+				B37583E421C345020061C990 /* ARDWebSocketChannel.m in Sources */,
+				B37583ED21C345020061C990 /* ARDBitrateTracker.m in Sources */,
+				B37583F321C345020061C990 /* ARDSDPUtils.m in Sources */,
+				180D01E221C8B38500DFEAB5 /* LocationDelegate.swift in Sources */,
+				180D01E021C8B2EF00DFEAB5 /* UserDefauts+Extensions.swift in Sources */,
+				B33B98112189B25100D8AB12 /* AlbumViewController.swift in Sources */,
+				B37583E721C345020061C990 /* ARDCaptureController.m in Sources */,
+				B3514B4621A3F2BB00AF28DC /* CheckImage.swift in Sources */,
+				B37583E921C345020061C990 /* UIImage+ARDUtilities.m in Sources */,
+				B37583EE21C345020061C990 /* ARDSignalingMessage.m in Sources */,
+				B37583F521C345020061C990 /* ARDMainViewController.m in Sources */,
+				B37583F421C345020061C990 /* RTCMediaConstraints+JSON.m in Sources */,
+				B33B980B21899A5E00D8AB12 /* ToolBar.swift in Sources */,
+				B33C69322189984B0077469C /* EditViewController.swift in Sources */,
+				B33B97F7218999DE00D8AB12 /* Drawing.swift in Sources */,
+				181B6806217E048300CF733E /* RTCVideoChatViewController.swift in Sources */,
+				B37583E021C345010061C990 /* ARDMessageResponse.m in Sources */,
+				1873FA0821757A9D00ED8988 /* SplashViewController.swift in Sources */,
+				B37583F221C345020061C990 /* ARDVideoCallView.m in Sources */,
+				B3ABEF8E217495B30072E9F5 /* Ai_Tec.xcdatamodeld in Sources */,
+				B375840121C348DA0061C990 /* RemoteViewCollectionViewCell.swift in Sources */,
+				B33B980321899A2100D8AB12 /* BrushCell.swift in Sources */,
+				B37583F121C345020061C990 /* ARDRegisterResponse.m in Sources */,
+				18F0C90321758BA600E0DEBD /* User.swift in Sources */,
+				B375831821C273300061C990 /* RTCMediaStream+Configuration.m in Sources */,
+				183EF34821CB8AC7004FA737 /* Accelerometer.swift in Sources */,
+				B3ABEF86217495B30072E9F5 /* AppDelegate.swift in Sources */,
+				B33B980521899A4600D8AB12 /* UIImageExtractExtension.swift in Sources */,
+				B37583F021C345020061C990 /* ARDJoinResponse.m in Sources */,
+				B37583F621C345020061C990 /* ARDVideoCallViewController.m in Sources */,
+				B30BFF9F21AD650E00A68625 /* KML.swift in Sources */,
+				B375831721C273300061C990 /* NBMWebRTCPeer.m in Sources */,
+				B3087F04219D7701004204F4 /* CacheImage.swift in Sources */,
+				18FA43F021771A7000A0EB8B /* ContactTableViewCell.swift in Sources */,
+				B30BFF9121AD043900A68625 /* Storage.swift in Sources */,
+				B375831621C273300061C990 /* NBMPeerConnection.m in Sources */,
+				B33B980721899A4A00D8AB12 /* Brush.swift in Sources */,
+				B33B9836218AB84900D8AB12 /* PhotoCell.swift in Sources */,
+				18F0C90721759D7C00E0DEBD /* Config.swift in Sources */,
+				B37583EF21C345020061C990 /* RTCICECandidate+JSON.m in Sources */,
+				B33B97F9218999E900D8AB12 /* Session.swift in Sources */,
+				B37583DF21C345010061C990 /* ARDSettingsStore.m in Sources */,
+				B375831221C273300061C990 /* NBMEAGLVideoViewContainer.m in Sources */,
+				B34314DA21BE01FF007D447F /* KMLParser.swift in Sources */,
+				18FA43EE2176F75A00A0EB8B /* SocketGlobal.swift in Sources */,
+				B33B97FD218999F500D8AB12 /* CircleButton.swift in Sources */,
+				B37583F821C345020061C990 /* RTCICEServer+JSON.m in Sources */,
+				180D01E421C8CF8700DFEAB5 /* CLLocation+Extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3ABEF95217495B40072E9F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3ABEF9E217495B40072E9F5 /* Ai_TecTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3ABEFA0217495B40072E9F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3ABEFA9217495B40072E9F5 /* Ai_TecUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B3ABEF9B217495B40072E9F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B3ABEF81217495B30072E9F5 /* Ai-Tec */;
+			targetProxy = B3ABEF9A217495B40072E9F5 /* PBXContainerItemProxy */;
+		};
+		B3ABEFA6217495B40072E9F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B3ABEF81217495B30072E9F5 /* Ai-Tec */;
+			targetProxy = B3ABEFA5217495B40072E9F5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B3ABEFAB217495B40072E9F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B3ABEFAC217495B40072E9F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B3ABEFAE217495B40072E9F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 340B88CA01418C225C224DC9 /* Pods-Ai-Tec.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9TPJJNUR63;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "Ai-Tec/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.asanuma.rtc.Ai-Tec.s";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "./Ai-TEC/Ai-Tec-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B3ABEFAF217495B40072E9F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6418BE0BF709307489A5917 /* Pods-Ai-Tec.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9TPJJNUR63;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "Ai-Tec/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.asanuma.rtc.Ai-Tec.s";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "./Ai-TEC/Ai-Tec-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B3ABEFB1217495B40072E9F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 227AB763F649D9D69460EF6E /* Pods-Ai-TecTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Ai-TecTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.asanuma.rtc.Ai-TecTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ai-Tec.app/Ai-Tec";
+			};
+			name = Debug;
+		};
+		B3ABEFB2217495B40072E9F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8FDF5BAC2F50E2D473F055B /* Pods-Ai-TecTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Ai-TecTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.asanuma.rtc.Ai-TecTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ai-Tec.app/Ai-Tec";
+			};
+			name = Release;
+		};
+		B3ABEFB4217495B40072E9F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54DB82D607AA9494F139E009 /* Pods-Ai-TecUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Ai-TecUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.asanuma.rtc.Ai-TecUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Ai-Tec";
+			};
+			name = Debug;
+		};
+		B3ABEFB5217495B40072E9F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0872EDCF48AFD29DB3BF317A /* Pods-Ai-TecUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Ai-TecUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.asanuma.rtc.Ai-TecUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Ai-Tec";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B3ABEF7D217495B20072E9F5 /* Build configuration list for PBXProject "Ai-TEC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3ABEFAB217495B40072E9F5 /* Debug */,
+				B3ABEFAC217495B40072E9F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3ABEFAD217495B40072E9F5 /* Build configuration list for PBXNativeTarget "Ai-Tec" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3ABEFAE217495B40072E9F5 /* Debug */,
+				B3ABEFAF217495B40072E9F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3ABEFB0217495B40072E9F5 /* Build configuration list for PBXNativeTarget "Ai-TecTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3ABEFB1217495B40072E9F5 /* Debug */,
+				B3ABEFB2217495B40072E9F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3ABEFB3217495B40072E9F5 /* Build configuration list for PBXNativeTarget "Ai-TecUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3ABEFB4217495B40072E9F5 /* Debug */,
+				B3ABEFB5217495B40072E9F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B3ABEF8C217495B30072E9F5 /* Ai_Tec.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B3ABEF8D217495B30072E9F5 /* Ai_Tec.xcdatamodel */,
+			);
+			currentVersion = B3ABEF8D217495B30072E9F5 /* Ai_Tec.xcdatamodel */;
+			path = Ai_Tec.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B3ABEF7A217495B20072E9F5 /* Project object */;
+}

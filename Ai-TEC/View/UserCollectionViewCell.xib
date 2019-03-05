@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CellUser" id="gTV-IL-0wX" customClass="UserCollectionViewCell" customModule="Ai_Tec" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="109" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="109" height="150"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="engineer (4)" translatesAutoresizingMaskIntoConstraints="NO" id="qEf-Nx-3gx">
+                        <rect key="frame" x="0.0" y="0.0" width="109" height="121"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="qEf-Nx-3gx" secondAttribute="height" multiplier="0.9" id="s6t-0I-SHT"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vtest1" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tV8-Wi-sM8">
+                        <rect key="frame" x="35" y="121" width="39" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="rGO-ve-hhL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="qEf-Nx-3gx" secondAttribute="trailing" id="9gb-AJ-axy"/>
+                <constraint firstItem="tV8-Wi-sM8" firstAttribute="top" secondItem="qEf-Nx-3gx" secondAttribute="bottom" id="Mck-wh-HtL"/>
+                <constraint firstItem="tV8-Wi-sM8" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Xqm-Ds-71e"/>
+                <constraint firstItem="qEf-Nx-3gx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="quv-om-NoK"/>
+                <constraint firstItem="qEf-Nx-3gx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="zNK-PC-5a9"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="109" height="150"/>
+            <connections>
+                <outlet property="nameUser" destination="tV8-Wi-sM8" id="gpS-Jf-Ew2"/>
+                <outlet property="photoUser" destination="qEf-Nx-3gx" id="o6q-Tp-xcd"/>
+            </connections>
+            <point key="canvasLocation" x="111.2" y="23.388305847076463"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="engineer (4)" width="204.80000305175781" height="204.80000305175781"/>
+    </resources>
+</document>
