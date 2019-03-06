@@ -116,8 +116,7 @@ class RTCVideoChatViewController: UIViewController {
         audioButton?.isHidden = true
         videoButton?.isHidden = true
         if CheckImage.shared.checkKml == true {
-             currentLocation = locationManager.location
-             AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "Start Call"), coordinate: CLLocationCoordinate2DMake(currentLocation!.coordinate.latitude, currentLocation!.coordinate.longitude), stringImage: "0"))
+    
             kml.startCall()
         }
     }
@@ -417,9 +416,7 @@ class RTCVideoChatViewController: UIViewController {
     @IBAction func captureButtonTouched(_ sender: UIButton) {
         
         SVProgressHUD.show(withStatus: "waiting....")
-        
-         currentLocation = locationManager.location
-         AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "Send file"), coordinate: CLLocationCoordinate2DMake(currentLocation!.coordinate.latitude, currentLocation!.coordinate.longitude), stringImage: "2"))
+
         kml.sendImage()
 
         if let videoConnection = stillImageOutput.connection(with: AVMediaType.video) {

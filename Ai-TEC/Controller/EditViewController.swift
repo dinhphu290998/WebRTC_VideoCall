@@ -281,8 +281,6 @@ extension EditViewController: CanvasDelegate {
     func canvas(_ canvas: Canvas, didSaveDrawing drawing: Drawing, mergedImage image: UIImage?) {
         SVProgressHUD.show(withStatus: "sending....")
         if CheckImage.shared.checkSend == false {
-            currentLocation = locationManager.location
-            AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "Send File"), coordinate: CLLocationCoordinate2DMake(currentLocation!.coordinate.latitude, currentLocation!.coordinate.longitude), stringImage: "2"))
             kml.sendImage()
         }
         let formatter = DateFormatter()

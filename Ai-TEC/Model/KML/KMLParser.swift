@@ -570,6 +570,17 @@ open class KMLDocument: KMLElement {
                 annotation.title = pointPlacemark.name
                 annotation.subtitle = pointPlacemark.description
                 annotation.style = pointPlacemark.style
+
+                switch pointPlacemark.name {
+                    case "Start Call":
+                        AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "Start Call"), coordinate: CLLocationCoordinate2DMake(point.coordinates.latitude, point.coordinates.longitude), stringImage: "0"))
+                    case "Send Image":
+                        AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "Send Image"), coordinate: CLLocationCoordinate2DMake(point.coordinates.latitude, point.coordinates.longitude), stringImage: "2"))
+                    case "End Call":
+                         AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "End Call"), coordinate: CLLocationCoordinate2DMake(point.coordinates.latitude, point.coordinates.longitude), stringImage: "1"))
+                default:
+                    AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "Start Call"), coordinate: CLLocationCoordinate2DMake(0, 0), stringImage: "5"))
+                }
                 
                 self.annotations.append(annotation)
             }

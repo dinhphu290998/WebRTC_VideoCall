@@ -8,7 +8,7 @@ protocol HandleMapSearch {
     func dropPinZoomIn(placemark: MKPlacemark)
 }
 @available(iOS 10.0, *)
-class ViewPhotoViewController: UIViewController{
+class ViewPhotoViewController: UIViewController {
     
 
     @IBOutlet weak var mapView: MapViewPlus!
@@ -28,11 +28,6 @@ class ViewPhotoViewController: UIViewController{
     
         
         mapView.delegate = self
-//        var annotations: [AnnotationPlus] = []
-//
-//        annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "Start Call"), coordinate: CLLocationCoordinate2DMake(21.029496, 105.780138), stringImage: "0"))
-//        annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "End Call"), coordinate: CLLocationCoordinate2DMake(21.030570, 105.779117), stringImage: "1"))
-//        annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "Send file"), coordinate: CLLocationCoordinate2DMake(21.029975, 105.778118), stringImage: "2"))
         
         mapView.setup(withAnnotations: AnotationMapView.shared.annotations)
         
@@ -42,7 +37,7 @@ class ViewPhotoViewController: UIViewController{
             // Read file content
             let contentFromFile = try NSString(contentsOfFile: fileName, encoding: String.Encoding.utf8.rawValue)
             print(contentFromFile)
-//            loadKml(contentFromFile as String)
+            loadKml(contentFromFile as String)
         }
         catch let error as NSError {
             print("An error took place: \(error)")
@@ -112,8 +107,6 @@ class ViewPhotoViewController: UIViewController{
     fileprivate func loadKml(_ path: String) {
         KMLDocument.parse(string: path, callback: { [unowned self] (kml) in
             self.mapView.addOverlays(kml.overlays)
-            self.mapView.addAnnotations(kml.annotations)
-            self.mapView.showAnnotations(kml.annotations, animated: true)
         })
     }
     
