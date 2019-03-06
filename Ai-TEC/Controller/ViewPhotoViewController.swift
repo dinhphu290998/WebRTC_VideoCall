@@ -8,7 +8,7 @@ protocol HandleMapSearch {
     func dropPinZoomIn(placemark: MKPlacemark)
 }
 @available(iOS 10.0, *)
-class ViewPhotoViewController: UIViewController {
+class ViewPhotoViewController: UIViewController{
     
 
     @IBOutlet weak var mapView: MapViewPlus!
@@ -25,12 +25,9 @@ class ViewPhotoViewController: UIViewController {
     var currentLocation: CLLocation?
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         
         mapView.delegate = self
-        
-        mapView.setup(withAnnotations: AnotationMapView.shared.annotations)
-        
+
         let fileName = getDocumentsDirectory().appendingPathComponent("sample.kml").path
         
         do {
@@ -107,6 +104,7 @@ class ViewPhotoViewController: UIViewController {
     fileprivate func loadKml(_ path: String) {
         KMLDocument.parse(string: path, callback: { [unowned self] (kml) in
             self.mapView.addOverlays(kml.overlays)
+             self.mapView.setup(withAnnotations: AnotationMapView.shared.annotations)
         })
     }
     
@@ -122,6 +120,14 @@ class ViewPhotoViewController: UIViewController {
 
 extension ViewPhotoViewController: MapViewPlusDelegate {
 
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let overlayPolyline = overlay as? KMLOverlayPolyline {
+            // return MKPolylineRenderer
+            return overlayPolyline.renderer()
+        }
+        return MKOverlayRenderer(overlay: overlay)
+    }
+    
     func mapView(_ mapView: MapViewPlus, imageFor annotation: AnnotationPlus) -> UIImage {
         switch annotation.stringImage {
         case "0":

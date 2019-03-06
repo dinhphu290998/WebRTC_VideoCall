@@ -7,10 +7,8 @@ public enum KMLTag: String {
     case StyleMap
     case PolyStyle
     case LineStyle
-    case IconStyle
     case BalloonStyle
     case MultiGeometry
-    case Polygon
     case LineString
     case Point
     case Folder
@@ -30,13 +28,11 @@ public struct KMLConfig {
         KMLTag.LineStyle.str: KMLLineStyle.self,
         KMLTag.BalloonStyle.str: KMLBalloonStyle.self,
         KMLTag.MultiGeometry.str: KMLMultiGeometry.self,
-        KMLTag.Polygon.str: KMLPolygon.self,
         KMLTag.LineString.str: KMLLineString.self,
         KMLTag.Point.str: KMLPoint.self,
         KMLTag.Folder.str: KMLElement.self,
-        KMLTag.Placemark.str: KMLPlacemark.self,
-        KMLTag.Icon.str: KMLIcon.self,
-        KMLTag.IconStyle.str: KMLIconStyle.self
+        KMLTag.Placemark.str: KMLPlacemark.self
+
     ]
 }
 // MARK: - Base classes
@@ -119,7 +115,7 @@ open class KMLStyle: KMLElement, KMLApplyStyle {
     open var styleId: String = ""
     open var polyStyle: KMLPolyStyle?
     open var lineStyle: KMLLineStyle?
-    open var iconStyle: KMLIconStyle?
+
     open var balloonStyle: KMLBalloonStyle?
     
     public required init(_ element: AEXMLElement) {
@@ -128,7 +124,7 @@ open class KMLStyle: KMLElement, KMLApplyStyle {
             styleId = _id
             polyStyle = findElement(KMLPolyStyle.self)
             lineStyle = findElement(KMLLineStyle.self)
-            iconStyle = findElement(KMLIconStyle.self)
+
             balloonStyle = findElement(KMLBalloonStyle.self)
         }
     }
@@ -232,30 +228,7 @@ open class KMLLineStyle: KMLColorStyleGroup, KMLApplyStyle {
         renderer.lineWidth = CGFloat(self.width) * 0.5
     }
 }
-open class KMLIconStyle: KMLColorStyleGroup {
-    open var scale: Double = 1.0
-    open var heading: Double = 0.0
-    open var icon: KMLIcon?
-    
-    public required init(_ element: AEXMLElement) {
-        super.init(element)
-        for child: AEXMLElement in element.children {
-            switch child.name {
-            case "scale":
-                if let scaleValue = child.double {
-                    scale = scaleValue
-                }
-            case "heading":
-                if let childValue = child.double {
-                    heading = childValue
-                }
-            default:
-                break
-            }
-        }
-        icon = findElement(KMLIcon.self)
-    }
-}
+
 open class KMLBalloonStyle: KMLElement {
     open var bgColor: UIColor = UIColor.black
     open var textColor: UIColor = UIColor.black
@@ -277,49 +250,12 @@ open class KMLBalloonStyle: KMLElement {
     }
     
 }
-open class KMLIcon: KMLElement {
-    open var href: String!
-    public required init(_ element: AEXMLElement) {
-        for child: AEXMLElement in element.children {
-            switch child.name {
-            case "href":
-                href = child.string
-            default:
-                break
-            }
-        }
-        super.init(element)
-    }
-    
-}
+
 // MARK: - Drawings
 open class KMLMultiGeometry: KMLElement {
     
 }
-open class KMLPolygon: KMLElement {
-    
-    open var tessellate: Bool = false
-    open var coordinates: [CLLocationCoordinate2D]
-    open var outerBoundaryCoordinates: [CLLocationCoordinate2D] = []
-    open var innerBoundariesCoordinates: [[CLLocationCoordinate2D]] = []
-    
-    public required init(_ element: AEXMLElement) {
-        for child: AEXMLElement in element.children {
-            switch child.name {
-            case "tessellate":
-                tessellate = child.int == 1 ? true : false
-            case "LineString":
-                outerBoundaryCoordinates = KMLElement.parseCoordinates(child["coordinates"])
-            case "innerBoundaryIs":
-                innerBoundariesCoordinates.append(KMLElement.parseCoordinates(child["coordinates"]))
-            default:
-                break
-            }
-        }
-        coordinates = outerBoundaryCoordinates
-        super.init(element)
-    }
-}
+
 open class KMLLineString: KMLElement {
     
     open var tessellate: Bool = false
@@ -368,7 +304,6 @@ open class KMLPlacemark: KMLElement {
     open var description: String = ""
     open var point: KMLPoint?
     open var lineString: KMLLineString?
-    open var polygon: KMLPolygon?
     open var style: KMLStyle?
     
     public required init(_ element: AEXMLElement) {
@@ -390,8 +325,6 @@ open class KMLPlacemark: KMLElement {
             point = pointGeometry
         } else if let lineStringGeometry = findElement(KMLLineString.self) {
             lineString = lineStringGeometry
-        } else if let polygonGeometry = findElement(KMLPolygon.self) {
-            polygon = polygonGeometry
         }
     }
 }
@@ -409,23 +342,7 @@ open class KMLAnnotation: NSObject, MKAnnotation {
         self.coordinate = coordinate
     }
 }
-open class KMLOverlayPolygon: MKPolygon, KMLOverlay {
-    open var style: KMLStyle?
-    
-    open func renderer() -> MKOverlayRenderer {
-        let renderer: MKPolygonRenderer = MKPolygonRenderer(polygon: self)
-        
-        if style != nil {
-            style?.applyStyle(renderer)
-        } else {
-            renderer.fillColor = UIColor.red
-            renderer.strokeColor = UIColor.red
-            renderer.lineWidth = 2.0
-        }
-        
-        return renderer
-    }
-}
+
 open class KMLOverlayPolyline: MKPolyline, KMLOverlay {
     
     open var style: KMLStyle?
@@ -529,10 +446,6 @@ open class KMLDocument: KMLElement {
             
             var overlays: [KMLOverlay] = []
             
-            let polygons: [KMLPolygon] = placemark.findElements(KMLPolygon.self)
-            for poligon: KMLPolygon in polygons {
-                overlays.append(KMLOverlayPolygon(coordinates: &poligon.coordinates, count: poligon.coordinates.count))
-            }
             
             let lines: [KMLLineString] = placemark.findElements(KMLLineString.self)
             for line: KMLLineString in lines {
@@ -568,8 +481,6 @@ open class KMLDocument: KMLElement {
             if let point: KMLPoint = pointPlacemark.point {
                 let annotation = KMLAnnotation(point.coordinates)
                 annotation.title = pointPlacemark.name
-                annotation.subtitle = pointPlacemark.description
-                annotation.style = pointPlacemark.style
 
                 switch pointPlacemark.name {
                     case "Start Call":
@@ -579,7 +490,7 @@ open class KMLDocument: KMLElement {
                     case "End Call":
                          AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "End Call"), coordinate: CLLocationCoordinate2DMake(point.coordinates.latitude, point.coordinates.longitude), stringImage: "1"))
                 default:
-                    AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "Start Call"), coordinate: CLLocationCoordinate2DMake(0, 0), stringImage: "5"))
+                    AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "Start Call"), coordinate: CLLocationCoordinate2DMake(point.coordinates.latitude, point.coordinates.longitude), stringImage: "5"))
                 }
                 
                 self.annotations.append(annotation)
