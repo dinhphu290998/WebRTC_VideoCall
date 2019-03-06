@@ -987,6 +987,7 @@
                                 </constraints>
                                 <state key="normal" image="btn_edit"/>
                                 <connections>
+                                    <action selector="showEditButton:" destination="T2U-M1-S4O" eventType="touchUpInside" id="gwn-Qf-vho"/>
                                     <segue destination="YPm-fD-l92" kind="show" identifier="showEditAfterViewSegueId" id="Plp-py-FNY"/>
                                 </connections>
                             </button>
