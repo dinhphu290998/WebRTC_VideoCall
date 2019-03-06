@@ -14,7 +14,7 @@ import AudioToolbox
 import CoreLocation
 import SVProgressHUD
 import CoreMotion
-
+import MapViewPlus
 @available(iOS 10.0, *)
 class RTCVideoChatViewController: UIViewController {
     
@@ -116,6 +116,8 @@ class RTCVideoChatViewController: UIViewController {
         audioButton?.isHidden = true
         videoButton?.isHidden = true
         if CheckImage.shared.checkKml == true {
+             currentLocation = locationManager.location
+             AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "Start Call"), coordinate: CLLocationCoordinate2DMake(currentLocation!.coordinate.latitude, currentLocation!.coordinate.longitude), stringImage: "0"))
             kml.startCall()
         }
     }
@@ -371,6 +373,8 @@ class RTCVideoChatViewController: UIViewController {
     @IBAction func hangupButtonPressed(_ sender: UIButton) {
         let alert = UIAlertController(title: "確認", message:"通話を終了しても宜しいですか?", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "はい", style: UIAlertActionStyle.destructive, handler: { _ in
+            self.currentLocation = self.locationManager.location
+            AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "End Call"), coordinate: CLLocationCoordinate2DMake(self.currentLocation!.coordinate.latitude, self.currentLocation!.coordinate.longitude), stringImage: "1"))
             self.kml.endCall()
             self.disconnect()
             let yourName = UserDefaults.standard.value(forKey: "yourname") ?? ""
@@ -414,6 +418,8 @@ class RTCVideoChatViewController: UIViewController {
         
         SVProgressHUD.show(withStatus: "waiting....")
         
+         currentLocation = locationManager.location
+         AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "Send file"), coordinate: CLLocationCoordinate2DMake(currentLocation!.coordinate.latitude, currentLocation!.coordinate.longitude), stringImage: "2"))
         kml.sendImage()
 
         if let videoConnection = stillImageOutput.connection(with: AVMediaType.video) {

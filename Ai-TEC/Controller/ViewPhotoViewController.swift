@@ -3,13 +3,15 @@ import MapKit
 import Toast_Swift
 import Kingfisher
 import Starscream
+import MapViewPlus
 protocol HandleMapSearch {
     func dropPinZoomIn(placemark: MKPlacemark)
 }
 @available(iOS 10.0, *)
 class ViewPhotoViewController: UIViewController{
     
-    @IBOutlet weak var mapView: MKMapView!
+
+    @IBOutlet weak var mapView: MapViewPlus!
     @IBOutlet weak var photoImage: UIImageView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var timestampLabel: UILabel!
@@ -23,8 +25,16 @@ class ViewPhotoViewController: UIViewController{
     var currentLocation: CLLocation?
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         
         mapView.delegate = self
+//        var annotations: [AnnotationPlus] = []
+//
+//        annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "Start Call"), coordinate: CLLocationCoordinate2DMake(21.029496, 105.780138), stringImage: "0"))
+//        annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "End Call"), coordinate: CLLocationCoordinate2DMake(21.030570, 105.779117), stringImage: "1"))
+//        annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "Send file"), coordinate: CLLocationCoordinate2DMake(21.029975, 105.778118), stringImage: "2"))
+        
+        mapView.setup(withAnnotations: AnotationMapView.shared.annotations)
         
         let fileName = getDocumentsDirectory().appendingPathComponent("sample.kml").path
         
@@ -32,7 +42,7 @@ class ViewPhotoViewController: UIViewController{
             // Read file content
             let contentFromFile = try NSString(contentsOfFile: fileName, encoding: String.Encoding.utf8.rawValue)
             print(contentFromFile)
-            loadKml(contentFromFile as String)
+//            loadKml(contentFromFile as String)
         }
         catch let error as NSError {
             print("An error took place: \(error)")
@@ -116,17 +126,28 @@ class ViewPhotoViewController: UIViewController{
         print("deinit")
     }
 }
-@available(iOS 10.0, *)
-extension ViewPhotoViewController: MKMapViewDelegate {
-    
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        if let overlayPolyline = overlay as? KMLOverlayPolyline {
-            // return MKPolylineRenderer
-            return overlayPolyline.renderer()
+
+extension ViewPhotoViewController: MapViewPlusDelegate {
+
+    func mapView(_ mapView: MapViewPlus, imageFor annotation: AnnotationPlus) -> UIImage {
+        switch annotation.stringImage {
+        case "0":
+            return UIImage(named: "btn_answer")!
+        case "1":
+             return UIImage(named: "btn_cancel")!
+        case "2":
+             return UIImage(named: "btn_edit")!
+        default:
+            return  UIImage(named: "basic_annotation_image")!
         }
-        return MKOverlayRenderer(overlay: overlay)
     }
+    
+    func mapView(_ mapView: MapViewPlus, didAddAnnotations annotations: [AnnotationPlus]) {
+        mapView.showAnnotations(annotations, animated: true)
+    }
+    
 }
+
 @available(iOS 10.0, *)
 extension ViewPhotoViewController: WebSocketDelegate {
     func websocketDidConnect(socket: WebSocket) {

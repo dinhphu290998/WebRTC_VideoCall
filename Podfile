@@ -24,11 +24,12 @@ target 'Ai-Tec' do
  pod 'GoogleMaps'
  pod 'Toast-Swift'
  pod 'Material'
- pod 'Kingfisher'
+ 
  pod 'GooglePlaces'
  pod 'SwiftyJSON'
  pod 'AEXML'
  pod 'Zip', '~> 1.1' 
  pod 'SBJson', '~> 4.0.2'
  pod 'CocoaLumberjack'
+pod 'MapViewPlus'
 end

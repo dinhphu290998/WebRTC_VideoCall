@@ -29,6 +29,7 @@
 		18FA43EA2176E30800A0EB8B /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA43E92176E30800A0EB8B /* ContactViewController.swift */; };
 		18FA43EE2176F75A00A0EB8B /* SocketGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA43ED2176F75A00A0EB8B /* SocketGlobal.swift */; };
 		18FA43F021771A7000A0EB8B /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA43EF21771A7000A0EB8B /* ContactTableViewCell.swift */; };
+		88C1A978222F6754006B7698 /* AnotationMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C1A977222F6754006B7698 /* AnotationMapView.swift */; };
 		8D10FCF84A798504B9EF769C /* Pods_Ai_Tec.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381B2CD5D2E6702DEC42770 /* Pods_Ai_Tec.framework */; };
 		B3087F04219D7701004204F4 /* CacheImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3087F03219D7701004204F4 /* CacheImage.swift */; };
 		B30BFF9121AD043900A68625 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30BFF9021AD043900A68625 /* Storage.swift */; };
@@ -145,6 +146,7 @@
 		406AEE77466067F4B97DBD99 /* Pods_Ai_TecUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_TecUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54DB82D607AA9494F139E009 /* Pods-Ai-TecUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-TecUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-TecUITests/Pods-Ai-TecUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		787889CFDFCC3FFB53443B73 /* Pods_Ai_TecTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_TecTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88C1A977222F6754006B7698 /* AnotationMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnotationMapView.swift; path = "Ai-TEC/Model/KML/AnotationMapView.swift"; sourceTree = SOURCE_ROOT; };
 		B3087F03219D7701004204F4 /* CacheImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CacheImage.swift; path = "Ai-TEC/Model/CacheImage.swift"; sourceTree = SOURCE_ROOT; };
 		B30BFF9021AD043900A68625 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		B30BFF9E21AD650E00A68625 /* KML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KML.swift; path = "Ai-TEC/Model/KML/KML.swift"; sourceTree = SOURCE_ROOT; };
@@ -380,6 +382,7 @@
 			children = (
 				B30BFF9E21AD650E00A68625 /* KML.swift */,
 				B34314D921BE01FF007D447F /* KMLParser.swift */,
+				88C1A977222F6754006B7698 /* AnotationMapView.swift */,
 			);
 			path = KML;
 			sourceTree = "<group>";
@@ -746,6 +749,7 @@
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MapViewPlus/MapViewPlus.framework",
 				"${BUILT_PRODUCTS_DIR}/Material/Material.framework",
 				"${BUILT_PRODUCTS_DIR}/Motion/Motion.framework",
 				"${BUILT_PRODUCTS_DIR}/SBJson/SBJson.framework",
@@ -766,6 +770,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapViewPlus.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Material.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motion.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SBJson.framework",
@@ -934,6 +939,7 @@
 				B375831221C273300061C990 /* NBMEAGLVideoViewContainer.m in Sources */,
 				B34314DA21BE01FF007D447F /* KMLParser.swift in Sources */,
 				18FA43EE2176F75A00A0EB8B /* SocketGlobal.swift in Sources */,
+				88C1A978222F6754006B7698 /* AnotationMapView.swift in Sources */,
 				B33B97FD218999F500D8AB12 /* CircleButton.swift in Sources */,
 				B37583F821C345020061C990 /* RTCICEServer+JSON.m in Sources */,
 				180D01E421C8CF8700DFEAB5 /* CLLocation+Extension.swift in Sources */,

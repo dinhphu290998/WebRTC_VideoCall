@@ -11,6 +11,7 @@ import Starscream
 import AVFoundation
 import AudioToolbox
 import CoreLocation
+import MapViewPlus
 @available(iOS 10.0, *)
 class RingingViewController: UIViewController ,WebSocketDelegate {
     
@@ -122,6 +123,8 @@ class RingingViewController: UIViewController ,WebSocketDelegate {
         if checkPK == true{
             let dictReject = ["type":"answer","result":"reject","host":userName,"receive":nameUserCall]
             SocketGlobal.shared.socket?.write(string: convertString(from: dictReject))
+            currentLocation = locationManager.location
+            AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "End Call"), coordinate: CLLocationCoordinate2DMake((currentLocation?.coordinate.latitude)!, (currentLocation?.coordinate.longitude)!), stringImage: "1"))
             kml.endCall()
         }else{
             let dict = ["type":"conference confirm","host":userName,"name":userName,"confirm":"deny"]
@@ -143,6 +146,8 @@ class RingingViewController: UIViewController ,WebSocketDelegate {
             self.performSegue(withIdentifier: "showVideoChatSegueId", sender: self)
             if CheckImage.shared.checkKml == true {
                 CheckImage.shared.checkKml = false
+                 currentLocation = locationManager.location
+                 AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "Start Call"), coordinate: CLLocationCoordinate2DMake(currentLocation!.coordinate.latitude, currentLocation!.coordinate.longitude), stringImage: "0"))
                 kml.startCall()
             }
         }else{

@@ -1002,7 +1002,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="45T-sR-Srb">
                                 <rect key="frame" x="0.0" y="109" width="320" height="394"/>
                             </imageView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Wcx-g8-aYh">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Wcx-g8-aYh" customClass="MapViewPlus" customModule="MapViewPlus">
                                 <rect key="frame" x="0.0" y="109" width="320" height="394"/>
                             </mapView>
                         </subviews>
@@ -1033,7 +1033,7 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="mapView" destination="Wcx-g8-aYh" id="iQi-wK-oO8"/>
+                        <outlet property="mapView" destination="Wcx-g8-aYh" id="RVv-8f-7Vb"/>
                         <outlet property="photoImage" destination="45T-sR-Srb" id="Xp6-AB-T8u"/>
                         <outlet property="segmentedControl" destination="zut-hV-AjT" id="CMg-nA-oiR"/>
                         <outlet property="timestampLabel" destination="YqY-zo-UFc" id="r21-Zb-Fvi"/>
@@ -1797,18 +1797,18 @@ Cg
         <image name="btn_edit" width="110" height="110"/>
         <image name="camera_off" width="105" height="105"/>
         <image name="camera_on" width="105" height="105"/>
-        <image name="check-box-empty" width="30" height="30"/>
-        <image name="circle_search" width="800" height="800"/>
+        <image name="check-box-empty" width="48" height="48"/>
+        <image name="circle_search" width="288" height="288"/>
         <image name="cm_arrow_back_white" width="24" height="24"/>
         <image name="cm_arrow_downward_black" width="24" height="24"/>
         <image name="cm_arrow_next_white" width="24" height="24"/>
         <image name="cm_close_white" width="24" height="24"/>
-        <image name="compass" width="32" height="32"/>
-        <image name="eraser" width="100" height="100"/>
+        <image name="compass" width="460.79998779296875" height="460.79998779296875"/>
+        <image name="eraser" width="40" height="40"/>
         <image name="ic_phone_white" width="24" height="24"/>
         <image name="imv_switch" width="120" height="120"/>
         <image name="logo" width="648" height="112"/>
-        <image name="menu" width="30" height="30"/>
+        <image name="menu" width="48" height="48"/>
         <image name="voice_off" width="105" height="105"/>
         <image name="voice_on" width="105" height="105"/>
     </resources>
@@ -1816,6 +1816,6 @@ Cg
         <segue reference="sIR-9P-w9H"/>
         <segue reference="Hsk-ag-Pvq"/>
         <segue reference="Oii-5G-hUf"/>
-        <segue reference="Weh-WG-Z7U"/>
+        <segue reference="Plp-py-FNY"/>
     </inferredMetricsTieBreakers>
 </document>

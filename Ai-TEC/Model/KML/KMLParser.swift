@@ -1,6 +1,7 @@
 import Foundation
 import MapKit
 import AEXML
+import MapViewPlus
 public enum KMLTag: String {
     case Style
     case StyleMap
