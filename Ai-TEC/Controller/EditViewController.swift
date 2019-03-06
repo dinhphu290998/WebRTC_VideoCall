@@ -71,10 +71,10 @@ class EditViewController: UIViewController {
         setupCanvas()
         setupPalette()
         setupToolDrawView()
-        
         if CheckImage.shared.check == true {
             canvasView?.strokeImage(rotate: drawLines)
         }
+   
         
     }
     
@@ -101,7 +101,7 @@ class EditViewController: UIViewController {
         let canvasView = Canvas(backgroundImage: screenShotImage)
             print(screenShotImage?.size ?? "")
         
-            canvasView.frame = CGRect(x: 0, y: 115, width: width, height: heidht - 210)
+            canvasView.frame = CGRect(x: -10, y: 105, width: width + 40, height: heidht - 180)
             canvasView.delegate = self
             canvasView.clipsToBounds = true
         
@@ -241,6 +241,7 @@ class EditViewController: UIViewController {
     
     // gửi và lưu ảnh
     @IBAction func sendImage(_ sender: Any) {
+      
         self.canvasView?.save()
         dismiss(animated: true, completion: nil)
     }
@@ -281,6 +282,7 @@ extension EditViewController: CanvasDelegate {
     func canvas(_ canvas: Canvas, didSaveDrawing drawing: Drawing, mergedImage image: UIImage?) {
         SVProgressHUD.show(withStatus: "sending....")
         if CheckImage.shared.checkSend == false {
+
             kml.sendImage()
         }
         let formatter = DateFormatter()

@@ -489,9 +489,9 @@ open class KMLDocument: KMLElement {
                         AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "Send Image"), coordinate: CLLocationCoordinate2DMake(point.coordinates.latitude, point.coordinates.longitude), stringImage: "2"))
                     case "End Call":
                          AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "End Call"), coordinate: CLLocationCoordinate2DMake(point.coordinates.latitude, point.coordinates.longitude), stringImage: "1"))
-                default:
-                    AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "Start Call"), coordinate: CLLocationCoordinate2DMake(point.coordinates.latitude, point.coordinates.longitude), stringImage: "5"))
-                }
+                    default:
+                        AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "Start Call"), coordinate: CLLocationCoordinate2DMake(point.coordinates.latitude, point.coordinates.longitude), stringImage: "5"))
+                    }
                 
                 self.annotations.append(annotation)
             }
