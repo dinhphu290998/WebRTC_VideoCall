@@ -101,7 +101,7 @@ class EditViewController: UIViewController {
         let canvasView = Canvas(backgroundImage: screenShotImage)
             print(screenShotImage?.size ?? "")
         
-            canvasView.frame = CGRect(x: -10, y: 105, width: width + 40, height: heidht - 180)
+            canvasView.frame = CGRect(x: -10, y: 105, width: width + 25, height: heidht - 180)
             canvasView.delegate = self
             canvasView.clipsToBounds = true
         

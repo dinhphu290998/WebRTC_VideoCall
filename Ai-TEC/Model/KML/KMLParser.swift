@@ -498,7 +498,7 @@ open class KMLDocument: KMLElement {
         }
     }
     
-    open class func parse(url: URL, generateMapKitClasses: Bool=true, callback: @escaping (KMLDocument) -> Void) {
+    open class func parse(url: URL, generateMapKitClasses: Bool = true, callback: @escaping (KMLDocument) -> Void) {
         // Background Task
         let bgQueue = DispatchQueue.global(qos: .default)
         let mainQueue: DispatchQueue = DispatchQueue.main
