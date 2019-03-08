@@ -18,6 +18,7 @@ class SplashViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         kml.soap()
+  
         if let infoDict = Bundle.main.infoDictionary,
             let appVer = infoDict["CFBundleShortVersionString"],
             let buildNum = infoDict["CFBundleVersion"] {

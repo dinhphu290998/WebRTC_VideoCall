@@ -2,4 +2,54 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ai-Tec/Controller/EditViewController.swift"
+            timestampString = "573713851.63561"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "setupCanvas()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ai_Tec.EditViewController.(setupCanvas in _B49E9A9919F8E386A1245C9FFAFEB78A)() -&gt; ()"
+                  moduleName = "Ai-Tec"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vmiovmio/Desktop/ai_tec_ios/Ai-Tec/Controller/EditViewController.swift"
+                  timestampString = "573713919.737069"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "1196">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ai_Tec.EditViewController.(setupCanvas in _B49E9A9919F8E386A1245C9FFAFEB78A)() -&gt; ()"
+                  moduleName = "Ai-Tec"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vmiovmio/Desktop/ai_tec_ios/Ai-Tec/Controller/EditViewController.swift"
+                  timestampString = "573713919.740234"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "1224">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

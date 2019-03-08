@@ -14,4 +14,5 @@ class CheckImage {
     var checkRemote: Bool = false
     var checkLocalView: Bool?
     var checkSend: Bool = true
+    var checkRoite: Bool = true
 }

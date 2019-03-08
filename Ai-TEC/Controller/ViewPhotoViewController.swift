@@ -55,7 +55,6 @@ class ViewPhotoViewController: UIViewController{
         }
         
         mapView.isHidden = segmentedControl.selectedSegmentIndex == 0
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,7 +79,7 @@ class ViewPhotoViewController: UIViewController{
     
     @IBAction func showEditButton(_ sender: UIButton) {
         CheckImage.shared.checkSend = false
-        CheckImage.shared.check = false
+        CheckImage.shared.checkRoite = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -104,7 +103,7 @@ class ViewPhotoViewController: UIViewController{
     fileprivate func loadKml(_ path: String) {
         KMLDocument.parse(string: path, callback: { [unowned self] (kml) in
             self.mapView.addOverlays(kml.overlays)
-             self.mapView.setup(withAnnotations: AnotationMapView.shared.annotations)
+            self.mapView.setup(withAnnotations: AnotationMapView.shared.annotations)
         })
     }
     
