@@ -21,8 +21,8 @@ class ViewPhotoViewController: UIViewController{
     var hasGPS: Bool = false
     var photo: Image?
     var timestampCapture: String?
-    var time: String?
-    var currentLocation: CLLocation?
+  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -79,7 +79,7 @@ class ViewPhotoViewController: UIViewController{
     
     @IBAction func showEditButton(_ sender: UIButton) {
         CheckImage.shared.checkSend = false
-        CheckImage.shared.checkRoite = false
+        CheckImage.shared.check = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

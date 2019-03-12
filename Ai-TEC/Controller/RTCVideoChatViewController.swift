@@ -108,7 +108,7 @@ class RTCVideoChatViewController: UIViewController {
         configView()
         roundMoreView()
         
-        CheckImage.shared.check = false
+       
         sensorButton.isHidden = true
         compassButton.isHidden = true
         switchCameraButton.isHidden = true
@@ -263,6 +263,7 @@ class RTCVideoChatViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
+        CheckImage.shared.check = true
         remoteView.delegate = self
         localView.delegate = self
         nameRemoteLabel.text = nameRemote

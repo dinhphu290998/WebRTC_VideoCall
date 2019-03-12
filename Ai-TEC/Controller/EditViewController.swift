@@ -28,15 +28,12 @@ class EditViewController: UIViewController {
     var colorSelectedView: UIView?
     var widthSelectedView: UIView?
     var screenShotImage: UIImage?
-    var times: String?
     var timestampCapture: Date?
     
     var drawLines = Double()
     var isFirstEdit: Bool = true
-    
-    var currentLocation: CLLocation?
-    var locationManager: CLLocationManager = CLLocationManager()
-     let kml = KML.shared
+ 
+    let kml = KML.shared
     @IBOutlet weak var toolbarView: UIView!
     @IBOutlet weak var colorButton: UIButton!
     @IBOutlet weak var widthButton: UIButton!
@@ -62,17 +59,9 @@ class EditViewController: UIViewController {
         undoButton.layer.cornerRadius = 6
         dismisButton.layer.cornerRadius = 6
         
-        // Get the current location of the user
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
-        
         setupCanvas()
         setupPalette()
         setupToolDrawView()
-        
-   
         
     }
     
@@ -80,7 +69,7 @@ class EditViewController: UIViewController {
         super.viewWillAppear(animated)
         SocketGlobal.shared.socket?.delegate = self
         
-        if CheckImage.shared.checkRoite == true {
+        if CheckImage.shared.check == true {
             canvasView?.strokeImage(rotate: drawLines)
         }
     }
@@ -114,7 +103,6 @@ class EditViewController: UIViewController {
             canvasView.frame = CGRect(x: 0, y: 115, width: width, height: heidht - 207)
         }
         
-       
             canvasView.delegate = self
             canvasView.clipsToBounds = true
         
@@ -279,12 +267,6 @@ class EditViewController: UIViewController {
     }
 }
 
-extension EditViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        currentLocation = manager.location
-    }
-}
-
 // save and upload image to server
 extension EditViewController: CanvasDelegate {
     
@@ -298,13 +280,7 @@ extension EditViewController: CanvasDelegate {
 
             kml.sendImage()
         }
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyyMMddHHmmss"
-        let myString = formatter.string(from: Date())
-        let yourDate = formatter.date(from: myString)
-        let myStrongafd = formatter.string(from: yourDate!)
-        times = myStrongafd
-        
+
         //creat file kml zip
         let fileName = getDocumentsDirectory().appendingPathComponent("sample.kml")
         do {
@@ -339,7 +315,7 @@ extension EditViewController: CanvasDelegate {
 
             // upload image to server
             Alamofire.upload(multipartFormData: { (form) in
-                form.append(fileNameBytes, withName: "data", fileName: "\(imageNameFile)", mimeType: "image/jpeg")
+                form.append(fileNameBytes, withName: "data", fileName: "\(imageNameFile)", mimeType: "image/jpg")
             }, to: apiSendImage, encodingCompletion: { result in
                 switch result {
                 case .success(let upload, _, _):
@@ -432,7 +408,7 @@ extension EditViewController {
             if isFirstEdit {
                 imageNameFile = "\(imageNameFile)"
             } else {
-                imageNameFile = "\(imageNameFile)_\(Date().fileNameFromeDate)"
+                imageNameFile = "\(imageNameFile)"
             }
             return imageNameFile
         } else {

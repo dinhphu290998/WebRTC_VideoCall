@@ -63,7 +63,6 @@ open class Canvas: UIView, UITableViewDelegate {
         self.addSubview(self.mainImageView)
         self.mainImageView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        
         self.addSubview(self.mainImage)
         self.mainImage.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
