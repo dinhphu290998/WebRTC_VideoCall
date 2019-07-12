@@ -11,7 +11,6 @@ import Starscream
 import AVFoundation
 import AudioToolbox
 import CoreLocation
-import MapViewPlus
 @available(iOS 10.0, *)
 class RingingViewController: UIViewController ,WebSocketDelegate {
     
@@ -34,9 +33,8 @@ class RingingViewController: UIViewController ,WebSocketDelegate {
     var timerSoundAlert: Timer?
     var timerAnimation: Timer?
     let kml = KML.shared
-    let commingCallSoundId: SystemSoundID = 1028
+    let commingCallSoundId: SystemSoundID = 1014
     let waitingCallSoundId: SystemSoundID = 1074
-    //{thong bao : 1002,1028}
     //1108 chup anh
     
     override func viewDidLoad() {
@@ -57,7 +55,7 @@ class RingingViewController: UIViewController ,WebSocketDelegate {
         
         timerAnimation = Timer.scheduledTimer(timeInterval: 1, target: self,
                                               selector: #selector(animationSearch), userInfo: nil, repeats: true)
-        timerSoundAlert = Timer.scheduledTimer(timeInterval: 1, target: self,
+        timerSoundAlert = Timer.scheduledTimer(timeInterval: 2, target: self,
                                                selector: #selector(playsSound), userInfo: nil, repeats: true)
      
     }
@@ -151,6 +149,8 @@ class RingingViewController: UIViewController ,WebSocketDelegate {
             SocketGlobal.shared.socket?.write(string: self.convertString(from: dict ))
             self.performSegue(withIdentifier: "KorentoViewControllerStoryBoardId", sender: self)
         }
+        timerSoundAlert?.invalidate()
+        timerSoundAlert = nil
     }
   
     // MARK: - SEGUE

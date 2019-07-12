@@ -15,9 +15,7 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (2.7.0):
     - GoogleMaps/Base (= 2.7.0)
-  - Kingfisher (4.6.4)
-  - MapViewPlus (0.1.2):
-    - Kingfisher (~> 4.6.3)
+  - Kingfisher (4.10.1)
   - Material (2.16.4):
     - Material/Core (= 2.16.4)
   - Material/Core (2.16.4):
@@ -41,7 +39,7 @@ DEPENDENCIES:
   - DropDown
   - GoogleMaps
   - GooglePlaces
-  - MapViewPlus
+  - Kingfisher
   - Material
   - SBJson (~> 4.0.2)
   - SocketRocket
@@ -61,7 +59,6 @@ SPEC REPOS:
     - GoogleMaps
     - GooglePlaces
     - Kingfisher
-    - MapViewPlus
     - Material
     - Motion
     - SBJson
@@ -80,8 +77,7 @@ SPEC CHECKSUMS:
   DropDown: 0bcc278799ec11a3d34ce1aac9367fbbaf5423d9
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
-  Kingfisher: 68498a706e46c2a050b0c9572f100e5db407f6e0
-  MapViewPlus: 4e448279f98297f007cb16904a244a525b3c9d5e
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Material: 4ed78690b09ffd148b5ffab6b4367fb1d8da1cd3
   Motion: 153ba49692997888556c7a95207278a8b1f8be95
   SBJson: af3137ccda22be3004487524da0a071c75d4251b
@@ -93,6 +89,6 @@ SPEC CHECKSUMS:
   WebRTC: f2a6203584745fe53532633397557876b5d71640
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 5d1cca89c66d36bcbd7bb4b1a72c088a3efe7606
+PODFILE CHECKSUM: 11b03cefd1f8f97093e827127a668a17b087453a
 
 COCOAPODS: 1.5.3

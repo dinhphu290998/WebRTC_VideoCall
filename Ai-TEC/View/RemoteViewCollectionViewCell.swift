@@ -10,6 +10,7 @@ import UIKit
 
 class RemoteViewCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var connectingLb: UILabel!
     @IBOutlet weak var remoteView: RTCEAGLVideoView!
     @IBOutlet weak var nameRemote: UILabel!
     override func awakeFromNib() {

@@ -9,17 +9,22 @@
 import UIKit
 
 class Remote {
-    var nameRemote: String?
-    var regIdRemote: String?
+    var nameRemote = ""
+    var regIdRemote = ""
     var remotePeer: RTCPeerConnection?
     var remoteMedia: RTCMediaStream?
     var arrIceCandidate: [RTCIceCandidate]?
-    init(name:String,id:String,peer:RTCPeerConnection?,media:RTCMediaStream?,arrIce: [RTCIceCandidate]?){
+    var check = false
+    init?(name:String,id:String,peer:RTCPeerConnection?,media:RTCMediaStream?,arrIce: [RTCIceCandidate]?,check: Bool){
         self.nameRemote = name
         self.regIdRemote = id
         self.remotePeer = peer
         self.remoteMedia = media
         self.arrIceCandidate = arrIce
+        self.check = check
+    }
+    deinit {
+        print("")
     }
 }
 

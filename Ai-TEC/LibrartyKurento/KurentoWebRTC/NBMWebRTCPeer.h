@@ -197,8 +197,8 @@
 - (void)enableVideo:(BOOL)enable;
 - (BOOL)isAudioEnabled;
 - (void)enableAudio:(BOOL)enable;
-- (BOOL)switchCameraKurento;
+
 - (BOOL)videoAuthorized;
 - (BOOL)audioAuthorized;
-
+- (BOOL)switchCameraKurento;
 @end

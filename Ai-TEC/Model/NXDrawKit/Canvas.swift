@@ -63,6 +63,7 @@ open class Canvas: UIView, UITableViewDelegate {
         self.addSubview(self.mainImageView)
         self.mainImageView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
+        
         self.addSubview(self.mainImage)
         self.mainImage.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
@@ -222,6 +223,7 @@ open class Canvas: UIView, UITableViewDelegate {
         UIColor.red.setStroke()
         self.apath.apply(CGAffineTransform(rotationAngle: CGFloat(rotate)))
         self.apath.stroke(with: self.brush.blendMode, alpha: 10)
+        
         let imageTarget = self.mainImage
         imageTarget.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
@@ -246,7 +248,7 @@ open class Canvas: UIView, UITableViewDelegate {
     
     fileprivate var gridWidth: CGFloat
     {
-        return self.frame.width/CGFloat(gridWidthMultiple) + 5
+        return self.bounds.width/CGFloat(gridWidthMultiple)
     }
     
     
@@ -260,7 +262,7 @@ open class Canvas: UIView, UITableViewDelegate {
         }
         
         self.mainImage.image?.draw(in: self.bounds)
-        self.mainImageView.image?.draw(in: self.frame)               // draw stroke
+        self.mainImageView.image?.draw(in: self.bounds)               // draw stroke
         
         let mergedImage = UIGraphicsGetImageFromCurrentImageContext()   // merge
         UIGraphicsEndImageContext()

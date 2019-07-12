@@ -126,10 +126,7 @@ class LoginViewController: UIViewController , WebSocketDelegate, CLLocationManag
                 if message == "Login success" && status == "success" {
                     SVProgressHUD.setStatus(message)
                     SVProgressHUD.dismiss()
-                    
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-                        self.performSegue(withIdentifier: "showContactSegueId", sender: self)
-                    }
+                    self.performSegue(withIdentifier: "showContactSegueId", sender: self)
                 }else{
                     SVProgressHUD.dismiss(withDelay: 1)
                     SVProgressHUD.setStatus(message)

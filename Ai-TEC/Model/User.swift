@@ -14,8 +14,6 @@ class User {
     var name: String = ""
     var regId: String = ""
     var status: Double = 0
-    var peer: RTCPeerConnection?
-    var mediaStream: RTCMediaStream?
     init?(dict: DICT) {
         guard let name = dict["name"] as? String else {return}
         guard let regId = dict["regId"] as? String else {return}

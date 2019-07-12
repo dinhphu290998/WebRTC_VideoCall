@@ -29,11 +29,14 @@
 		18FA43EA2176E30800A0EB8B /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA43E92176E30800A0EB8B /* ContactViewController.swift */; };
 		18FA43EE2176F75A00A0EB8B /* SocketGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA43ED2176F75A00A0EB8B /* SocketGlobal.swift */; };
 		18FA43F021771A7000A0EB8B /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA43EF21771A7000A0EB8B /* ContactTableViewCell.swift */; };
-		88C1A978222F6754006B7698 /* AnotationMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C1A977222F6754006B7698 /* AnotationMapView.swift */; };
 		8D10FCF84A798504B9EF769C /* Pods_Ai_Tec.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381B2CD5D2E6702DEC42770 /* Pods_Ai_Tec.framework */; };
 		B3087F04219D7701004204F4 /* CacheImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3087F03219D7701004204F4 /* CacheImage.swift */; };
 		B30BFF9121AD043900A68625 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30BFF9021AD043900A68625 /* Storage.swift */; };
 		B30BFF9F21AD650E00A68625 /* KML.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30BFF9E21AD650E00A68625 /* KML.swift */; };
+		B30D56D12251C96C0021E63C /* AVCaptureState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30D56CD2251C96A0021E63C /* AVCaptureState.swift */; };
+		B30D56D22251C96C0021E63C /* RTCCapturer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30D56CE2251C96B0021E63C /* RTCCapturer.swift */; };
+		B30D56D32251C96C0021E63C /* RTCCapturerSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30D56CF2251C96B0021E63C /* RTCCapturerSettingsModel.swift */; };
+		B30D56D42251C96C0021E63C /* RTCSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30D56D02251C96B0021E63C /* RTCSettingsStore.swift */; };
 		B33B97F7218999DE00D8AB12 /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B97F6218999DE00D8AB12 /* Drawing.swift */; };
 		B33B97F9218999E900D8AB12 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B97F8218999E700D8AB12 /* Session.swift */; };
 		B33B97FB218999EC00D8AB12 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B97FA218999EC00D8AB12 /* Palette.swift */; };
@@ -146,10 +149,13 @@
 		406AEE77466067F4B97DBD99 /* Pods_Ai_TecUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_TecUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54DB82D607AA9494F139E009 /* Pods-Ai-TecUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-TecUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-TecUITests/Pods-Ai-TecUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		787889CFDFCC3FFB53443B73 /* Pods_Ai_TecTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_TecTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		88C1A977222F6754006B7698 /* AnotationMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnotationMapView.swift; path = "Ai-TEC/Model/KML/AnotationMapView.swift"; sourceTree = SOURCE_ROOT; };
 		B3087F03219D7701004204F4 /* CacheImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CacheImage.swift; path = "Ai-TEC/Model/CacheImage.swift"; sourceTree = SOURCE_ROOT; };
 		B30BFF9021AD043900A68625 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		B30BFF9E21AD650E00A68625 /* KML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KML.swift; path = "Ai-TEC/Model/KML/KML.swift"; sourceTree = SOURCE_ROOT; };
+		B30D56CD2251C96A0021E63C /* AVCaptureState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCaptureState.swift; sourceTree = "<group>"; };
+		B30D56CE2251C96B0021E63C /* RTCCapturer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTCCapturer.swift; sourceTree = "<group>"; };
+		B30D56CF2251C96B0021E63C /* RTCCapturerSettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTCCapturerSettingsModel.swift; sourceTree = "<group>"; };
+		B30D56D02251C96B0021E63C /* RTCSettingsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTCSettingsStore.swift; sourceTree = "<group>"; };
 		B33B97F6218999DE00D8AB12 /* Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drawing.swift; sourceTree = "<group>"; };
 		B33B97F8218999E700D8AB12 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		B33B97FA218999EC00D8AB12 /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -348,6 +354,10 @@
 		1873FA0F21757F8F00ED8988 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B30D56CD2251C96A0021E63C /* AVCaptureState.swift */,
+				B30D56CE2251C96B0021E63C /* RTCCapturer.swift */,
+				B30D56CF2251C96B0021E63C /* RTCCapturerSettingsModel.swift */,
+				B30D56D02251C96B0021E63C /* RTCSettingsStore.swift */,
 				B30BFF9D21AD650100A68625 /* KML */,
 				B37BE7BF2192C043007E20E3 /* NXDrawKit */,
 				B33B980E2189AECD00D8AB12 /* MessageSocket.swift */,
@@ -382,7 +392,6 @@
 			children = (
 				B30BFF9E21AD650E00A68625 /* KML.swift */,
 				B34314D921BE01FF007D447F /* KMLParser.swift */,
-				88C1A977222F6754006B7698 /* AnotationMapView.swift */,
 			);
 			path = KML;
 			sourceTree = "<group>";
@@ -749,7 +758,6 @@
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/MapViewPlus/MapViewPlus.framework",
 				"${BUILT_PRODUCTS_DIR}/Material/Material.framework",
 				"${BUILT_PRODUCTS_DIR}/Motion/Motion.framework",
 				"${BUILT_PRODUCTS_DIR}/SBJson/SBJson.framework",
@@ -770,7 +778,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapViewPlus.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Material.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motion.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SBJson.framework",
@@ -871,6 +878,7 @@
 				B37583E621C345020061C990 /* ARDUtilities.m in Sources */,
 				180D01DE21C89B7B00DFEAB5 /* NeedleView.swift in Sources */,
 				B37583F921C345020061C990 /* ARDSettingsModel.m in Sources */,
+				B30D56D22251C96C0021E63C /* RTCCapturer.swift in Sources */,
 				18AA0C692181A32C00038963 /* ResolutionCell.swift in Sources */,
 				1812FCD721E6FB1800894B2D /* Remote.swift in Sources */,
 				180A09B7217D7022005B6F35 /* Etension.swift in Sources */,
@@ -891,6 +899,7 @@
 				B37583E321C345020061C990 /* ARDStatsView.m in Sources */,
 				B37582DD21C2723E0061C990 /* KurentoViewController.swift in Sources */,
 				B37583EA21C345020061C990 /* ARDMainView.m in Sources */,
+				B30D56D12251C96C0021E63C /* AVCaptureState.swift in Sources */,
 				B33B980F2189AECD00D8AB12 /* MessageSocket.swift in Sources */,
 				B33B97FB218999EC00D8AB12 /* Palette.swift in Sources */,
 				B37BE7BB21901E25007E20E3 /* ExtensionUIImageView.swift in Sources */,
@@ -904,6 +913,7 @@
 				B3514B4621A3F2BB00AF28DC /* CheckImage.swift in Sources */,
 				B37583E921C345020061C990 /* UIImage+ARDUtilities.m in Sources */,
 				B37583EE21C345020061C990 /* ARDSignalingMessage.m in Sources */,
+				B30D56D42251C96C0021E63C /* RTCSettingsStore.swift in Sources */,
 				B37583F521C345020061C990 /* ARDMainViewController.m in Sources */,
 				B37583F421C345020061C990 /* RTCMediaConstraints+JSON.m in Sources */,
 				B33B980B21899A5E00D8AB12 /* ToolBar.swift in Sources */,
@@ -930,6 +940,7 @@
 				18FA43F021771A7000A0EB8B /* ContactTableViewCell.swift in Sources */,
 				B30BFF9121AD043900A68625 /* Storage.swift in Sources */,
 				B375831621C273300061C990 /* NBMPeerConnection.m in Sources */,
+				B30D56D32251C96C0021E63C /* RTCCapturerSettingsModel.swift in Sources */,
 				B33B980721899A4A00D8AB12 /* Brush.swift in Sources */,
 				B33B9836218AB84900D8AB12 /* PhotoCell.swift in Sources */,
 				18F0C90721759D7C00E0DEBD /* Config.swift in Sources */,
@@ -939,7 +950,6 @@
 				B375831221C273300061C990 /* NBMEAGLVideoViewContainer.m in Sources */,
 				B34314DA21BE01FF007D447F /* KMLParser.swift in Sources */,
 				18FA43EE2176F75A00A0EB8B /* SocketGlobal.swift in Sources */,
-				88C1A978222F6754006B7698 /* AnotationMapView.swift in Sources */,
 				B33B97FD218999F500D8AB12 /* CircleButton.swift in Sources */,
 				B37583F821C345020061C990 /* RTCICEServer+JSON.m in Sources */,
 				180D01E421C8CF8700DFEAB5 /* CLLocation+Extension.swift in Sources */,
@@ -1030,7 +1040,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1086,7 +1096,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1107,7 +1117,7 @@
 				DEVELOPMENT_TEAM = 9TPJJNUR63;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Ai-Tec/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1133,7 +1143,7 @@
 				DEVELOPMENT_TEAM = 9TPJJNUR63;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Ai-Tec/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

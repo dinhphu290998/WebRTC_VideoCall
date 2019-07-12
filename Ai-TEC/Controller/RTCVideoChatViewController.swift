@@ -14,7 +14,7 @@ import AudioToolbox
 import CoreLocation
 import SVProgressHUD
 import CoreMotion
-import MapViewPlus
+
 @available(iOS 10.0, *)
 class RTCVideoChatViewController: UIViewController {
     
@@ -64,7 +64,6 @@ class RTCVideoChatViewController: UIViewController {
     let needleView = NeedleView()
     let kml = KML.shared
     
-    var currentLocation: CLLocation?
     var locationManager: CLLocationManager = CLLocationManager()
     
     var alpha = 0
@@ -108,7 +107,7 @@ class RTCVideoChatViewController: UIViewController {
         configView()
         roundMoreView()
         
-       
+        CheckImage.shared.check = false
         sensorButton.isHidden = true
         compassButton.isHidden = true
         switchCameraButton.isHidden = true
@@ -116,7 +115,6 @@ class RTCVideoChatViewController: UIViewController {
         audioButton?.isHidden = true
         videoButton?.isHidden = true
         if CheckImage.shared.checkKml == true {
-    
             kml.startCall()
         }
     }
@@ -169,7 +167,6 @@ class RTCVideoChatViewController: UIViewController {
         }
         
         locationDelegate.headingCallback = { newHeading in
-            
             func computeNewAngle(with newAngle: CGFloat) -> CGFloat {
                 let heading: CGFloat = {
                     let originalHeading = self.yourLocationBearing - newAngle.degreesToRadians
@@ -180,7 +177,6 @@ class RTCVideoChatViewController: UIViewController {
                 }()
                 return CGFloat(self.orientationAdjustment().degreesToRadians + heading)
             }
-            
             UIView.animate(withDuration: 0.5) {
                 let angle = computeNewAngle(with: CGFloat(newHeading))
                 self.needleView.transform = CGAffineTransform(rotationAngle: angle)
@@ -210,7 +206,6 @@ class RTCVideoChatViewController: UIViewController {
                 self.latitudeLabel.text = "Latitude :\(self.locationManager.location!.coordinate.latitude)"
                 self.longtitude.text = "longtitude :\(self.locationManager.location!.coordinate.longitude)"
             }
-            
             self.infoCompass.text = "Compass :\(self.alpha) º\(self.navi)"
         }
         self.manager.accelerometerUpdateInterval = 0.01
@@ -263,7 +258,6 @@ class RTCVideoChatViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
-        CheckImage.shared.check = true
         remoteView.delegate = self
         localView.delegate = self
         nameRemoteLabel.text = nameRemote
@@ -342,7 +336,6 @@ class RTCVideoChatViewController: UIViewController {
             westLabel.isHidden = false
             eastLabel.isHidden = false
             needleView.isHidden = false
-            sensorButton.isHidden = true
             longtitude.isHidden = false
             latitudeLabel.isHidden = false
             infoCompass.isHidden = false
@@ -353,7 +346,6 @@ class RTCVideoChatViewController: UIViewController {
             westLabel.isHidden = true
             eastLabel.isHidden = true
             needleView.isHidden = true
-            sensorButton.isHidden = false
             longtitude.isHidden = true
             latitudeLabel.isHidden = true
             infoCompass.isHidden = true
@@ -373,8 +365,6 @@ class RTCVideoChatViewController: UIViewController {
     @IBAction func hangupButtonPressed(_ sender: UIButton) {
         let alert = UIAlertController(title: "確認", message:"通話を終了しても宜しいですか?", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "はい", style: UIAlertActionStyle.destructive, handler: { _ in
-            self.currentLocation = self.locationManager.location
-            AnotationMapView.shared.annotations.append(AnnotationPlus.init(viewModel: DefaultCalloutViewModel(title: "End Call"), coordinate: CLLocationCoordinate2DMake(self.currentLocation!.coordinate.latitude, self.currentLocation!.coordinate.longitude), stringImage: "1"))
             self.kml.endCall()
             self.disconnect()
             let yourName = UserDefaults.standard.value(forKey: "yourname") ?? ""
@@ -417,7 +407,7 @@ class RTCVideoChatViewController: UIViewController {
     @IBAction func captureButtonTouched(_ sender: UIButton) {
         
         SVProgressHUD.show(withStatus: "waiting....")
-
+        
         kml.sendImage()
 
         if let videoConnection = stillImageOutput.connection(with: AVMediaType.video) {

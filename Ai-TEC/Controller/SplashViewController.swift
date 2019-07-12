@@ -17,8 +17,8 @@ class SplashViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         kml.soap()
-  
         if let infoDict = Bundle.main.infoDictionary,
             let appVer = infoDict["CFBundleShortVersionString"],
             let buildNum = infoDict["CFBundleVersion"] {
@@ -33,7 +33,7 @@ class SplashViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
             self.performSegue(withIdentifier: "showLoginSegueId", sender: self)
         }
     }

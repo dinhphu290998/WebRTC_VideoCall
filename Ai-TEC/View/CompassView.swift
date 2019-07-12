@@ -27,12 +27,12 @@ class CompassView: UIView {
     
     func createRound() {
         let innerRing = UIBezierPath(arcCenter: centerView!, radius: halfFrameWidth - 5, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
-        UIColor.black.setStroke()
+        UIColor.red.setStroke()
         innerRing.lineWidth = 2
         innerRing.stroke()
         
         let outerRing = UIBezierPath(arcCenter: centerView!, radius: (halfFrameWidth - 5) * 0.95, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
-        UIColor.black.setStroke()
+        UIColor.red.setStroke()
         outerRing.lineWidth = 1
         outerRing.stroke()
         
@@ -65,7 +65,7 @@ class CompassView: UIView {
                 markLine.addLine(to: innerPoint)
                 markLine.lineWidth = 2
                 markLine.stroke()
-                UIColor.black.setStroke()
+                UIColor.red.setStroke()
             }else{
                 let outerPoint = archLocationPoint(degree: CGFloat(degree), distance: 0.9)
                 let innerPoint = archLocationPoint(degree: CGFloat(degree), distance: 0.85)
@@ -74,7 +74,7 @@ class CompassView: UIView {
                 markLine.addLine(to: innerPoint)
                 markLine.lineWidth = 1
                 markLine.stroke()
-                UIColor.black.setStroke()
+                UIColor.red.setStroke()
             }
         }
     }

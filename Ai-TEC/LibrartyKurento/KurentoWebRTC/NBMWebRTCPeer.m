@@ -647,7 +647,7 @@ didReceiveMessageWithBuffer:(RTCDataBuffer *)buffer {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (newState == RTCIceGatheringStateGathering) {
             //Is this check needed?
-            if (peerConnection.iceGatheringState == RTCIceGatheringStateGathering) {
+                if (peerConnection.iceGatheringState == RTCIceGatheringStateGathering) {
                 [connection drainRemoteCandidates];
             }
         }

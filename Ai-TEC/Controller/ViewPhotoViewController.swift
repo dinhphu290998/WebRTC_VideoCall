@@ -3,15 +3,13 @@ import MapKit
 import Toast_Swift
 import Kingfisher
 import Starscream
-import MapViewPlus
 protocol HandleMapSearch {
     func dropPinZoomIn(placemark: MKPlacemark)
 }
 @available(iOS 10.0, *)
 class ViewPhotoViewController: UIViewController{
     
-
-    @IBOutlet weak var mapView: MapViewPlus!
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var photoImage: UIImageView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var timestampLabel: UILabel!
@@ -21,13 +19,13 @@ class ViewPhotoViewController: UIViewController{
     var hasGPS: Bool = false
     var photo: Image?
     var timestampCapture: String?
-  
-    
+    var time: String?
+    var currentLocation: CLLocation?
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mapView.delegate = self
-
+        
         let fileName = getDocumentsDirectory().appendingPathComponent("sample.kml").path
         
         do {
@@ -55,6 +53,7 @@ class ViewPhotoViewController: UIViewController{
         }
         
         mapView.isHidden = segmentedControl.selectedSegmentIndex == 0
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -103,7 +102,8 @@ class ViewPhotoViewController: UIViewController{
     fileprivate func loadKml(_ path: String) {
         KMLDocument.parse(string: path, callback: { [unowned self] (kml) in
             self.mapView.addOverlays(kml.overlays)
-            self.mapView.setup(withAnnotations: AnotationMapView.shared.annotations)
+            self.mapView.addAnnotations(kml.annotations)
+            self.mapView.showAnnotations(kml.annotations, animated: true)
         })
     }
     
@@ -116,9 +116,9 @@ class ViewPhotoViewController: UIViewController{
         print("deinit")
     }
 }
-
-extension ViewPhotoViewController: MapViewPlusDelegate {
-
+@available(iOS 10.0, *)
+extension ViewPhotoViewController: MKMapViewDelegate {
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let overlayPolyline = overlay as? KMLOverlayPolyline {
             // return MKPolylineRenderer
@@ -126,26 +126,7 @@ extension ViewPhotoViewController: MapViewPlusDelegate {
         }
         return MKOverlayRenderer(overlay: overlay)
     }
-    
-    func mapView(_ mapView: MapViewPlus, imageFor annotation: AnnotationPlus) -> UIImage {
-        switch annotation.stringImage {
-        case "0":
-            return UIImage(named: "btn_answer")!
-        case "1":
-             return UIImage(named: "btn_cancel")!
-        case "2":
-             return UIImage(named: "btn_edit")!
-        default:
-            return  UIImage(named: "basic_annotation_image")!
-        }
-    }
-    
-    func mapView(_ mapView: MapViewPlus, didAddAnnotations annotations: [AnnotationPlus]) {
-        mapView.showAnnotations(annotations, animated: true)
-    }
-    
 }
-
 @available(iOS 10.0, *)
 extension ViewPhotoViewController: WebSocketDelegate {
     func websocketDidConnect(socket: WebSocket) {

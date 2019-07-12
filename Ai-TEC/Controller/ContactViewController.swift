@@ -18,9 +18,9 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
     @IBOutlet weak var myNameLabel: UILabel!
     @IBOutlet weak var contactTableView: UITableView!
     @IBOutlet weak var logoutButton: UIButton!
-    @IBOutlet weak var callButton: UIButton!
     @IBOutlet weak var emergencyButton: UIButton!
     @IBOutlet weak var conferenceButton: UIButton!
+    @IBOutlet weak var p2pbutton: UIButton!
     
     var dictCall : [String:String] = [:]
     var nameUserAnswer = ""
@@ -36,9 +36,9 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
     var locationManager: CLLocationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
-        callButton.layer.cornerRadius = 6
         logoutButton.layer.cornerRadius = 6
         conferenceButton.layer.cornerRadius = 6
+        p2pbutton.layer.cornerRadius = 6
         myAvatarImageView.image = UIImage(named: "bg_search")
         myNameLabel.text = UserDefaults.standard.value(forKey: "yourname") as? String
         myStatusView.layer.cornerRadius = 6
@@ -83,7 +83,7 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
                 listName.append(user.name)
             }
             if listName.contains(checkName as! String) {
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
                     self.performSegue(withIdentifier: "KorentoViewControllerStoryBoardId", sender: self)
                 }
                 let nameRecieve = self.contacts[self.index!].name
@@ -106,7 +106,7 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
             }
             if listName.contains(checkName as! String){
                 SocketGlobal.shared.socket?.write(string: convertString(from: dictCall))
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
                     self.performSegue(withIdentifier: "showRingingSegueId", sender: self)
                 }
             }
@@ -145,14 +145,14 @@ class ContactViewController: UIViewController ,WebSocketDelegate , UITableViewDe
                     index = nil
                     contactTableView.reloadData()
                 case "call":
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
                         self.performSegue(withIdentifier: "showRingingSegueId", sender: self)
                     }
                     nameUserAnswer = "\(dictionary["name"]!)"
                     checkPK = true
                     checkButton = true
                 case "conference invitation":
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
                         self.performSegue(withIdentifier: "showRingingSegueId", sender: self)
                     }
                     checkPK = false

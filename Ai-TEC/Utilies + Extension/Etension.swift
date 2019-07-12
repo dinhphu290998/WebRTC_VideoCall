@@ -360,7 +360,7 @@ extension URL {
         let fileName = self.deletingPathExtension().lastPathComponent
         let partsOfName = fileName.components(separatedBy: "_")
         if partsOfName.count > 2 {
-            var timestampString = "\(partsOfName[2])_\(partsOfName[3])"
+            var timestampString = "\(partsOfName[1])_\(partsOfName[2])"
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyyMMdd_HHmmss"
             if let date = formatter.date(from: timestampString) {
