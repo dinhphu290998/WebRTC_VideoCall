@@ -16,21 +16,21 @@ import SVProgressHUD
 import CoreMotion
 
 class KurentoViewController: UIViewController {
+    @IBOutlet weak var stackViewContain: UIStackView!
     @IBOutlet weak var collectionViewRemote: UICollectionView!
     @IBOutlet weak var collectionGuset: UICollectionView!
     @IBOutlet weak var localView: RTCEAGLVideoView!
     @IBOutlet weak var audioButton: UIButton?
     @IBOutlet weak var videoButton: UIButton?
-    @IBOutlet weak var viewResolution: UIView!
-    @IBOutlet weak var tableViewResolution: UITableView!
-    @IBOutlet weak var resButton: UIButton!
+    @IBOutlet weak var res: VKExpandableButton!
+    @IBOutlet weak var hiddenStack: UIButton!
+    @IBOutlet weak var swCam: UIButton!
     var idLocal = ""
     var contacts : [User] = []
     var participantJoineds : [Remote] = []
     var userName = ""
     var uuid: Any?
     var roomID: String?
-    let resolutions = ["320 x 240", "640 x 480", "1280 x 720", "1920 x 1080", "2560 x 1440", "3840 x 2160"]
     let callConstraint = RTCMediaConstraints(mandatoryConstraints: ["OfferToReceiveAudio" : "true", "OfferToReceiveVideo": "true"],
                                                               optionalConstraints: nil)
     let defaultConnectionConstraint = RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: ["DtlsSrtpKeyAgreement": "true"])
@@ -38,14 +38,31 @@ class KurentoViewController: UIViewController {
     var webRTC : NBMWebRTCPeer?
     var peerLocal: RTCPeerConnection?
     var remoteIceCandidates: [RTCIceCandidate] = []
+    let resolutions = ["320 x 240", "640 x 480", "1280 x 720", "1920 x 1080", "2560 x 1440", "3840 x 2160"]
     override func viewDidLoad() {
         super.viewDidLoad()
         SocketGlobal.shared.socket?.delegate = self
         SocketGlobal.shared.socketKurento?.delegate = self
         collectionGuset.register(UINib(nibName: "UserCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CellUser")
         collectionViewRemote.register(UINib(nibName: "RemoteViewCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CellRemoteView")
-        resButton.backgroundColor = UIColor.clear
         self.startCallForLocal()
+        self.hideButtons()
+        self.resolution()
+    }
+    func resolution(){
+        self.res.direction      = .Down
+        self.res.options        = resolutions
+        self.res.currentValue   = self.res.options[0]
+        self.res.cornerRadius   = self.res.frame.size.height / 2
+        self.res.imageInsets    = UIEdgeInsetsMake(12, 12, 12, 12)
+        self.res.selectionColor = UIColor(red: 75.0/256.0, green: 178.0/256.0, blue: 174.0/256.0, alpha: 1.0)
+        self.res.buttonBackgroundColor = UIColor(red: 44.0/256.0, green: 62.0/256.0, blue: 80.0/256.0, alpha: 1.0)
+        self.res.expandedButtonBackgroundColor = self.res.buttonBackgroundColor
+        
+        self.res.optionSelectionBlock = {
+            index in
+            print("[Left] Did select cat at index: \(index)")
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -80,6 +97,13 @@ class KurentoViewController: UIViewController {
             })
         })
     }
+    @IBAction func hidden(_ sender: UIButton) {
+        self.hiddenStack.isHidden = true
+        self.hideButtons()
+        self.stackViewContain.isHidden = false
+        self.res.isHidden = false
+        self.swCam.isHidden = false
+    }
     @IBAction func switchCamera(_ sender: UIButton) {
         webRTC?.switchCameraKurento()
     }
@@ -100,6 +124,16 @@ class KurentoViewController: UIViewController {
             webRTC?.enableVideo(true)
         }
     }
+    func hideButtons(){
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.hide), userInfo: nil, repeats: false)
+    }
+    @objc func hide(){
+        self.stackViewContain.isHidden = true
+        self.res.isHidden = true
+        self.swCam.isHidden = true
+        self.hiddenStack.isHidden = false
+    }
+    
     @IBAction func endCallButton(_ sender: UIButton) {
         let alert = UIAlertController(title: "確認", message:"通話を終了しても宜しいですか?", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "はい", style: UIAlertActionStyle.destructive, handler: { _ in
@@ -113,10 +147,8 @@ class KurentoViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "いいえ", style: UIAlertActionStyle.cancel, handler:nil))
         self.present(alert, animated: true, completion: nil)
     }
-    @IBAction func captureButtonTouched(_ sender: UIButton) {
-    }
-    @IBAction func resolutionButton(_ sender: UIButton) {
-        viewResolution.isHidden = false
+        @IBAction func captureButtonTouched(_ sender: UIButton) {
+        
     }
     // join Room
     func joinRoomKurento(room:String){
@@ -370,23 +402,7 @@ extension KurentoViewController: WebSocketDelegate{
         print(data)
     }
 }
-extension KurentoViewController:UITableViewDelegate,UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableViewResolution.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = resolutions[indexPath.row]
-        return cell
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 20
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewResolution.isHidden = true
-        resButton.titleLabel?.text = resolutions[indexPath.row]
-    }
-}
+
 extension KurentoViewController: UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == collectionGuset{

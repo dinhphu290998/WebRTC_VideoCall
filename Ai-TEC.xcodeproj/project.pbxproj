@@ -37,6 +37,7 @@
 		B30D56D22251C96C0021E63C /* RTCCapturer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30D56CE2251C96B0021E63C /* RTCCapturer.swift */; };
 		B30D56D32251C96C0021E63C /* RTCCapturerSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30D56CF2251C96B0021E63C /* RTCCapturerSettingsModel.swift */; };
 		B30D56D42251C96C0021E63C /* RTCSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30D56D02251C96B0021E63C /* RTCSettingsStore.swift */; };
+		B31E0AC722F44A90007D327A /* VKExpandableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E0AC622F44A90007D327A /* VKExpandableButton.swift */; };
 		B33B97F7218999DE00D8AB12 /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B97F6218999DE00D8AB12 /* Drawing.swift */; };
 		B33B97F9218999E900D8AB12 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B97F8218999E700D8AB12 /* Session.swift */; };
 		B33B97FB218999EC00D8AB12 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B97FA218999EC00D8AB12 /* Palette.swift */; };
@@ -149,13 +150,14 @@
 		406AEE77466067F4B97DBD99 /* Pods_Ai_TecUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_TecUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54DB82D607AA9494F139E009 /* Pods-Ai-TecUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-TecUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-TecUITests/Pods-Ai-TecUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		787889CFDFCC3FFB53443B73 /* Pods_Ai_TecTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_TecTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3087F03219D7701004204F4 /* CacheImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CacheImage.swift; path = "Ai-TEC/Model/CacheImage.swift"; sourceTree = SOURCE_ROOT; };
+		B3087F03219D7701004204F4 /* CacheImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CacheImage.swift; path = "Ai-Tec/Model/Img/CacheImage.swift"; sourceTree = SOURCE_ROOT; };
 		B30BFF9021AD043900A68625 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		B30BFF9E21AD650E00A68625 /* KML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KML.swift; path = "Ai-TEC/Model/KML/KML.swift"; sourceTree = SOURCE_ROOT; };
 		B30D56CD2251C96A0021E63C /* AVCaptureState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCaptureState.swift; sourceTree = "<group>"; };
 		B30D56CE2251C96B0021E63C /* RTCCapturer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTCCapturer.swift; sourceTree = "<group>"; };
 		B30D56CF2251C96B0021E63C /* RTCCapturerSettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTCCapturerSettingsModel.swift; sourceTree = "<group>"; };
 		B30D56D02251C96B0021E63C /* RTCSettingsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTCSettingsStore.swift; sourceTree = "<group>"; };
+		B31E0AC622F44A90007D327A /* VKExpandableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKExpandableButton.swift; sourceTree = "<group>"; };
 		B33B97F6218999DE00D8AB12 /* Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drawing.swift; sourceTree = "<group>"; };
 		B33B97F8218999E700D8AB12 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		B33B97FA218999EC00D8AB12 /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -174,7 +176,7 @@
 		B33B9835218AB84900D8AB12 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoCell.swift; path = "Ai-TEC/View/PhotoCell.swift"; sourceTree = SOURCE_ROOT; };
 		B33C69312189984A0077469C /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		B34314D921BE01FF007D447F /* KMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KMLParser.swift; path = "Ai-TEC/Model/KML/KMLParser.swift"; sourceTree = SOURCE_ROOT; };
-		B3514B4521A3F2BB00AF28DC /* CheckImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CheckImage.swift; path = "Ai-TEC/Model/CheckImage.swift"; sourceTree = SOURCE_ROOT; };
+		B3514B4521A3F2BB00AF28DC /* CheckImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CheckImage.swift; path = "Ai-Tec/Model/Img/CheckImage.swift"; sourceTree = SOURCE_ROOT; };
 		B37582DC21C2723E0061C990 /* KurentoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KurentoViewController.swift; path = "Ai-TEC/Controller/KurentoViewController.swift"; sourceTree = SOURCE_ROOT; };
 		B375830121C2732B0061C990 /* NBMPeerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBMPeerConnection.h; sourceTree = "<group>"; };
 		B375830221C2732C0061C990 /* NBMWebRTCPeer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBMWebRTCPeer.h; sourceTree = "<group>"; };
@@ -354,22 +356,15 @@
 		1873FA0F21757F8F00ED8988 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B30D56CD2251C96A0021E63C /* AVCaptureState.swift */,
-				B30D56CE2251C96B0021E63C /* RTCCapturer.swift */,
-				B30D56CF2251C96B0021E63C /* RTCCapturerSettingsModel.swift */,
-				B30D56D02251C96B0021E63C /* RTCSettingsStore.swift */,
+				B31E0AC622F44A90007D327A /* VKExpandableButton.swift */,
+				B31E0ABC22F441D4007D327A /* Img */,
+				B31E0ABB22F44144007D327A /* Socket */,
 				B30BFF9D21AD650100A68625 /* KML */,
 				B37BE7BF2192C043007E20E3 /* NXDrawKit */,
-				B33B980E2189AECD00D8AB12 /* MessageSocket.swift */,
 				18F0C90221758BA600E0DEBD /* User.swift */,
 				1812FCD621E6FB1800894B2D /* Remote.swift */,
 				18F0C90621759D7C00E0DEBD /* Config.swift */,
 				18FA43ED2176F75A00A0EB8B /* SocketGlobal.swift */,
-				B33B97F6218999DE00D8AB12 /* Drawing.swift */,
-				B33B98142189B45500D8AB12 /* Socket.swift */,
-				B3087F03219D7701004204F4 /* CacheImage.swift */,
-				B3514B4521A3F2BB00AF28DC /* CheckImage.swift */,
-				B30BFF9021AD043900A68625 /* Storage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -394,6 +389,26 @@
 				B34314D921BE01FF007D447F /* KMLParser.swift */,
 			);
 			path = KML;
+			sourceTree = "<group>";
+		};
+		B31E0ABB22F44144007D327A /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				B33B980E2189AECD00D8AB12 /* MessageSocket.swift */,
+				B33B98142189B45500D8AB12 /* Socket.swift */,
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
+		B31E0ABC22F441D4007D327A /* Img */ = {
+			isa = PBXGroup;
+			children = (
+				B33B97F6218999DE00D8AB12 /* Drawing.swift */,
+				B3087F03219D7701004204F4 /* CacheImage.swift */,
+				B3514B4521A3F2BB00AF28DC /* CheckImage.swift */,
+				B30BFF9021AD043900A68625 /* Storage.swift */,
+			);
+			path = Img;
 			sourceTree = "<group>";
 		};
 		B37582DE21C2728B0061C990 /* LibrartyKurento */ = {
@@ -432,6 +447,10 @@
 		B37583A021C344A50061C990 /* LibraryWebRTC */ = {
 			isa = PBXGroup;
 			children = (
+				B30D56CD2251C96A0021E63C /* AVCaptureState.swift */,
+				B30D56CE2251C96B0021E63C /* RTCCapturer.swift */,
+				B30D56CF2251C96B0021E63C /* RTCCapturerSettingsModel.swift */,
+				B30D56D02251C96B0021E63C /* RTCSettingsStore.swift */,
 				B37583CF21C344F90061C990 /* AppRTCMobile-Prefix.pch */,
 				B37583B021C344E40061C990 /* ARDAppClient.h */,
 				B37583C121C344F10061C990 /* ARDAppClient.m */,
@@ -891,6 +910,7 @@
 				B37583EB21C345020061C990 /* ARDAppClient.m in Sources */,
 				B37583E221C345020061C990 /* ARDStatsBuilder.m in Sources */,
 				18FA43EA2176E30800A0EB8B /* ContactViewController.swift in Sources */,
+				B31E0AC722F44A90007D327A /* VKExpandableButton.swift in Sources */,
 				B37583FF21C348D30061C990 /* UserCollectionViewCell.swift in Sources */,
 				B37583F721C345020061C990 /* RTCSessionDescription+JSON.m in Sources */,
 				18AA0C6B2181A5D800038963 /* Ex-CollectionView.swift in Sources */,
