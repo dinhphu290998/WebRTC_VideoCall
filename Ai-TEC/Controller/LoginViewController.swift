@@ -11,7 +11,7 @@ import SVProgressHUD
 import Starscream
 import CoreLocation
 
-class LoginViewController: UIViewController , WebSocketDelegate, CLLocationManagerDelegate{
+class LoginViewController: UIViewController , WebSocketDelegate, CLLocationManagerDelegate,UITextFieldDelegate{
     
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -26,7 +26,8 @@ class LoginViewController: UIViewController , WebSocketDelegate, CLLocationManag
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
         usernameTextField.backgroundColor = UIColor.darkGray
         usernameTextField.textColor = UIColor.white
         usernameTextField.leftViewMode = .always
@@ -98,6 +99,8 @@ class LoginViewController: UIViewController , WebSocketDelegate, CLLocationManag
     }
     
     @IBAction func loginButtonTouched(_ sender: Any) {
+        usernameTextField.resignFirstResponder();
+        passwordTextField.resignFirstResponder();
         SVProgressHUD.show()
         let nameUser = usernameTextField.text ?? ""
         UserDefaults.standard.set(nameUser, forKey: "yourname")
@@ -106,6 +109,11 @@ class LoginViewController: UIViewController , WebSocketDelegate, CLLocationManag
         let dict = ["type":LOGIN,"name":nameUser, "password":password, "regId":uuid]
         //send message in sever
         SocketGlobal.shared.socket?.write(string: convertString(from: dict))
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder();
+        return true
     }
     
     //DELEGATE webSocket

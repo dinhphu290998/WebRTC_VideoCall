@@ -49,6 +49,17 @@ class KurentoViewController: UIViewController {
         self.hideButtons()
         self.resolution()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        collectionGuset.reloadData()
+        userName = UserDefaults.standard.value(forKey: "yourname") as! String
+        uuid = UserDefaults.standard.value(forKey: "uuid")
+        roomID = SocketGlobal.shared.room
+        let dict = ["type":DISCOVERY,"name":userName]
+        SocketGlobal.shared.socket?.write(string: convertString(from: dict))
+    }
+    
     func resolution(){
         self.res.direction      = .Down
         self.res.options        = resolutions
@@ -64,15 +75,7 @@ class KurentoViewController: UIViewController {
             print("[Left] Did select cat at index: \(index)")
         }
     }
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        collectionGuset.reloadData()
-        userName = UserDefaults.standard.value(forKey: "yourname") as! String
-        uuid = UserDefaults.standard.value(forKey: "uuid")
-        roomID = SocketGlobal.shared.room
-        let dict = ["type":DISCOVERY,"name":userName]
-        SocketGlobal.shared.socket?.write(string: convertString(from: dict))
-    }
+    
     func startCallForLocal(){
         let defaultConfig = NBMMediaConfiguration.default()
         self.webRTC = NBMWebRTCPeer.init(delegate: self, configuration: defaultConfig)
@@ -97,6 +100,7 @@ class KurentoViewController: UIViewController {
             })
         })
     }
+    
     @IBAction func hidden(_ sender: UIButton) {
         self.hiddenStack.isHidden = true
         self.hideButtons()
@@ -104,10 +108,11 @@ class KurentoViewController: UIViewController {
         self.res.isHidden = false
         self.swCam.isHidden = false
     }
+    
     @IBAction func switchCamera(_ sender: UIButton) {
         webRTC?.switchCameraKurento()
     }
-
+    
     @IBAction func muteAudioButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if sender.isSelected == true {
@@ -116,6 +121,7 @@ class KurentoViewController: UIViewController {
             webRTC?.enableAudio(true)
         }
     }
+    
     @IBAction func MuteVideoButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if sender.isSelected == true {
@@ -124,9 +130,11 @@ class KurentoViewController: UIViewController {
             webRTC?.enableVideo(true)
         }
     }
+    
     func hideButtons(){
         Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.hide), userInfo: nil, repeats: false)
     }
+    
     @objc func hide(){
         self.stackViewContain.isHidden = true
         self.res.isHidden = true
@@ -147,9 +155,10 @@ class KurentoViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "いいえ", style: UIAlertActionStyle.cancel, handler:nil))
         self.present(alert, animated: true, completion: nil)
     }
-        @IBAction func captureButtonTouched(_ sender: UIButton) {
-        
+    
+    @IBAction func captureButtonTouched(_ sender: UIButton) {
     }
+    
     // join Room
     func joinRoomKurento(room:String){
         let userName :String = UserDefaults.standard.value(forKey: "yourname") as! String
@@ -158,36 +167,43 @@ class KurentoViewController: UIViewController {
         let dictKRT = ["id":"\(1)","params":["metadata":metadata,"platform":"AnyPhone","session":"\(room)","dataChannels":"false","secret":"vm69vm69","token":"gr50nzaqe6avt65cg5v06"],"jsonrpc":"2.0","method":"joinRoom"] as [String : Any]
         SocketGlobal.shared.socketKurento?.write(string:convertStringSA(from: dictKRT))
     }
+    
     // convert string to dictionary
     func convertToDictionary(from text: String) throws -> [String: Any]? {
         guard let data = text.data(using: .utf8) else { return [:] }
         let anyResult: Any = try JSONSerialization.jsonObject(with: data, options: [])
         return anyResult as? [String: Any]
     }
+    
     //convert dictionarySS to string
     func convertString(from dict:[String:String]) -> String {
         let jsonData = try! JSONSerialization.data(withJSONObject: dict, options: JSONSerialization.WritingOptions.prettyPrinted)
         let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)! as String
         return jsonString
     }
+    
     //convert dictionarySA to string
     func convertStringSA(from dict:[String:Any]) -> String {
         let jsonData = try! JSONSerialization.data(withJSONObject: dict, options: JSONSerialization.WritingOptions.prettyPrinted)
         let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)! as String
         return jsonString
     }
+    
 }
 extension KurentoViewController: NBMWebRTCPeerDelegate{
     func webRTCPeer(_ peer: NBMWebRTCPeer!, didGenerateOffer sdpOffer: RTCSessionDescription!, for connection: NBMPeerConnection!) {
         print("didGenerateOffer sdpOffer")
     }
+    
     func webRTCPeer(_ peer: NBMWebRTCPeer!, didGenerateAnswer sdpAnswer: RTCSessionDescription!, for connection: NBMPeerConnection!) {
         print("didGenerateAnswer sdpAnswer")
     }
+    
     func webRTCPeer(_ peer: NBMWebRTCPeer!, hasICECandidate candidate: RTCIceCandidate!, for connection: NBMPeerConnection!) {
         let onCandidate = ["jsonrpc":"2.0","method":"onIceCandidate","params":["endpointName":"vtest","candidate":candidate.sdp,"sdpMid":"audio","sdpMLineIndex":0],"id":3] as [String : Any]
         SocketGlobal.shared.socketKurento?.write(string: self.convertStringSA(from: onCandidate))
     }
+    
     func webrtcPeer(_ peer: NBMWebRTCPeer!, iceStatusChanged state: RTCIceConnectionState, of connection: NBMPeerConnection!) {
         switch state {
         case .checking:
@@ -208,6 +224,7 @@ extension KurentoViewController: NBMWebRTCPeerDelegate{
             print("new")
         }
     }
+    
     func webRTCPeer(_ peer: NBMWebRTCPeer!, didAdd remoteStream: RTCMediaStream!, of connection: NBMPeerConnection!) {
         for remote in participantJoineds{
             if remote.remotePeer == connection.peerConnection{
@@ -219,21 +236,26 @@ extension KurentoViewController: NBMWebRTCPeerDelegate{
             }
         }
     }
+    
     func webRTCPeer(_ peer: NBMWebRTCPeer!, didRemove remoteStream: RTCMediaStream!, of connection: NBMPeerConnection!) {
         print("didRemove remoteStream")
     }
+    
     func webRTCPeer(_ peer: NBMWebRTCPeer!, didAdd dataChannel: RTCDataChannel!) {
         print("didAdd dataChannel")
     }
+    
 }
 extension KurentoViewController: WebSocketDelegate{
     //DELEGATE websocket
     func websocketDidConnect(socket: WebSocket) {
         print("")
     }
+    
     func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
         print(error ?? "")
     }
+    
     func websocketDidReceiveMessage(socket: WebSocket, text: String) {
         do {
             if let dictionary = try self.convertToDictionary(from: text){
@@ -260,38 +282,28 @@ extension KurentoViewController: WebSocketDelegate{
                     if result.keys.contains("metadata") {
                         guard let id = result["id"] as? String else {return}
                         self.idLocal = id
-                        print(self.idLocal)
                         if let values = result["value"] as? [DICT] {
                             for value in values {
-                                let queue = DispatchQueue(label: "queue_other")
-                                queue.async {
-                                    do{
-                                        print("Người vào trước")
-                                        guard let id = value["id"] as? String else {return}
-                                        guard let metadata = value["metadata"] as? String else {return}
-                                        let meta = try self.convertToDictionary(from: metadata)
-                                        guard let clientData = meta!["clientData"] as? String else {return}
-                                        self.webRTC?.generateOffer("sdpRemote", completion: { (sdp: String!, peer: NBMPeerConnection!) in
-                                            let remote: Remote = Remote(name: clientData, id: id, peer: peer.peerConnection, media: nil, arrIce: [], check: false)!
-                                            let sessionDescription = RTCSessionDescription(type: .offer, sdp: sdp)
-                                            remote.remotePeer!.setLocalDescription(sessionDescription, completionHandler: { (error) in
-                                                if let error = error {
-                                                    print(error)
-                                                } else {
-                                                    print("Set local Description For Remote Succes")
-                                                    let receive = ["jsonrpc":"2.0","method":"receiveVideoFrom","params":["sender":"\(id)_webcam","sdpOffer":sessionDescription.sdp],"id":2] as [String : Any]
-                                                    SocketGlobal.shared.socketKurento?.write(string: self.convertStringSA(from: receive))
-                                                }
-                                            })
-                                            self.participantJoineds.append(remote)
-                                            DispatchQueue.main.async {
-                                                self.collectionViewRemote.reloadData()
-                                            }
-                                        })
-                                    }catch{
-                                        print(error)
-                                    }
-                                }
+                                print("Người vào trước")
+                                guard let idWc = value["id"] as? String else {return}
+                                guard let metadata = value["metadata"] as? String else {return}
+                                let meta = try self.convertToDictionary(from: metadata)
+                                guard let clientData = meta!["clientData"] as? String else {return}
+                                self.webRTC?.generateOffer("sdpRemote", completion: { (sdp: String!, peer: NBMPeerConnection!) in
+                                    let remote: Remote = Remote(name: clientData, id: idWc, peer: peer.peerConnection, media: nil, arrIce: [], check: false)!
+                                    let sessionDescription = RTCSessionDescription(type: .offer, sdp: sdp)
+                                    remote.remotePeer!.setLocalDescription(sessionDescription, completionHandler: { (error) in
+                                        if let error = error {
+                                            print(error)
+                                        } else {
+                                            print("Set local Description For Remote Succes")
+                                            let receive = ["jsonrpc":"2.0","method":"receiveVideoFrom","params":["sender":"\(idWc)_webcam","sdpOffer":sessionDescription.sdp],"id":2] as [String : Any]
+                                            SocketGlobal.shared.socketKurento?.write(string: self.convertStringSA(from: receive))
+                                        }
+                                    })
+                                    self.participantJoineds.append(remote)
+                                    self.collectionViewRemote.reloadData()
+                                })
                             }
                         }
                     }
@@ -337,19 +349,19 @@ extension KurentoViewController: WebSocketDelegate{
                     case "participantJoined":
                         print("Người vào sau")
                         guard let params = dictionary["params"] as? DICT else {return}
-                        guard let id = params["id"] as? String else {return}
+                        guard let idWc = params["id"] as? String else {return}
                         guard let metadata = params["metadata"] as? String else {return}
                         let meta = try self.convertToDictionary(from: metadata)
                         guard let clientData = meta!["clientData"] as? String else {return}
                         self.webRTC?.generateOffer("sdpRemote", completion: { (sdp: String!, peer: NBMPeerConnection!) in
-                            let remote: Remote = Remote(name: clientData, id: id, peer: peer.peerConnection, media: nil, arrIce: [], check: false)!
+                            let remote: Remote = Remote(name: clientData, id: idWc, peer: peer.peerConnection, media: nil, arrIce: [], check: false)!
                             let sessionDescription = RTCSessionDescription(type: .offer, sdp: sdp)
                             remote.remotePeer!.setLocalDescription(sessionDescription, completionHandler: { (error) in
                                 if let error = error {
                                     print(error)
                                 } else {
                                     print("Set local Description For Remote Succes")
-                                    let receive = ["jsonrpc":"2.0","method":"receiveVideoFrom","params":["sender":"\(id)_webcam","sdpOffer":sessionDescription.sdp],"id":2] as [String : Any]
+                                    let receive = ["jsonrpc":"2.0","method":"receiveVideoFrom","params":["sender":"\(idWc)_webcam","sdpOffer":sessionDescription.sdp],"id":2] as [String : Any]
                                     SocketGlobal.shared.socketKurento?.write(string: self.convertStringSA(from: receive))
                                 }
                             })
@@ -398,9 +410,11 @@ extension KurentoViewController: WebSocketDelegate{
             print(error)
         }
     }
+    
     func websocketDidReceiveData(socket: WebSocket, data: Data) {
         print(data)
     }
+    
 }
 
 extension KurentoViewController: UICollectionViewDelegate,UICollectionViewDataSource{
@@ -411,6 +425,7 @@ extension KurentoViewController: UICollectionViewDelegate,UICollectionViewDataSo
             return participantJoineds.count
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == collectionGuset{
             let cell = collectionGuset.dequeueReusableCell(withReuseIdentifier: "CellUser", for: indexPath) as! UserCollectionViewCell
@@ -437,6 +452,7 @@ extension KurentoViewController: UICollectionViewDelegate,UICollectionViewDataSo
             return cell
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == collectionGuset{
             let receiveName = contacts[indexPath.item].name
@@ -444,7 +460,9 @@ extension KurentoViewController: UICollectionViewDelegate,UICollectionViewDataSo
             SocketGlobal.shared.socket?.write(string: convertString(from: dict ))
         }
     }
+    
 }
+
 extension KurentoViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -459,6 +477,7 @@ extension KurentoViewController: UICollectionViewDelegateFlowLayout {
         }
     }
 }
+
 
 
 

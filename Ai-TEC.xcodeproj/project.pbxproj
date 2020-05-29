@@ -30,6 +30,7 @@
 		18FA43EE2176F75A00A0EB8B /* SocketGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA43ED2176F75A00A0EB8B /* SocketGlobal.swift */; };
 		18FA43F021771A7000A0EB8B /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA43EF21771A7000A0EB8B /* ContactTableViewCell.swift */; };
 		8D10FCF84A798504B9EF769C /* Pods_Ai_Tec.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381B2CD5D2E6702DEC42770 /* Pods_Ai_Tec.framework */; };
+		9315882124763EBB004C6397 /* Trình tự thực hiện  in Resources */ = {isa = PBXBuildFile; fileRef = 9315882024763EBB004C6397 /* Trình tự thực hiện  */; };
 		B3087F04219D7701004204F4 /* CacheImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3087F03219D7701004204F4 /* CacheImage.swift */; };
 		B30BFF9121AD043900A68625 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30BFF9021AD043900A68625 /* Storage.swift */; };
 		B30BFF9F21AD650E00A68625 /* KML.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30BFF9E21AD650E00A68625 /* KML.swift */; };
@@ -150,6 +151,7 @@
 		406AEE77466067F4B97DBD99 /* Pods_Ai_TecUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_TecUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54DB82D607AA9494F139E009 /* Pods-Ai-TecUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ai-TecUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ai-TecUITests/Pods-Ai-TecUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		787889CFDFCC3FFB53443B73 /* Pods_Ai_TecTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ai_TecTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9315882024763EBB004C6397 /* Trình tự thực hiện  */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Trình tự thực hiện "; path = "Ai-TEC/Trình tự thực hiện "; sourceTree = SOURCE_ROOT; };
 		B3087F03219D7701004204F4 /* CacheImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CacheImage.swift; path = "Ai-Tec/Model/Img/CacheImage.swift"; sourceTree = SOURCE_ROOT; };
 		B30BFF9021AD043900A68625 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		B30BFF9E21AD650E00A68625 /* KML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KML.swift; path = "Ai-TEC/Model/KML/KML.swift"; sourceTree = SOURCE_ROOT; };
@@ -571,6 +573,7 @@
 		B3ABEF84217495B30072E9F5 /* Ai-Tec */ = {
 			isa = PBXGroup;
 			children = (
+				9315882024763EBB004C6397 /* Trình tự thực hiện  */,
 				B3ABEF85217495B30072E9F5 /* AppDelegate.swift */,
 				B37583A021C344A50061C990 /* LibraryWebRTC */,
 				B37582DE21C2728B0061C990 /* LibrartyKurento */,
@@ -718,6 +721,7 @@
 				B37583FD21C348C90061C990 /* RemoteViewCollectionViewCell.xib in Resources */,
 				B3DF816221749E5900AC7934 /* LaunchScreen.xib in Resources */,
 				B37583FB21C348C10061C990 /* UserCollectionViewCell.xib in Resources */,
+				9315882124763EBB004C6397 /* Trình tự thực hiện  in Resources */,
 				18576BB7217A42B300013D43 /* Media.xcassets in Resources */,
 				B33B980121899A1B00D8AB12 /* BrushCell.xib in Resources */,
 				B3DF816021749E4D00AC7934 /* Main.storyboard in Resources */,
@@ -1137,7 +1141,7 @@
 				DEVELOPMENT_TEAM = 9TPJJNUR63;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Ai-Tec/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1163,7 +1167,7 @@
 				DEVELOPMENT_TEAM = 9TPJJNUR63;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Ai-Tec/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

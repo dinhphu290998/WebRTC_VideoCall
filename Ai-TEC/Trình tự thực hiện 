@@ -1,0 +1,12 @@
+B1 Setup Media Local : Video & Audio
+B2 Tạo SDP Offer Local
+B3 Join Room
+B4 Set Description For Local -> Send param PublishVideo to Server
+B5 Tạo Candidate -> Send onIceCandidate to Server
+
+Khi mà có người mới tham gia phòng
+B6 Nếu mà nhận được SDP Answer thì Set Description Remote OK -> Add Ice Candidate
+    Chú ý về param key là senderID và endpointName theo đúng userid
+B7 Đối với người mới các bước tạo tương tự
+
+CHÚ Ý VỀ KEY PARAM senderID và endpointName : SAI LẦM ĐÉO LÊN ĐƯỢC VIDEO THIẾU MỖI 2 DÒNG CODE
